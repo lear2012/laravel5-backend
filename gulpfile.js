@@ -29,12 +29,20 @@ elixir(function(mix) {
         .copy('resources/assets/bower/AdminLTE/dist/css/skins/*.*','public/css/skins')
         .copy('resources/assets/bower/font-awesome/css/font-awesome.min.css','public/css')
         .copy('resources/assets/bower/Ionicons/css/ionicons.min.css','public/css')
+        .copy('resources/assets/bower/AdminLTE/plugins/iCheck/square/blue.css','public/css')
+        .copy('resources/assets/bower/AdminLTE/plugins/select2/select2.min.css','public/css')
         //img
         .copy('resources/assets/bower/AdminLTE/dist/img','public/img')
         //js
         .copy('resources/assets/bower/AdminLTE/plugins/jQuery/jquery-2.2.3.min.js','public/js')
         .copy('resources/assets/bower/AdminLTE/bootstrap/js/bootstrap.min.js','public/js')
         .copy('resources/assets/bower/AdminLTE/dist/js/app.min.js','public/js')
+        .copy('resources/assets/js/jquery.amaran.js','public/js')
+        .copy('resources/assets/bower/AdminLTE/plugins/iCheck/icheck.min.js','public/js')
+        .copy('resources/assets/bower/AdminLTE/plugins/select2/select2.min.js','public/js')
+        .copy('resources/assets/bower/AdminLTE/plugins/select2/i18n/zh-CN.js','public/js')
+
+        .copy('resources/assets/js/my.js','public/js')
         //plugins
         .copy('resources/assets/bower/AdminLTE/plugins','public/plugins')
         // bootstrap-fileinput

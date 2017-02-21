@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Backend;
 use App\Contracts\Repositories\PermissionRepository;
 use App\Contracts\Repositories\RoleRepository;
 use Illuminate\Http\Request;
+use App\Http\Requests\Backend;
 
 class RoleController extends BaseController
 {
@@ -57,7 +58,7 @@ class RoleController extends BaseController
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Backend\CreateRoleRequest $request)
     {
         $this->roles->create($request->all());
         return redirect()->route('admin.auth.role.index')->withSuccess(trans('alerts.roles.created'));

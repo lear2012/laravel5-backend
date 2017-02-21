@@ -54,7 +54,7 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
      *
      * @var array
      */
-    protected $fillable = ['username', 'email', 'password'];
+    protected $fillable = ['username', 'email', 'password', 'status'];
 
     /**
      * The attributes excluded from the model's JSON form.
@@ -65,7 +65,7 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
 
     public function getStatusAttribute($value)
     {
-        return $value == 1 ? '正常' : '已删除';
+        return $value == 1 ? '正常' : '已冻结';
     }
 
     /**
@@ -80,5 +80,14 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
         } else {
             $this->attributes['password'] = $value;
         }
+    }
+
+    public function getRoleIds() {
+        $userRoles = $this->roles()->select('id')->get();
+        $ret = '';
+        foreach($userRoles as $role) {
+            $ret .= $role->id.",";
+        }
+        return trim($ret, ",");
     }
 }

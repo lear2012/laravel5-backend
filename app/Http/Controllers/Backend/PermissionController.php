@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Backend;
 use App\Contracts\Repositories\PermissionRepository;
 use App\Contracts\Repositories\RoleRepository;
 use Illuminate\Http\Request;
-use App\Http\Requests;
+use App\Http\Requests\Backend;
 
 /**
  * Class PermissionController
@@ -69,7 +69,7 @@ class PermissionController extends BaseController
      * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Backend\CreatePermissionRequest $request)
     {
         $this->permissions->create($request->all());
         return redirect()->route('admin.auth.permission.index')->withSuccess(trans('alerts.permissions.created'));

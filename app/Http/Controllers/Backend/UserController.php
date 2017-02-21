@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Backend;
 
 use Illuminate\Http\Request;
-use App\Http\Requests;
+use App\Http\Requests\Backend;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Redirect;
@@ -11,6 +11,8 @@ use App\Contracts\Repositories\UserRepository;
 use App\Contracts\Repositories\RoleRepository;
 use App\Contracts\Repositories\PermissionRepository;
 use Laracasts\Flash\Flash;
+use App\Models\User;
+use DB;
 
 class UserController extends BaseController
 {
@@ -74,12 +76,24 @@ class UserController extends BaseController
      * @param Request $request
      * @return mixed
      */
-    public function store(Request $request)
+    public function store(Backend\CreateUserRequest $request)
     {
-        if ($this->users->create($request->all())) {
-            return redirect()->route('admin.auth.user.index');
+        $data = $request->only(['username', 'email', 'password', 'role_ids', 'status']);
+        if(!isset($data['status']))
+            $data['status'] = 0;
+        try {
+            DB::transaction(function () use ($data) {
+                $role_ids = explode(",", $data['role_ids']);
+                unset($data['role_ids']);
+                $user = User::create($data);
+                foreach($role_ids as $role_id) {
+                    $user->roles()->attach($role_id);
+                }
+            });
+        } catch(\Exception $e) {
+            return redirect()->back()->with('jsmsg', amaran_msg(trans('message.create_user_failed'), 'error'));
         }
-        return Redirect::back()->withInput()->withErrors('保存失败！');
+        return redirect()->route('admin.auth.user.index')->with('jsmsg', amaran_msg(trans('message.create_user_success'), 'success'));
     }
 
     /**
@@ -102,13 +116,14 @@ class UserController extends BaseController
     public function edit($id)
     {
         $user = $this->users->find($id);
-
+        $roleIds = $user->getRoleIds();
         return view(
             'backend.user.edit',
             [
                 'user' => $user,
                 'userRoles' => $user->roles->pluck('id')->all(),
-                'roles' => $this->roles->all()
+                'roles' => $this->roles->all(),
+                'roleIds' => $roleIds
             ]
         );
     }
@@ -120,12 +135,27 @@ class UserController extends BaseController
      * @param Request $request
      * @return Response
      */
-    public function update($id, Request $request)
+    public function update($id, Backend\UpdateUserRequest $request)
     {
-        if ($this->users->update($request->all(), $id)) {
-            return redirect()->route('admin.auth.user.index');
+        $data = $request->only(['username', 'email', 'password', 'role_ids', 'status']);
+        $user = User::findOrFail($id);
+        if(!isset($data['status']))
+            $data['status'] = 0;
+        try {
+            DB::transaction(function () use ($user, $data) {
+                $role_ids = explode(",", $data['role_ids']);
+                unset($data['role_ids']);
+                $user->username = $data['username'];
+                if(trim($data['password']) != '')
+                    $user->password = \Hash::make($data['password']);
+                $user->status = $data['status'];
+                $user->save();
+                $user->roles()->sync($role_ids);
+            });
+        } catch(\Exception $e) {
+            return redirect()->back()->with('jsmsg', amaran_msg(trans('message.update_user_failed'), 'error'));
         }
-        return Redirect::back()->withInput()->withErrors('保存失败！');
+        return redirect()->route('admin.auth.user.index')->with('jsmsg', amaran_msg(trans('message.update_user_success'), 'success'));
     }
 
     /**

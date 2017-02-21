@@ -4,15 +4,15 @@
 
 @section('breadcrumb')
     <li><i class="ace-icon fa fa-home home-icon"></i><a href="/admin/dashboard">主页</a></li>
-    <li><a>用户管理</a></li>
-    <li>编辑角色</li>
+    <li><a>权限管理</a></li>
+    <li>编辑权限</li>
 @endsection
 
 @section('content')
     <div class="row">
         <div class="row">
             <div class="col-md-12">
-                <div class="box box-info">
+                <div class="box box-success">
                     <div class="box-header with-border">
                         <h3 class="box-title">编辑权限</h3>
                     </div>
@@ -26,8 +26,8 @@
                     <!-- /.box-body -->
                     <div class="box-footer">
                         {{--<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modal-delete">删除</button>--}}
-                        <a href="{{route('admin.auth.permission.index')}}" class="btn btn-info"><i class="fa fa-arrow-left"></i>{{ trans('strings.return_button') }}</a>
-                        <button type="submit" class="btn btn-success pull-right"><i class='fa fa-save'></i>&nbsp;&nbsp;{{ trans('strings.save_button') }}</button>
+                        <a href="{{route('admin.auth.permission.index')}}" class="btn bg-purple btn-flat margin"><i class="fa fa-arrow-left"></i>{{ trans('strings.return_button') }}</a>
+                        <button type="submit" class="btn bg-purple btn-flat margin pull-right"><i class='fa fa-save'></i>&nbsp;&nbsp;{{ trans('strings.save_button') }}</button>
                     </div>
                     <!-- /.box-footer -->
                     {!! Form::close() !!}

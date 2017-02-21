@@ -219,7 +219,7 @@ return [
         'Flash' => Laracasts\Flash\Flash::class,
         'Captcha' => Mews\Captcha\Facades\Captcha::class,
         'Entrust'   => Zizaco\Entrust\EntrustFacade::class,
-
+        'ChannelLog' => App\Contracts\Facades\ChannelLog::class,
     ],
 
 ];

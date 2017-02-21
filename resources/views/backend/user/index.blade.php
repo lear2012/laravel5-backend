@@ -16,9 +16,9 @@
 @endsection
 
 @section('breadcrumb')
-        <li><a href="/admin/dashboard"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li><a href="#">权限管理</a></li>
-        <li class="active">用户管理</li>
+        <li><a href="/admin/dashboard"><i class="fa fa-dashboard"></i> 主页</a></li>
+        <li><a href="#">用户管理</a></li>
+        <li class="active">用户列表</li>
 @endsection
 
 @section('content')
@@ -29,7 +29,7 @@
             <div class="box box-success">
                 <div class="box-header">
                     <h3 class="box-title">
-                        <a href="/admin/auth/user/create" class="btn btn-sm btn-success"><i class="fa fa-plus"></i>添加用户</a>
+                        <a href="/admin/auth/user/create" class="btn bg-purple btn-flat margin"><i class="fa fa-plus"></i>添加用户</a>
                     </h3>
                     <div class="box-tools">
                         <!--
@@ -92,15 +92,17 @@
                                 <td>{{ $user->email }}</td>
                                 <td>{{ $user->created_at }}</td>
                                 <td>{{ $user->updated_at }}</td>
-                                <td><small class="label label-success">{{ $user->status }}</small></td>
+                                <td><small class="label {{  $user->getOriginal('status') == 1 ? 'label-success' : 'label-danger'}}">{{ $user->status }}</small></td>
                                 <td>
                                     <div class="hidden-sm hidden-xs action-buttons">
                                         <a href="{{ route('admin.auth.user.edit', [$user->id]) }}">
                                             <i class="fa fa-edit text-green fa-lg"></i>
                                         </a>
+                                        @if ($user->getOriginal('status') == 1)
                                         <a href="javascript:;" data-id="{{ $user->id }}" class="_delete">
                                             <i class="fa fa-trash-o text-red fa-lg"></i>
                                         </a>
+                                        @endif
                                     </div>
                                 </td>
                             </tr>

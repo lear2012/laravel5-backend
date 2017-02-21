@@ -42,8 +42,7 @@ class RoleRepositoryEloquent extends BaseRepository implements RoleRepository
         if (Role::where('name', '=', $input['name'])->first()) {
             throw new GeneralException('That role already exists. Please choose a different name.');
         }
-
-        if (isset($input['assignees_permissions']) && count($input['assignees_permissions']) == 0) {
+        if (!isset($input['assignees_permissions']) || count($input['assignees_permissions']) == 0) {
             throw new GeneralException('You must select at least one permission for this role.');
         }
         $role = new Role;
@@ -51,7 +50,7 @@ class RoleRepositoryEloquent extends BaseRepository implements RoleRepository
         $role->display_name = $input['display_name'];
         $role->description = $input['description'];
         if ($role->save()) {
-            $current     = $input['assignees_permissions'];
+            $current     = isset($input['assignees_permissions']) ? $input['assignees_permissions'] : '';
             $permissions = [];
             if (count($current)) {
                 foreach ($current as $perm) {

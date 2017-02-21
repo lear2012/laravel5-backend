@@ -18,7 +18,7 @@
 @section('breadcrumb')
     <li><i class="ace-icon fa fa-home home-icon"></i><a href="/admin/dashboard">主页</a></li>
     <li><a>权限管理</a></li>
-    <li>列表</li>
+    <li>权限列表</li>
 @endsection
 
 @section('content')
@@ -29,7 +29,7 @@
             <div class="box box-success">
                 <div class="box-header">
                     <h3 class="box-title">
-                        <a href="{{ route('admin.auth.permission.create') }}" class="btn btn-sm btn-success"><i class="fa fa-plus"></i>添加权限</a>
+                        <a href="{{ route('admin.auth.permission.create') }}" class="btn bg-purple btn-flat margin"><i class="fa fa-plus"></i>添加权限</a>
                     </h3>
                     <div class="box-tools">
                         <!--

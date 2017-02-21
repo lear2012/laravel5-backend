@@ -21,7 +21,7 @@
         <a href="/admin/dashboard">主页</a>
     </li>
     <li>
-        <a>用户管理</a>
+        <a>角色管理</a>
     </li>
     <li>
         角色列表
@@ -36,7 +36,7 @@
             <div class="box box-success">
                 <div class="box-header">
                     <h3 class="box-title">
-                        <a href="{{ route('admin.auth.role.create') }}" class="btn btn-sm btn-success"><i class="fa fa-plus"></i> 添加角色</a>
+                        <a href="{{ route('admin.auth.role.create') }}" class="btn bg-purple btn-flat margin"><i class="fa fa-plus"></i> 添加角色</a>
                     </h3>
                     <div class="box-tools">
                         <!--

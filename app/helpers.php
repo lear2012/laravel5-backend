@@ -107,3 +107,7 @@ if ( ! function_exists('get_relation_title')) {
         return $title;
     }
 }
+
+function amaran_msg($msg, $type='info') {
+    return $type."|".$msg;
+}

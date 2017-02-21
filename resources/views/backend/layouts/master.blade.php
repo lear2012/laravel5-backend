@@ -19,6 +19,12 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <link rel="stylesheet" href="{{ asset('css/font-awesome.min.css') }}">
     <!-- Ionicons -->
     <link rel="stylesheet" href="{{ asset('css/ionicons.min.css') }}">
+    <!-- iCheck -->
+    <link rel="stylesheet" href="{{ asset('css/purple.css') }}" />
+    <!-- Select2 -->
+    <link href="{{ asset('css/select2.min.css') }}" rel="stylesheet"/>
+    <!-- Amaran -->
+    <link rel="stylesheet" href="{{ asset('css/amaran.min.css') }}" />
 
     @yield('styles')
 
@@ -26,8 +32,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <link rel="stylesheet" href="{{ asset('css/AdminLTE.min.css') }}">
     <!-- AdminLTE Skins. Choose a skin from the css/skins
            folder instead of downloading all of them to reduce the load. -->
-    <link rel="stylesheet" href="{{ asset('css/skins/_all-skins.min.css') }}">
-
+    <link rel="stylesheet" href="{{ asset('css/skins/skin-purple.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/my.css') }}" />
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -55,7 +61,7 @@ desired effect
 |               | sidebar-mini                            |
 |---------------------------------------------------------|
 -->
-<body class="hold-transition skin-blue sidebar-mini">
+<body class="hold-transition skin-purple sidebar-mini">
 <div class="wrapper">
 
     <!-- Header -->
@@ -95,15 +101,30 @@ desired effect
     @include('backend.layouts.partials.control_sidebar')
 </div>
 <!-- ./wrapper -->
-
+<div id="jsmsg">{{Session::get('jsmsg')}}</div>
 <!-- REQUIRED JS SCRIPTS -->
 
 <!-- jQuery 2.2.3 -->
 <script src="{{ asset('js/jquery-2.2.3.min.js') }}"></script>
 <!-- Bootstrap 3.3.6 -->
 <script src="{{ asset('js/bootstrap.min.js') }}"></script>
+<!-- iCheck -->
+<script src="{{ asset('js/icheck.min.js') }}"></script>
+<!-- Amaran -->
+<script src="{{ asset('js/jquery.amaran.min.js') }}"></script>
+<!-- Select2 -->
+<script src="{{ asset('js/select2.full.min.js') }}"></script>
+<script src="{{ asset('js/zh-CN.js') }}"></script>
+
 <!-- AdminLTE App -->
 <script src="{{ asset('js/app.min.js') }}"></script>
+<script src="{{ asset('js/my.js') }}"></script>
+
+<script type="text/javascript">
+    $(document).ready(function(){
+        site.init();
+    });
+</script>
 
 <!-- Optionally, you can add Slimscroll and FastClick plugins.
      Both of these plugins are recommended to enhance the
