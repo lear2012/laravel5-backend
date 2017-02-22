@@ -25,7 +25,7 @@
         <select id="role_selection" class="form-control role-select" multiple="multiple" name="assignees_roles[]">
         @if (count($roles) > 0)
             @foreach($roles as $role)
-                <option value="{{$role->id}}" {{in_array($role->id, $userRoles) ? 'selected' : ''}}>{!! $role->name !!}</option>
+                <option value="{{$role->id}}" {{in_array($role->id, $userRoles) ? 'selected' : ''}}>{!! $role->display_name !!}</option>
             @endforeach
         @endif
         </select>

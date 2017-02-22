@@ -128,3 +128,23 @@
 
 @endsection
 
+@section('scripts')
+    <!-- DataTables -->
+    <script src="{{ asset('plugins/datatables/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('plugins/datatables/dataTables.bootstrap.min.js') }}"></script>
+    <script>
+        $(function () {
+
+            $('._delete').click(function() {
+                var id = $(this).data('id');
+                if(confirm("确认删除?")) {
+                    $.post('/admin/auth/role/' + id, {_method:'delete','_token': '{{ csrf_token() }}'}, function(data){
+                        window.location.href = '{{ route('admin.auth.role.index') }}';
+                    });
+                }
+
+            });
+        });
+    </script>
+@endsection
+

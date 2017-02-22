@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Backend;
 
+use App\Models\UserProfile;
 use Illuminate\Http\Request;
 use App\Http\Requests\Backend;
 use Illuminate\Http\Response;
@@ -189,11 +190,13 @@ class UserController extends BaseController
      */
     public function destroy($id)
     {
-        $this->users->destroy($id);
-
-        return redirect()
-            ->route('admin.auth.user.index')
-            ->with('jsmsg', amaran_msg('Post deleted', 'success'));
+        if(\Entrust::hasRole('admin')) {
+            $this->users->destroy($id);
+            return redirect()
+                ->route('admin.auth.user.index')
+                ->with('jsmsg', amaran_msg(trans('alerts.users.deleted'), 'success'));
+        }
+        return view('backend.errors.401');
     }
 
     public function expdriverHome(Request $request) {
@@ -205,6 +208,20 @@ class UserController extends BaseController
     }
 
     public function expdriverHomeStore(Request $request) {
-        dd($request->all());
+        $data = $request->only(['real_name', 'password','password_confirmation', 'id_no', 'mobile', 'keye_age', 'quotation', 'avatar', 'nest_info']);
+        if(isset($data['password']) && $data['password'] == '')
+            unset($data['password']);
+        if(isset($data['password']) && isset($data['password_confirmation']) && $data['password'] != $data['password_confirmation']) {
+            return redirect()
+                ->route('admin.expdriver.decorate')
+                ->with('jsmsg', amaran_msg(trans('message.password_not_match'), 'success'));
+        }
+        if(isset($data['password_confirmation']))
+            unset($data['password_confirmation']);
+        $data['user_id'] = Auth::user()->id;
+        UserProfile::updateOrCreate(['user_id' => $data['user_id']], $data);
+        return redirect()
+            ->route('admin.expdriver.decorate')
+            ->with('jsmsg', amaran_msg(trans('message.update_user_success'), 'success'));
     }
 }

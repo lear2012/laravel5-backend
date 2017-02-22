@@ -151,6 +151,16 @@ class UploadController extends Controller
             ]);
     }
 
+    public function uploadAvatar()
+    {
+        $imageInfo = $this->manager->uploadImage(Input::file('file'));
+        return response()->json([
+            'code' => 0,
+            'msg' => 'ok',
+            'data' => $imageInfo
+        ]);
+    }
+
     public function uploadUEImage()
     {
         $imageInfo = $this->manager->uploadImage(Input::file('file'));

@@ -42,15 +42,15 @@ class RoleRepositoryEloquent extends BaseRepository implements RoleRepository
         if (Role::where('name', '=', $input['name'])->first()) {
             throw new GeneralException('That role already exists. Please choose a different name.');
         }
-        if (!isset($input['assignees_permissions']) || count($input['assignees_permissions']) == 0) {
-            throw new GeneralException('You must select at least one permission for this role.');
-        }
+//        if (!isset($input['assignees_permissions']) || count($input['assignees_permissions']) == 0) {
+//            throw new GeneralException('You must select at least one permission for this role.');
+//        }
         $role = new Role;
         $role->name = $input['name'];
         $role->display_name = $input['display_name'];
         $role->description = $input['description'];
         if ($role->save()) {
-            $current     = isset($input['assignees_permissions']) ? $input['assignees_permissions'] : '';
+            $current     = isset($input['assignees_permissions']) ? $input['assignees_permissions'] : [];
             $permissions = [];
             if (count($current)) {
                 foreach ($current as $perm) {
@@ -86,5 +86,11 @@ class RoleRepositoryEloquent extends BaseRepository implements RoleRepository
             return true;
         }
         throw new GeneralException('There was a problem updating this role. Please try again.');
+    }
+
+    public function destroy($id) {
+        if(Role::whereId($id)->delete())
+            return true;
+        throw new GeneralException('There was a problem deleting this role. Please try again.');
     }
 }

@@ -26,19 +26,19 @@ return [
     ],
 
     'roles' => [
-        'created' => 'The role was successfully created.',
-        'updated' => 'The role was successfully updated.',
-        'deleted' => 'The role was successfully deleted.'
+        'created' => '角色创建成功',
+        'updated' => '角色更新成功',
+        'deleted' => '角色删除成功'
     ],
 
     'users' => [
-        'created' => 'The user was successfully created.',
-        'updated' => 'The user was successfully updated.',
-        'deleted' => 'The user was successfully deleted.',
-        'deleted_permanently' => 'The user was deleted permanently.',
-        'restored' => 'The user was successfully restored.',
+        'created' => '用户创建成功',
+        'updated' => '用户创建成功',
+        'deleted' => '用户删除成功',
+        'deleted_permanently' => '用户被永久删除',
+        'restored' => '该用户恢复成功',
         'updated_password' => "用户密码修改成功",
-        'confirmation_email' => 'A new confirmation e-mail has been sent to the address on file.'
+        'confirmation_email' => '确认邮件已经发送至您的邮箱'
     ]
 
 ];

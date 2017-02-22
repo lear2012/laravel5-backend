@@ -83,7 +83,7 @@
                                 <td>
                                     @if ($user->roles()->count() > 0)
                                         @foreach ($user->roles as $role)
-                                            <span class="badge bg-yellow">{!! $role->name !!}</span>
+                                            <span class="badge bg-yellow">{!! $role->display_name !!}</span>
                                         @endforeach
                                     @else
                                         --
@@ -137,14 +137,6 @@
     <script src="{{ asset('plugins/datatables/dataTables.bootstrap.min.js') }}"></script>
     <script>
         $(function () {
-//            $('#user-table').DataTable({
-//                "paging": true,
-//                "lengthChange": false,
-//                "searching": false,
-//                "ordering": true,
-//                "info": true,
-//                "autoWidth": false
-//            });
 
             $('._delete').click(function() {
                 var id = $(this).data('id');

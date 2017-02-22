@@ -36,7 +36,7 @@
                         <div class="form-group">
                             {!! Form::label('real_name', '真实姓名', ['class' => 'col-lg-2 control-label']) !!}
                             <div class="col-lg-3">
-                                {!! Form::text('real_name', null, ['class' => 'form-control', 'placeholder' => '真实姓名', 'value' => isset($user->userProfile) ? $user->userProfile->real_name : '' ]) !!}
+                                {!! Form::text('real_name', (isset($user->userProfile) ? $user->userProfile->real_name : ''), ['class' => 'form-control', 'placeholder' => '真实姓名']) !!}
                             </div>
                         </div>
 
@@ -57,28 +57,28 @@
                         <div class="form-group">
                             {!! Form::label('id_no', '身份证号码', ['class' => 'col-lg-2 control-label']) !!}
                             <div class="col-lg-3">
-                                {!! Form::text('id_no', null, ['class' => 'form-control', 'placeholder' => '身份证号码', 'value' => isset($user->userProfile) ? $user->userProfile->id_no : '']) !!}
+                                {!! Form::text('id_no', (isset($user->userProfile) ? $user->userProfile->id_no : ''), ['class' => 'form-control', 'placeholder' => '身份证号码']) !!}
                             </div>
                         </div>
 
                         <div class="form-group">
                             {!! Form::label('mobile', '手机号码', ['class' => 'col-lg-2 control-label']) !!}
                             <div class="col-lg-3">
-                                {!! Form::text('mobile', null, ['class' => 'form-control', 'placeholder' => '手机号码', 'value' => isset($user->userProfile) ? $user->userProfile->mobile : '']) !!}
+                                {!! Form::text('mobile', (isset($user->userProfile) ? $user->userProfile->mobile : ''), ['class' => 'form-control', 'placeholder' => '手机号码']) !!}
                             </div>
                         </div>
 
                         <div class="form-group">
                             {!! Form::label('keye_age', '可野龄', ['class' => 'col-lg-2 control-label']) !!}
                             <div class="col-lg-3">
-                                {!! Form::text('keye_age', null, ['class' => 'form-control', 'placeholder' => '可野龄(按年计算)', 'value' => isset($user->userProfile) ? $user->userProfile->keye_age : '']) !!}
+                                {!! Form::text('keye_age', (isset($user->userProfile) ? $user->userProfile->keye_age : ''), ['class' => 'form-control', 'placeholder' => '可野龄(按年计算)']) !!}
                             </div>
                         </div>
 
                         <div class="form-group">
                             {!! Form::label('quotation', '说句啥吧', ['class' => 'col-lg-2 control-label']) !!}
                             <div class="col-lg-6">
-                                {!! Form::text('quotation', null, ['class' => 'form-control', 'placeholder' => '说句啥吧', 'value' => isset($user->userProfile) ? $user->userProfile->quotation : '']) !!}
+                                {!! Form::text('quotation', (isset($user->userProfile) ? $user->userProfile->quotation : ''), ['class' => 'form-control', 'placeholder' => '说句啥吧']) !!}
                             </div>
                         </div>
 
@@ -133,10 +133,9 @@
     <script type="text/javascript">
         $(function () {
             var page_img = '{!! isset($user->userProfile->avatar) ? $user->userProfile->avatar : '' !!}';
-
             $('#file').fileinput({
                 language: 'zh',
-                uploadUrl: "/admin/upload/image",
+                uploadUrl: "/admin/upload/avatar",
                 uploadExtraData: {_token: '{{ csrf_token() }}'},
                 initialCaption: "请选择头像",
                 allowedFileExtensions: ["jpg", "jpeg", "png", "gif"],
@@ -147,11 +146,23 @@
                     progress: '',
                     footer:''
                 },
+                previewSettings: {
+                    image: {width: "100px", height: "160px"},
+                    html: {width: "213px", height: "160px"},
+                    text: {width: "160px", height: "136px"},
+                    video: {width: "213px", height: "160px"},
+                    audio: {width: "213px", height: "80px"},
+                    flash: {width: "213px", height: "160px"},
+                    object: {width: "213px", height: "160px"},
+                    other: {width: "160px", height: "160px"}
+                },
                 caption: '<div tabindex="-1" class="form-control file-caption {class}"></div>',
                 @if(isset($user->userProfile->avatar))
                 initialPreview: [
-                    "<img src="+ page_img +" class='file-preview-image' />"
+                    page_img
                 ],
+                initialPreviewAsData: true, // identify if you are sending preview data only and not the raw markup
+                initialPreviewFileType: 'image' // image is the default and can be overridden in config below
                 @endif
             }).on('fileuploaded', function(event, data, previewId, index) {
                 var response = data.response;

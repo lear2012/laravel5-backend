@@ -1,11 +1,12 @@
 <?php
 return [
-    'welcome' => '欢迎使用百川通联BCTB后台管理系统',
+    'welcome' => '欢迎使用可野俱乐部后台管理系统',
     // common message
     'invalid_request' => '非法请求!',
     'unauthorized_action' => '您无权做此操作!',
     'item_not_found' => '未找到该项',
     'invalid_params' => '无效参数！',
+    'password_not_match' => '两次输入的密码不一致！',
 
     // user related message
     'create_user_success' => '创建用户成功',

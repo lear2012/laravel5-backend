@@ -75,4 +75,10 @@ class PermissionRepositoryEloquent extends BaseRepository implements PermissionR
         }
         throw new GeneralException('There was a problem creating this permission. Please try again.');
     }
+
+    public function destroy($id) {
+        if(Permission::whereId($id)->delete())
+            return true;
+        throw new GeneralException('There was a problem deleting this role. Please try again.');
+    }
 }
