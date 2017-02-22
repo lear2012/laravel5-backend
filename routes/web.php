@@ -55,6 +55,9 @@ Route::group(['namespace' => 'Backend'], function ()
         Route::resource('auth/role', 'RoleController', ['as' => 'auth']);
         Route::resource('auth/permission', 'PermissionController', ['as' => 'auth']);
 
+        // 老司机
+        Route::get('expdriver/home', ['uses' => 'UserController@expdriverHome', 'as' => 'expdirver.decorate']);
+        Route::put('expdriver/home', ['uses' => 'UserController@expdriverHomeStore', 'as' => 'expdriver.decorate.store']);
         //news
         Route::resource('news/category', 'NewsCategoryController', ['as' => 'news']);
         Route::resource('news', 'NewsController');
@@ -86,7 +89,7 @@ Route::group(['namespace' => 'Backend'], function ()
         Route::delete('upload/file', 'UploadController@deleteFile');
         Route::post('upload/folder', 'UploadController@createFolder');
         Route::delete('upload/folder', 'UploadController@deleteFolder');
-        Route::post('upload/image', ['as' => 'upload.image', 'uses' => 'UploadController@uploadImage']);
+        Route::match(['get', 'post'], 'upload/image', 'UploadController@uploadImage')->name('upload.image');
 
         //material
         Route::resource('materials/single', 'MaterialsController');

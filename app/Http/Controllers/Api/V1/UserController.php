@@ -29,4 +29,9 @@ class UserController extends BaseController
 
         return $user;
     }
+
+    public function getUserInfo($id) {
+        $user = User::findOrFail($id);
+        return $this->response->array($user->toArray());
+    }
 }

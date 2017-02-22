@@ -54,7 +54,7 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
      *
      * @var array
      */
-    protected $fillable = ['username', 'email', 'password', 'status'];
+    protected $fillable = ['uid', 'username', 'email', 'password', 'status'];
 
     /**
      * The attributes excluded from the model's JSON form.
@@ -89,5 +89,9 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
             $ret .= $role->id.",";
         }
         return trim($ret, ",");
+    }
+
+    function userProfile() {
+        return $this->hasOne('App\Models\UserProfile');
     }
 }

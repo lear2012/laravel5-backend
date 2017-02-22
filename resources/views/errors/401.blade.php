@@ -1,60 +1,15 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <title>Page Not Found</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <style>
+@extends("$defaultLayout")
+@section('pagecss')
 
-        * {
-            line-height: 1.2;
-            margin: 0;
-        }
+@endsection
 
-        html {
-            color: #888;
-            display: table;
-            font-family: sans-serif;
-            height: 100%;
-            text-align: center;
-            width: 100%;
-        }
+@section('content')
+<div class="error-page">
+        <h2 class="headline text-yellow"> 401</h2>
 
-        body {
-            display: table-cell;
-            vertical-align: middle;
-            margin: 2em auto;
-        }
-
-        h1 {
-            color: #555;
-            font-size: 2em;
-            font-weight: 400;
-        }
-
-        p {
-            margin: 0 auto;
-            width: 280px;
-        }
-
-        @media only screen and (max-width: 280px) {
-
-            body, p {
-                width: 95%;
-            }
-
-            h1 {
-                font-size: 1.5em;
-                margin: 0 0 0.3em;
-            }
-
-        }
-
-    </style>
-</head>
-<body>
-    <h1>401.</h1>
-    <p>Sorry, you not have auth.</p>
-</body>
-</html>
-<!-- IE needs 512+ bytes: http://blogs.msdn.com/b/ieinternals/archive/2010/08/19/http-error-pages-in-internet-explorer.aspx -->
+        <div class="error-content">
+          <h3><i class="fa fa-warning text-yellow"></i> 您无权限访问该页面或对象！</h3>
+        </div>
+        <!-- /.error-content -->
+      </div>
+@endsection

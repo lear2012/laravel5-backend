@@ -72,7 +72,8 @@ class PermissionController extends BaseController
     public function store(Backend\CreatePermissionRequest $request)
     {
         $this->permissions->create($request->all());
-        return redirect()->route('admin.auth.permission.index')->withSuccess(trans('alerts.permissions.created'));
+        return redirect()->route('admin.auth.permission.index')
+            ->with('jsmsg', amaran_msg(trans('alerts.permissions.created'), 'success'));
     }
 
     /**
@@ -116,7 +117,8 @@ class PermissionController extends BaseController
     {
         $this->permissions->update($request->all(), $id);
 
-        return redirect()->route('admin.auth.permission.index')->withSuccess(trans('alerts.permissions.updated'));
+        return redirect()->route('admin.auth.permission.index')
+            ->with('jsmsg', amaran_msg(trans('alerts.permissions.updated'), 'success'));
     }
 
     /**
@@ -129,6 +131,7 @@ class PermissionController extends BaseController
     {
         $this->permissions->destroy($id);
 
-        return redirect()->route('admin.auth.permission.index')->withSuccess(trans('alerts.common.deleted'));
+        return redirect()->route('admin.auth.permission.index')
+            ->with('jsmsg', amaran_msg(trans('alerts.common.deleted'), 'success'));
     }
 }

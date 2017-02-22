@@ -1,6 +1,6 @@
 @extends('backend.layouts.master')
 
-@section('title', '新建用户')
+@section('title', '修改密码')
 
 @section('breadcrumb')
     <li>
@@ -11,7 +11,7 @@
         <a>用户管理</a>
     </li>
     <li>
-        新建用户
+        修改密码
     </li>
 @endsection
 

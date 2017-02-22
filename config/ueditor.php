@@ -30,6 +30,7 @@ return [
     'upload_routes_config_map'=>[
         'ueditor/server'=>'upload', //default route
         'ueditor/test' =>'upload',
+        'admin/upload/image' => 'upload'
     ],
     /*
     |--------------------------------------------------------------------------
@@ -41,9 +42,11 @@ return [
     |如 'middleware' => 'auth',
     */
     'core' => [
+        /*
         'route' => [
-            'middleware' => 'auth',
+            'middleware' => 'auth.admin',
         ],
+        */
         'mode'=>'local',//上传方式,local 为本地   qiniu 为七牛
         //七牛配置,若mode='qiniu',以下为必填.
         'qiniu'=>[
@@ -59,7 +62,7 @@ return [
      */
     /* 上传图片配置项 */
     'upload' => [
-        'storage' => true,
+        'storage' => false,
         "imageActionName" => "uploadimage", /* 执行上传图片的action名称 */
         "imageFieldName" => "upfile", /* 提交的图片表单名称 */
         "imageMaxSize" => 2048000, /* 上传大小限制，单位B */

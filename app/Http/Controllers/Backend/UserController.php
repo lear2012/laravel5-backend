@@ -13,6 +13,8 @@ use App\Contracts\Repositories\PermissionRepository;
 use Laracasts\Flash\Flash;
 use App\Models\User;
 use DB;
+use Zizaco\Entrust\Entrust;
+use Auth;
 
 class UserController extends BaseController
 {
@@ -81,6 +83,7 @@ class UserController extends BaseController
         $data = $request->only(['username', 'email', 'password', 'role_ids', 'status']);
         if(!isset($data['status']))
             $data['status'] = 0;
+        $data['uid'] = genId();
         try {
             DB::transaction(function () use ($data) {
                 $role_ids = explode(",", $data['role_ids']);
@@ -175,7 +178,7 @@ class UserController extends BaseController
      */
     public function updatePassword($id, Request $request) {
         $this->users->updatePassword($id, $request->all());
-        return redirect()->route('admin.auth.user.index')->withFlashSuccess(trans("alerts.users.updated_password"));
+        return redirect()->route('admin.auth.user.index')->with('jsmsg', amaran_msg(trans('alerts.users.updated_password'), 'success'));
     }
 
     /**
@@ -190,6 +193,18 @@ class UserController extends BaseController
 
         return redirect()
             ->route('admin.auth.user.index')
-            ->withSuccess('Post deleted.');
+            ->with('jsmsg', amaran_msg('Post deleted', 'success'));
+    }
+
+    public function expdriverHome(Request $request) {
+        if(\Entrust::ability('admin,exp_driver', 'decorate-home'))
+            return view('backend.user.expdriver-home', [
+                'user' => Auth::user()
+            ]);
+        return view('backend.errors.401');
+    }
+
+    public function expdriverHomeStore(Request $request) {
+        dd($request->all());
     }
 }

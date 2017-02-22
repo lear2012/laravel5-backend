@@ -3,7 +3,7 @@
 @section('title', '可野管理后台')
 
 @section('page_title')
-    Dashboard
+    
 @stop
 
 @section('breadcrumb')

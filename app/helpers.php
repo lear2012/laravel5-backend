@@ -111,3 +111,7 @@ if ( ! function_exists('get_relation_title')) {
 function amaran_msg($msg, $type='info') {
     return $type."|".$msg;
 }
+
+function genId(){
+    return str_pad(mt_rand(1,9).str_shuffle(str_pad(intval(microtime(true)*1000).'', 13, mt_rand(0,9))).mt_rand(1, 99), 16, mt_rand(0,9));
+}

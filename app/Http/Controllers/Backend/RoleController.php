@@ -61,7 +61,8 @@ class RoleController extends BaseController
     public function store(Backend\CreateRoleRequest $request)
     {
         $this->roles->create($request->all());
-        return redirect()->route('admin.auth.role.index')->withSuccess(trans('alerts.roles.created'));
+        return redirect()->route('admin.auth.role.index')
+            ->with('jsmsg', amaran_msg(trans('alerts.roles.created'), 'success'));
     }
 
     /**
@@ -104,7 +105,7 @@ class RoleController extends BaseController
     public function update($id, Request $request)
     {
         $this->roles->update($request->all(), $id);
-        return redirect()->route('admin.auth.role.index')->withSuccess(trans('alerts.roles.updated'));
+        return redirect()->route('admin.auth.role.index')->with('jsmsg', amaran_msg(trans('alerts.roles.updated'), 'success'));
     }
 
     /**
@@ -119,6 +120,6 @@ class RoleController extends BaseController
 
         return redirect()
             ->route('admin.auth.role.index')
-            ->withSuccess(trans('alerts.users.deleted'));
+            ->with('jsmsg', amaran_msg(trans('alerts.users.deleted'), 'success'));
     }
 }
