@@ -159,6 +159,7 @@ return [
         Mews\Captcha\CaptchaServiceProvider::class,
         Prettus\Repository\Providers\RepositoryServiceProvider::class,
         Zizaco\Entrust\EntrustServiceProvider::class,
+        Overtrue\LaravelWechat\ServiceProvider::class,
     ],
     /*
     |--------------------------------------------------------------------------
@@ -220,6 +221,7 @@ return [
         'Captcha' => Mews\Captcha\Facades\Captcha::class,
         'Entrust'   => Zizaco\Entrust\EntrustFacade::class,
         'ChannelLog' => App\Contracts\Facades\ChannelLog::class,
+        'EasyWeChat' => Overtrue\LaravelWechat\Facade::class,
     ],
 
 ];

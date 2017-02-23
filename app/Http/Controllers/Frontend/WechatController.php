@@ -1,18 +1,16 @@
-<?php namespace App\Http\Controllers\Frontend;
+<?php
+namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
-use Monolog\Logger;
-use Overtrue\Wechat\MenuItem;
-use Overtrue\Wechat\Server;
-use Overtrue\Wechat\User;
-use Overtrue\Wechat\Menu;
-use Overtrue\Wechat\Message;
-use Overtrue\Wechat\Url;
-use Overtrue\Wechat\Media;
 use Log;
+use EasyWeChat\Foundation\Application;
 
 class WechatController extends Controller {
 
+    public function demo(Application $wechat)
+    {
+        // $wechat 则为容器中 EasyWeChat\Foundation\Application 的实例
+    }
     /**
      * 处理微信的请求消息
      *
@@ -20,18 +18,16 @@ class WechatController extends Controller {
      *
      * @return string
      */
-    public function serve(Server $server)
+    public function serve()
     {
-        $server->on('message', 'image', function($message){
-                Log::info('message: ' . var_export($message, true));
-                return Message::make('text')->content('您好！');
-            });
+        Log::info('request arrived.');
+        $server = app('wechat')->server;
 
-        $server->on('event', 'subscribe', function($event){
-                return Message::make('image')->content('您好！欢迎关注 overtrue');
-            });
-
-        return $server->serve(); // 或者 return $server;
+        $server->setMessageHandler(function($message){
+            return "欢迎关注 overtrue！";
+        });
+        Log::info('return response.');
+        return $server->serve();
     }
 
     public function upload()

@@ -1,5 +1,4 @@
 <?php
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -17,6 +16,7 @@
  */
 Route::group(['namespace' => 'Frontend'], function ()
 {
+    Route::any('/wechat', 'WechatController@serve');
     // about login and logout
     Route::auth();
     Route::get('logout', 'Auth\LoginController@logout');
