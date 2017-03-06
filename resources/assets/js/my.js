@@ -280,3 +280,6 @@ var site = {
         //that._theTable.draw();
     }
 };
+$(document).ready(function(){
+    site.init();
+});

@@ -4,7 +4,6 @@
 
 @section('styles')
     {!! UEditor::css() !!}
-    <link rel="stylesheet" href="{{ asset('plugins/bootstrap-fileinput/css/fileinput.min.css') }}">
 @endsection
 
 @section('breadcrumb')
@@ -122,14 +121,6 @@
 
 @section('scripts')
     {!! UEditor::js() !!}
-    <script src="{{ asset('plugins/bootstrap-fileinput/js/plugins/canvas-to-blob.min.js') }}"></script>
-    <script src="{{ asset('plugins/bootstrap-fileinput/js/fileinput.min.js') }}"></script>
-    <script src="{{ asset('plugins/bootstrap-fileinput/js/locales/zh.js') }}"></script>
-
-    {{--<script src="{{ asset('js/jquery-validate/jquery.validate.js') }}"></script>--}}
-    {{--<script src="{{ asset('js/jquery-validate/additional-methods.js') }}"></script>--}}
-    {{--<script src="{{ asset('js/jquery-validate/messages_zh.js') }}"></script>--}}
-
     <script type="text/javascript">
         $(function () {
             var page_img = '{!! isset($user->userProfile->avatar) ? $user->userProfile->avatar : '' !!}';
@@ -177,5 +168,3 @@
         });
     </script>
 @endsection
-
-

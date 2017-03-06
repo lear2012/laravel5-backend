@@ -8,5 +8,6 @@ return [
         'images'  => '/uploads/images'
     ],
     'default_image' => '/uploads/images/default_image.jpg',
+    'default_avatar' => '/img/avatar5.png',
     'static_domain' => ''
 ];

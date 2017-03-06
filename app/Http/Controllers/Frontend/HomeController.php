@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
+use App\Models\User;
+
 
 /**
  * Class HomeController
@@ -28,7 +30,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+
     }
 
 
@@ -38,6 +40,17 @@ class HomeController extends Controller
     function index()
     {
         return view('frontend.home');
+    }
+
+    function memberList() {
+        return view('frontend.member_list', [
+            'expDrivers' => User::getExpdrivers(),
+            'paidMembers' => User::getPaidMembers()
+        ]);
+    }
+
+    function memberRegister() {
+        return view('frontend.register');
     }
 
 }

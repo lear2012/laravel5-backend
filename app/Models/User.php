@@ -94,4 +94,19 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
     function userProfile() {
         return $this->hasOne('App\Models\UserProfile');
     }
+
+    public function roles(){
+        return $this->belongsToMany('App\Models\Role');
+    }
+
+    public static function getExpdrivers() {
+        return Role::find(4)->users->reject(function ($item, $key) {
+            return $item->status != 1;
+        });
+    }
+    public static function getPaidMembers() {
+        return Role::find(6)->users->reject(function ($item, $key) {
+            return $item->status != 1;
+        });
+    }
 }

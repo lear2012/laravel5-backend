@@ -7,31 +7,100 @@ use EasyWeChat\Foundation\Application;
 
 class WechatController extends Controller {
 
-    public function demo(Application $wechat)
+    const PROFILE = 'profile'; //账户概览
+    const KF = 'kf'; //客服
+    const ABOUT_US = 'http://mp.weixin.qq.com/s?__biz=MzI3MDEyODQ2Ng==&mid=403322342&idx=2&sn=01ee08a1a9a42acb69c977d142563c44&scene=0#wechat_redirect';
+    const LOTTERY = 'http://mp.weixin.qq.com/s?__biz=MzI3MDEyODQ2Ng==&mid=403713872&idx=1&sn=0c3db1439b17d6963b4c08e99165e6fb&scene=0&previewkey=zwaX5f3SM5tf3CWoK4TFYsNS9bJajjJKzz%2F0By7ITJA%3D#wechat_redirect';
+    const GUIDE = 'http://mp.weixin.qq.com/s?__biz=MzI3MDEyODQ2Ng==&mid=403322342&idx=3&sn=6b25d9b2dafa5271a08515cc1d2c1e98&scene=0&previewkey=zwaX5f3SM5tf3CWoK4TFYsNS9bJajjJKzz%2F0By7ITJA%3D#wechat_redirect';
+    const ACTIVITIES = 'http://mp.weixin.qq.com/s?__biz=MzI3MDEyODQ2Ng==&mid=403650357&idx=2&sn=1ecf5d0e27d28fc15b875550630478f9#wechat_redirect';
+
+    private $openid;
+    private $menu;
+    private $qrcode;
+
+    public function __construct()
     {
-        // $wechat 则为容器中 EasyWeChat\Foundation\Application 的实例
+        $this->menu = app('wechat')->menu;
+        $this->qrcode = app('wechat')->qrcode;
+    }
+
+    public function getMenu(){
+        return $this->menu->current();
+    }
+
+    public function getSetMenu(){
+        if (env('APP_ENV') == 'local') {
+            $buttons = [
+                [
+                    "type" => "view",
+                    "name" => "我要投资",
+                    "url"  => config('nxd.host')
+                ],
+                [
+                    "name"       => "我的账户",
+                    "sub_button" => [
+                        [
+                            "type" => "view",
+                            "name" => "资产概览",
+                            "url"  => config('nxd.host') . 'wechat/account/assets'
+                        ],
+                        [
+                            "type" => "view",
+                            "name" => "我要充值",
+                            "url"  => config('nxd.host') . 'wechat/account/recharge'
+                        ],
+                        [
+                            "type" => "view",
+                            "name" => "我要提现",
+                            "url"  => config('nxd.host') . 'wechat/account/withdraw'
+                        ],
+                    ],
+                ],
+                [
+                    "name"       => "更多服务",
+                    "sub_button" => [
+                        ["type" => "view", "name" => "抽奖活动", "url" => config('nxd.host').'wechat/lottery/latest'],
+                        ["type" => "view", "name" => "在线咨询", "url" => 'http://kf.nxdai.com/kchat/16784'],
+                        ["type" => "view", "name" => "新手指南", "url" => env('GUIDE', self::GUIDE)],
+//                        ["type" => "view", "name" => "我要借款", "url" => config('nxd.host') . 'wechat/m/loan'],
+                        ["type" => "view", "name" => "关于我们", "url" => env('ABOUT_US', self::ABOUT_US)],
+                    ],
+                ]
+            ];
+
+            return json_encode($this->menu->add($buttons));
+        } else {
+            return '';
+        }
+    }
+
+    public function getAuth(Auth $auth){
+        $to = Input::get('to');
+        if (!$to) {
+            return redirect()->route('wechat.index');
+        } else {
+            $auth->redirect($to, 'snsapi_userinfo');
+        }
     }
     /**
      * 处理微信的请求消息
      *
-     * @param Overtrue\Wechat\Server $server
-     *
      * @return string
      */
-    public function serve()
-    {
+    public function serve(){
         Log::info('request arrived.');
         $server = app('wechat')->server;
-
         $server->setMessageHandler(function($message){
+            Log::info('WeChatMessage:' . json_encode($message));
+            $this->openid = $message->FromUserName;
+            session(['openid' => $this->openid]);
             return "欢迎关注 overtrue！";
         });
         Log::info('return response.');
         return $server->serve();
     }
 
-    public function upload()
-    {
+    public function upload(){
         $media   = new Media('wx8e883164d9342b1f', 'e73145bd0fdef28ea54b0b3608061c33');
         $imageId = $media->image('/Users/qloog/Downloads/demo_wx.png'); // 上传并返回媒体ID
 

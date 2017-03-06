@@ -18,38 +18,35 @@ const elixir = require('laravel-elixir');
  * Default gulp is to run this elixir stuff
  */
 elixir(function(mix) {
-    //app.scss includes app css, Boostrap and Ionicons
-    mix.copy('resources/assets/bower/font-awesome/fonts/*.*','public/fonts/')
-        .copy('resources/assets/bower/Ionicons/fonts/*.*','public/fonts/')
-        .copy('resources/assets/bower/AdminLTE/bootstrap/fonts/*.*','public/fonts/')
-        //css
-        .copy('resources/assets/bower/AdminLTE/bootstrap/css/bootstrap.min.css','public/css')
-        .copy('resources/assets/bower/font-awesome/css/font-awesome.min.css','public/css')
-        .copy('resources/assets/bower/AdminLTE/dist/css/AdminLTE.min.css','public/css')
-        .copy('resources/assets/bower/AdminLTE/dist/css/skins/*.*','public/css/skins')
-        .copy('resources/assets/bower/font-awesome/css/font-awesome.min.css','public/css')
-        .copy('resources/assets/bower/Ionicons/css/ionicons.min.css','public/css')
-        .copy('resources/assets/bower/AdminLTE/plugins/iCheck/square/blue.css','public/css')
-        .copy('resources/assets/bower/AdminLTE/plugins/select2/select2.min.css','public/css')
-        //img
-        .copy('resources/assets/bower/AdminLTE/dist/img','public/img')
-        //js
-        .copy('resources/assets/bower/AdminLTE/plugins/jQuery/jquery-2.2.3.min.js','public/js')
-        .copy('resources/assets/bower/AdminLTE/bootstrap/js/bootstrap.min.js','public/js')
-        .copy('resources/assets/bower/AdminLTE/dist/js/app.min.js','public/js')
-        .copy('resources/assets/js/jquery.amaran.js','public/js')
-        .copy('resources/assets/bower/AdminLTE/plugins/iCheck/icheck.min.js','public/js')
-        .copy('resources/assets/bower/AdminLTE/plugins/select2/select2.min.js','public/js')
-        .copy('resources/assets/bower/AdminLTE/plugins/select2/i18n/zh-CN.js','public/js')
 
-        .copy('resources/assets/js/my.js','public/js')
-        //plugins
-        .copy('resources/assets/bower/AdminLTE/plugins','public/plugins')
-        // bootstrap-fileinput
-        .copy('resources/assets/bower/bootstrap-fileinput','public/plugins/bootstrap-fileinput')
+    mix.styles([
+        '../bower/AdminLTE/bootstrap/css/bootstrap.min.css',
+        '../bower/AdminLTE/dist/css/AdminLTE.min.css',
+        '../bower/AdminLTE/dist/css/skins/skin-purple.min.css',
+        '../bower/AdminLTE/plugins/select2/select2.min.css',
+        '../bower/font-awesome/css/font-awesome.min.css',
+        '../bower/Ionicons/css/ionicons.min.css',
+        '../bower/bootstrap-fileinput/css/fileinput.min.css',
+        'purple.css',
+        'amaran.min.css',
+        'my.css'
+    ]);
 
-        // frontend
-        // semantic ui
-        .copy('resources/assets/bower/semantic','public/semantic')
+    mix.scripts([
+        '../bower/AdminLTE/plugins/jQuery/jquery-2.2.3.min.js',
+        '../bower/AdminLTE/bootstrap/js/bootstrap.min.js',
+        '../bower/AdminLTE/dist/js/app.min.js',
+        '../bower/AdminLTE/plugins/iCheck/icheck.min.js',
+        '../bower/AdminLTE/plugins/select2/select2.min.js',
+        '../bower/AdminLTE/plugins/select2/i18n/zh-CN.js',
+        '../bower/bootstrap-fileinput/js/plugins/canvas-to-blob.min.js',
+        '../bower/bootstrap-fileinput/js/fileinput.min.js',
+        '../bower/bootstrap-fileinput/js/locales/zh.js',
+        'jquery.amaran.min.js'
+    ]);
 
+    mix.browserSync({
+        files: ['app/**/*', 'public/**/*', 'resources/views/**/*'],
+        proxy: 'keye.local.com'
+    });
 });

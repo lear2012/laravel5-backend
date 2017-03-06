@@ -1,8 +1,4 @@
 <!DOCTYPE html>
-<!--
-This is a starter template page. Use this page to start your new project from
-scratch. This page gets rid of all links and provides the needed markup only.
--->
 <html>
 <head>
     <meta charset="utf-8">
@@ -13,27 +9,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-    <!-- Bootstrap 3.3.6 -->
-    <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="{{ asset('css/font-awesome.min.css') }}">
-    <!-- Ionicons -->
-    <link rel="stylesheet" href="{{ asset('css/ionicons.min.css') }}">
-    <!-- iCheck -->
-    <link rel="stylesheet" href="{{ asset('css/purple.css') }}" />
-    <!-- Select2 -->
-    <link href="{{ asset('css/select2.min.css') }}" rel="stylesheet"/>
-    <!-- Amaran -->
-    <link rel="stylesheet" href="{{ asset('css/amaran.min.css') }}" />
-
-    @yield('styles')
-
-    <!-- Theme style -->
-    <link rel="stylesheet" href="{{ asset('css/AdminLTE.min.css') }}">
-    <!-- AdminLTE Skins. Choose a skin from the css/skins
-           folder instead of downloading all of them to reduce the load. -->
-    <link rel="stylesheet" href="{{ asset('css/skins/skin-purple.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/my.css') }}" />
+    <link rel="stylesheet" href="{{ asset('css/all.css') }}" />
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -41,26 +17,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 </head>
-<!--
-BODY TAG OPTIONS:
-=================
-Apply one or more of the following classes to get the
-desired effect
-|---------------------------------------------------------|
-| SKINS         | skin-blue                               |
-|               | skin-black                              |
-|               | skin-purple                             |
-|               | skin-yellow                             |
-|               | skin-red                                |
-|               | skin-green                              |
-|---------------------------------------------------------|
-|LAYOUT OPTIONS | fixed                                   |
-|               | layout-boxed                            |
-|               | layout-top-nav                          |
-|               | sidebar-collapse                        |
-|               | sidebar-mini                            |
-|---------------------------------------------------------|
--->
 <body class="hold-transition skin-purple sidebar-mini">
 <div class="wrapper">
 
@@ -102,33 +58,13 @@ desired effect
 </div>
 <!-- ./wrapper -->
 <div id="jsmsg">{{Session::get('jsmsg')}}</div>
-<!-- REQUIRED JS SCRIPTS -->
-
-<!-- jQuery 2.2.3 -->
-<script src="{{ asset('js/jquery-2.2.3.min.js') }}"></script>
-<!-- Bootstrap 3.3.6 -->
-<script src="{{ asset('js/bootstrap.min.js') }}"></script>
-<!-- iCheck -->
-<script src="{{ asset('js/icheck.min.js') }}"></script>
-<!-- Amaran -->
-<script src="{{ asset('js/jquery.amaran.min.js') }}"></script>
-<!-- Select2 -->
-<script src="{{ asset('js/select2.full.min.js') }}"></script>
-<script src="{{ asset('js/zh-CN.js') }}"></script>
-
-<!-- AdminLTE App -->
-<script src="{{ asset('js/app.min.js') }}"></script>
-
 <!-- Optionally, you can add Slimscroll and FastClick plugins.
      Both of these plugins are recommended to enhance the
      user experience. Slimscroll is required when using the
      fixed layout. -->
+
+<script src="{{ asset('js/all.js') }}"></script>
 @yield('scripts')
 <script src="{{ asset('js/my.js') }}"></script>
-<script type="text/javascript">
-    $(document).ready(function(){
-        site.init();
-    });
-</script>
 </body>
 </html>

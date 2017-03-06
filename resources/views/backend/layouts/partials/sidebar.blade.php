@@ -5,7 +5,7 @@
         <!-- Sidebar user panel -->
         <div class="user-panel">
             <div class="pull-left image">
-                <img src="{{ Auth::user()->userProfile->avatar }}" class="img-circle" alt="User Image">
+                <img src="{{ !is_null(Auth::user()->userProfile) ? Auth::user()->userProfile->avatar : config('custom.default_avatar') }}" class="img-circle" alt="User Image">
             </div>
             <div class="pull-left info">
                 <p>{{ Auth::user()->username }}</p>
@@ -58,6 +58,8 @@
                     <i class="fa fa-book"></i> <span>模板使用文档</span>
                 </a>
             </li>
+            <li class="header">其它</li>
+            <li><a href="/admin/logout"><i class="fa fa-circle-o text-red"></i> <span>退出</span></a></li>
         </ul>
     </section>
     <!-- /.sidebar -->

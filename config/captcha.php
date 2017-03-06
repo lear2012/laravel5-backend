@@ -4,8 +4,8 @@ return [
 
     'default'   => [
         'length'    => 5,
-        'width'     => 120,
-        'height'    => 36,
+        'width'     => 130,
+        'height'    => 60,
         'quality'   => 90,
     ],
 
@@ -24,7 +24,7 @@ return [
     'mini'   => [
         'length'    => 3,
         'width'     => 60,
-        'height'    => 32,
+        'height'    => 40,
     ],
 
     'inverse'   => [

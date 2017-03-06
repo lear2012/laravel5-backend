@@ -14,11 +14,15 @@
  * Frontend Routes
  * Namespaces indicate folder structure
  */
-Route::group(['namespace' => 'Frontend'], function ()
+Route::group(['namespace' => 'Frontend', 'middleware' => ['web', 'wechat.oauth']], function ()
 {
     Route::any('/wechat', 'WechatController@serve');
+
+    Route::get('/member_list', 'HomeController@memberList');
+    Route::get('/member_register', 'HomeController@memberRegister');
     // about login and logout
     Route::auth();
+
     Route::get('logout', 'Auth\LoginController@logout');
 
     // business route
@@ -26,12 +30,36 @@ Route::group(['namespace' => 'Frontend'], function ()
     Route::get('/', ['as' => 'welcome', 'uses' => 'WelcomeController@index']);
 });
 
+//wechat
+Route::group(['namespace' => 'Wechat', "prefix" => 'wechat'], function () {
+
+    Route::get('/auth/login',
+        ['middleware' => 'wechat.auth', 'as' => 'wechat.to_sign_in', 'uses' => 'AuthController@getLogin']);
+    Route::controller('auth', 'AuthController', [
+        'postLogin' => 'wechat.sign_in',
+        'postRegister' => 'wechat.sign_up',
+        'getLogout' => 'wechat.logout',
+        'getRegister' => 'wechat.to_sign_up',
+        'getAgreement' => 'wechat.agreement',
+        'postRegisterFirst' => 'wechat.sign_up_next',
+        'getMobileCode' => 'wechat.smscode',
+        'getLogout' => 'wechat.logout',
+        'getForgetPassword' => 'wechat.to_retrieve_password',
+        'postForgetPasswordNext' => 'wechat.to_retrieve_password_next',
+        'postRetrievePassword' => 'wechat.retrieve_password',
+        'getRetrievePasswordCode' => 'wechat.retrieve_password_code',
+        'getAjaxMobileCode' => 'wechat.ajaxcode',
+        'getAjaxRetrievePasswordCode' => 'wechat.ajax_retrive_password_code',
+    ]);
+
+    Route::get('/', ['as' => 'wechat.index', 'uses' => 'IndexController@getIndex']);
+});
+
 /**
  * Backend Routes
  * Namespaces indicate folder structure
  */
-Route::group(['namespace' => 'Backend'], function ()
-{
+Route::group(['namespace' => 'Backend'], function () {
 
     // about login and logout
     Route::group(['prefix' => 'admin'], function ()
