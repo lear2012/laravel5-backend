@@ -30,7 +30,7 @@ elixir(function(mix) {
         'purple.css',
         'amaran.min.css',
         'my.css'
-    ]);
+    ], 'public/css/all_bk.css');
 
     mix.scripts([
         '../bower/AdminLTE/plugins/jQuery/jquery-2.2.3.min.js',
@@ -43,10 +43,12 @@ elixir(function(mix) {
         '../bower/bootstrap-fileinput/js/fileinput.min.js',
         '../bower/bootstrap-fileinput/js/locales/zh.js',
         'jquery.amaran.min.js'
-    ]);
+    ], 'public/js/all_bk.js');
+
+    mix.version(['css/all_bk.css', 'js/all_bk.js', 'js/my.js']);
 
     mix.browserSync({
-        files: ['app/**/*', 'public/**/*', 'resources/views/**/*'],
+        files: ['app/**/*', 'public/**/*', 'resources/views/**/*', 'resources/assets/**/*'],
         proxy: 'keye.local.com'
     });
 });

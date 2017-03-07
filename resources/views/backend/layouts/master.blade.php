@@ -9,7 +9,7 @@
 
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-    <link rel="stylesheet" href="{{ asset('css/all.css') }}" />
+    <link rel="stylesheet" href="{{ elixir('css/all_bk.css') }}" />
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -63,8 +63,8 @@
      user experience. Slimscroll is required when using the
      fixed layout. -->
 
-<script src="{{ asset('js/all.js') }}"></script>
+<script src="{{ elixir('js/all_bk.js') }}"></script>
 @yield('scripts')
-<script src="{{ asset('js/my.js') }}"></script>
+<script src="{{ elixir('js/my.js') }}"></script>
 </body>
 </html>

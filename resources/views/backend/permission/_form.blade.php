@@ -14,7 +14,7 @@
 
 <div class="form-group">
     {!! Form::label('description', '描述', ['class' => 'col-lg-2 control-label']) !!}
-    <div class="col-lg-3">
+    <div class="col-lg-6">
         {!! Form::textarea('description', null, ['cols' => 100, 'rows' => 5, 'class' => 'form-control', 'placeholder' => '']) !!}
     </div>
 </div><!--form control-->

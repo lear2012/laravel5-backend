@@ -33,26 +33,26 @@ Route::group(['namespace' => 'Frontend', 'middleware' => ['web', 'wechat.oauth']
 //wechat
 Route::group(['namespace' => 'Wechat', "prefix" => 'wechat'], function () {
 
-    Route::get('/auth/login',
-        ['middleware' => 'wechat.auth', 'as' => 'wechat.to_sign_in', 'uses' => 'AuthController@getLogin']);
-    Route::controller('auth', 'AuthController', [
-        'postLogin' => 'wechat.sign_in',
-        'postRegister' => 'wechat.sign_up',
-        'getLogout' => 'wechat.logout',
-        'getRegister' => 'wechat.to_sign_up',
-        'getAgreement' => 'wechat.agreement',
-        'postRegisterFirst' => 'wechat.sign_up_next',
-        'getMobileCode' => 'wechat.smscode',
-        'getLogout' => 'wechat.logout',
-        'getForgetPassword' => 'wechat.to_retrieve_password',
-        'postForgetPasswordNext' => 'wechat.to_retrieve_password_next',
-        'postRetrievePassword' => 'wechat.retrieve_password',
-        'getRetrievePasswordCode' => 'wechat.retrieve_password_code',
-        'getAjaxMobileCode' => 'wechat.ajaxcode',
-        'getAjaxRetrievePasswordCode' => 'wechat.ajax_retrive_password_code',
-    ]);
-
-    Route::get('/', ['as' => 'wechat.index', 'uses' => 'IndexController@getIndex']);
+//    Route::get('/auth/login',
+//        ['middleware' => 'wechat.auth', 'as' => 'wechat.to_sign_in', 'uses' => 'AuthController@getLogin']);
+//    Route::controller('auth', 'AuthController', [
+//        'postLogin' => 'wechat.sign_in',
+//        'postRegister' => 'wechat.sign_up',
+//        'getLogout' => 'wechat.logout',
+//        'getRegister' => 'wechat.to_sign_up',
+//        'getAgreement' => 'wechat.agreement',
+//        'postRegisterFirst' => 'wechat.sign_up_next',
+//        'getMobileCode' => 'wechat.smscode',
+//        'getLogout' => 'wechat.logout',
+//        'getForgetPassword' => 'wechat.to_retrieve_password',
+//        'postForgetPasswordNext' => 'wechat.to_retrieve_password_next',
+//        'postRetrievePassword' => 'wechat.retrieve_password',
+//        'getRetrievePasswordCode' => 'wechat.retrieve_password_code',
+//        'getAjaxMobileCode' => 'wechat.ajaxcode',
+//        'getAjaxRetrievePasswordCode' => 'wechat.ajax_retrive_password_code',
+//    ]);
+//
+//    Route::get('/', ['as' => 'wechat.index', 'uses' => 'IndexController@getIndex']);
 });
 
 /**

@@ -16,18 +16,15 @@ var site = {
     },
 
     init_checkbox: function() {
-        if($('.js-switch').length > 0) {
-            $(".js-switch").bootstrapSwitch('state', $('.js-switch').prop('checked'));
-        } else {
-            $('input[type=checkbox]').iCheck({
-                checkboxClass: 'icheckbox_square-purple',
-                radioClass: 'iradio_square-purple',
-                increaseArea: '20%' // optional
-            });
-        }
+        $('input[type=checkbox]').iCheck({
+            checkboxClass: 'icheckbox_square-purple',
+            radioClass: 'iradio_square-purple',
+            increaseArea: '20%' // optional
+        });
     },
 
     init_select: function() {
+        console.log('set select');
         if ($('#role_selection').length == 0)
             return;
         var selected = $('#role_ids').val();
@@ -73,7 +70,7 @@ var site = {
         if(curManage) {
             $('#' + curManage + '-manage').length > 0 && $("#" + curManage + '-manage').click();
         }
-        return true;
+        return;
     },
 
     ops_alert: function() {
@@ -103,7 +100,7 @@ var site = {
                 });
             }
         }
-        return true;
+        return;
     },
 
     init_datatable: function(theParams, type) {
@@ -280,6 +277,4 @@ var site = {
         //that._theTable.draw();
     }
 };
-$(document).ready(function(){
-    site.init();
-});
+site.init();
