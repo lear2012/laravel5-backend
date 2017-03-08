@@ -19,7 +19,6 @@ class CreateUserProfilesTable extends Migration
             $table->bigInteger('uid')->unsigned()->unqiue()->comment('用户唯一uid');
             $table->string('real_name')->nullable()->comment('真实姓名');
             $table->string('id_no')->nullable()->comment('身份证号');
-            $table->string('mobile')->unique();
             $table->string('member_no')->nullable()->comment('付费会员编号');
             $table->string('invite_no')->nullable()->comment('邀请码');
             $table->integer('keye_age')->nullable()->comment('可野龄');

@@ -1,68 +1,57 @@
 @extends('frontend.layouts.master')
 @section('styles')
-    <link rel="stylesheet" href="{{ asset('css/register.css') }}" />
-    <style>
-        #captcha_label input {
-        }
-        #captcha_label img {
-            margin-top:20px;
-            cursor:pointer;
-        }
-        #Agreement {margin-left:5px;}
-        .Radio {
-            margin-right:20px;}
-    </style>
 @endsection
 @section('content')
     <header>
-        <img class="portrait" src="img/f746272283fbfc990e6c24f75fe3d917bf36f6cd30f55-4Pvaxw_fw658.jpg" />
-        <p class="sign">十五字十五字十五字</p>
+        <img class="portrait" src="{{ asset('img/f746272283fbfc990e6c24f75fe3d917bf36f6cd30f55-4Pvaxw_fw658.jpg') }}" />
+        <p class="sign">liaolliso</p>
     </header>
     <section style="padding-bottom: 2.4rem;">
-        <ul class="form">
-            <li>
-                <label>
-                    <span class="tit-s">姓名</span>
-                    <input class="Ainp" type="" name="nick" id="nick" value="" />
-                </label>
-            </li>
-            <li>
-                <label>
-                    <span class="tit-s">手机号</span>
-                    <input class="phone" type="" name="mobile" id="mobile" value="" />
-                </label>
-                <a class="But" href="javascript:;">发送验证码</a>
-            </li>
-            <li>
-                <label>
-                    <span class="tit-s">验证码</span>
-                    <input class="Ainp" type="" name="mb_verify_code" id="mb_verify_code" value="" />
-                </label>
-            </li>
-            <li>
-                <label>
-                    <span class="tit-s">邀请码</span>
-                    <input placeholder="选填" class="Ainp" type="" name="invite_no" id="invite_no" value="" />
-                </label>
-            </li>
-            <li>
-                <div id="captcha_label">
-                    <input placeholder="图片校验码" class="Ainp" type="" name="" id="" value="" />
-                    <img src="{!! captcha_src() !!}" title="看不清？点击换另一张" alt="验证码" onclick="refreshCaptcha()"/>
+            <ul class="form">
+                <li>
+                    <label>
+                        <span class="tit-s">姓名</span>
+                        <input class="Ainp" type="" name="nick" id="nick" value="" />
+                    </label>
+                </li>
+                <li>
+                    <label>
+                        <span class="tit-s">手机号</span>
+                        <input class="phone" type="" name="mobile" id="mobile" value="" />
+                    </label>
+                    <a class="But" href="javascript:;" id="send_sms_btn">发送验证码</a>
+                    <span id="timer">
+                        <span class="timer"></span><span class="timer_text">秒后可重新发送</span>
+                    </span>
+                </li>
+                <li>
+                    <label>
+                        <span class="tit-s">验证码</span>
+                        <input class="Ainp" type="" name="mb_verify_code" id="mb_verify_code" value="" />
+                    </label>
+                </li>
+                <li>
+                    <label>
+                        <span class="tit-s">邀请码</span>
+                        <input placeholder="选填" class="Ainp" type="" name="invite_no" id="invite_no" value="" />
+                    </label>
+                </li>
+                <li>
+                    <div id="captcha_label">
+                        <input placeholder="图片校验码" class="Ainp" type="" name="captcha" id="captcha" value="" />
+                        <img src="{!! captcha_src() !!}" class="captcha" title="看不清？点击换另一张" alt="验证码" />
+                    </div>
+                </li>
+
+            </ul>
+            <div class="Agreement">
+                <div class="Radiobox" id="cki">
+                    <i class="Radio"></i>
+                    <span>同意</span><a id="Agreement">会员规则</a>
                 </div>
-            </li>
-
-        </ul>
-        <div class="Agreement">
-            <div class="Radiobox">
-                <i class="Radio"></i>
-                <span>同意</span><a id="Agreement">会员规则</a>
-
             </div>
-        </div>
-
-
-        <button class="submit">提交成为会员</button>
+            <input type="hidden" name="agee" id="agree" value="1" />
+            <button class="submit" id="register_btn">提交成为会员</button>
 
     </section>
 
@@ -70,9 +59,28 @@
         <li></li>
     </ul>
 
-    <div class="aleat">
+    <div class="aleat" id="reg_success">
+        <div class="aleat-submit">
+            <img src="/img/success_icon@2X.png" />
+            <p>入会成功</p>
+            <p>付费可正式成为可野人</p>
+            <button class="close">再逛逛</button>
+            <button>我付费,我光荣！</button>
+        </div>
+    </div>
+    <div class="aleat" id="reg_fail">
         <i class="close closeX">关闭</i>
-        <div id="modal-content"></div>
+        <div id="modal-content">
+            <div class="aleat-submit">
+                <img src="/img/success_icon@2X.png" />
+                <p>注册失败</p>
+                <p id="err_msg"></p>
+            </div>
+        </div>
+    </div>
+
+    <div class="aleat aleat-Agreement">
+        <p>会员规则</p>
     </div>
 @endsection
 

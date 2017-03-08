@@ -1,0 +1,55 @@
+#captcha_label input {
+
+}
+.captcha {
+    margin-top:20px;
+    cursor:pointer;
+}
+#Agreement {margin-left:5px;}
+.Radio {
+    margin-right: 20px;
+}
+li.success {
+    border-color:green;
+}
+li.error{
+    border-bottom: 0.04rem solid red;
+}
+#timer {
+    color:white;
+    width:30%;
+    font-size: 0.6rem;
+    margin-top: 30px;
+    display:none;
+}
+
+.timer_text {
+    color:white;
+    float:right;
+    font-size: 0.6rem;
+    margin-top: 30px;
+}
+.But{float:right;margin-top: 30px;}
+.radio_on {}
+.radio_off {background: none;
+    margin-right:20px;}
+#message {
+    width:15rem;
+    position: absolute;
+    top:0px;
+    left:0px;
+}
+
+#message .noty_close {
+    top:20px;
+    right:20px;
+}
+#reg_success, #reg_fail {
+    display: none;
+    top: 8rem;
+}
+.checkbox_err{border-color:red;}
+.aleat-Agreement {
+    display: none;
+    top: 5%;
+}

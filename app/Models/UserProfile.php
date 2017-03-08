@@ -17,10 +17,9 @@ class UserProfile extends Model
     protected $dateFormat = 'U';
 
     protected $fillable = [
-        'uid',
+        'user_id',
         'real_name',
         'id_no',
-        'mobile',
         'member_no',
         'invite_no',
         'keye_age',

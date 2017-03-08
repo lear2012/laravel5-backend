@@ -9,5 +9,11 @@ return [
     ],
     'default_image' => '/uploads/images/default_image.jpg',
     'default_avatar' => '/img/avatar5.png',
-    'static_domain' => ''
+    'static_domain' => '',
+
+    //
+    'register_member_code' => 5,
+    'paid_member_code' => 6,
+    'exp_driver_code' => 4,
+    'admin_code' => 1
 ];

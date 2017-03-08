@@ -12,6 +12,9 @@ use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
 use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
 use Illuminate\Support\Facades\Hash;
 use Zizaco\Entrust\Traits\EntrustUserTrait;
+use DB;
+use ChannelLog as Log;
+use Faker;
 
 /**
  * App\Models\User
@@ -54,7 +57,7 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
      *
      * @var array
      */
-    protected $fillable = ['uid', 'username', 'email', 'password', 'status'];
+    protected $fillable = ['uid', 'username', 'mobile', 'email', 'password', 'status'];
 
     /**
      * The attributes excluded from the model's JSON form.
@@ -100,13 +103,67 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
     }
 
     public static function getExpdrivers() {
-        return Role::find(4)->users->reject(function ($item, $key) {
+        return Role::find(config('custom.exp_driver_code'))->users->reject(function ($item, $key) {
             return $item->status != 1;
         });
     }
     public static function getPaidMembers() {
-        return Role::find(6)->users->reject(function ($item, $key) {
+        return Role::find(config('custom.paid_member_code'))->users->reject(function ($item, $key) {
             return $item->status != 1;
         });
+    }
+
+    public static $registerRule = [
+        'nick' => 'required|string',
+        'mobile' => 'required|mobile',
+        'invite_no'   => 'alpha_num',
+        'mb_verify_code'   => 'required|alpha_num',
+        'captcha' => 'required|captcha',
+    ];
+
+    public static function register($data) {
+        if(!is_array($data))
+            return false;
+        try {
+            $u = []; // use info
+            $p = []; // profile info
+            $u['uid'] = genId();
+            $u['username'] = $data['nick'];
+            $u['status'] = 1;
+            $u['mobile'] = $data['mobile'];
+            $p['invite_no'] = isset($data['invite_no']) ? $data['invite_no'] : '';
+
+            DB::transaction(function () use ($u, $p) {
+                $user = User::create($u);
+                $p['user_id'] = $user->id;
+                $faker = Faker\Factory::create();
+                $p['avatar'] = $faker->imageUrl(50,50);
+                $profile = UserProfile::create($p);
+                $user->roles()->attach(config('custom.register_member_code'));
+            });
+            Log::write('common', 'User register success:'.http_build_query($data));
+        } catch(\Exception $e) {
+            Log::write('common', 'User register failed:'.$e->getMessage());
+            return false;
+        }
+        return true;
+    }
+
+    public static function isRegisterd($data) {
+        if(!is_array($data))
+            return false;
+        $user = User::where([
+            'mobile' => $data['mobile']
+        ])->first();
+        return $user ? true : false;
+    }
+
+    public static function nickUsed($nick) {
+        if(!$nick)
+            return false;
+        $user = User::where([
+            'username' => $nick
+        ])->first();
+        return $user ? true : false;
     }
 }

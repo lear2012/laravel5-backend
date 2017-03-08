@@ -17,9 +17,38 @@
 Route::group(['namespace' => 'Frontend', 'middleware' => ['web', 'wechat.oauth']], function ()
 {
     Route::any('/wechat', 'WechatController@serve');
+    Route::group(['prefix' => 'wechat'], function ()
+    {
+        Route::get('login', 'Auth\LoginController@showLoginForm');
+        Route::post('login', 'Auth\LoginController@login');
+        Route::get('logout', 'Auth\LoginController@logout');
+        Route::get('member_list', ['as' => 'wechat.member_list', 'uses' => 'HomeController@memberList']);
+        Route::get('register', ['as' => 'wechat.member_register', 'uses' => 'HomeController@memberRegister']);
+        Route::post('register', ['as' => 'wechat.post_register', 'uses' => 'HomeController@memberRegister']);
 
-    Route::get('/member_list', 'HomeController@memberList');
-    Route::get('/member_register', 'HomeController@memberRegister');
+        Route::get('checkImgCode', ['as' => 'wechat.check_imgcode', 'uses' => 'HomeController@checkImgCode']);
+        Route::get('sendSms', ['as' => 'wechat.send_sms', 'uses' => 'HomeController@sendSms']);
+    });
+    //Route::get('/auth/login', ['as' => 'wechat.to_sign_in', 'uses' => 'Auth\LoginController@showLoginForm']);
+//    Route::controller('auth', 'AuthController', [
+//        'postLogin' => 'wechat.sign_in',
+//        'postRegister' => 'wechat.sign_up',
+//        'getLogout' => 'wechat.logout',
+//        'getRegister' => 'wechat.to_sign_up',
+//        'getAgreement' => 'wechat.agreement',
+//        'postRegisterFirst' => 'wechat.sign_up_next',
+//        'getMobileCode' => 'wechat.smscode',
+//        'getLogout' => 'wechat.logout',
+//        'getForgetPassword' => 'wechat.to_retrieve_password',
+//        'postForgetPasswordNext' => 'wechat.to_retrieve_password_next',
+//        'postRetrievePassword' => 'wechat.retrieve_password',
+//        'getRetrievePasswordCode' => 'wechat.retrieve_password_code',
+//        'getAjaxMobileCode' => 'wechat.ajaxcode',
+//        'getAjaxRetrievePasswordCode' => 'wechat.ajax_retrive_password_code',
+//    ]);
+
+    //Route::get('/', ['as' => 'wechat.index', 'uses' => 'WechatController@getIndex']);
+
     // about login and logout
     Route::auth();
 

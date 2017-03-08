@@ -100,6 +100,10 @@ class WechatController extends Controller {
         return $server->serve();
     }
 
+    public function getIndex() {
+
+    }
+
     public function upload(){
         $media   = new Media('wx8e883164d9342b1f', 'e73145bd0fdef28ea54b0b3608061c33');
         $imageId = $media->image('/Users/qloog/Downloads/demo_wx.png'); // 上传并返回媒体ID
