@@ -182,10 +182,37 @@ class Utils {
         if($res->getStatusCode() == 200) {
             $ret = \GuzzleHttp\json_decode($res->getBody());
             $result = $ret->result->isok ? '匹配' : '不匹配';
-            Log::write('sms', '身份证验证调用成功：name:'.$realName.', idno:'.$idNo. ', result:'.$result);
+            Log::write('idcard', '身份证验证调用成功：name:'.$realName.', idno:'.$idNo. ', result:'.$result);
             return $ret->result;
         } else {
-            Log::write('sms', '身份证验证失败：');
+            Log::writeLog('idcard', 'error', '身份证验证失败：name:'.$realName.', idno:'.$idNo);
+        }
+        return false;
+    }
+
+    public static function sendSms($mobile, $params, $templateCode) {
+        if(!self::isMobile($mobile) || !is_array($params))
+            return false;
+        $client = new \GuzzleHttp\Client();
+        $res = $client->request('GET', self::$api_send_sms, [
+            'query' => [
+                'ParamString' => json_encode($params),
+                'RecNum' => $mobile,
+                'SignName' => '可野',
+                'TemplateCode' => $templateCode
+            ],
+            'headers' => [
+                'Accept'        => 'application/json',
+                'Authorization' => 'APPCODE '.env('ALIYUN_APPCODE')
+            ]
+        ]);
+        if($res->getStatusCode() == 200) {
+            $ret = \GuzzleHttp\json_decode($res->getBody());
+            $result = $ret->result->isok ? '匹配' : '不匹配';
+            Log::write('sms', '发送短信成功：mobile:'.$mobile.', templateCode:'.$templateCode.', params:'.http_build_query($params));
+            return $ret->result;
+        } else {
+            Log::writeLog('sms', 'error', '发送短信失败：mobile:'.$mobile);
         }
         return false;
     }

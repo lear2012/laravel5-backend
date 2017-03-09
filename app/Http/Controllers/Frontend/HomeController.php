@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use DB;
 use App\Models\UserProfile;
 use App\Helpers\Utils;
+use ChannelLog as Log;
 
 /**
  * Class HomeController

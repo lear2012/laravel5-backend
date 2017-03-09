@@ -29,6 +29,10 @@ class ChannelWriter
         'sms' => [
             'path' => 'logs/sms.log',
             'level' => Logger::INFO
+        ],
+        'idcard' => [
+            'path' => 'logs/idcard.log',
+            'level' => Logger::INFO
         ]
     ];
 

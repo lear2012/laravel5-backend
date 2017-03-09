@@ -37,14 +37,6 @@ class LoginController extends Controller
         $this->middleware('guest', ['except' => 'logout']);
     }
 
-    public function authenticate()
-    {
-        if (Auth::attempt(['mobile' => $mobile, 'password' => $password, 'active' => 1])) {
-            // Authentication passed...
-            return redirect()->intended('dashboard');
-        }
-    }
-
     public function showLoginForm()
     {
         return view('frontend.auth.login');
