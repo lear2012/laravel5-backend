@@ -4,9 +4,12 @@ namespace App\Helpers;
 
 use Carbon\Carbon;
 use Illuminate\Support\Facades\App;
-use Illuminate\Support\Facades\Log;
+use ChannelLog as Log;
 
 class Utils {
+
+    public static $api_verify_idcard = 'http://aliyunverifyidcard.haoservice.com/idcard/VerifyIdcardv2';
+    public static $api_send_sms = 'http://sms.market.alicloudapi.com/singleSendSms';
 
     public static function getDateFromExcel($excelDate){
         return Carbon::createFromFormat("Y-m-d H:i:s", gmdate("Y-m-d H:i:s", ($excelDate - 25569) * 86400));
@@ -160,6 +163,31 @@ class Utils {
 
     public static function isMobile($string){
         return preg_match("/^1[0-9]{2}[0-9]{8}$|15[0189]{1}[0-9]{8}$|189[0-9]{8}$/", $string);
+    }
+
+    public static function verifyIDCard($realName, $idNo) {
+        if(!$realName || !$idNo)
+            return false;
+        $client = new \GuzzleHttp\Client();
+        $res = $client->request('GET', self::$api_verify_idcard, [
+            'query' => [
+                'realName' => $realName,
+                'cardNo' => $idNo
+            ],
+            'headers' => [
+                'Accept'        => 'application/json',
+                'Authorization' => 'APPCODE '.env('ALIYUN_APPCODE')
+            ]
+        ]);
+        if($res->getStatusCode() == 200) {
+            $ret = \GuzzleHttp\json_decode($res->getBody());
+            $result = $ret->result->isok ? '匹配' : '不匹配';
+            Log::write('sms', '身份证验证调用成功：name:'.$realName.', idno:'.$idNo. ', result:'.$result);
+            return $ret->result;
+        } else {
+            Log::write('sms', '身份证验证失败：');
+        }
+        return false;
     }
 
 }

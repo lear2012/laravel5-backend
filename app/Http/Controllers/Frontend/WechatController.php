@@ -2,8 +2,9 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
-use Log;
+use ChannelLog as Log;
 use EasyWeChat\Foundation\Application;
+use Illuminate\Support\Facades\Auth;
 
 class WechatController extends Controller {
 
@@ -174,8 +175,8 @@ class WechatController extends Controller {
         }
     }
 
-    public function index()
-    {
-        echo 'test ok';
+    public function profile() {
+        $user = Auth::user();
+        return view('frontend.profile');
     }
 }

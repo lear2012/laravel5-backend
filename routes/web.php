@@ -21,13 +21,16 @@ Route::group(['namespace' => 'Frontend', 'middleware' => ['web', 'wechat.oauth']
     {
         Route::get('login', 'Auth\LoginController@showLoginForm');
         Route::post('login', 'Auth\LoginController@login');
-        Route::get('logout', 'Auth\LoginController@logout');
+
         Route::get('member_list', ['as' => 'wechat.member_list', 'uses' => 'HomeController@memberList']);
         Route::get('register', ['as' => 'wechat.member_register', 'uses' => 'HomeController@memberRegister']);
         Route::post('register', ['as' => 'wechat.post_register', 'uses' => 'HomeController@memberRegister']);
 
         Route::get('checkImgCode', ['as' => 'wechat.check_imgcode', 'uses' => 'HomeController@checkImgCode']);
         Route::get('sendSms', ['as' => 'wechat.send_sms', 'uses' => 'HomeController@sendSms']);
+
+        Route::get('profile', ['as' => 'wechat.profile', 'uses' => 'WechatController@profile']);
+        Route::get('logout', 'Auth\LoginController@logout');
     });
     //Route::get('/auth/login', ['as' => 'wechat.to_sign_in', 'uses' => 'Auth\LoginController@showLoginForm']);
 //    Route::controller('auth', 'AuthController', [
@@ -50,9 +53,9 @@ Route::group(['namespace' => 'Frontend', 'middleware' => ['web', 'wechat.oauth']
     //Route::get('/', ['as' => 'wechat.index', 'uses' => 'WechatController@getIndex']);
 
     // about login and logout
-    Route::auth();
+    //Route::auth();
 
-    Route::get('logout', 'Auth\LoginController@logout');
+    //Route::get('logout', 'Auth\LoginController@logout');
 
     // business route
     Route::get('/home', ['as' => 'home', 'uses' => 'HomeController@index']);

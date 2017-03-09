@@ -8,6 +8,7 @@ use Validator;
 use Illuminate\Http\Request;
 use DB;
 use App\Models\UserProfile;
+use App\Helpers\Utils;
 
 /**
  * Class HomeController
@@ -53,6 +54,9 @@ class HomeController extends Controller
     }
 
     function memberRegister(Request $request) {
+//        $realName = '廖礼林啊';
+//        $idNo = '612321198306112612';
+//        dd(Utils::verifyIDCard($realName, $idNo));
         if($request->isMethod('post')) {
             $data = $request->all();
             $validator = Validator::make($data, User::$registerRule);
