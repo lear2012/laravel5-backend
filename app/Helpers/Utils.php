@@ -208,11 +208,13 @@ class Utils {
         ]);
         if($res->getStatusCode() == 200) {
             $ret = \GuzzleHttp\json_decode($res->getBody());
-            $result = $ret->result->isok ? '匹配' : '不匹配';
-            Log::write('sms', '发送短信成功：mobile:'.$mobile.', templateCode:'.$templateCode.', params:'.http_build_query($params));
-            return $ret->result;
+            if($ret->success)
+                Log::write('sms', '发送短信成功：mobile:'.$mobile.', templateCode:'.$templateCode.', params:'.http_build_query($params));
+            else
+                Log::writeLog('sms', 'error', '发送短信失败：mobile:'.$mobile.", error:".$ret->message);
+            return $ret->success;
         } else {
-            Log::writeLog('sms', 'error', '发送短信失败：mobile:'.$mobile);
+            Log::writeLog('sms', 'error', '发送短信服务调用失败：mobile:'.$mobile);
         }
         return false;
     }
