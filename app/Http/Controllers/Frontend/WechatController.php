@@ -5,6 +5,7 @@ use App\Http\Controllers\Controller;
 use ChannelLog as Log;
 use EasyWeChat\Foundation\Application;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Request;
 
 class WechatController extends Controller {
 
@@ -92,17 +93,18 @@ class WechatController extends Controller {
      *
      * @return string
      */
-    public function serve(){
-        Log::write('common', 'request arrived.');
+    public function serve(Request $request){
+        Log::write('wechat', 'request arrived.');
         $server = app('wechat')->server;
-        $server->setMessageHandler(function($message){
-            Log::write('common', 'WeChatMessage:' . json_encode($message));
-            $this->openid = $message->FromUserName;
-            session(['openid' => $this->openid]);
-            return "欢迎关注 overtrue！";
-        });
-        Log::write('common', 'return response.');
-        return $server->serve();
+        Log::write('wechat', 'query params:'.http_build_query($request->all()));
+//        $server->setMessageHandler(function($message){
+//            Log::write('common', 'WeChatMessage:' . json_encode($message));
+//            $this->openid = $message->FromUserName;
+//            session(['openid' => $this->openid]);
+//            return "欢迎关注 overtrue！";
+//        });
+//        Log::write('common', 'return response.');
+//        return $server->serve();
     }
 
     public function getIndex() {

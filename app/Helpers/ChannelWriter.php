@@ -33,6 +33,10 @@ class ChannelWriter
         'idcard' => [
             'path' => 'logs/idcard.log',
             'level' => Logger::INFO
+        ],
+        'wechat' => [
+            'path' => 'logs/wechat.log',
+            'level' => Logger::INFO
         ]
     ];
 
