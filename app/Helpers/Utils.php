@@ -219,4 +219,21 @@ class Utils {
         return false;
     }
 
+    public static function getStaticOrderInfo($type) {
+        $ret = [];
+        switch ($type) {
+            case 'register':
+                $ret = [
+                    'trade_type'       => 'JSAPI',
+                    'body'             => '可野人会费',
+                    'detail'           => '可野人会费',
+                    'total_fee'        => 0.01, // for debug
+                    'notify_url'       => env('APP_URL').'/wechat/notify', // 支付结果通知网址，如果不设置则会使用配置里的默认地址
+                ];
+                break;
+            default:
+        }
+        return $ret;
+    }
+
 }

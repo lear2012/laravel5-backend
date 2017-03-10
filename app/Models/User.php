@@ -15,6 +15,7 @@ use Zizaco\Entrust\Traits\EntrustUserTrait;
 use DB;
 use ChannelLog as Log;
 use Faker;
+use App\Helpers\Utils;
 
 /**
  * App\Models\User
@@ -165,5 +166,31 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
             'username' => $nick
         ])->first();
         return $user ? true : false;
+    }
+
+    public static function setRegisterOrder(){
+        $wechatUser = session('wechat.oauth_user'); // 拿到授权用户资料
+        if(!$wechatUser)
+            return false;
+        $order = Utils::getStaticOrderInfo('register');
+        $order['openid'] = $wechatUser->id;
+        // save info into db
+        $dbOrder = new Order();
+        $dbOrder->oid = genId();
+        $dbOrder->title = $order['body'];
+        $dbOrder->detail = $order['detail'];
+        $dbOrder->wechat_openid = $order['openid'];
+        $dbOrder->wechat_no = $wechatUser->nickname;
+        $dbOrder->amount = $order['total_fee'];
+        $dbOrder->order_type = 1;
+        $dbOrder->status = 1;
+        if($dbOrder->save()) {
+            $order['out_trade_no'] = $dbOrder->oid;
+            Log::write('wechat', '订单生成成功for who:'.$wechatUser->nickname);
+        } else {
+            Log::writeLog('wechat', 'error', '订单生成失败for who:'.$wechatUser->nickname);
+            return [];
+        }
+        return $order;
     }
 }

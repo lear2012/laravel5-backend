@@ -1,6 +1,7 @@
 <?php
 namespace App\Http\Controllers\Frontend;
 
+use App\Helpers\Utils;
 use App\Http\Controllers\Controller;
 use ChannelLog as Log;
 use EasyWeChat;
@@ -8,6 +9,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use Validator;
 use EasyWeChat\Foundation\Application;
+use EasyWeChat\Payment\Order;
 
 class WechatController extends Controller {
 
@@ -22,7 +24,7 @@ class WechatController extends Controller {
     public function __construct(Application $wechat){
         //$this->wechatServer = EasyWeChat::server(); // 服务端
         //$this->wechatUser = EasyWeChat::user();
-	$this->wechat = $wechat;
+	    $this->wechat = $wechat;
     }
 
     /**
@@ -39,10 +41,6 @@ class WechatController extends Controller {
     }
 
     function memberRegister(Request $request) {
-        $wechatUser = session('wechat.oauth_user'); // 拿到授权用户资料
-//        $realName = '廖礼林啊';
-//        $idNo = '612321198306112612';
-//        dd(Utils::verifyIDCard($realName, $idNo));
         if($request->isMethod('post')) {
             $data = $request->all();
             $validator = Validator::make($data, User::$registerRule);
@@ -62,9 +60,20 @@ class WechatController extends Controller {
             }
             self::sendJsonMsg();
         }
+        $wechatUser = session('wechat.oauth_user'); // 拿到授权用户资料
+        $config = []; // 支付配置信息
         // 下单
-        $payment = $this->wechat->payment;
-        dd($payment);
+        $order = User::setRegisterOrder();
+        if(!empty($order)) {
+            $o = new Order($order);
+            $payment = $this->wechat->payment;
+            $result = $payment->prepare($o);
+            dd($result);
+            if ($result->return_code == 'SUCCESS' && $result->result_code == 'SUCCESS'){
+                $prepayId = $result->prepay_id;
+            }
+            $config = $payment->configForJSSDKPayment($prepayId);
+        }
         return view('frontend.user.register', ['wechatUser' => $wechatUser]);
     }
 
@@ -85,5 +94,9 @@ class WechatController extends Controller {
         return view('frontend.user.profile', [
             'user' => $user
         ]);
+    }
+
+    public function notify(Request $request) {
+        Log::write('wechat', 'Get notified with params:'.http_build_query($request->all()));
     }
 }
