@@ -71,7 +71,6 @@ class WechatController extends Controller {
             $result = $payment->prepare($o);
             if ($result->return_code == 'SUCCESS' && $result->result_code == 'SUCCESS'){
                 $config = $payment->configForJSSDKPayment($result->prepay_id);
-                dd($config);
             }
         }
         JavaScript::put([
