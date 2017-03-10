@@ -42,9 +42,9 @@ class HomeController extends Controller
     /**
      *
      */
-    function index()
+    function index(Request $request)
     {
-        return view('frontend.home');
+        dd($request->all());
     }
 
     function memberList() {
@@ -55,8 +55,9 @@ class HomeController extends Controller
     }
 
     function memberRegister(Request $request) {
-        echo urlencode('http://keye.liaollisonest.com/wechat?target=wechat/register');
-        exit;
+	$user = session('wechat.oauth_user'); // 拿到授权用户资料
+	dd($user);
+        dd(app('wechat')->oauth->user());exit;
 //        $realName = '廖礼林啊';
 //        $idNo = '612321198306112612';
 //        dd(Utils::verifyIDCard($realName, $idNo));

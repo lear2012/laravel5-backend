@@ -58,8 +58,7 @@ Route::group(['namespace' => 'Frontend', 'middleware' => ['web', 'wechat.oauth']
     //Route::get('logout', 'Auth\LoginController@logout');
 
     // business route
-    Route::get('/home', ['as' => 'home', 'uses' => 'HomeController@index']);
-    Route::get('/', ['as' => 'welcome', 'uses' => 'WelcomeController@index']);
+    Route::get('/', ['as' => 'welcome', 'uses' => 'HomeController@index']);
 });
 
 //wechat

@@ -97,6 +97,16 @@ class WechatController extends Controller {
         Log::write('wechat', 'request arrived.');
         $server = app('wechat')->server;
         Log::write('wechat', 'query params:'.http_build_query($request->all()));
+	$target = $request->get('target');
+	//switch($target) {
+	//    case 'register':
+        //        return redirect()->route('wechat.member_register');
+	//        break;
+	//    default:
+	//}
+	$response = app('wechat')->oauth->scopes(['snsapi_userinfo'])->setRequest($request)
+            ->redirect();
+dd($response);
 //        $server->setMessageHandler(function($message){
 //            Log::write('common', 'WeChatMessage:' . json_encode($message));
 //            $this->openid = $message->FromUserName;
