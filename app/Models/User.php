@@ -176,7 +176,8 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
         $order['openid'] = $wechatUser->id;
         // save info into db
         $dbOrder = new Order();
-        $dbOrder->oid = genId();
+        $oid = genId();
+        $dbOrder->oid = $oid;
         $dbOrder->title = $order['body'];
         $dbOrder->detail = $order['detail'];
         $dbOrder->wechat_openid = $order['openid'];
@@ -185,7 +186,7 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
         $dbOrder->order_type = 1;
         $dbOrder->status = 1;
         if($dbOrder->save()) {
-            $order['out_trade_no'] = $dbOrder->oid;
+            $order['out_trade_no'] = $oid;
             Log::write('wechat', '订单生成成功for who:'.$wechatUser->nickname);
         } else {
             Log::writeLog('wechat', 'error', '订单生成失败for who:'.$wechatUser->nickname);

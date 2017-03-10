@@ -10,8 +10,6 @@ class Order extends Model
     //
     use SoftDeletes;
 
-    protected $primaryKey = 'oid';
-
     protected $dateFormat = 'U';
 
     protected $fillable = [

@@ -66,6 +66,7 @@ class WechatController extends Controller {
         $order = User::setRegisterOrder();
         if(!empty($order)) {
             $o = new Order($order);
+            dd($o);
             $payment = $this->wechat->payment;
             $result = $payment->prepare($o);
             dd($result);
