@@ -224,11 +224,13 @@ class Utils {
         switch ($type) {
             case 'register':
                 $ret = [
+                    'appid'            => env('WECHAT_APPID'),
                     'mch_id'           => env('WECHAT_PAYMENT_MERCHANT_ID'),
                     'trade_type'       => 'JSAPI',
                     'body'             => '可野人会费',
                     'detail'           => '可野人会费',
-                    'total_fee'        => 0.01, // for debug
+                    'device_info'      => 'WEB',
+                    'total_fee'        => 1, // for debug
                     'notify_url'       => env('APP_URL').'/wechat/notify', // 支付结果通知网址，如果不设置则会使用配置里的默认地址
                 ];
                 break;
