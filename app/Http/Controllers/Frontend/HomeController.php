@@ -55,9 +55,7 @@ class HomeController extends Controller
     }
 
     function memberRegister(Request $request) {
-	$user = session('wechat.oauth_user'); // 拿到授权用户资料
-	dd($user);
-        dd(app('wechat')->oauth->user());exit;
+        $wechatUser = session('wechat.oauth_user'); // 拿到授权用户资料
 //        $realName = '廖礼林啊';
 //        $idNo = '612321198306112612';
 //        dd(Utils::verifyIDCard($realName, $idNo));
@@ -80,7 +78,7 @@ class HomeController extends Controller
             }
             self::sendJsonMsg();
         }
-        return view('frontend.register');
+        return view('frontend.register', ['wechatUser' => $wechatUser]);
     }
 
     function checkImgCode(Request $request) {

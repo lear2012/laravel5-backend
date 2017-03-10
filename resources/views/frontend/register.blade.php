@@ -3,8 +3,8 @@
 @endsection
 @section('content')
     <header>
-        <img class="portrait" src="{{ asset('img/f746272283fbfc990e6c24f75fe3d917bf36f6cd30f55-4Pvaxw_fw658.jpg') }}" />
-        <p class="sign">liaolliso</p>
+        <img class="portrait" src="{{ $wechatUser->avatar }}" />
+        <p class="sign">{{ $wechatUser->nickname }}</p>
     </header>
     <section style="padding-bottom: 2.4rem;">
             <ul class="form">
