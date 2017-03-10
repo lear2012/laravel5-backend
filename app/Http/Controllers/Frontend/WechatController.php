@@ -83,21 +83,25 @@ class WechatController extends Controller {
             $auth->redirect($to, 'snsapi_userinfo');
         }
     }
+
+    public function auth() {
+
+    }
     /**
      * 处理微信的请求消息
      *
      * @return string
      */
     public function serve(){
-        Log::info('request arrived.');
+        Log::write('common', 'request arrived.');
         $server = app('wechat')->server;
         $server->setMessageHandler(function($message){
-            Log::info('WeChatMessage:' . json_encode($message));
+            Log::write('common', 'WeChatMessage:' . json_encode($message));
             $this->openid = $message->FromUserName;
             session(['openid' => $this->openid]);
             return "欢迎关注 overtrue！";
         });
-        Log::info('return response.');
+        Log::write('common', 'return response.');
         return $server->serve();
     }
 
