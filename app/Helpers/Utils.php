@@ -224,6 +224,7 @@ class Utils {
         switch ($type) {
             case 'register':
                 $ret = [
+                    'mch_id'           => env('WECHAT_PAYMENT_MERCHANT_ID'),
                     'trade_type'       => 'JSAPI',
                     'body'             => '可野人会费',
                     'detail'           => '可野人会费',
