@@ -7,6 +7,7 @@ use EasyWeChat;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Validator;
+use EasyWeChat\Foundation\Application;
 
 class WechatController extends Controller {
 
@@ -16,9 +17,12 @@ class WechatController extends Controller {
 
     private $wechatUser;
 
-    public function __construct(){
-        $this->wechatServer = EasyWeChat::server(); // 服务端
-        $this->wechatUser = EasyWeChat::user();
+    private $wechat;
+
+    public function __construct(Application $wechat){
+        //$this->wechatServer = EasyWeChat::server(); // 服务端
+        //$this->wechatUser = EasyWeChat::user();
+	$this->wechat = $wechat;
     }
 
     /**
@@ -59,8 +63,7 @@ class WechatController extends Controller {
             self::sendJsonMsg();
         }
         // 下单
-        dd($this->wechatServer);
-        $payment = $this->wechatServer->payment;
+        $payment = $this->wechat->payment;
         dd($payment);
         return view('frontend.user.register', ['wechatUser' => $wechatUser]);
     }
