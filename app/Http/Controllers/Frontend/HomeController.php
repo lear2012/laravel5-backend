@@ -55,6 +55,8 @@ class HomeController extends Controller
     }
 
     function memberRegister(Request $request) {
+        echo urlencode('http://keye.liaollisonest.com/wechat?target=wechat/register');
+        exit;
 //        $realName = '廖礼林啊';
 //        $idNo = '612321198306112612';
 //        dd(Utils::verifyIDCard($realName, $idNo));
