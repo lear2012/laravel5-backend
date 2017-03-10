@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8" />
         <meta name="csrf-token" content="{{ csrf_token() }}">
-        <title>会员展示</title>
+        <title>@yield('title')</title>
         <!--设置初始比例（1：1像素还原）-->
         <script>
             var iScale = 1;

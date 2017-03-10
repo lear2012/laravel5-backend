@@ -22,68 +22,18 @@ Route::group(['namespace' => 'Frontend', 'middleware' => ['web', 'wechat.oauth:s
         Route::get('login', 'Auth\LoginController@showLoginForm');
         Route::post('login', 'Auth\LoginController@login');
 
-        Route::get('member_list', ['as' => 'wechat.member_list', 'uses' => 'HomeController@memberList']);
-        Route::get('register', ['as' => 'wechat.member_register', 'uses' => 'HomeController@memberRegister']);
-        Route::post('register', ['as' => 'wechat.post_register', 'uses' => 'HomeController@memberRegister']);
+        Route::get('member_list', ['as' => 'wechat.member_list', 'uses' => 'WechatController@memberList']);
+        Route::get('register', ['as' => 'wechat.member_register', 'uses' => 'WechatController@memberRegister']);
+        Route::post('register', ['as' => 'wechat.post_register', 'uses' => 'WechatController@memberRegister']);
 
-        Route::get('checkImgCode', ['as' => 'wechat.check_imgcode', 'uses' => 'HomeController@checkImgCode']);
-        Route::get('sendSms', ['as' => 'wechat.send_sms', 'uses' => 'HomeController@sendSms']);
+        Route::get('checkImgCode', ['as' => 'wechat.check_imgcode', 'uses' => 'WechatController@checkImgCode']);
+        Route::get('sendSms', ['as' => 'wechat.send_sms', 'uses' => 'WechatController@sendSms']);
 
-        Route::get('profile', ['as' => 'wechat.profile', 'uses' => 'WechatController@profile']);
+        Route::get('profile/{id}', ['as' => 'wechat.profile', 'uses' => 'WechatController@profile']);
         Route::get('logout', 'Auth\LoginController@logout');
     });
-    //Route::get('/auth/login', ['as' => 'wechat.to_sign_in', 'uses' => 'Auth\LoginController@showLoginForm']);
-//    Route::controller('auth', 'AuthController', [
-//        'postLogin' => 'wechat.sign_in',
-//        'postRegister' => 'wechat.sign_up',
-//        'getLogout' => 'wechat.logout',
-//        'getRegister' => 'wechat.to_sign_up',
-//        'getAgreement' => 'wechat.agreement',
-//        'postRegisterFirst' => 'wechat.sign_up_next',
-//        'getMobileCode' => 'wechat.smscode',
-//        'getLogout' => 'wechat.logout',
-//        'getForgetPassword' => 'wechat.to_retrieve_password',
-//        'postForgetPasswordNext' => 'wechat.to_retrieve_password_next',
-//        'postRetrievePassword' => 'wechat.retrieve_password',
-//        'getRetrievePasswordCode' => 'wechat.retrieve_password_code',
-//        'getAjaxMobileCode' => 'wechat.ajaxcode',
-//        'getAjaxRetrievePasswordCode' => 'wechat.ajax_retrive_password_code',
-//    ]);
-
-    //Route::get('/', ['as' => 'wechat.index', 'uses' => 'WechatController@getIndex']);
-
-    // about login and logout
-    //Route::auth();
-
-    //Route::get('logout', 'Auth\LoginController@logout');
-
     // business route
     Route::get('/', ['as' => 'welcome', 'uses' => 'HomeController@index']);
-});
-
-//wechat
-Route::group(['namespace' => 'Wechat', "prefix" => 'wechat'], function () {
-
-//    Route::get('/auth/login',
-//        ['middleware' => 'wechat.auth', 'as' => 'wechat.to_sign_in', 'uses' => 'AuthController@getLogin']);
-//    Route::controller('auth', 'AuthController', [
-//        'postLogin' => 'wechat.sign_in',
-//        'postRegister' => 'wechat.sign_up',
-//        'getLogout' => 'wechat.logout',
-//        'getRegister' => 'wechat.to_sign_up',
-//        'getAgreement' => 'wechat.agreement',
-//        'postRegisterFirst' => 'wechat.sign_up_next',
-//        'getMobileCode' => 'wechat.smscode',
-//        'getLogout' => 'wechat.logout',
-//        'getForgetPassword' => 'wechat.to_retrieve_password',
-//        'postForgetPasswordNext' => 'wechat.to_retrieve_password_next',
-//        'postRetrievePassword' => 'wechat.retrieve_password',
-//        'getRetrievePasswordCode' => 'wechat.retrieve_password_code',
-//        'getAjaxMobileCode' => 'wechat.ajaxcode',
-//        'getAjaxRetrievePasswordCode' => 'wechat.ajax_retrive_password_code',
-//    ]);
-//
-//    Route::get('/', ['as' => 'wechat.index', 'uses' => 'IndexController@getIndex']);
 });
 
 /**

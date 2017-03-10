@@ -1,4 +1,7 @@
 @extends('frontend.layouts.master')
+@section('title')
+可野会员注册
+@endsection
 @section('styles')
 @endsection
 @section('content')
