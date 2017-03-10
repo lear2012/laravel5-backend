@@ -10,6 +10,7 @@ use App\Models\User;
 use Validator;
 use EasyWeChat\Foundation\Application;
 use EasyWeChat\Payment\Order;
+use Laracasts\Utilities\JavaScript;
 
 class WechatController extends Controller {
 
@@ -68,13 +69,17 @@ class WechatController extends Controller {
             $o = new Order($order);
             $payment = $this->wechat->payment;
             $result = $payment->prepare($o);
-            dd($result);
             if ($result->return_code == 'SUCCESS' && $result->result_code == 'SUCCESS'){
-                $prepayId = $result->prepay_id;
+                $config = $payment->configForJSSDKPayment($result->prepay_id);
+                dd($config);
             }
-            $config = $payment->configForJSSDKPayment($prepayId);
         }
-        return view('frontend.user.register', ['wechatUser' => $wechatUser]);
+        JavaScript::put([
+            'config' => $config,
+        ]);
+        return view('frontend.user.register', [
+            'wechatUser' => $wechatUser
+        ]);
     }
 
     function checkImgCode(Request $request) {
@@ -97,6 +102,27 @@ class WechatController extends Controller {
     }
 
     public function notify(Request $request) {
+        $payment = $this->wechat->payment;
         Log::write('wechat', 'Get notified with params:'.http_build_query($request->all()));
+        $response = $payment->handleNotify(function($notify, $successful){
+            Log::write('wechat', 'Get notified with params:'.http_build_query(get_object_vars($notify)));
+            $order = Order::where('oid', '=', $notify->out_trade_no);
+            if(!$order) {
+                return 'Order not found';
+            }
+            if ($order->pay_at) { // 假设订单字段“支付时间”不为空代表已经支付
+                return true; // 已经支付成功了就不再更新了
+            }
+            if($successful) {
+                // 成功后更新订单状态
+                $order->pay_at = time();
+                $order->status = 2;
+            } else {
+
+            }
+            $order->save();
+            return true;
+        });
+        return $response;
     }
 }

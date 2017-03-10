@@ -157,6 +157,7 @@ var site = {
     },
 
     register: function() {
+        var that = this;
         var params = {};
         params.nick = $('#nick').val();
         params.mobile = $('#mobile').val();
@@ -192,7 +193,7 @@ var site = {
                         closeOnCancel: false
                     }, function (isConfirm) {
                         if (isConfirm) {
-                            window.location.href='/wechat/member_pay';
+                            that.payMemberFee();
                         } else {
                             window.location.href='/wechat/member_list';
                         }
@@ -310,6 +311,21 @@ var site = {
             closeWith: ['click'],
             timeout: 3000,
             killer: true
+        });
+    },
+
+    payMemberFee: function() {
+        console.log(config);
+        wx.chooseWXPay({
+            timestamp: config.timestamp,
+            nonceStr: config.nonceStr,
+            package: config.package,
+            signType: config.signType,
+            paySign: config.paySign, // 支付签名
+            success: function (res) {
+                // 支付成功后的回调函数
+                console.log(res);
+            }
         });
     }
 
