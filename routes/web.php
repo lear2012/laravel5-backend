@@ -25,6 +25,7 @@ Route::group(['namespace' => 'Frontend', 'middleware' => ['web', 'wechat.oauth:s
         Route::get('member_list', ['as' => 'wechat.member_list', 'uses' => 'WechatController@memberList']);
         Route::get('register', ['as' => 'wechat.member_register', 'uses' => 'WechatController@memberRegister']);
         Route::post('register', ['as' => 'wechat.post_register', 'uses' => 'WechatController@memberRegister']);
+        Route::get('member_pay', ['as' => 'wechat.member_pay', 'uses' => 'WechatController@memberPay']);
 
         Route::get('checkImgCode', ['as' => 'wechat.check_imgcode', 'uses' => 'WechatController@checkImgCode']);
         Route::get('sendSms', ['as' => 'wechat.send_sms', 'uses' => 'WechatController@sendSms']);

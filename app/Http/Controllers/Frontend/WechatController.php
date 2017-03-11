@@ -138,4 +138,9 @@ class WechatController extends Controller {
             self::sendJsonMsg();
         }
     }
+
+    public function memberPay(Request $request) {
+        Log::write('wechat', 'Get member pay with params:'.http_build_query($request->all()));
+    }
 }
+
