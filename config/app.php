@@ -223,7 +223,6 @@ return [
         'Entrust'   => Zizaco\Entrust\EntrustFacade::class,
         'ChannelLog' => App\Contracts\Facades\ChannelLog::class,
         'EasyWeChat' => Overtrue\LaravelWechat\Facade::class,
-        'JavaScript' => Laracasts\Utilities\JavaScript\JavaScriptFacade::class,
     ],
 
 ];
