@@ -141,7 +141,7 @@ var site = {
             type: "GET",
             dataType: "json", //dataType (xml html script json jsonp text)
             data: data, //json 数据
-            url: '/wechat/sendsms',
+            url: '/wechat/sendSms',
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             },

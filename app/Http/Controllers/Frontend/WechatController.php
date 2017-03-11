@@ -124,4 +124,18 @@ class WechatController extends Controller {
         });
         return $response;
     }
+
+    public function sendSms(Request $request) {
+        if($request->isMethod('get')) {
+            $rules = ['mobile' => 'required|mobile'];
+            $validator = Validator::make($request->all(), $rules);
+            if ($validator->fails()) {
+                self::setMsgCode(1002);
+            }
+            // generate the code
+            $code = str_random(5);
+            Utils::sendSms($request->get('mobile'), [], '');
+            self::sendJsonMsg();
+        }
+    }
 }
