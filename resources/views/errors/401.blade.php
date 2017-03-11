@@ -1,4 +1,4 @@
-@extends("$defaultLayout")
+@extends('frontend.layouts.master')
 @section('pagecss')
 
 @endsection
