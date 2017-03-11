@@ -10,7 +10,7 @@ use App\Models\User;
 use Validator;
 use EasyWeChat\Foundation\Application;
 use EasyWeChat\Payment\Order;
-use Laracasts\Utilities\JavaScript;
+use JavaScript;
 
 class WechatController extends Controller {
 

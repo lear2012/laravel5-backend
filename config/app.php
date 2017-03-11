@@ -160,7 +160,7 @@ return [
         Prettus\Repository\Providers\RepositoryServiceProvider::class,
         Zizaco\Entrust\EntrustServiceProvider::class,
         Overtrue\LaravelWechat\ServiceProvider::class,
-        'Laracasts\Utilities\JavaScript\JavaScriptServiceProvider'
+        'Laracasts\Utilities\JavaScript\JavaScriptServiceProvider',
     ],
     /*
     |--------------------------------------------------------------------------
@@ -215,7 +215,7 @@ return [
         'Access' => \App\Services\Access\Facades\Access::class,
         'Form' => Collective\Html\FormFacade::class,
         'Html' => Collective\Html\HtmlFacade::class,
-        'Debugbar' => Barryvdh\Debugbar\Facade::class,
+        //'Debugbar' => Barryvdh\Debugbar\Facade::class,
         'UEditor' => Ender\UEditor\UEditor::class,
         'Image' => Intervention\Image\Facades\Image::class,
         'Flash' => Laracasts\Flash\Flash::class,
@@ -223,6 +223,7 @@ return [
         'Entrust'   => Zizaco\Entrust\EntrustFacade::class,
         'ChannelLog' => App\Contracts\Facades\ChannelLog::class,
         'EasyWeChat' => Overtrue\LaravelWechat\Facade::class,
+        'JavaScript' => Laracasts\Utilities\JavaScript\JavaScriptFacade::class,
     ],
 
 ];
