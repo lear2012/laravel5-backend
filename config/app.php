@@ -160,6 +160,7 @@ return [
         Prettus\Repository\Providers\RepositoryServiceProvider::class,
         Zizaco\Entrust\EntrustServiceProvider::class,
         Overtrue\LaravelWechat\ServiceProvider::class,
+        'Laracasts\Utilities\JavaScript\JavaScriptServiceProvider'
     ],
     /*
     |--------------------------------------------------------------------------
