@@ -326,7 +326,13 @@ var site = {
             paySign: this._payConfig.paySign.toUpperCase(), // 支付签名
             success: function (res) {
                 // 支付成功后的回调函数
-                alert(res);
+                if(res.err_msg == "get_brand_wcpay_request:ok" ) {
+                    window.location.href='/wechat/member_list';
+                    return false;
+                } else if(res.err_msg == "get_brand_wcpay_request:fail" ) {
+                    alert('支付失败，请稍后重试！');
+                    return false;
+                }
             }
         });
         wx.error(function(res){
