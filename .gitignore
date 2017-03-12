@@ -3,13 +3,10 @@
 .env
 /storage/*.key
 
-/public/css
-/public/js
 /public/img
 /public/fonts
 /public/plugins
 /public/uploads
-/public/js/build
 /public/ueditor
 /public/semantic/
 
