@@ -14,8 +14,8 @@
  * Frontend Routes
  * Namespaces indicate folder structure
  */
-Route::any('/wechat', 'WechatController@serve');
-Route::post('/wechat/notify', ['as' => 'wechat.notify', 'uses' => 'WechatController@notify'])->middleware(['web']);
+Route::any('/wechat', '\App\Http\Controllers\Frontend\WechatController@serve');
+Route::post('/wechat/notify', ['as' => 'wechat.notify', 'uses' => '\App\Http\Controllers\Frontend\WechatController@notify'])->middleware(['web']);
 Route::group(['namespace' => 'Frontend', 'middleware' => ['web', 'wechat.oauth:snsapi_userinfo']], function ()
 {
     Route::group(['prefix' => 'wechat'], function ()
