@@ -19,6 +19,7 @@
     @yield('content')
     <script type="text/javascript" src="{{ elixir('js/all.js', null) }}"></script>
     @yield('scripts')
+    @include ('frontend.footer')
     <script src="{{ elixir('js/main.js', null) }}"></script>
     </body>
 </html>
