@@ -317,6 +317,7 @@ var site = {
     },
 
     payMemberFee: function() {
+        console.log(config);
         wx.chooseWXPay({
             timestamp: this._payConfig.timestamp,
             nonceStr: this._payConfig.nonceStr,

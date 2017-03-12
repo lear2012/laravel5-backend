@@ -17,9 +17,11 @@
     <body>
     <div id="message"></div>
     @yield('content')
+
     <script type="text/javascript" src="{{ elixir('js/all.js', null) }}"></script>
     @yield('scripts')
+    {{--<script src="{{ elixir('js/main.js', null) }}"></script>--}}
     @include ('frontend.footer')
-    <script src="{{ elixir('js/main.js', null) }}"></script>
+
     </body>
 </html>

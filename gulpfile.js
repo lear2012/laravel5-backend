@@ -35,7 +35,9 @@ elixir(function(mix) {
         '../bower/js-offcanvas/dist/_js/js-offcanvas.min.js',
         '../bower/noty/js/noty/packaged/jquery.noty.packaged.min.js',
         '../bower/sweetalert/dist/sweetalert.min.js',
-        '../../../node_modules/jquery-countto/jquery.countTo.js'
+        '../../../node_modules/jquery-countto/jquery.countTo.js',
+        'jweixin-1.2.0.js',
+        'main.js'
     ], 'public/js/all.js');
 
     // for backedn
@@ -62,13 +64,14 @@ elixir(function(mix) {
         '../bower/bootstrap-fileinput/js/plugins/canvas-to-blob.min.js',
         '../bower/bootstrap-fileinput/js/fileinput.min.js',
         '../bower/bootstrap-fileinput/js/locales/zh.js',
-        'jquery.amaran.min.js'
+        'jquery.amaran.min.js',
+        'my.js'
     ], 'public/js/all_bk.js');
 
-    mix.copy('resources/assets/js/main.js', 'public/js')
-        .copy('resources/assets/js/my.js', 'public/js')
-        .version(['css/all.css', 'js/all.js', 'css/all_bk.css', 'js/all_bk.js', 'js/main.js', 'js/my.js'], 'public');
-
+    // mix.copy('resources/assets/js/main.js', 'public/js')
+    //     .copy('resources/assets/js/my.js', 'public/js')
+    //     .version(['css/all.css', 'js/all.js', 'css/all_bk.css', 'js/all_bk.js', 'js/main.js', 'js/my.js'], 'public');
+    mix.version(['css/all.css', 'js/all.js', 'css/all_bk.css', 'js/all_bk.js'], 'public');
     mix.browserSync({
         proxy: 'keye.local.com'
     });
