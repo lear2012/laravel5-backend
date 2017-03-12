@@ -66,8 +66,8 @@ elixir(function(mix) {
     ], 'public/js/all_bk.js');
 
     mix.copy('resources/assets/js/main.js', 'public/js')
-        .copy('resources/assets/js/my.js', 'public/js');
-        //.version(['css/all.css', 'js/all.js', 'css/all_bk.css', 'js/all_bk.js', 'js/main.js', 'js/my.js'], 'public');
+        .copy('resources/assets/js/my.js', 'public/js')
+        .version(['css/all.css', 'js/all.js', 'css/all_bk.css', 'js/all_bk.js', 'js/main.js', 'js/my.js'], 'public');
 
     mix.browserSync({
         proxy: 'keye.local.com'

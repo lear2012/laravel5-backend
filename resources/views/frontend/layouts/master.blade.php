@@ -11,14 +11,14 @@
             document.write('<meta name="viewport" content="width=device-width,initial-scale=' + iScale + ',minimum-scale=' + iScale + ',maximum-scale=' + iScale + '" />');
             document.getElementsByTagName("html")[0].style.fontSize = document.documentElement.clientWidth / 15 + "px";
         </script>
-        <link rel="stylesheet" href="{{ asset('css/all.css', null) }}" />
+        <link rel="stylesheet" href="{{ elixir('css/all.css', null) }}" />
         @yield('styles')
     </head>
     <body>
     <div id="message"></div>
     @yield('content')
-    <script type="text/javascript" src="{{ asset('js/all.js', null) }}"></script>
+    <script type="text/javascript" src="{{ elixir('js/all.js', null) }}"></script>
     @yield('scripts')
-    <script src="{{ asset('js/main.js', null) }}"></script>
+    <script src="{{ elixir('js/main.js', null) }}"></script>
     </body>
 </html>

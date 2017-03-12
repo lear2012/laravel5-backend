@@ -1,0 +1,89 @@
+body {
+	width: 13.8rem;
+	font-size: 0.75rem;
+	overflow-y: auto;
+	overflow-x: hidden;
+	position: relative;
+	background: url(../img/bg_img.png);
+	background-size: cover;
+	padding: 0px 0.6rem;
+	min-height: 100vh;
+	
+}
+header{
+	text-align: center;
+}
+
+header .portrait{
+	width: 3.6rem;
+	height: 3.6rem;
+	border-radius:2rem;
+	border: 0.04rem solid rgba(255,255,255,0.5);
+	padding: 0.2rem;
+	margin-top: 2.01rem;
+}
+
+header .sign{
+	font-size: 0.4rem;
+	margin-top: 0.8rem;
+	color: #fff;
+	margin-bottom: 2rem;
+}
+.form li{
+	height: 2rem;
+	border-bottom: 0.02rem solid rgba(255,255,255,0.5);
+	font-size:0px ;
+	padding-left: 0.5rem;
+}
+.form li .tit-s{
+	font-size: 0.6rem;
+	color: white;
+	line-height: 2rem;
+	margin-right: 0.5rem;
+	width: 10%;
+	
+}
+.form li .Ainp{
+	border: none;
+	background: none;
+	outline: none;
+	font-size: 0.6rem;
+	color: white;
+	line-height: 2rem;
+	width: 80%;
+}
+.form li .phone{
+	border: none;
+	background: none;
+	outline: none;
+	font-size: 0.6rem;
+	color: white;
+	line-height: 2rem;
+	width: 60%;
+}
+.But{
+	font-size: 0.6rem;
+	color: #ad7a00;
+}
+.aleat-submit img{
+	width: 4rem;
+}
+.aleat-submit p{
+	line-height: 1.3rem;
+}
+.aleat-submit button{
+	padding: 0.3rem 0.5rem;
+    border: 0.02rem solid black;
+    border-radius: 0.2rem;
+    font-size: 0.6rem;
+    margin-top: 0.5rem;
+}
+.aleat-submit button:nth-last-child(1){
+	margin-left: 0.5rem;
+	border-color: #f7b000;
+	background: #f7b000;
+}
+.aleat-submit button:nth-last-child(2){
+	border-color: #000;
+	background: rgba(0,0,0,0);
+}
