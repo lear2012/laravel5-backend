@@ -69,11 +69,11 @@ class WechatController extends Controller {
         //$js = $this->wechat->js;
         JavaScript::put([
             'config' => $config,
-            'js' => $this->js
         ]);
 
         return view('frontend.user.register', [
-            'wechatUser' => $wechatUser
+            'wechatUser' => $wechatUser,
+            'js' => $this->js
         ]);
     }
 
