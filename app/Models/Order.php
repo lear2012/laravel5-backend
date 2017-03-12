@@ -22,6 +22,7 @@ class Order extends Model
         'memo',
         'order_type',
         'status',
+        'pay_at'
     ];
 
 }

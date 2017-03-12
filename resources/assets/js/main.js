@@ -332,6 +332,9 @@ var site = {
                 } else if(res.err_msg == "get_brand_wcpay_request:fail" ) {
                     alert('支付失败，请稍后重试！');
                     return false;
+                } else {
+                    alert(res.err_msg);
+                    return false;
                 }
             }
         });
