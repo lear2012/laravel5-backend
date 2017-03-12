@@ -6,6 +6,7 @@ use Illuminate\Support\ServiceProvider;
 use Carbon\Carbon;
 use App\Helpers\Utils;
 use Illuminate\Support\Facades\Validator;
+use EasyWeChat;
 
 class AppServiceProvider extends ServiceProvider
 {

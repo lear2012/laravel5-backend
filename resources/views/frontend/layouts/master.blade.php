@@ -17,11 +17,15 @@
     <body>
     <div id="message"></div>
     @yield('content')
-
+    @include ('frontend.footer')
     <script type="text/javascript" src="{{ elixir('js/all.js', null) }}"></script>
+    @if(isset($js))
+    <script type="text/javascript" charset="utf-8">
+        wx.config(<?php echo $js->config(array('chooseWXPay'), true); ?>);
+    </script>
+    @endif
     @yield('scripts')
     {{--<script src="{{ elixir('js/main.js', null) }}"></script>--}}
-    @include ('frontend.footer')
 
     </body>
 </html>

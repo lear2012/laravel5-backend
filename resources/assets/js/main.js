@@ -319,7 +319,6 @@ var site = {
     payMemberFee: function() {
         this._payConfig = config;
         wx.chooseWXPay({
-            appId: this._payConfig.appId,
             timeStamp: this._payConfig.timestamp,
             nonceStr: this._payConfig.nonceStr,
             package: this._payConfig.package,

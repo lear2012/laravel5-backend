@@ -16,16 +16,8 @@ class WechatController extends Controller {
 
     private $openid;
 
-    private $wechatServer;
-
-    private $wechatUser;
-
-    private $wechat;
-
     public function __construct(Application $wechat){
-        //$this->wechatServer = EasyWeChat::server(); // 服务端
-        //$this->wechatUser = EasyWeChat::user();
-	    $this->wechat = $wechat;
+        parent::__construct($wechat);
     }
 
     /**
@@ -74,9 +66,12 @@ class WechatController extends Controller {
             }
         }
         Log::write('wechat', 'Get pay config with params:'.http_build_query($config));
+        //$js = $this->wechat->js;
         JavaScript::put([
             'config' => $config,
+            'js' => $this->js
         ]);
+
         return view('frontend.user.register', [
             'wechatUser' => $wechatUser
         ]);

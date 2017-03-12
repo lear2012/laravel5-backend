@@ -6,10 +6,20 @@ use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+use EasyWeChat\Foundation\Application;
 
 class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
+
+    protected $wechat;
+
+    protected $js;
+
+    public function __construct(Application $wechat){
+        $this->wechat = $wechat;
+        $this->js = $this->wechat->js;
+    }
 
     public static $ret = [
         'errno' => 0,
