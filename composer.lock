@@ -2238,16 +2238,16 @@
         },
         {
             "name": "prettus/l5-repository",
-            "version": "2.6.13",
+            "version": "2.6.15",
             "source": {
                 "type": "git",
                 "url": "https://github.com/andersao/l5-repository.git",
-                "reference": "233163407c8861e85e5092ada4d38128df48d462"
+                "reference": "efca3fc20864c54a30ce95e6f0f090a0ec21e9f2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://files.phpcomposer.com/files/andersao/l5-repository/233163407c8861e85e5092ada4d38128df48d462.zip",
-                "reference": "233163407c8861e85e5092ada4d38128df48d462",
+                "url": "https://files.phpcomposer.com/files/andersao/l5-repository/efca3fc20864c54a30ce95e6f0f090a0ec21e9f2.zip",
+                "reference": "efca3fc20864c54a30ce95e6f0f090a0ec21e9f2",
                 "shasum": ""
             },
             "require": {
@@ -2294,7 +2294,7 @@
                 "model",
                 "repository"
             ],
-            "time": "2017-03-09T13:06:32+00:00"
+            "time": "2017-03-10T19:32:32+00:00"
         },
         {
             "name": "prettus/laravel-validation",
@@ -2815,7 +2815,7 @@
         },
         {
             "name": "symfony/css-selector",
-            "version": "v3.2.5",
+            "version": "v3.2.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/css-selector.git",
@@ -2925,7 +2925,7 @@
         },
         {
             "name": "symfony/event-dispatcher",
-            "version": "v3.2.5",
+            "version": "v3.2.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/event-dispatcher.git",
@@ -2985,7 +2985,7 @@
         },
         {
             "name": "symfony/filesystem",
-            "version": "v3.2.5",
+            "version": "v3.2.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/filesystem.git",
@@ -3569,7 +3569,7 @@
         },
         {
             "name": "symfony/stopwatch",
-            "version": "v3.2.5",
+            "version": "v3.2.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/stopwatch.git",
@@ -4228,16 +4228,16 @@
         },
         {
             "name": "ignasbernotas/laravel-model-generator",
-            "version": "1.2.0",
+            "version": "1.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ignasbernotas/laravel-model-generator.git",
-                "reference": "9b09663b41fb6535090bf70fc7a6fec41765f022"
+                "reference": "cae70babc54d59f2e59b0de562f4bcd7540d7d6f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://files.phpcomposer.com/files/ignasbernotas/laravel-model-generator/9b09663b41fb6535090bf70fc7a6fec41765f022.zip",
-                "reference": "9b09663b41fb6535090bf70fc7a6fec41765f022",
+                "url": "https://files.phpcomposer.com/files/ignasbernotas/laravel-model-generator/cae70babc54d59f2e59b0de562f4bcd7540d7d6f.zip",
+                "reference": "cae70babc54d59f2e59b0de562f4bcd7540d7d6f",
                 "shasum": ""
             },
             "require": {
@@ -4267,7 +4267,7 @@
                 "model",
                 "schema"
             ],
-            "time": "2017-03-06T21:44:46+00:00"
+            "time": "2017-03-11T14:13:36+00:00"
         },
         {
             "name": "mockery/mockery",
@@ -5630,7 +5630,7 @@
         },
         {
             "name": "symfony/dom-crawler",
-            "version": "v3.2.5",
+            "version": "v3.2.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/dom-crawler.git",
@@ -5686,7 +5686,7 @@
         },
         {
             "name": "symfony/yaml",
-            "version": "v3.2.5",
+            "version": "v3.2.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/yaml.git",
