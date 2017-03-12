@@ -131,19 +131,21 @@ class WechatController extends Controller {
     }
 
     public function sendSms(Request $request) {
-        Log::write('wechat', 'Get params:'.http_build_query($request->all()));
-        if($request->isMethod('get')) {
-            $rules = ['mobile' => 'required|mobile'];
-            $validator = Validator::make($request->all(), $rules);
-            if ($validator->fails()) {
-                self::setMsgCode(1002);
-            }
-            // generate the code
-            $code = str_random(5);
-
-            Utils::sendSms($request->get('mobile'), ['code' => $code], 'SMS_53095287');
-            self::sendJsonMsg();
-        }
+        $str = file_get_contents('php://input');
+        Log::write('wechat', 'Get notify string:'.$str);
+        //Log::write('wechat', 'Get params:'.http_build_query($request->all()));
+//        if($request->isMethod('get')) {
+//            $rules = ['mobile' => 'required|mobile'];
+//            $validator = Validator::make($request->all(), $rules);
+//            if ($validator->fails()) {
+//                self::setMsgCode(1002);
+//            }
+//            // generate the code
+//            $code = str_random(5);
+//
+//            Utils::sendSms($request->get('mobile'), ['code' => $code], 'SMS_53095287');
+//            self::sendJsonMsg();
+//        }
     }
 
     public function memberPay(Request $request) {
