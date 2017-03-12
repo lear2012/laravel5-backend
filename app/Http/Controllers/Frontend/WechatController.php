@@ -73,6 +73,7 @@ class WechatController extends Controller {
                 $config = $payment->configForJSSDKPayment($result->prepay_id);
             }
         }
+        Log::write('wechat', 'Get pay config with params:'.http_build_query($config));
         JavaScript::put([
             'config' => $config,
         ]);

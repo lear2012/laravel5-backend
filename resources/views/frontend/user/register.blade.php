@@ -89,7 +89,10 @@
 
 @section('scripts')
 <script type="text/javascript">
-    site.setRegisterPayConfig(config);
+    $(document).ready(function(){
+        alert(config);
+        site.setRegisterPayConfig(config);
+    });
 //    var arrXB = [
 //        {
 //            text:'女',
