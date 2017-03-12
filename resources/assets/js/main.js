@@ -320,7 +320,7 @@ var site = {
         this._payConfig = config;
         wx.chooseWXPay({
             appId: this._payConfig.appId,
-            timestamp: this._payConfig.timestamp,
+            timeStamp: this._payConfig.timestamp,
             nonceStr: this._payConfig.nonceStr,
             package: this._payConfig.package,
             signType: this._payConfig.signType,
