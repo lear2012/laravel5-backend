@@ -134,7 +134,7 @@ class WechatController extends Controller {
             }
             // generate the code
             $code = str_random(5);
-            Utils::sendSms($request->get('mobile'), [], '');
+            Utils::sendSms($request->get('mobile'), ['code' => $code], 'SMS_53095287');
             self::sendJsonMsg();
         }
     }
