@@ -96,7 +96,7 @@ class WechatController extends Controller {
         ]);
     }
 
-    public function notify(Request $request) {
+    public function notify() {
         $str = file_get_contents('php://input');
         Log::write('wechat', 'Get notify string:'.$str);
 //        $payment = $this->wechat->payment;
