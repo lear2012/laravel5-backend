@@ -100,10 +100,9 @@ class WechatController extends Controller {
         $str = file_get_contents('php://input');
         Log::write('wechat', 'Get notify string:'.$str);
         $payment = $this->wechat->payment;
-        Log::write('wechat', 'Get notified with params:'.http_build_query($request->all()));
         $response = $payment->handleNotify(function($notify, $successful){
             //Log::write('wechat', 'Get notified with params:'.http_build_query(get_object_vars($notify)));
-            $order = Order::where('oid', '=', $notify->out_trade_no);
+            $order = \App\Models\Order::where('oid', '=', $notify->out_trade_no);
             if(!$order) {
                 return '<xml>
   <return_code><![CDATA[FAILED]]></return_code>
