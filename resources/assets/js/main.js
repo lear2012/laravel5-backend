@@ -315,7 +315,7 @@ var site = {
     },
 
     payMemberFee: function() {
-        console.log(config);
+        alert(config);
         wx.chooseWXPay({
             timestamp: config.timestamp,
             nonceStr: config.nonceStr,
@@ -324,8 +324,12 @@ var site = {
             paySign: config.paySign, // 支付签名
             success: function (res) {
                 // 支付成功后的回调函数
-                console.log(res);
+                alert(res);
             }
+        });
+        wx.error(function(res){
+            alert(res.err_msg);
+            return false;
         });
     }
 
