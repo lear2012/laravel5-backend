@@ -96,40 +96,40 @@ class WechatController extends Controller {
         ]);
     }
 
-    public function notify() {
+    public function notify(Request $request) {
         $str = file_get_contents('php://input');
         Log::write('wechat', 'Get notify string:'.$str);
-//        $payment = $this->wechat->payment;
-//        Log::write('wechat', 'Get notified with params:'.http_build_query($request->all()));
-//        $response = $payment->handleNotify(function($notify, $successful){
-//            //Log::write('wechat', 'Get notified with params:'.http_build_query(get_object_vars($notify)));
-//            $order = Order::where('oid', '=', $notify->out_trade_no);
-//            if(!$order) {
-//                return '<xml>
-//  <return_code><![CDATA[FAILED]]></return_code>
-//  <return_msg><![CDATA[OrderNotFound]]></return_msg>
-//</xml>';
-//            }
-//            if ($order->pay_at) { // 假设订单字段“支付时间”不为空代表已经支付
-//                return '<xml>
-//  <return_code><![CDATA[SUCCESS]]></return_code>
-//  <return_msg><![CDATA[OrderPaid]]></return_msg>
-//</xml>'; // 已经支付成功了就不再更新了
-//            }
-//            if($successful) {
-//                // 成功后更新订单状态
-//                $order->pay_at = time();
-//                $order->status = 2;
-//            } else {
-//
-//            }
-//            $order->save();
-//            return '<xml>
-//  <return_code><![CDATA[SUCCESS]]></return_code>
-//  <return_msg><![CDATA[OK]]></return_msg>
-//</xml>';
-//        });
-//        return $response;
+        $payment = $this->wechat->payment;
+        Log::write('wechat', 'Get notified with params:'.http_build_query($request->all()));
+        $response = $payment->handleNotify(function($notify, $successful){
+            //Log::write('wechat', 'Get notified with params:'.http_build_query(get_object_vars($notify)));
+            $order = Order::where('oid', '=', $notify->out_trade_no);
+            if(!$order) {
+                return '<xml>
+  <return_code><![CDATA[FAILED]]></return_code>
+  <return_msg><![CDATA[OrderNotFound]]></return_msg>
+</xml>';
+            }
+            if ($order->pay_at) { // 假设订单字段“支付时间”不为空代表已经支付
+                return '<xml>
+  <return_code><![CDATA[SUCCESS]]></return_code>
+  <return_msg><![CDATA[OrderPaid]]></return_msg>
+</xml>'; // 已经支付成功了就不再更新了
+            }
+            if($successful) {
+                // 成功后更新订单状态
+                $order->pay_at = time();
+                $order->status = 2;
+            } else {
+
+            }
+            $order->save();
+            return '<xml>
+  <return_code><![CDATA[SUCCESS]]></return_code>
+  <return_msg><![CDATA[OK]]></return_msg>
+</xml>';
+        });
+        return $response;
     }
 
     public function sendSms(Request $request) {
