@@ -319,11 +319,11 @@ var site = {
     payMemberFee: function() {
         this._payConfig = config;
         wx.chooseWXPay({
-            timeStamp: this._payConfig.timestamp,
+            timestamp: this._payConfig.timestamp,
             nonceStr: this._payConfig.nonceStr,
             package: this._payConfig.package,
             signType: this._payConfig.signType,
-            paySign: this._payConfig.paySign, // 支付签名
+            paySign: this._payConfig.paySign.toUpperCase(), // 支付签名
             success: function (res) {
                 // 支付成功后的回调函数
                 alert(res);
