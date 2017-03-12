@@ -1,5 +1,7 @@
 var site = {
 
+    _payConfig: {},
+
     init: function() {
         var path = url('path');
         console.log(path);
@@ -315,13 +317,12 @@ var site = {
     },
 
     payMemberFee: function() {
-        alert(config);
         wx.chooseWXPay({
-            timestamp: config.timestamp,
-            nonceStr: config.nonceStr,
-            package: config.package,
-            signType: config.signType,
-            paySign: config.paySign, // 支付签名
+            timestamp: this._payConfig.timestamp,
+            nonceStr: this._payConfig.nonceStr,
+            package: this._payConfig.package,
+            signType: this._payConfig.signType,
+            paySign: this._payConfig.paySign, // 支付签名
             success: function (res) {
                 // 支付成功后的回调函数
                 alert(res);
@@ -331,6 +332,10 @@ var site = {
             alert(res.err_msg);
             return false;
         });
+    },
+
+    setRegisterPayConfig: function(config) {
+        this._payConfig = config;
     }
 
 };

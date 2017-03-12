@@ -89,6 +89,7 @@
 
 @section('scripts')
 <script type="text/javascript">
+    site.setRegisterPayConfig(config);
 //    var arrXB = [
 //        {
 //            text:'女',
