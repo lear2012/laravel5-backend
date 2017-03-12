@@ -97,11 +97,10 @@ class WechatController extends Controller {
     }
 
     public function notify(Request $request) {
-        dd('ddd');
         $payment = $this->wechat->payment;
         Log::write('wechat', 'Get notified with params:'.http_build_query($request->all()));
         $response = $payment->handleNotify(function($notify, $successful){
-            Log::write('wechat', 'Get notified with params:'.http_build_query(get_object_vars($notify)));
+            //Log::write('wechat', 'Get notified with params:'.http_build_query(get_object_vars($notify)));
             $order = Order::where('oid', '=', $notify->out_trade_no);
             if(!$order) {
                 return '<xml>
