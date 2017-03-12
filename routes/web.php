@@ -15,6 +15,7 @@
  * Namespaces indicate folder structure
  */
 Route::any('/wechat', 'WechatController@serve');
+Route::post('/wechat/notify', ['as' => 'wechat.notify', 'uses' => 'WechatController@notify'])->middleware(['web']);
 Route::group(['namespace' => 'Frontend', 'middleware' => ['web', 'wechat.oauth:snsapi_userinfo']], function ()
 {
     Route::group(['prefix' => 'wechat'], function ()
@@ -29,7 +30,6 @@ Route::group(['namespace' => 'Frontend', 'middleware' => ['web', 'wechat.oauth:s
 
         Route::get('checkImgCode', ['as' => 'wechat.check_imgcode', 'uses' => 'WechatController@checkImgCode']);
         Route::get('sendSms', ['as' => 'wechat.send_sms', 'uses' => 'WechatController@sendSms']);
-        Route::any('notify', ['as' => 'wechat.notify', 'uses' => 'WechatController@notify']);
 
         Route::get('profile/{id}', ['as' => 'wechat.profile', 'uses' => 'WechatController@profile']);
         Route::get('logout', 'Auth\LoginController@logout');
@@ -37,6 +37,7 @@ Route::group(['namespace' => 'Frontend', 'middleware' => ['web', 'wechat.oauth:s
     // business route
     Route::get('/', ['as' => 'welcome', 'uses' => 'HomeController@index']);
 });
+
 
 /**
  * Backend Routes
