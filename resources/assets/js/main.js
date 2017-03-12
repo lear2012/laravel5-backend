@@ -317,8 +317,9 @@ var site = {
     },
 
     payMemberFee: function() {
-        console.log(config);
+        this._payConfig = config;
         wx.chooseWXPay({
+            appId: this._payConfig.appId,
             timestamp: this._payConfig.timestamp,
             nonceStr: this._payConfig.nonceStr,
             package: this._payConfig.package,
@@ -334,10 +335,6 @@ var site = {
             return false;
         });
     },
-
-    setRegisterPayConfig: function(config) {
-        this._payConfig = config;
-    }
 
 };
 
