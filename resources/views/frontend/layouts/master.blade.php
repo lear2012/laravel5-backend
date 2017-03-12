@@ -21,7 +21,7 @@
     <script type="text/javascript" src="{{ elixir('js/all.js', null) }}"></script>
     @if(isset($js))
     <script type="text/javascript" charset="utf-8">
-        wx.config(<?php echo $js->config(array('chooseWXPay'), true); ?>);
+        wx.config(<?php echo $js->config(array('chooseWXPay'), false); ?>);
     </script>
     @endif
     @yield('scripts')
