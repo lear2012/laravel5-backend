@@ -15,7 +15,7 @@
  * Namespaces indicate folder structure
  */
 Route::any('/wechat', 'WechatController@serve');
-Route::group(['namespace' => 'Frontend', 'middleware' => ['web']], function ()
+Route::group(['namespace' => 'Frontend', 'middleware' => ['web', 'wechat.oauth:snsapi_userinfo']], function ()
 {
     Route::group(['prefix' => 'wechat'], function ()
     {
