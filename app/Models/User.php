@@ -192,7 +192,8 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
         ])->first();
         if($orderCheck) {
             // 如果有未支付的订单，直接返回订单
-            return $orderCheck;
+            $order['out_trade_no'] = $orderCheck->oid;
+            return $order;
         }
         // save info into db
         $dbOrder = new Order();
