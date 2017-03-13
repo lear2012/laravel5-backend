@@ -117,6 +117,8 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
     public static $registerRule = [
         'nick' => 'required|string',
         'mobile' => 'required|mobile',
+        'password' => 'required|confirmed',
+        'password_confirmation' => 'required',
         'invite_no'   => 'alpha_num',
         'mb_verify_code'   => 'required|alpha_num',
         'captcha' => 'required|captcha',
@@ -125,6 +127,8 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
     public static function register($data) {
         if(!is_array($data))
             return false;
+        $user = null;
+        $wechatUser = session('wechat.oauth_user'); // 拿到授权用户资料
         try {
             $u = []; // use info
             $p = []; // profile info
@@ -132,7 +136,12 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
             $u['username'] = $data['nick'];
             $u['status'] = 1;
             $u['mobile'] = $data['mobile'];
+            $u['password'] = \Hash::make($data['password']);
             $p['invite_no'] = isset($data['invite_no']) ? $data['invite_no'] : '';
+            $p['wechat_id'] = $wechatUser->id;
+            $p['avatar'] = $wechatUser->avatar;
+            $wechatInfo = $wechatUser->getOriginal();
+            $p['sex'] = $wechatInfo->sex;
 
             DB::transaction(function () use ($u, $p) {
                 $user = User::create($u);
@@ -147,12 +156,13 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
             Log::write('common', 'User register failed:'.$e->getMessage());
             return false;
         }
-        return true;
+        return $user;
     }
 
     public static function isRegisterd($data) {
         if(!is_array($data))
             return false;
+        $wechatUser = session('wechat.oauth_user'); // 拿到授权用户资料
         $user = User::where([
             'mobile' => $data['mobile']
         ])->first();
@@ -174,6 +184,15 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
             return false;
         $order = Utils::getStaticOrderInfo('register');
         $order['openid'] = $wechatUser->id;
+        // check if the user has already got an register order
+        $orderCheck = \App\Models\Order::where([
+            'wechat_openid' => $order['openid'],
+            'type' => 1
+        ])->first();
+        if($orderCheck) {
+            // 如果有未支付的订单，直接返回订单
+            return $orderCheck;
+        }
         // save info into db
         $dbOrder = new Order();
         $oid = genId();

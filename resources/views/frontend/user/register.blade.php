@@ -29,6 +29,18 @@
                 </li>
                 <li>
                     <label>
+                        <span class="tit-s">密码</span>
+                        <input class="Ainp" type="password" name="password" id="password" value="" />
+                    </label>
+                </li>
+                <li>
+                    <label>
+                        <span class="tit-s">重复密码</span>
+                        <input class="Ainp" type="password" name="password_confirmation" id="password_confirmation" value="" />
+                    </label>
+                </li>
+                <li>
+                    <label>
                         <span class="tit-s">验证码</span>
                         <input class="Ainp" type="" name="mb_verify_code" id="mb_verify_code" value="" />
                     </label>
@@ -88,67 +100,4 @@
 @endsection
 
 @section('scripts')
-<script type="text/javascript">
-//    $(document).ready(function(){
-//        alert(config);
-//        site.setRegisterPayConfig(config);
-//    });
-//    var arrXB = [
-//        {
-//            text:'女',
-//            code:0
-//        },
-//        {
-//            text:'男',
-//            code:1
-//        }
-//    ];
-
-    //聚焦改变颜色
-//    $(".form input").focusin(function() {
-//        $(this).prev(".tit-s").css('color','#c6401c')
-//        $(this).parent().parent().css('border-color','#c6401c')
-//    });
-//    $(".form input").focusout(function() {
-//        $(this).prev(".tit-s").css('color','#fff')
-//        $(this).parent().parent().css('border-color','rgba(255,255,255,0.5)')
-//    });
-
-    //下拉
-    //select(arrXB,'#xb');
-    function select(data,id){
-        str ='';
-        for(var i =0 ; i<data.length ; i++){
-            str+='<li code='+data[i].code+'>'+data[i].text+'</li>';
-        }
-        $('.select').html(str);
-        $('.select li').bind('click',function(){
-            $(id).val($(this).text());
-        })
-        $(id).on('click',function(event){
-            $('.select').css('display','block');
-            $('.select').animate({
-                'bottom':'0px'
-            },500);
-            event.stopPropagation();
-        });
-        $(document).on('click',function(event){
-            $('.select').animate({
-                'bottom':'-20rem'
-            },500,function(){
-                $('.select').css('display','none');
-            });
-            event.stopPropagation();
-        })
-        $('.select li').on('click',function(){
-            $('.select').animate({
-                'bottom':'-20rem'
-            },500,function(){
-                $('.select').css('display','none');
-            });
-        })
-
-    }
-
-</script>
 @endsection

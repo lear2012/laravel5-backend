@@ -3,6 +3,7 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Helpers\Utils;
 use App\Http\Controllers\Controller;
+use App\Models\UserProfile;
 use ChannelLog as Log;
 use EasyWeChat;
 use Illuminate\Http\Request;
@@ -11,6 +12,7 @@ use Validator;
 use EasyWeChat\Foundation\Application;
 use EasyWeChat\Payment\Order;
 use Laracasts\Utilities\JavaScript\JavaScriptFacade as JavaScript;
+use Auth;
 
 class WechatController extends Controller {
 
@@ -47,15 +49,28 @@ class WechatController extends Controller {
                 else if(User::isRegisterd($data)) {
                     self::setMsgCode(1003);
                 } else {
-                    if (!User::register($data))
+                    // register the user
+                    $user = User::register($data);
+                    if (is_null($user))
                         self::setMsgCode(1001);
+                    // login the user
+                    Auth::login($user);
                 }
             }
             self::sendJsonMsg();
         }
         $wechatUser = session('wechat.oauth_user'); // 拿到授权用户资料
+        // check if this user has already registered
+        $profile = UserProfile::where([
+            'wechat_id' => $wechatUser->id
+        ]);
+        if($profile) {
+            $user = User::find($profile->user_id);
+            Auth::login($user);
+            return redirect()->route('wechat.member_list');
+        }
         $config = []; // 支付配置信息
-        // 下单
+        // 下单, 若该用户已经有注册订单，则忽略
         $order = User::setRegisterOrder();
         if(!empty($order)) {
             $o = new Order($order);
@@ -63,14 +78,12 @@ class WechatController extends Controller {
             $result = $payment->prepare($o);
             if ($result->return_code == 'SUCCESS' && $result->result_code == 'SUCCESS'){
                 $config = $payment->configForJSSDKPayment($result->prepay_id);
+                Log::write('wechat', 'Get pay config with params:'.http_build_query($config));
             }
         }
-        Log::write('wechat', 'Get pay config with params:'.http_build_query($config));
-        //$js = $this->wechat->js;
         JavaScript::put([
             'config' => $config,
         ]);
-
         return view('frontend.user.register', [
             'wechatUser' => $wechatUser,
             'js' => $this->js
@@ -97,8 +110,8 @@ class WechatController extends Controller {
     }
 
     public function notify(Request $request) {
-        $str = file_get_contents('php://input');
-        Log::write('wechat', 'Get notify string:'.$str);
+//        $str = file_get_contents('php://input');
+//        Log::write('wechat', 'Get notify string:'.$str);
         $payment = $this->wechat->payment;
         $response = $payment->handleNotify(function($notify, $successful){
             //Log::write('wechat', 'Get notified with params:'.http_build_query(get_object_vars($notify)));
