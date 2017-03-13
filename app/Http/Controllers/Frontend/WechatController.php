@@ -60,17 +60,20 @@ class WechatController extends Controller {
             self::sendJsonMsg();
         }
         $wechatUser = session('wechat.oauth_user'); // 拿到授权用户资料
+        Log::write('common', 'Wechat User:'.$wechatUser->nickname.', openid:'.$wechatUser->id.' access register page');
         // check if this user has already registered
         $profile = UserProfile::where([
             'wechat_id' => $wechatUser->id
         ])->first();
         if($profile) {
+            Log::write('common', 'Wechat User:'.$wechatUser->nickname.', openid:'.$wechatUser->id.' already registered, redirect to member list');
             $user = User::find($profile->user_id)->first();
             Auth::login($user);
             return redirect()->route('wechat.member_list');
         }
         $config = []; // 支付配置信息
         // 下单, 若该用户已经有注册订单，则忽略
+        Log::write('common', 'Wechat User:'.$wechatUser->nickname.', openid:'.$wechatUser->id.' not registered, set payconfig now');
         $order = User::setRegisterOrder();
         if(!empty($order)) {
             $o = new Order($order);

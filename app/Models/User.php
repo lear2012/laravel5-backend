@@ -187,7 +187,7 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
         // check if the user has already got an register order
         $orderCheck = \App\Models\Order::where([
             'wechat_openid' => $order['openid'],
-            'type' => 1
+            'order_type' => 1
         ])->first();
         if($orderCheck) {
             // 如果有未支付的订单，直接返回订单
