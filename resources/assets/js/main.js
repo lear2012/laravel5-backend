@@ -163,8 +163,8 @@ var site = {
         var params = {};
         params.nick = $.trim($('#nick').val());
         params.mobile = $.trim($('#mobile').val());
-        params.mobile = $.trim($('#password').val());
-        params.mobile = $.trim($('#password_confirmation').val());
+        // params.password = $.trim($('#password').val());
+        // params.password_confirmation = $.trim($('#password_confirmation').val());
         params.mb_verify_code = $.trim($('#mb_verify_code').val());
         params.invite_no = $('#invite_no').val();
         params.captcha = $.trim($('#captcha').val());
@@ -228,15 +228,15 @@ var site = {
             that.errorField($('#mobile'));
             return false;
         }
-        if($.trim(params.password) == ''){
-            that.errorField($('#password'));
-            return false;
-        }
-        if($.trim(params.password_confirmation) != $.trim(params.password)){
-            that.errorField($('#password'));
-            that.errorField($('#password_confirmation'));
-            return false;
-        }
+        // if($.trim(params.password) == ''){
+        //     that.errorField($('#password'));
+        //     return false;
+        // }
+        // if($.trim(params.password_confirmation) != $.trim(params.password)){
+        //     that.errorField($('#password'));
+        //     that.errorField($('#password_confirmation'));
+        //     return false;
+        // }
 
         if(params.mb_verify_code == '') {
             that.errorField($('#mb_verify_code'));

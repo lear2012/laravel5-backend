@@ -117,8 +117,8 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
     public static $registerRule = [
         'nick' => 'required|string',
         'mobile' => 'required|mobile',
-        'password' => 'required|confirmed',
-        'password_confirmation' => 'required',
+        //'password' => 'required|confirmed',
+        //'password_confirmation' => 'required',
         'invite_no'   => 'alpha_num',
         'mb_verify_code'   => 'required|alpha_num',
         'captcha' => 'required|captcha',
@@ -136,9 +136,10 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
             $u['username'] = $data['nick'];
             $u['status'] = 1;
             $u['mobile'] = $data['mobile'];
-            $u['password'] = \Hash::make($data['password']);
+            //$u['password'] = \Hash::make($data['password']);
             $p['invite_no'] = isset($data['invite_no']) ? $data['invite_no'] : '';
             $p['wechat_id'] = $wechatUser->id;
+            $p['wechat_no'] = $wechatUser->nickname;
             $p['avatar'] = $wechatUser->avatar;
             $wechatInfo = $wechatUser->getOriginal();
             $p['sex'] = $wechatInfo->sex;
@@ -146,8 +147,8 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
             DB::transaction(function () use ($u, $p) {
                 $user = User::create($u);
                 $p['user_id'] = $user->id;
-                $faker = Faker\Factory::create();
-                $p['avatar'] = $faker->imageUrl(50,50);
+                //$faker = Faker\Factory::create();
+                //$p['avatar'] = $faker->imageUrl(50,50);
                 $profile = UserProfile::create($p);
                 $user->roles()->attach(config('custom.register_member_code'));
             });

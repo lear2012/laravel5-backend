@@ -29,18 +29,6 @@
                 </li>
                 <li>
                     <label>
-                        <span class="tit-s">密码</span>
-                        <input class="Ainp" type="password" name="password" id="password" value="" />
-                    </label>
-                </li>
-                <li>
-                    <label>
-                        <span class="tit-s">重复密码</span>
-                        <input class="Ainp" type="password" name="password_confirmation" id="password_confirmation" value="" />
-                    </label>
-                </li>
-                <li>
-                    <label>
                         <span class="tit-s">验证码</span>
                         <input class="Ainp" type="" name="mb_verify_code" id="mb_verify_code" value="" />
                     </label>
