@@ -63,9 +63,9 @@ class WechatController extends Controller {
         // check if this user has already registered
         $profile = UserProfile::where([
             'wechat_id' => $wechatUser->id
-        ]);
+        ])->first();
         if($profile) {
-            $user = User::find($profile->user_id);
+            $user = User::find($profile->user_id)->first();
             Auth::login($user);
             return redirect()->route('wechat.member_list');
         }
