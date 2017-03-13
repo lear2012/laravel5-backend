@@ -1,3 +1,4 @@
+var print = require('alert-object');
 var site = {
 
     _payConfig: {},
@@ -333,13 +334,13 @@ var site = {
                     alert('支付失败，请稍后重试！');
                     return false;
                 } else {
-                    alert(res.err_msg);
+                    print(res.err_msg);
                     return false;
                 }
             }
         });
         wx.error(function(res){
-            alert(res.err_msg);
+            print(res.err_msg);
             return false;
         });
     },
