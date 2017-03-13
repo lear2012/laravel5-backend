@@ -333,20 +333,16 @@ var site = {
                     alert('支付失败，请稍后重试！');
                     return false;
                 } else {
-                    for(var i in res.err_msg){
-                        alert.log(i);
-                        alert.log(res.err_msg[i]);
-                    }
+                    alert(JSON.stringify(res, null, 4));
                     return false;
                 }
             }
         });
         wx.error(function(res){
-            alert.log(i);
-            alert.log(res.err_msg[i]);
+            alert(JSON.stringify(res, null, 4));
             return false;
         });
-    },
+    }
 
 };
 
