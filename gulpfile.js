@@ -36,7 +36,6 @@ elixir(function(mix) {
         '../bower/noty/js/noty/packaged/jquery.noty.packaged.min.js',
         '../bower/sweetalert/dist/sweetalert.min.js',
         '../../../node_modules/jquery-countto/jquery.countTo.js',
-        '../../../node_modules/alert-object/alert-object.js', // test
         'jweixin-1.2.0.js',
         'main.js'
     ], 'public/js/all.js');
