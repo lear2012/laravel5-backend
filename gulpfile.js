@@ -1,7 +1,40 @@
 const gulp = require('gulp');
 const elixir = require('laravel-elixir');
+const imagemin = require('gulp-imagemin');
+const del = require('del');
 
+elixir.extend('min_image', function() {
 
+    new elixir.Task('clean', function() {
+        // You can use multiple globbing patterns as you would with `gulp.src`
+        return del(['public/images', 'public/img']);
+    });
+
+    new elixir.Task('min_image1', function() {
+        return gulp.src([
+            'resources/assets/images/**/*'
+        ]).pipe(imagemin({optimizationLevel: 5}))
+            .pipe(gulp.dest('public/images'));
+    });
+
+    new elixir.Task('min_image2', function() {
+        return gulp.src([
+            'resources/assets/img/**/*'
+        ]).pipe(imagemin({optimizationLevel: 5}))
+            .pipe(gulp.dest('public/img'));
+    });
+
+    new elixir.Task('min_image3', function() {
+        return gulp.src([
+            'resources/assets/css/purple@2x.png'
+        ]).pipe(imagemin({optimizationLevel: 5}))
+            .pipe(gulp.dest('public/css'));
+    });
+
+    // this.registerWatcher('date_logger', '/**/*.js');
+    //return this.queueTask(['min_image1', 'min_image2', 'min_image3']);
+
+});
 /*
  |--------------------------------------------------------------------------
  | Elixir Asset Management
@@ -18,7 +51,7 @@ const elixir = require('laravel-elixir');
  */
 elixir(function(mix) {
 
-    // for frontend
+    // for frontend css/js
     mix.styles([
         'reset.css',
         'homepage.css',
@@ -38,10 +71,11 @@ elixir(function(mix) {
         '../bower/swiper/dist/js/swiper.jquery.min.js',
         '../../../node_modules/jquery-countto/jquery.countTo.js',
         'jweixin-1.2.0.js',
+        'lodash.min.js',
         'main.js'
     ], 'public/js/all.js');
 
-    // for backedn
+    // for backend css/js
     mix.styles([
         '../bower/AdminLTE/bootstrap/css/bootstrap.min.css',
         '../bower/AdminLTE/dist/css/AdminLTE.min.css',
@@ -70,11 +104,23 @@ elixir(function(mix) {
         'my.js'
     ], 'public/js/all_bk.js');
 
-    // mix.copy('resources/assets/js/main.js', 'public/js')
-    //     .copy('resources/assets/js/my.js', 'public/js')
-    //     .version(['css/all.css', 'js/all.js', 'css/all_bk.css', 'js/all_bk.js', 'js/main.js', 'js/my.js'], 'public');
+    // images
+    //mix.min_image();  // for production
+
+    // for debug js, comment it out when production
+    mix.copy('public/css/all.css', 'public/css/all_debug.css');
+    mix.copy('public/js/all.js', 'public/js/all_debug.js');
+    mix.copy('public/css/all_bk.css', 'public/css/all_bk_debug.css');
+    mix.copy('public/js/all_bk.js', 'public/js/all_bk_debug.js');
+
+    // versioning
     mix.version(['css/all.css', 'js/all.js', 'css/all_bk.css', 'js/all_bk.js'], 'public');
+
+    // watch
     mix.browserSync({
-        proxy: 'keye.local.com'
+        proxy: 'localhost:8000',
+        files: [
+            'resources/assets/**/*'
+        ]
     });
 });

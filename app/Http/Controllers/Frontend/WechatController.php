@@ -30,9 +30,16 @@ class WechatController extends Controller {
 
     function memberList() {
         $user = User::isWechatRegisterUser();
+        $user = $user ? $user : Auth::user();
+        $expDrivers = User::getExpdrivers();
+        $paidMembers = User::getPaidMembers();
+        JavaScript::put([
+            'expDrivers' => $expDrivers,
+            'paidMembers' => $paidMembers
+        ]);
         return view('frontend.member_list', [
-            'expDrivers' => User::getExpdrivers(),
-            'paidMembers' => User::getPaidMembers(),
+            'expDrivers' => $expDrivers,
+            'paidMembers' => $paidMembers,
             'loginUser' => $user
         ]);
     }

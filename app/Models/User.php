@@ -105,13 +105,13 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
     }
 
     public static function getExpdrivers() {
-        return Role::find(config('custom.exp_driver_code'))->users->with('profile')->reject(function ($item, $key) {
-            return $item->status != 1;
+        return Role::find(config('custom.exp_driver_code'))->users->reject(function ($item, $key) {
+            return $item->getOriginal('status') != 1;
         });
     }
     public static function getPaidMembers() {
-        return Role::find(config('custom.paid_member_code'))->users->with('profile')->reject(function ($item, $key) {
-            return $item->status != 1;
+        return Role::find(config('custom.paid_member_code'))->users->reject(function ($item, $key) {
+            return $item->getOriginal('status') != 1;
         });
     }
 

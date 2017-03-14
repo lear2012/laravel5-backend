@@ -11,19 +11,28 @@
             document.write('<meta name="viewport" content="width=device-width,initial-scale=' + iScale + ',minimum-scale=' + iScale + ',maximum-scale=' + iScale + '" />');
             document.getElementsByTagName("html")[0].style.fontSize = document.documentElement.clientWidth / 15 + "px";
         </script>
-        <link rel="stylesheet" href="{{ elixir('css/all.css', null) }}" />
+        @if(env('APP_ENV') == 'prod')
+            <link rel="stylesheet" href="{{ elixir('css/all.css', null) }}" />
+        @else
+            <link rel="stylesheet" href="{{ asset('css/all_debug.css') }}" />
+        @endif
         @yield('styles')
     </head>
     <body>
     <div id="message"></div>
     @yield('content')
     @include ('frontend.footer')
-    <script type="text/javascript" src="{{ elixir('js/all.js', null) }}"></script>
+    @if(env('APP_ENV') == 'prod')
+        <script type="text/javascript" src="{{ elixir('js/all.js', null) }}"></script>
+    @else
+        <script type="text/javascript" src="{{ asset('js/all_debug.js') }}"></script>
+    @endif
     @if(isset($js))
     <script type="text/javascript" charset="utf-8">
         wx.config(<?php echo $js->config(array('chooseWXPay'), false); ?>);
     </script>
     @endif
     @yield('scripts')
+
     </body>
 </html>

@@ -4,13 +4,15 @@ var site = {
 
     init: function() {
         var path = url('path');
-        console.log(path);
         switch(path){
             case '/wechat/register':
                 this.initRegister();
                 break;
             case '/wechat/login':
                 this.initLogin();
+                break;
+            case '/wechat/member_list':
+                this.initMemberList();
                 break;
             default:
         }
@@ -66,6 +68,59 @@ var site = {
 
     initLogin: function() {
 
+    },
+
+    initMemberList: function() {
+        var mySwiper = new Swiper(".swiper-container", {
+            slidesPerView: 3,
+            centeredSlides: !0,
+//			initialSlide :1,
+            autoplayDisableOnInteraction : false,
+            coverflow: {
+                rotate: 30,
+                stretch: 10,
+                depth: 60,
+                modifier: 2,
+                slideShadows: true
+            },
+            loop: true,
+
+            watchSlidesProgress: !0,
+            pagination: ".swiper-pagination",
+            paginationClickable: !0,
+            prevButton:'.swiper-button-prev',
+            nextButton:'.swiper-button-next',
+            onProgress: function(swiper){
+                for (var i = 0; i < swiper.slides.length; i++){
+                    var slide = swiper.slides[i];
+                    var progress = slide.progress;
+                    scale = 1 - Math.min(Math.abs(progress * 0.2), 1);
+                    es = slide.style;
+                    es.opacity = 1 - Math.min(Math.abs(progress/2),1);
+                    es.webkitTransform = es.MsTransform = es.msTransform = es.MozTransform = es.OTransform = es.transform = 'translate3d(0px,0,'+(-Math.abs(progress*150))+'px)';
+                }
+            },
+
+            onSetTransition: function(swiper, speed) {
+                for (var i = 0; i < swiper.slides.length; i++) {
+                    es = swiper.slides[i].style;
+                    es.webkitTransitionDuration = es.MsTransitionDuration = es.msTransitionDuration = es.MozTransitionDuration = es.OTransitionDuration = es.transitionDuration = speed + 'ms';
+                }
+            },
+
+            onTouchEnd: function(swiper, event) {
+                var uid = _.replace(event.target.id, /[a-zA-Z]+/g, '');
+                var user = _.find(expDrivers, function(item){
+                    return item.uid == uid;
+                });
+                console.log('ddd');
+                console.log(user);
+            },
+
+            onClick: function(swiper, event) {
+
+            }
+        });
     },
 
     initTimer: function() {
