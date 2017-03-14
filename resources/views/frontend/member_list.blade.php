@@ -8,14 +8,14 @@
     <div class="swiper-container">
         <i class="swiper-button-next"></i>
         <div class="swiper-wrapper">
-            @foreach($expDrivers as $ed)
-            <div class="swiper-slide"><img src="{{ $ed->avatar }}" class="main-img"></div>
+            @foreach($expDrivers as $user)
+            <div class="swiper-slide"><img src="{{ ($user && $user->profile) ? $user->profile->avatar : '' }}" class="main-img"></div>
             @endforeach
-            <div class="swiper-slide"><img src="img/avatar2.png" class="main-img"></div>
-            <div class="swiper-slide"><img src="img/avatar3.png" class="main-img"></div>
-            <div class="swiper-slide"><img src="img/avatar4.png" class="main-img"></div>
-            <div class="swiper-slide"><img src="img/avatar5.png" class="main-img"></div>
-            <div class="swiper-slide"><img src="img/avatar3.png" class="main-img"></div>
+            <div class="swiper-slide"><img src="/avatars/avatar2.png" class="main-img"></div>
+            <div class="swiper-slide"><img src="/avatars/avatar3.png" class="main-img"></div>
+            <div class="swiper-slide"><img src="/avatars/avatar4.png" class="main-img"></div>
+            <div class="swiper-slide"><img src="/avatars/avatar5.png" class="main-img"></div>
+            <div class="swiper-slide"><img src="/avatars/avatar3.png" class="main-img"></div>
         </div>
         <i class="swiper-button-prev"></i>
     </div>
@@ -25,10 +25,10 @@
         </p>
         <div class="Age-job">
             <span class="job">121232</span>
-            <span class="age">13213123</span>
+            <span class="age">{{ ($user && $user->profile) ? $user->profile->keye_age : '' }}</span>
         </div>
         <p class="autograph">
-
+            {{ ($user && $user->profile) ? $user->profile->quotation : '' }}
         </p>
     </div>
 </header>
@@ -36,36 +36,13 @@
 <section>
     <h2>可野人</h2>
     <ul class="user-list">
-        <li>
-            <img src="img/f746272283fbfc990e6c24f75fe3d917bf36f6cd30f55-4Pvaxw_fw658.jpg" />
-            <p>Mattfuck</p>
-            <span>1可野龄</span>
-        </li>
-        <li>
-            <img src="img/f746272283fbfc990e6c24f75fe3d917bf36f6cd30f55-4Pvaxw_fw658.jpg" />
-            <p>Mattfuck</p>
-            <span>1可野龄</span>
-        </li>
-        <li>
-            <img src="img/f746272283fbfc990e6c24f75fe3d917bf36f6cd30f55-4Pvaxw_fw658.jpg" />
-            <p>Mattfuck</p>
-            <span>1可野龄</span>
-        </li>
-        <li>
-            <img src="img/f746272283fbfc990e6c24f75fe3d917bf36f6cd30f55-4Pvaxw_fw658.jpg" />
-            <p>Mattfuck</p>
-            <span>1可野龄</span>
-        </li>
-        <li>
-            <img src="img/f746272283fbfc990e6c24f75fe3d917bf36f6cd30f55-4Pvaxw_fw658.jpg" />
-            <p>Mattfuck</p>
-            <span>1可野龄</span>
-        </li>
-        <li>
-            <img src="img/f746272283fbfc990e6c24f75fe3d917bf36f6cd30f55-4Pvaxw_fw658.jpg" />
-            <p>Mattfuck</p>
-            <span>1可野龄</span>
-        </li>
+        @foreach($paidMembers as $user)
+            <li>
+                <img src="{{ ($user && $user->profile) ? $user->profile->avatar : '' }}" />
+                <p>{{ ($user && $user->profile) ? $user->profile->wechat_no : '' }}</p>
+                <span>{{ ($user && $user->profile) ? $user->profile->keye_age : '' }}</span>
+            </li>
+        @endforeach
     </ul>
 </section>
 
@@ -74,7 +51,6 @@
 </footer>
 @endsection
 @section('scripts')
-    <script src="{{ asset('js/swiper.min.js') }}" type="text/javascript" charset="utf-8"></script>
     <script type="text/javascript">
         var arr = [
             {

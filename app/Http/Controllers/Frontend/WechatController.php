@@ -30,11 +30,10 @@ class WechatController extends Controller {
 
     function memberList() {
         $user = User::isWechatRegisterUser();
-        dd($user);
         return view('frontend.member_list', [
             'expDrivers' => User::getExpdrivers(),
             'paidMembers' => User::getPaidMembers(),
-            'user' => $user
+            'loginUser' => $user
         ]);
     }
 

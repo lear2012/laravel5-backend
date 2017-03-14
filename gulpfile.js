@@ -35,6 +35,7 @@ elixir(function(mix) {
         '../bower/js-offcanvas/dist/_js/js-offcanvas.min.js',
         '../bower/noty/js/noty/packaged/jquery.noty.packaged.min.js',
         '../bower/sweetalert/dist/sweetalert.min.js',
+        '../bower/swiper/dist/js/swiper.jquery.min.js',
         '../../../node_modules/jquery-countto/jquery.countTo.js',
         'jweixin-1.2.0.js',
         'main.js'
