@@ -65,6 +65,7 @@ elixir(function(mix) {
         '../bower/bootstrap-fileinput/js/fileinput.min.js',
         '../bower/bootstrap-fileinput/js/locales/zh.js',
         'jquery.amaran.min.js',
+        'url.min.js',
         'my.js'
     ], 'public/js/all_bk.js');
 
