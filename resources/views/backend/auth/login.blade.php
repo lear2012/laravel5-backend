@@ -14,21 +14,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 	<!-- Tell the browser to be responsive to screen width -->
 	<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
 	<!-- Bootstrap 3.3.6 -->
-	<link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
-	<!-- Font Awesome -->
-	<link rel="stylesheet" href="{{ asset('css/font-awesome.min.css') }}">
-	<!-- Ionicons -->
-	<link rel="stylesheet" href="{{ asset('css/ionicons.min.css') }}">
-
-	<!-- Theme style -->
-	<link rel="stylesheet" href="{{ asset('css/AdminLTE.min.css') }}">
-	<!-- AdminLTE Skins. We have chosen the skin-blue for this starter
-          page. However, you can choose any other skin. Make sure you
-          apply the skin class to the body tag so the changes take effect.
-    -->
-
-    <!-- iCheck -->
-	<link rel="stylesheet" href="{{ asset('plugins/iCheck/square/blue.css') }}">
+	<link rel="stylesheet" href="{{ elixir('css/all_bk.css', null) }}" />
 
 	<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -69,7 +55,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 <input type="text" name="captcha" class="form-control" style="width: 100px;">
                 &nbsp;&nbsp;&nbsp;
                 <img src="{!! captcha_src() !!}" class="captcha" title="看不清？点击换另一张" alt="验证码"
-                     style="margin-top: -57px;margin-left: 100px;height: 32px; cursor:pointer;" onclick="refreshCaptcha()"/>
+                     style="margin-top: -57px;margin-left: 100px;height: 32px; cursor:pointer;"/>
             </div>
 			<div class="row">
 				<div class="col-xs-8">
@@ -93,17 +79,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <!-- /.login-box -->
 
 <!-- jQuery 2.2.3 -->
-<script src="{{ asset('js/jquery-2.2.3.min.js') }}"></script>
-<!-- Bootstrap 3.3.6 -->
-<script src="{{ asset('js/bootstrap.min.js') }}"></script>
-<!-- iCheck -->
-<script src="{{ asset('plugins/iCheck/icheck.min.js') }}"></script>
+<script src="{{ elixir('js/all_bk.js', null) }}"></script>
+@yield('scripts')
 <script>
-
     $(function () {
         $('input').iCheck({
-            checkboxClass: 'icheckbox_square-blue',
-            radioClass: 'iradio_square-blue',
+            checkboxClass: 'icheckbox_square-purple',
+            radioClass: 'iradio_square-purple',
             increaseArea: '20%' // optional
         });
     });

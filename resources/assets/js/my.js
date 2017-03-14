@@ -9,10 +9,33 @@ var site = {
     _roles: [], // used to store roles with its perms
 
 
-    init: function() {
+    normal_init: function() {
         this.ops_alert();
         this.init_select();
         this.init_checkbox();
+    },
+
+    init: function() {
+        var path = url('path');
+        switch(path){
+            case '/admin/login':
+                this.initLogin();
+                break;
+            default:
+                this.normal_init();
+        }
+    },
+
+    initLogin: function() {
+        var that = this;
+        this.init_checkbox();
+        $('.captcha').on('click', function(){
+            that.refreshCaptcha();
+        });
+    },
+
+    refreshCaptcha: function() {
+        $('.captcha').attr('src', '/captcha/default' + '?t=' + Math.random());
     },
 
     init_checkbox: function() {
