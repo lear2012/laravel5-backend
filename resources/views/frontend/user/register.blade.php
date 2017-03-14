@@ -62,29 +62,6 @@
         <li></li>
     </ul>
 
-    <div class="aleat" id="reg_success">
-        <div class="aleat-submit">
-            <img src="/img/success_icon@2X.png" />
-            <p>入会成功</p>
-            <p>付费可正式成为可野人</p>
-            <button class="close">再逛逛</button>
-            <button>我付费,我光荣！</button>
-        </div>
-    </div>
-    <div class="aleat" id="reg_fail">
-        <i class="close closeX">关闭</i>
-        <div id="modal-content">
-            <div class="aleat-submit">
-                <img src="/img/success_icon@2X.png" />
-                <p>注册失败</p>
-                <p id="err_msg"></p>
-            </div>
-        </div>
-    </div>
-
-    <div class="aleat aleat-Agreement">
-        <p>会员规则</p>
-    </div>
 @endsection
 
 @section('scripts')

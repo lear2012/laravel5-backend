@@ -16,6 +16,7 @@ use DB;
 use ChannelLog as Log;
 use Faker;
 use App\Helpers\Utils;
+use Auth;
 
 /**
  * App\Models\User
@@ -214,5 +215,22 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
             return [];
         }
         return $order;
+    }
+
+    public static function isWechatRegisterUser() {
+        $wechatUser = session('wechat.oauth_user'); // 拿到授权用户资料
+        if(!isset($wechatUser) || empty($wechatUser))
+            return false;
+        Log::write('common', 'Wechat User:'.$wechatUser->nickname.', openid:'.$wechatUser->id.' access register page');
+        $profile = UserProfile::where([
+            'wechat_id' => $wechatUser->id
+        ])->first();
+        if($profile) {
+            Log::write('common', 'Wechat User:'.$wechatUser->nickname.', openid:'.$wechatUser->id.' already registered, redirect to member list');
+            $user = User::find($profile->user_id)->with('profile')->first();
+            Auth::login($user);
+            return $user;
+        }
+        return false;
     }
 }

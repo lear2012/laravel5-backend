@@ -25,7 +25,5 @@
     </script>
     @endif
     @yield('scripts')
-    {{--<script src="{{ elixir('js/main.js', null) }}"></script>--}}
-
     </body>
 </html>

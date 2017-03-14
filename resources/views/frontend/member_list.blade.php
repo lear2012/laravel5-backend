@@ -8,7 +8,9 @@
     <div class="swiper-container">
         <i class="swiper-button-next"></i>
         <div class="swiper-wrapper">
-            <div class="swiper-slide"><img src="img/avatar.png" class="main-img"></div>
+            @foreach($expDrivers as $ed)
+            <div class="swiper-slide"><img src="{{ $ed->avatar }}" class="main-img"></div>
+            @endforeach
             <div class="swiper-slide"><img src="img/avatar2.png" class="main-img"></div>
             <div class="swiper-slide"><img src="img/avatar3.png" class="main-img"></div>
             <div class="swiper-slide"><img src="img/avatar4.png" class="main-img"></div>
