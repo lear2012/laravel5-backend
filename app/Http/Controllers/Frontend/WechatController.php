@@ -74,6 +74,9 @@ class WechatController extends Controller {
         }
         $config = []; // 支付配置信息
         $wechatUser = session('wechat.oauth_user'); // 拿到授权用户资料
+        if(!$wechatUser) {
+            abort(404);
+        }
         // 下单, 若该用户已经有注册订单，则忽略
         Log::write('common', 'Wechat User:'.$wechatUser->nickname.', openid:'.$wechatUser->id.' not registered, set payconfig now');
         $order = User::setRegisterOrder();
@@ -108,7 +111,13 @@ class WechatController extends Controller {
     }
 
     public function profile($id) {
-        $user = User::findOrFail($id)->with('profile');
+        $user = User::where([
+            'uid' => $id
+        ])->with('profile')->first();
+        dd($user);
+        if(!$user) {
+            abort(404);
+        }
         return view('frontend.user.profile', [
             'user' => $user
         ]);

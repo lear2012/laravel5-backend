@@ -90,6 +90,7 @@ var site = {
             paginationClickable: !0,
             prevButton:'.swiper-button-prev',
             nextButton:'.swiper-button-next',
+            slideToClickedSlide: true,
             onProgress: function(swiper){
                 for (var i = 0; i < swiper.slides.length; i++){
                     var slide = swiper.slides[i];
