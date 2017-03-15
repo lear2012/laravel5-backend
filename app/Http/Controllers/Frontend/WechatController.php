@@ -3,7 +3,6 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Helpers\Utils;
 use App\Http\Controllers\Controller;
-use App\Models\UserProfile;
 use ChannelLog as Log;
 use EasyWeChat;
 use Illuminate\Http\Request;
@@ -13,6 +12,7 @@ use EasyWeChat\Foundation\Application;
 use EasyWeChat\Payment\Order;
 use Laracasts\Utilities\JavaScript\JavaScriptFacade as JavaScript;
 use Auth;
+use GuzzleHttp;
 
 class WechatController extends Controller {
 
@@ -113,8 +113,7 @@ class WechatController extends Controller {
     public function profile($id) {
         $user = User::where([
             'uid' => $id
-        ])->with('profile')->first();
-        dd($user);
+        ])->first();
         if(!$user) {
             abort(404);
         }
@@ -167,6 +166,10 @@ class WechatController extends Controller {
 
     public function memberPay(Request $request) {
         Log::write('wechat', 'Get member pay with params:'.http_build_query($request->all()));
+    }
+
+    public function vehicleInfoCrawler() {
+
     }
 }
 

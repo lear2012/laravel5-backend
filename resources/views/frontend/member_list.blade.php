@@ -9,22 +9,18 @@
         <i class="swiper-button-next"></i>
         <div class="swiper-wrapper">
             @foreach($expDrivers as $user)
-                <div class="swiper-slide"><a href="{{ route('wechat.profile', ['id' => $user->uid]) }}"><img src="{{ ($user && $user->userProfile) ? $user->userProfile->avatar : config('custom.default_avatar') }}" class="main-img" id="user{{$user->uid}}"></a></div>
+                <div class="swiper-slide"><a href="{{ route('wechat.profile', ['id' => $user->uid]) }}"><img src="{{ ($user && $user->profile) ? $user->profile->avatar : config('custom.default_avatar') }}" class="main-img" id="user{{$user->uid}}"></a></div>
             @endforeach
         </div>
         <i class="swiper-button-prev"></i>
     </div>
     <div class="info" id="info_board">
-        <p class="name">
-
-        </p>
+        <p class="name"></p>
         <div class="Age-job">
-            <span class="job">121232</span>
+            <span class="vehicle"></span>
             <span class="age">12</span>
         </div>
-        <p class="autograph">
-
-        </p>
+        <p class="autograph"></p>
     </div>
 </header>
 
@@ -33,9 +29,9 @@
     <ul class="user-list">
         @foreach($paidMembers as $user)
             <li>
-                <img src="{{ ($user && $user->userProfile) ? $user->userProfile->avatar : '' }}" />
-                <p>{{ ($user && $user->userProfile) ? $user->userProfile->wechat_no : '' }}</p>
-                <span>{{ ($user && $user->userProfile) ? $user->userProfile->keye_age : '' }}</span>
+                <img src="{{ ($user && $user->profile) ? $user->profile->avatar : '' }}" />
+                <p>{{ ($user && $user->profile) ? $user->profile->wechat_no : '' }}</p>
+                <span>{{ ($user && $user->profile) ? $user->profile->keye_age : '' }}</span>
             </li>
         @endforeach
     </ul>

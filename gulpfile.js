@@ -2,6 +2,7 @@ const gulp = require('gulp');
 const elixir = require('laravel-elixir');
 const imagemin = require('gulp-imagemin');
 const del = require('del');
+var BrowserSync = require('laravel-elixir-browsersync2');
 
 elixir.extend('min_image', function() {
 
@@ -57,6 +58,8 @@ elixir(function(mix) {
         'homepage.css',
         'swiper.min.css',
         'register.css',
+        'information.css',
+        'JoinKY.css',
         '../bower/js-offcanvas/dist/_css/js-offcanvas.css',
         '../bower/sweetalert/dist/sweetalert.css',
         'main.css'
@@ -94,7 +97,7 @@ elixir(function(mix) {
         '../bower/AdminLTE/bootstrap/js/bootstrap.min.js',
         '../bower/AdminLTE/dist/js/app.min.js',
         '../bower/AdminLTE/plugins/iCheck/icheck.min.js',
-        '../bower/AdminLTE/plugins/select2/select2.min.js',
+        '../bower/AdminLTE/plugins/select2/select2.full.min.js',
         '../bower/AdminLTE/plugins/select2/i18n/zh-CN.js',
         '../bower/bootstrap-fileinput/js/plugins/canvas-to-blob.min.js',
         '../bower/bootstrap-fileinput/js/fileinput.min.js',
@@ -108,19 +111,26 @@ elixir(function(mix) {
     mix.min_image();  // for production
 
     // for debug js, comment it out when production
-    mix.copy('public/css/all.css', 'public/css/all_debug.css');
-    mix.copy('public/js/all.js', 'public/js/all_debug.js');
-    mix.copy('public/css/all_bk.css', 'public/css/all_bk_debug.css');
-    mix.copy('public/js/all_bk.js', 'public/js/all_bk_debug.js');
+    // mix.copy('public/css/all.css', 'public/css/all_debug.css');
+    // mix.copy('public/js/all.js', 'public/js/all_debug.js');
+    // mix.copy('public/css/all_bk.css', 'public/css/all_bk_debug.css');
+    // mix.copy('public/js/all_bk.js', 'public/js/all_bk_debug.js');
 
-    // versioning
+    // versioning // for production
     mix.version(['css/all.css', 'js/all.js', 'css/all_bk.css', 'js/all_bk.js'], 'public');
 
     // watch
-    mix.browserSync({
-        proxy: 'localhost:8000',
-        files: [
-            'resources/assets/**/*'
-        ]
-    });
+    // BrowserSync.init({
+    //     server: {
+    //         baseDir: "./public"
+    //     }
+    // });
+    //
+    // mix.BrowserSync({
+    //     proxy 			: "localhost:8000",
+    //     logPrefix		: "Laravel Eixir BrowserSync",
+    //     logConnections	: false,
+    //     reloadOnRestart : false,
+    //     notify 			: false
+    // });
 });

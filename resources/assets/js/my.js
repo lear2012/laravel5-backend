@@ -38,15 +38,21 @@ var site = {
     },
 
     init_checkbox: function() {
-        if($('.js-switch').length > 0) {
-            $(".js-switch").bootstrapSwitch('state', $('.js-switch').prop('checked'));
-        } else {
-            $('input[type=checkbox]').iCheck({
-                checkboxClass: 'icheckbox_square-purple',
-                radioClass: 'iradio_square-purple',
-                increaseArea: '20%' // optional
-            });
-        }
+        $('input[type=checkbox]').iCheck({
+            checkboxClass: 'icheckbox_square-purple',
+            radioClass: 'iradio_square-purple',
+            increaseArea: '20%' // optional
+        });
+        $('input[type=checkbox]').on('ifChanged', function(event){
+            var val = $(this).val() == 1 ? 0 : 1;
+            $(this).val(val);
+        });
+    },
+
+    init_fileinput: function() {
+        if ($('.img').length == 0)
+            return;
+        $(".img").fileinput({'showUpload':false,language:'zh'});
     },
 
     init_select: function() {
@@ -62,12 +68,6 @@ var site = {
         $('#role_selection').on('change', function(){
             $('#role_ids').val($(this).val());
         });
-    },
-
-    init_fileinput: function() {
-        if ($('.img').length == 0)
-            return;
-        $(".img").fileinput({'showUpload':false,language:'zh'});
     },
 
     init_normal_select: function() {

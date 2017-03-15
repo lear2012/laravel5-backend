@@ -59,8 +59,9 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
      *
      * @var array
      */
-    protected $fillable = ['uid', 'username', 'mobile', 'email', 'password', 'status'];
+    protected $fillable = ['uid', 'username', 'mobile', 'email', 'password', 'is_front', 'status'];
 
+    protected $appends = ['vehicle'];
     /**
      * The attributes excluded from the model's JSON form.
      *
@@ -68,9 +69,23 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
      */
     protected $hidden = ['password', 'remember_token'];
 
+    public static $userColors = [
+        1 => 'red',
+        4 => 'light-blue',
+        5 => 'green',
+        6 => 'yellow'
+    ];
+
     public function getStatusAttribute($value)
     {
         return $value == 1 ? '正常' : '已冻结';
+    }
+
+    public function getVehicleAttribute()
+    {
+        if(!is_null($this->profile))
+            return $this->profile->brand.'-'.$this->profile->series.'-'.$this->profile->year.'款';
+        return '';
     }
 
     /**
@@ -106,7 +121,7 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
 
     public static function getExpdrivers() {
         return Role::find(config('custom.exp_driver_code'))->users->reject(function ($item, $key) {
-            return $item->getOriginal('status') != 1;
+            return $item->getOriginal('status') != 1 || $item->is_front == 0;
         });
     }
     public static function getPaidMembers() {
@@ -233,4 +248,6 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
         }
         return false;
     }
+
+
 }

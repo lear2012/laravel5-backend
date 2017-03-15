@@ -31,7 +31,16 @@
         </select>
     </div>
 </div><!--form control-->
-
+<div class="form-group">
+    <label class="col-lg-2 control-label">是否推至首页</label>
+    <div class="col-lg-3">
+        @if(isset($user->id))
+            <input type="checkbox" value="{{$user->is_front}}" id="is_front" name="is_front" {{$user->is_front == 1 ? 'checked' : ''}}/>
+        @else
+            <input type="checkbox" value="1" name="is_front" checked/>
+        @endif
+    </div>
+</div>
 <div class="form-group">
     <label class="col-lg-2 control-label">是否启用</label>
     <div class="col-lg-3">

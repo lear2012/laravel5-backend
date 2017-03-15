@@ -14,7 +14,7 @@
         @if(env('APP_ENV') == 'prod')
             <link rel="stylesheet" href="{{ elixir('css/all.css', null) }}" />
         @else
-            <link rel="stylesheet" href="{{ asset('css/all_debug.css') }}" />
+            <link rel="stylesheet" href="{{ asset('css/all.css', null) }}" />
         @endif
         @yield('styles')
     </head>
@@ -25,7 +25,7 @@
     @if(env('APP_ENV') == 'prod')
         <script type="text/javascript" src="{{ elixir('js/all.js', null) }}"></script>
     @else
-        <script type="text/javascript" src="{{ asset('js/all_debug.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('js/all.js', null) }}"></script>
     @endif
     @if(isset($js))
     <script type="text/javascript" charset="utf-8">

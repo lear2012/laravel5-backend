@@ -83,7 +83,7 @@
                                 <td>
                                     @if ($user->roles()->count() > 0)
                                         @foreach ($user->roles as $role)
-                                            <span class="badge bg-yellow">{!! $role->display_name !!}</span>
+                                            <span class="badge bg-{{ App\Models\User::$userColors[$role->id] }}">{!! $role->display_name !!}</span>
                                         @endforeach
                                     @else
                                         --

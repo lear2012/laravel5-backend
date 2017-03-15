@@ -2,6 +2,8 @@ var site = {
 
     _payConfig: {},
 
+    _centerSlideIndex: 0,
+
     init: function() {
         var path = url('path');
         switch(path){
@@ -71,10 +73,15 @@ var site = {
     },
 
     initMemberList: function() {
+        //
+        console.log(expDrivers);
+        var that = this;
+        var expSize = _.keys(expDrivers).length;
+        this._centerSlideIndex = Math.floor(expSize/2);
         var mySwiper = new Swiper(".swiper-container", {
             slidesPerView: 3,
-            centeredSlides: !0,
-//			initialSlide :1,
+            centeredSlides: true,
+			initialSlide :that._centerSlideIndex,
             autoplayDisableOnInteraction : false,
             coverflow: {
                 rotate: 30,
@@ -84,7 +91,13 @@ var site = {
                 slideShadows: true
             },
             loop: true,
-
+            onInit: function(swiper){
+                //Swiper初始化了
+                //alert(swiper.activeIndex);//提示Swiper的当前索引
+                var theDrivers = _.values(expDrivers);
+                var theCenterDriver = theDrivers[that._centerSlideIndex];
+                that.setExpDriverInfo(theCenterDriver);
+            },
             watchSlidesProgress: !0,
             pagination: ".swiper-pagination",
             paginationClickable: !0,
@@ -114,14 +127,19 @@ var site = {
                 var user = _.find(expDrivers, function(item){
                     return item.uid == uid;
                 });
-                console.log('ddd');
-                console.log(user);
-            },
-
-            onClick: function(swiper, event) {
-
+                if(user == undefined)
+                    return false;
+                that.setExpDriverInfo(user);
             }
+
         });
+    },
+
+    setExpDriverInfo: function(user) {
+        $('.name', $('#info_board')).text(user.username);
+        $('.vehicle', $('#info_board')).text(user.vehicle);
+        $('.age', $('#info_board')).text(user.profile.keye_age);
+        $('.autograph', $('#info_board')).text(user.profile.quotation);
     },
 
     initTimer: function() {
@@ -133,10 +151,10 @@ var site = {
                 return value.toFixed(options.decimals)+'';
             },
             onUpdate: function (value) {
-                console.debug('update');
+                //console.debug('update');
             },
             onComplete: function (value) {
-                console.debug('complete');
+                //console.debug('complete');
                 $('#send_sms_btn').show();
                 $('#timer').hide();
             }

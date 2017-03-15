@@ -52,8 +52,11 @@ class UserController extends BaseController
      * Display a listing of the resource.
      * @return \Illuminate\View\View
      */
-    public function index()
+    public function index(Request $request)
     {
+        session([
+            'backurl' => $request->fullUrl()
+        ]);
         $users = $this->users->orderBy('id', 'desc')->paginate(10);
 
         return view('backend.user.index', ['users' => $users]);
@@ -81,9 +84,11 @@ class UserController extends BaseController
      */
     public function store(Backend\CreateUserRequest $request)
     {
-        $data = $request->only(['username', 'email', 'password', 'role_ids', 'status']);
+        $data = $request->only(['username', 'email', 'password', 'role_ids', 'is_front', 'status']);
         if(!isset($data['status']))
             $data['status'] = 0;
+        if(!isset($data['is_front']))
+            $data['is_front'] = 0;
         $data['uid'] = genId();
         try {
             DB::transaction(function () use ($data) {
@@ -141,10 +146,12 @@ class UserController extends BaseController
      */
     public function update($id, Backend\UpdateUserRequest $request)
     {
-        $data = $request->only(['username', 'email', 'password', 'role_ids', 'status']);
+        $data = $request->only(['username', 'email', 'password', 'role_ids', 'is_front', 'status']);
         $user = User::findOrFail($id);
         if(!isset($data['status']))
             $data['status'] = 0;
+        if(!isset($data['is_front']))
+            $data['is_front'] = 0;
         try {
             DB::transaction(function () use ($user, $data) {
                 $role_ids = explode(",", $data['role_ids']);
@@ -153,13 +160,15 @@ class UserController extends BaseController
                 if(trim($data['password']) != '')
                     $user->password = \Hash::make($data['password']);
                 $user->status = $data['status'];
+                $user->is_front = $data['is_front'];
                 $user->save();
                 $user->roles()->sync($role_ids);
             });
         } catch(\Exception $e) {
             return redirect()->back()->with('jsmsg', amaran_msg(trans('message.update_user_failed'), 'error'));
         }
-        return redirect()->route('admin.auth.user.index')->with('jsmsg', amaran_msg(trans('message.update_user_success'), 'success'));
+        $url = session('backurl', route('admin.auth.user.index'));
+        return redirect()->to($url)->with('jsmsg', amaran_msg(trans('message.update_user_success'), 'success'));
     }
 
     /**

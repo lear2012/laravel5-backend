@@ -9,7 +9,12 @@
 
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-    <link rel="stylesheet" href="{{ elixir('css/all_bk.css', null) }}" />
+
+    @if(env('APP_ENV') == 'prod')
+        <link rel="stylesheet" href="{{ elixir('css/all_bk.css', null) }}" />
+    @else
+        <link rel="stylesheet" href="{{ asset('css/all_bk.css') }}" />
+    @endif
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -62,8 +67,11 @@
      Both of these plugins are recommended to enhance the
      user experience. Slimscroll is required when using the
      fixed layout. -->
-
-<script src="{{ elixir('js/all_bk.js', null) }}"></script>
+@if(env('APP_ENV') == 'prod')
+    <script type="text/javascript" src="{{ elixir('js/all_bk.js', null) }}"></script>
+@else
+    <script type="text/javascript" src="{{ asset('js/all_bk.js') }}"></script>
+@endif
 @yield('scripts')
 {{--<script src="{{ elixir('js/my.js') }}"></script>--}}
 </body>
