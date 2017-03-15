@@ -84,7 +84,7 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
     public function getVehicleAttribute()
     {
         if(!is_null($this->profile))
-            return $this->profile->brand.'-'.$this->profile->series.'-'.$this->profile->year.'款';
+            return $this->profile->brand.''.$this->profile->series.' '.$this->profile->year;
         return '';
     }
 
@@ -151,7 +151,7 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
             $u['uid'] = genId();
             $u['username'] = $data['nick'];
             $u['status'] = 1;
-	    $u['is_front'] = 0;
+	        $u['is_front'] = 0;
             $u['mobile'] = $data['mobile'];
             //$u['password'] = \Hash::make($data['password']);
             $p['invite_no'] = isset($data['invite_no']) ? $data['invite_no'] : '';
@@ -167,8 +167,8 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
                 //$p['avatar'] = $faker->imageUrl(50,50);
                 $profile = UserProfile::create($p);
                 $user->roles()->attach(config('custom.register_member_code'));
-		Log::write('common', 'User register success:'.http_build_query($data));
-		return $user;
+		        Log::write('common', 'User register success:'.http_build_query($data));
+		        return $user;
             });
         } catch(\Exception $e) {
             Log::write('common', 'User register failed:'.$e->getMessage());
