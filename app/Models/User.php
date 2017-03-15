@@ -151,6 +151,7 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
             $u['uid'] = genId();
             $u['username'] = $data['nick'];
             $u['status'] = 1;
+	    $u['is_front'] = 0;
             $u['mobile'] = $data['mobile'];
             //$u['password'] = \Hash::make($data['password']);
             $p['invite_no'] = isset($data['invite_no']) ? $data['invite_no'] : '';
@@ -158,22 +159,21 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
             $p['wechat_no'] = $wechatUser->nickname;
             $p['avatar'] = $wechatUser->avatar;
             $wechatInfo = $wechatUser->getOriginal();
-            $p['sex'] = $wechatInfo->sex;
-
-            DB::transaction(function () use ($u, $p) {
+            $p['sex'] = $wechatInfo['sex'];
+            DB::transaction(function () use ($u, $p, $data) {
                 $user = User::create($u);
                 $p['user_id'] = $user->id;
                 //$faker = Faker\Factory::create();
                 //$p['avatar'] = $faker->imageUrl(50,50);
                 $profile = UserProfile::create($p);
                 $user->roles()->attach(config('custom.register_member_code'));
+		Log::write('common', 'User register success:'.http_build_query($data));
+		return $user;
             });
-            Log::write('common', 'User register success:'.http_build_query($data));
         } catch(\Exception $e) {
             Log::write('common', 'User register failed:'.$e->getMessage());
             return false;
         }
-        return $user;
     }
 
     public static function isRegisterd($data) {

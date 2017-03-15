@@ -60,7 +60,7 @@ class WechatController extends Controller {
                 } else {
                     // register the user
                     $user = User::register($data);
-                    if (is_null($user))
+		    if (!$user)
                         self::setMsgCode(1001);
                     // login the user
                     Auth::login($user);
