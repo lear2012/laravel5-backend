@@ -4,7 +4,7 @@
 @section('content')
     <section>
         <img class="portrait" src="{{ $user->profile->avatar }}" />
-        <p class="name">{{ $user->profile->nickname }}</p>
+        <p class="name">{{ $user->username }}</p>
         <div class="info">
             <div>{{ $user->sex == 1 ? '男' : '女' }}</div>
             <div>可野龄：{{ $user->profile->keye_age }}年</div>

@@ -6,13 +6,13 @@
 <header>
     <h2>老司机</h2>
     <div class="swiper-container">
-        <i class="swiper-button-next"></i>
+
         <div class="swiper-wrapper">
             @foreach($expDrivers as $user)
-                <div class="swiper-slide"><a href="{{ route('wechat.profile', ['id' => $user->uid]) }}"><img src="{{ ($user && $user->profile) ? $user->profile->avatar : config('custom.default_avatar') }}" class="main-img" id="user{{$user->uid}}"></a></div>
+                <div class="swiper-slide"><img src="{{ ($user && $user->profile) ? $user->profile->avatar : config('custom.default_avatar') }}" class="main-img" id="user{{$user->uid}}"></div>
             @endforeach
         </div>
-        <i class="swiper-button-prev"></i>
+
     </div>
     <div class="info" id="info_board">
         <p class="name"></p>

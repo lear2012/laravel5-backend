@@ -130,6 +130,27 @@ var site = {
                 if(user == undefined)
                     return false;
                 that.setExpDriverInfo(user);
+            },
+
+            onClick: function(swiper, event) {
+                var uid = _.replace(event.target.id, /[a-zA-Z]+/g, '');
+                var user = _.find(expDrivers, function(item){
+                    return item.uid == uid;
+                });
+                if(user == undefined)
+                    return false;
+                that.setExpDriverInfo(user);
+            },
+
+            onDoubleTap: function(swiper, event) {
+                var uid = _.replace(event.target.id, /[a-zA-Z]+/g, '');
+                var user = _.find(expDrivers, function(item){
+                    return item.uid == uid;
+                });
+                if(user == undefined)
+                    return false;
+                window.location.href = '/wechat/profile/'+user.uid;
+                return true;
             }
 
         });
@@ -283,8 +304,7 @@ var site = {
                         html: true,
                         title: "出问题啦！",
                         text: rs.msg,
-                        type: 'error',
-                        imageUrl: "/img/success_icon@2X.png"
+                        type: 'error'
                     });
                 }
             }

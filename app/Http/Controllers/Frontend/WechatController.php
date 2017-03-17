@@ -57,10 +57,12 @@ class WechatController extends Controller {
                     self::setMsgCode(1004);
                 else if(User::isRegisterd($data)) {
                     self::setMsgCode(1003);
+                } else if($this->checkSmsCode($data['mb_verify_code'])) {
+                    self::setMsgCode(1006);
                 } else {
                     // register the user
                     $user = User::register($data);
-		    if (!$user)
+		            if (!$user)
                         self::setMsgCode(1001);
                     // login the user
                     Auth::login($user);
@@ -108,6 +110,12 @@ class WechatController extends Controller {
             self::sendJsonMsg();
         }
 
+    }
+
+    function checkSmsCode($code) {
+        if(empty(session('_register_code')))
+            return false;
+        return session('_register_code') == $code;
     }
 
     public function profile($id) {
@@ -158,8 +166,8 @@ class WechatController extends Controller {
             }
             // generate the code
             $code = str_random(5);
-
-            Utils::sendSms($request->get('mobile'), ['code' => $code], 'SMS_53095287');
+            session('_register_code', $code);
+            Utils::sendSms($request->get('mobile'), ['code' => $code], 'SMS_54855001');
             self::sendJsonMsg();
         }
     }

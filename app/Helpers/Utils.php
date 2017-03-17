@@ -198,7 +198,7 @@ class Utils {
             'query' => [
                 'ParamString' => json_encode($params),
                 'RecNum' => $mobile,
-                'SignName' => '可野',
+                'SignName' => '可野Club',
                 'TemplateCode' => $templateCode
             ],
             'headers' => [
