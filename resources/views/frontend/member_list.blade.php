@@ -41,18 +41,18 @@
         <ul class="user-list">
             @if(Auth::user())
                 <li class="bor-color">
-                    <img src="{{ $loginUser ? $loginUser->avatar : config('custom.default_avatar') }}" />
+                    <img src="{{ $loginUser ? $loginUser->profile->avatar : config('custom.default_avatar') }}" />
                     <p>{{ $loginUser->username }}</p>
                     <span>{{ $loginUser->profile->keye_age }}可野龄</span>
                 </li>
             @else
                 <li>
-                        <div class='add-bg'>
-                            <a href="{{ route('wechat.member_register') }}">+</a>
-                        </div>
-                        <img src="{{ config('custom.default_avatar') }}" />
-                        <p>{{ $loginUser->nickname }}</p>
-                        <span></span>
+                    <div class='add-bg'>
+                        <a href="{{ route('wechat.member_register') }}">+</a>
+                    </div>
+                    <img src="{{ config('custom.default_avatar') }}" />
+                    <p>{{ $loginUser->nickname }}</p>
+                    <span></span>
                 </li>
             @endif
             @foreach($paidMembers as $user)
