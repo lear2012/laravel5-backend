@@ -104,7 +104,7 @@ elixir(function(mix) {
     ], 'public/js/all_bk.js');
 
     // images
-    // mix.min_image();  // for production
+    mix.min_image();  // for production
 
     // for debug js, comment it out when production
     // mix.copy('public/css/all.css', 'public/css/all_debug.css');

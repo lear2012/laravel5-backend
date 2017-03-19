@@ -3,8 +3,6 @@
 .env
 /storage/*.key
 
-/public/fonts/
-/public/img/
 /public/plugins
 /public/uploads
 /public/ueditor

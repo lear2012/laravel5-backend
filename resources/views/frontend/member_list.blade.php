@@ -43,7 +43,7 @@
                 <li class="bor-color">
                     <img src="{{ $loginUser ? $loginUser->profile->avatar : config('custom.default_avatar') }}" />
                     <p>{{ $loginUser->username }}</p>
-                    <span>{{ $loginUser->profile->keye_age }}可野龄</span>
+                    <span>{{ $loginUser->profile->keye_age > 0 ? $loginUser->profile->keye_age.'可野龄' : '' }}</span>
                 </li>
             @else
                 <li>
@@ -59,7 +59,7 @@
                 <li>
                     <img src="{{ ($user && $user->profile) ? $user->profile->avatar : '' }}" />
                     <p>{{ ($user && $user->profile) ? $user->profile->wechat_no : '' }}</p>
-                    <span>{{ ($user && $user->profile) ? $user->profile->keye_age : '' }}</span>
+                    <span>{{ ($user && $user->profile) ? $user->profile->keye_age.'可野龄' : '' }}</span>
                 </li>
             @endforeach
         </ul>
