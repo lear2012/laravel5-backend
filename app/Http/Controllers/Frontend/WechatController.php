@@ -14,6 +14,7 @@ use EasyWeChat\Payment\Order;
 use Laracasts\Utilities\JavaScript\JavaScriptFacade as JavaScript;
 use Auth;
 use GuzzleHttp;
+use Session;
 
 class WechatController extends Controller {
 
@@ -53,7 +54,7 @@ class WechatController extends Controller {
             if($validator->failed()) {
                 self::setMsgCode(9001);
             } else {
-                if($data['agree'] != 1)
+		if($data['agree'] != 1)
                     self::setMsgCode(1005);
                 else if(User::nickUsed($data['nick']))
                     self::setMsgCode(1004);
@@ -66,7 +67,8 @@ class WechatController extends Controller {
                     $user = User::register($data);
 		            if (!$user)
                         self::setMsgCode(1001);
-                    // login the user
+                    dd($user);
+		    // login the user
                     Auth::login($user);
                 }
             }
@@ -76,12 +78,12 @@ class WechatController extends Controller {
         if(User::isWechatRegisterUser()) {
             return redirect()->route('wechat.member_list');
         }
+       
         $config = []; // 支付配置信息
         $wechatUser = session('wechat.oauth_user'); // 拿到授权用户资料
-        if(!$wechatUser) {
+	if(!$wechatUser) {
             abort(404);
         }
-        dd($wechatUser);
         // 下单, 若该用户已经有注册订单，则忽略
         Log::write('common', 'Wechat User:'.$wechatUser->nickname.', openid:'.$wechatUser->id.' not registered, set payconfig now');
         $order = User::setRegisterOrder();
@@ -115,10 +117,10 @@ class WechatController extends Controller {
 
     }
 
-    function checkSmsCode($code) {
-        if(empty(session('_register_code')))
+    public function checkSmsCode($code) {
+	if(empty(Session::get('_register_code')))
             return false;
-        return strtoupper(session('_register_code')) == strtoupper($code);
+        return strtoupper(Session::get('_register_code')) == strtoupper($code);
     }
 
     public function profile($id) {
@@ -177,8 +179,9 @@ class WechatController extends Controller {
             }
             // generate the code
             $code = strtoupper(str_random(5));
-            session(['_register_code' => $code]);
-            Utils::sendSms($request->get('mobile'), ['code' => $code], env('ALIYUN_LEAR_SMS_TEMPLATE_CODE'));
+	    Session::put('_register_code', $code);
+	    Session::save();
+	    Utils::sendSms($request->get('mobile'), ['code' => $code], env('ALIYUN_LEAR_SMS_TEMPLATE_CODE'));
             self::sendJsonMsg();
         }
     }
