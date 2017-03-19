@@ -59,7 +59,7 @@ class WechatController extends Controller {
                     self::setMsgCode(1004);
                 else if(User::isRegisterd($data)) {
                     self::setMsgCode(1003);
-                } else if($this->checkSmsCode($data['mb_verify_code'])) {
+                } else if(!$this->checkSmsCode($data['mb_verify_code'])) {
                     self::setMsgCode(1006);
                 } else {
                     // register the user
@@ -81,6 +81,7 @@ class WechatController extends Controller {
         if(!$wechatUser) {
             abort(404);
         }
+        dd($wechatUser);
         // 下单, 若该用户已经有注册订单，则忽略
         Log::write('common', 'Wechat User:'.$wechatUser->nickname.', openid:'.$wechatUser->id.' not registered, set payconfig now');
         $order = User::setRegisterOrder();
@@ -117,7 +118,7 @@ class WechatController extends Controller {
     function checkSmsCode($code) {
         if(empty(session('_register_code')))
             return false;
-        return session('_register_code') == $code;
+        return strtoupper(session('_register_code')) == strtoupper($code);
     }
 
     public function profile($id) {
@@ -176,7 +177,7 @@ class WechatController extends Controller {
             }
             // generate the code
             $code = strtoupper(str_random(5));
-            session('_register_code', $code);
+            session(['_register_code' => $code]);
             Utils::sendSms($request->get('mobile'), ['code' => $code], env('ALIYUN_LEAR_SMS_TEMPLATE_CODE'));
             self::sendJsonMsg();
         }
