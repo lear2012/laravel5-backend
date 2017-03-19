@@ -5,6 +5,7 @@
 @section('styles')
 @endsection
 @section('content')
+<div class="register">
     <header>
         <img class="portrait" src="{{ $wechatUser->avatar }}" />
         <p class="sign">{{ $wechatUser->nickname }}</p>
@@ -61,7 +62,7 @@
     <ul class="select">
         <li></li>
     </ul>
-
+</div>
 @endsection
 
 @section('scripts')

@@ -54,12 +54,8 @@ elixir(function(mix) {
 
     // for frontend css/js
     mix.styles([
-        'reset.css',
-        'homepage.css',
+        'front.css',
         'swiper.min.css',
-        'register.css',
-        'information.css',
-        'JoinKY.css',
         '../bower/js-offcanvas/dist/_css/js-offcanvas.css',
         '../bower/sweetalert/dist/sweetalert.css',
         'main.css'

@@ -157,7 +157,8 @@ var site = {
     },
 
     setExpDriverInfo: function(user) {
-        $('.name', $('#info_board')).text(user.username);
+        $('.username', $('#info_board')).text(user.username);
+        $('.Wechat-number', $('#info_board')).text(user.nickname);
         $('.vehicle', $('#info_board')).text(user.vehicle);
         $('.age', $('#info_board')).text(user.profile.keye_age);
         $('.autograph', $('#info_board')).text(user.profile.quotation);

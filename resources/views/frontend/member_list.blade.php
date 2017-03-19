@@ -3,43 +3,68 @@
 @section('styles')
 @endsection
 @section('content')
-<header>
-    <h2>老司机</h2>
-    <div class="swiper-container">
+<div class="homepage">
+    <header>
+        <h2>老司机</h2>
+        <i class="user-icon" ></i>
+        <div class="swiper-container">
 
-        <div class="swiper-wrapper">
-            @foreach($expDrivers as $user)
-                <div class="swiper-slide"><img src="{{ ($user && $user->profile) ? $user->profile->avatar : config('custom.default_avatar') }}" class="main-img" id="user{{$user->uid}}"></div>
+            <div class="swiper-wrapper">
+                @foreach($expDrivers as $user)
+                    <div class="swiper-slide"><img src="{{ ($user && $user->profile) ? $user->profile->avatar : config('custom.default_avatar') }}" class="main-img" id="user{{$user->uid}}"></div>
+                @endforeach
+            </div>
+
+        </div>
+        <div class="info" id="info_board">
+            <p class="name">
+                <span class="username"></span>
+                <img src="/img/m.png" />
+            </p>
+            <P class='Wechat-number text-hidden'></P>
+            <div class="Age-job">
+                <span class="age"></span>
+                <span class="vehicle"></span>
+            </div>
+            <p class="autograph text-hidden">
+            </p>
+        </div>
+
+    </header>
+
+    <section>
+        <h2>可野人</h2>
+        <ul class="user-list">
+            @if(Auth::user())
+                <li class="bor-color">
+                    <img src="{{ $loginUser ? $loginUser->avatar : config('custom.default_avatar') }}" />
+                    <p>{{ $loginUser->username }}</p>
+                    <span>{{ $loginUser->profile->keye_age }}可野龄</span>
+                </li>
+            @else
+                <li>
+                    <div class='add-bg'>
+                        +
+                    </div>
+                    <img src="{{ config('custom.default_avatar') }}" />
+                    <p>{{ $loginUser->avatar }}</p>
+                    <span></span>
+                </li>
+            @endif
+            @foreach($paidMembers as $user)
+                <li>
+                    <img src="{{ ($user && $user->profile) ? $user->profile->avatar : '' }}" />
+                    <p>{{ ($user && $user->profile) ? $user->profile->wechat_no : '' }}</p>
+                    <span>{{ ($user && $user->profile) ? $user->profile->keye_age : '' }}</span>
+                </li>
             @endforeach
-        </div>
+        </ul>
+    </section>
 
-    </div>
-    <div class="info" id="info_board">
-        <p class="name"></p>
-        <div class="Age-job">
-            <span class="vehicle"></span>
-            <span class="age">12</span>
-        </div>
-        <p class="autograph"></p>
-    </div>
-</header>
+    <footer>
 
-<section>
-    <h2>可野人</h2>
-    <ul class="user-list">
-        @foreach($paidMembers as $user)
-            <li>
-                <img src="{{ ($user && $user->profile) ? $user->profile->avatar : '' }}" />
-                <p>{{ ($user && $user->profile) ? $user->profile->wechat_no : '' }}</p>
-                <span>{{ ($user && $user->profile) ? $user->profile->keye_age : '' }}</span>
-            </li>
-        @endforeach
-    </ul>
-</section>
-
-<footer>
-
-</footer>
+    </footer>
+</div>
 @endsection
 @section('scripts')
 @endsection

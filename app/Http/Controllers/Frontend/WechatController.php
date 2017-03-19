@@ -37,6 +37,7 @@ class WechatController extends Controller {
             'expDrivers' => $expDrivers,
             'paidMembers' => $paidMembers
         ]);
+        dd($user);
         return view('frontend.member_list', [
             'expDrivers' => $expDrivers,
             'paidMembers' => $paidMembers,
