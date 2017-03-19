@@ -160,7 +160,7 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
             $p['avatar'] = $wechatUser->avatar;
             $wechatInfo = $wechatUser->getOriginal();
             $p['sex'] = $wechatInfo['sex'];
-            DB::transaction(function () use ($u, $p, $data, $user) {
+            $user = DB::transaction(function () use ($u, $p, $data) {
                 $user = User::create($u);
                 $p['user_id'] = $user->id;
                 //$faker = Faker\Factory::create();
