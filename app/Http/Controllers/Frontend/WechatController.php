@@ -36,7 +36,7 @@ class WechatController extends Controller {
         $user = $user ? $user : $wechatUser;
         $expDrivers = User::getExpdrivers();
         $paidMembers = User::getPaidMembers();
-        JavaScript::put([
+	JavaScript::put([
             'expDrivers' => $expDrivers,
             'paidMembers' => $paidMembers
         ]);
@@ -67,7 +67,6 @@ class WechatController extends Controller {
                     $user = User::register($data);
 		            if (!$user)
                         self::setMsgCode(1001);
-                    dd($user);
 		    // login the user
                     Auth::login($user);
                 }

@@ -167,7 +167,8 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
                 //$p['avatar'] = $faker->imageUrl(50,50);
                 $profile = UserProfile::create($p);
                 $user->roles()->attach(config('custom.register_member_code'));
-		        Log::write('common', 'User register success:'.http_build_query($data));
+		Log::write('common', 'User register success:'.http_build_query($data));
+		return $user;
             });
         } catch(\Exception $e) {
             Log::write('common', 'User register failed:'.$e->getMessage());
@@ -242,7 +243,7 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
         ])->first();
         if($profile) {
             Log::write('common', 'Wechat User:'.$wechatUser->nickname.', openid:'.$wechatUser->id.' already registered, redirect to member list');
-            $user = User::find($profile->user_id)->with('profile')->first();
+            $user = User::find($profile->user_id);
             Auth::login($user);
             return $user;
         }
