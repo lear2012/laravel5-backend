@@ -179,9 +179,9 @@ class WechatController extends Controller {
             }
             // generate the code
             $code = strtoupper(str_random(5));
-	    Session::put('_register_code', $code);
-	    Session::save();
-	    Utils::sendSms($request->get('mobile'), ['code' => $code], env('ALIYUN_LEAR_SMS_TEMPLATE_CODE'));
+	        Session::put('_register_code', $code);
+	        Session::save();
+	        Utils::sendSms($request->get('mobile'), ['code' => $code], env('ALIYUN_LEAR_SMS_TEMPLATE_CODE'));
             self::sendJsonMsg();
         }
     }
