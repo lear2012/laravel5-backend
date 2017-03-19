@@ -48,6 +48,7 @@ var site = {
             that.initTimer();
             $('#timer').show();
             $(this).hide();
+            that.sendSms();
         });
 
         // check captcha

@@ -3,6 +3,7 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Helpers\Utils;
 use App\Http\Controllers\Controller;
+use App\Models\UserProfile;
 use ChannelLog as Log;
 use EasyWeChat;
 use Illuminate\Http\Request;
@@ -29,15 +30,15 @@ class WechatController extends Controller {
      */
 
     function memberList() {
+        $wechatUser = session('wechat.oauth_user');
         $user = User::isWechatRegisterUser();
-        $user = $user ? $user : Auth::user();
+        $user = $user ? $user : $wechatUser;
         $expDrivers = User::getExpdrivers();
         $paidMembers = User::getPaidMembers();
         JavaScript::put([
             'expDrivers' => $expDrivers,
             'paidMembers' => $paidMembers
         ]);
-        dd($user);
         return view('frontend.member_list', [
             'expDrivers' => $expDrivers,
             'paidMembers' => $paidMembers,
@@ -148,8 +149,16 @@ class WechatController extends Controller {
                 // 成功后更新订单状态
                 $order->pay_at = time();
                 $order->status = 2;
+                try {
+                    // 指定该单用户为付费用户
+                    $profile = UserProfile::where('wechat_id', $order->wechat_openid)->first();
+                    $user = User::find($profile->user_id);
+                    $user->roles()->attach(config('custom.paid_member_code'));
+                } catch(Exception $e) {
+                    Log::write('common', 'Set user to paid user failed for oid:'.$order->oid);
+                }
             } else {
-
+                Log::write('wechat', 'Get notify error!');
             }
             $order->save();
             return true;
@@ -158,7 +167,7 @@ class WechatController extends Controller {
     }
 
     public function sendSms(Request $request) {
-        Log::write('wechat', 'Get params:'.http_build_query($request->all()));
+        Log::write('sms', 'Get params:'.http_build_query($request->all()));
         if($request->isMethod('get')) {
             $rules = ['mobile' => 'required|mobile'];
             $validator = Validator::make($request->all(), $rules);
@@ -166,9 +175,9 @@ class WechatController extends Controller {
                 self::setMsgCode(1002);
             }
             // generate the code
-            $code = str_random(5);
+            $code = strtoupper(str_random(5));
             session('_register_code', $code);
-            Utils::sendSms($request->get('mobile'), ['code' => $code], 'SMS_54855001');
+            Utils::sendSms($request->get('mobile'), ['code' => $code], env('ALIYUN_LEAR_SMS_TEMPLATE_CODE'));
             self::sendJsonMsg();
         }
     }

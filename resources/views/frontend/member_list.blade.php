@@ -6,7 +6,11 @@
 <div class="homepage">
     <header>
         <h2>老司机</h2>
-        <i class="user-icon" ></i>
+        @if(Auth::user())
+            <a href="{{ route('wechat.profile', ['id' => $loginUser->uid]) }}"><i class="user-icon" ></i></a>
+        @else
+            <a href="{{ route('wechat.member_register') }}"><span class="join">加入</span></a>
+        @endif
         <div class="swiper-container">
 
             <div class="swiper-wrapper">
@@ -43,12 +47,12 @@
                 </li>
             @else
                 <li>
-                    <div class='add-bg'>
-                        +
-                    </div>
-                    <img src="{{ config('custom.default_avatar') }}" />
-                    <p>{{ $loginUser->avatar }}</p>
-                    <span></span>
+                        <div class='add-bg'>
+                            <a href="{{ route('wechat.member_register') }}">+</a>
+                        </div>
+                        <img src="{{ config('custom.default_avatar') }}" />
+                        <p>{{ $loginUser->nickname }}</p>
+                        <span></span>
                 </li>
             @endif
             @foreach($paidMembers as $user)

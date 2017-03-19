@@ -6,33 +6,40 @@
     cursor:pointer;
 }
 #Agreement {margin-left:5px;}
+.Agreement i {
+    vertical-align: -0.14rem;
+    margin-right:.4rem
+}
 .Radio {
     margin-right: 20px;
 }
-li.success {
+#register_form li.success {
     border-color:green;
 }
-li.error{
+#register_form li.error{
     border-bottom: 0.04rem solid red;
 }
 #timer {
     color:white;
     width:30%;
     font-size: 0.6rem;
-    margin-top: 30px;
+    margin-top: 36px;
     display:none;
 }
+#mobile {width:45%}
 
 .timer_text {
     color:white;
     float:right;
     font-size: 0.6rem;
-    margin-top: 30px;
+    margin-top: 36px;
 }
-.But{float:right;margin-top: 30px;}
+.But{float:right;margin-top: 36px;}
 .radio_on {}
-.radio_off {background: none;
-    margin-right:20px;}
+.radio_off {
+    background: none;
+    margin-right:20px;
+}
 #message {
     width:15rem;
     position: absolute;
@@ -48,8 +55,18 @@ li.error{
     display: none;
     top: 8rem;
 }
+#register_btn {color:#000}
 .checkbox_err{border-color:red;}
 .aleat-Agreement {
     display: none;
     top: 5%;
+}
+.join {
+    position: absolute;
+    width: 1.6rem;
+    height: 0.84rem;
+    right: 0.8rem;
+    top: 0.8rem;
+    font-size:0.6rem;
+    color:#000;
 }

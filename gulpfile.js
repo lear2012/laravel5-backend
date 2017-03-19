@@ -113,7 +113,7 @@ elixir(function(mix) {
     // mix.copy('public/js/all_bk.js', 'public/js/all_bk_debug.js');
 
     // versioning // for production
-    mix.version(['css/all.css', 'js/all.js', 'css/all_bk.css', 'js/all_bk.js'], 'public');
+    //mix.version(['css/all.css', 'js/all.js', 'css/all_bk.css', 'js/all_bk.js'], 'public');
 
     // watch
     // BrowserSync.init({

@@ -11,10 +11,10 @@
         <p class="sign">{{ $wechatUser->nickname }}</p>
     </header>
     <section style="padding-bottom: 2.4rem;">
-            <ul class="form">
+            <ul class="form" id="register_form">
                 <li>
                     <label>
-                        <span class="tit-s">姓名</span>
+                        <span class="tit-s">昵称</span>
                         <input class="Ainp" type="" name="nick" id="nick" value="" />
                     </label>
                 </li>

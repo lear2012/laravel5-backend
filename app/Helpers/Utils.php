@@ -203,9 +203,10 @@ class Utils {
             ],
             'headers' => [
                 'Accept'        => 'application/json',
-                'Authorization' => 'APPCODE '.env('ALIYUN_APPCODE')
+                'Authorization' => 'APPCODE '.env('ALIYUN_LEAR_APPCODE')
             ]
         ]);
+        Log::write('sms', '发送短信至：mobile:'.$mobile.', templateCode:'.$templateCode.', params:'.json_encode($params));
         if($res->getStatusCode() == 200) {
             $ret = \GuzzleHttp\json_decode($res->getBody());
             if($ret->success)

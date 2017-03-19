@@ -5,17 +5,31 @@
 <div class="information">
     <section>
         <img class="portrait" src="{{ $user->profile->avatar }}" />
-        <p class="name">{{ $user->username }}</p>
         <div class="info">
-            <div>{{ $user->sex == 1 ? '男' : '女' }}</div>
-            <div>可野龄：{{ $user->profile->keye_age }}年</div>
+            <p class="name">
+                <span>{{ $user->username }}</span>
+                <img src="{{ $user->sex == 1 ? '/img/m.png' : '/img/f.png' }}"/>
+            </p>
+            <P class='Wechat-number text-hidden'>{{ $user->profile->wechat_no }}</P>
+            <div class="Age-job">
+                <span class="age">{{ $user->profile->keye_age }}可野龄</span>
+                <span class="vehicle">{{ $user->vehicle }}</span>
+            </div>
+            <p class="autograph ">
+                <img src="/img/yinh.png"/>
+                {{ $user->profile->quotation }}
+            </p>
         </div>
-        <p class="sign">{{ $user->profile->quotation }}</p>
+
     </section>
+    @if($user->hasRole('exp_driver'))
     <hr />
     <footer>
-        <div id="nest_info"><img src="https://www.baidu.com/img/bd_logo1.png" /></div>
+        <div id="nest_info">
+            {{ $user->profile->nest_info }}
+        </div>
     </footer>
+    @endif
 </div>
 @endsection
 
