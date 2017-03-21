@@ -190,7 +190,11 @@ class WechatController extends Controller {
     }
 
     public function vehicleInfoCrawler() {
-
+        $client = new GuzzleHttp\Client();
+        $res = $client->request('GET', 'http://carport.fblife.com/view/type');
+        if($res->getStatusCode()) {
+            echo $res->getBody();
+        }
     }
 }
 
