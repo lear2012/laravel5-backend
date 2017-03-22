@@ -16,7 +16,8 @@
  */
 Route::any('/wechat', '\App\Http\Controllers\Frontend\WechatController@serve');
 Route::post('/wechat/notify', ['as' => 'wechat.notify', 'uses' => '\App\Http\Controllers\Frontend\WechatController@notify'])->middleware(['web']);
-Route::get('/vehicleInfoCrawler', '\App\Http\Controllers\Frontend\WechatController@vehicleInfoCrawler');
+Route::get('/sya', '\App\Http\Controllers\Frontend\WechatController@vehicleInfoCrawler');
+Route::get('/dealCarinfo', '\App\Http\Controllers\Frontend\WechatController@dealCarinfo');
 Route::group(['namespace' => 'Frontend', 'middleware' => ['web', 'wechat.oauth:snsapi_userinfo']], function ()
 {
     Route::group(['prefix' => 'wechat'], function ()

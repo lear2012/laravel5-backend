@@ -161,6 +161,7 @@ return [
         Zizaco\Entrust\EntrustServiceProvider::class,
         Overtrue\LaravelWechat\ServiceProvider::class,
         'Laracasts\Utilities\JavaScript\JavaScriptServiceProvider',
+        Overtrue\LaravelPinyin\ServiceProvider::class,
     ],
     /*
     |--------------------------------------------------------------------------
@@ -223,6 +224,7 @@ return [
         'Entrust'   => Zizaco\Entrust\EntrustFacade::class,
         'ChannelLog' => App\Contracts\Facades\ChannelLog::class,
         'EasyWeChat' => Overtrue\LaravelWechat\Facade::class,
+        'Pinyin' => Overtrue\LaravelPinyin\Facades\Pinyin::class,
     ],
 
 ];

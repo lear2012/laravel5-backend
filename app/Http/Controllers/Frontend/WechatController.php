@@ -15,11 +15,21 @@ use Laracasts\Utilities\JavaScript\JavaScriptFacade as JavaScript;
 use Auth;
 use GuzzleHttp;
 use Session;
+use PHPHtmlParser\Dom;
+use Pinyin_Pinyin;
+use Facebook\WebDriver\Remote\DesiredCapabilities;
+use Facebook\WebDriver\Remote\RemoteWebDriver;
+use Facebook\WebDriver\WebDriverExpectedCondition;
+use Facebook\WebDriver\WebDriverBy;
+
 
 class WechatController extends Controller {
 
     private $openid;
 
+    private $vehicleInfoUrl = 'http://carport.fblife.com/view/type';
+
+    private $vehicleInfoUrl2 = 'http://www.autohome.com.cn/suv/#pvareaid=103421';
     public function __construct(Application $wechat){
         parent::__construct($wechat);
     }
@@ -190,11 +200,131 @@ class WechatController extends Controller {
     }
 
     public function vehicleInfoCrawler() {
-        $client = new GuzzleHttp\Client();
-        $res = $client->request('GET', 'http://carport.fblife.com/view/type');
-        if($res->getStatusCode()) {
-            echo $res->getBody();
+        set_time_limit(0);
+        ini_set('memory_limit', '-1');
+        $data = []; // 所有车辆数据
+        $carInfo = '/tmp/carInfo.html';
+        $content = '';
+        $host = 'http://keye.local.com:4444/wd/hub'; // this is the default
+        //putenv("webdriver.chrome.driver=/Users/liaolliso/Downloads/chromedriver");
+        putenv("webdriver.chrome.driver=/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome");
+        $capabilities = DesiredCapabilities::chrome();
+        $driver = RemoteWebDriver::create($host, $capabilities, 0, 0);
+        if(!file_exists($carInfo)) {
+            // navigate to 'http://docs.seleniumhq.org/'
+            $driver->get($this->vehicleInfoUrl2);
+            $driver->wait(10)->until(
+                WebDriverExpectedCondition::presenceOfAllElementsLocatedBy(
+                    WebDriverBy::className('uibox')
+                )
+            );
+            $content = $driver->getPageSource();
+            file_put_contents($carInfo, $content);
+//            // close the Chrome
+//            $driver->quit();
+        } else
+            $content = file_get_contents($carInfo);
+        if($content == '')
+            return false;
+
+        $dom = new Dom;
+        $dom->load($content, [
+            'enforceEncoding' => 'gb2312',
+            'whitespaceTextNode' => false,
+            //'cleanupInput' => false
+        ]);
+        $nodeValues = $dom->find('div#tab-content .rank-list > dl > dd');
+        //var_dump(count($nodeValues));exit;
+        try {
+            foreach ($nodeValues as $item) {
+                //dd($item->innerHtml);
+                //dd($item);
+                $brand = $item->firstChild()->firstChild()->text();
+                $dataNode = $item->firstChild()->nextSibling();
+                $children = $dataNode->getChildren();
+                Log::write('common', 'access brand:'.$brand);
+                // deal with brand
+                $brandItem = [];
+                $brandItem['capital'] = strtoupper(Utils::getStrFirstChar($brand));
+                $brandItem['name'] = $brand;
+                $brandItem['code'] = md5($brand);
+                $brandItem['series'] = [];
+                foreach ($children as $li) {
+                    if($li->innerHtml == '') {
+                        continue;
+                    }
+                    $series = $li->firstChild()->text(true);  // 车系
+                    $detailUrl = $li->firstChild()->firstChild()->href; // 车系url
+                    $fileName = '/tmp/series/' . str_slug($series) . '.html'; // 保存该车系详情页
+                    Log::write('common', 'access series:'.$series);
+                    $seriItem = [];
+                    $seriItem['name'] = $series;
+                    $seriItem['code'] = md5($series);
+                    $seriItem['styles'] = [];
+
+                    if (!file_exists($fileName)) {
+                        // navigate to detail
+                        $driver->get($detailUrl);
+                        $driver->wait(10)->until(
+                            WebDriverExpectedCondition::presenceOfAllElementsLocatedBy(
+                                WebDriverBy::tagName('body')
+                            )
+                        );
+                        $content = $driver->getPageSource();
+                        //$content = file_get_contents($detailUrl);
+                        file_put_contents($fileName, $content);
+                    } else
+                        $content = file_get_contents($fileName);
+                    // deal with content
+                    $dom->load($content, [
+                        'enforceEncoding' => 'gb2312',
+                        'whitespaceTextNode' => false,
+                        //'cleanupInput' => false
+                    ]);
+                    $nds = $dom->find('.tab-ys .current .interval01-list .interval01-list-cars');
+                    $tds = $dom->find('td.name_d');
+//                    $alert = $dom->find('.alert-con');
+//                    if(count($alert) > 0) {
+//                        Log::write('common', 'no access style for serires:'.$series);
+//                        continue;
+//                    }
+                    // 处理车型
+                    foreach ($nds as $styleLi) {
+                        if($styleLi->innerHtml == '') {
+                            continue;
+                        }
+                        $style = $styleLi->firstChild()->firstChild()->text(true);
+                        Log::write('common', 'access style:'.$style);
+                        if (!in_array($style, $seriItem['styles']))
+                            $seriItem['styles'][] = $style;
+                    }
+                    foreach ($tds as $styleLi) {
+                        if($styleLi->innerHtml == '') {
+                            continue;
+                        }
+                        $style = $styleLi->firstChild()->text(true);
+                        Log::write('common', 'access style:'.$style);
+                        if (!in_array($style, $seriItem['styles']))
+                            $seriItem['styles'][] = $style;
+                    }
+                    $brandItem['series'][] = $seriItem;
+                }
+                $data[] = $brandItem;
+            }
+        } catch(Exception $e) {
+            throw new $e;
         }
+        // close the chrome
+        $driver->quit();
+        file_put_contents('/tmp/carInfo.json', json_encode($data));
+    }
+
+    public function getBrands() {
+
+    }
+
+    public function getBrandSeries(Request $request) {
+
     }
 }
 

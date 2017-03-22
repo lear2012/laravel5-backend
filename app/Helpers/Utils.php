@@ -5,6 +5,7 @@ namespace App\Helpers;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\App;
 use ChannelLog as Log;
+use Pinyin;
 
 class Utils {
 
@@ -238,6 +239,12 @@ class Utils {
             default:
         }
         return $ret;
+    }
+
+    public static function getStrFirstChar($text) {
+        $pinyin = app('pinyin');
+        $str = $pinyin->sentence($text);
+        return $str ? $str[0] : 'UNKNOWN';
     }
 
 }
