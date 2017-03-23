@@ -70,3 +70,7 @@
     font-size:0.6rem;
     color:#000;
 }
+input, textarea {
+    border:0; /* 方法1 */
+    -webkit-appearance:none; /* 方法2 */
+}
