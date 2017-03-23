@@ -21,7 +21,7 @@ use Facebook\WebDriver\Remote\DesiredCapabilities;
 use Facebook\WebDriver\Remote\RemoteWebDriver;
 use Facebook\WebDriver\WebDriverExpectedCondition;
 use Facebook\WebDriver\WebDriverBy;
-
+use App\Models\Brand;
 
 class WechatController extends Controller {
 
@@ -57,6 +57,17 @@ class WechatController extends Controller {
         ]);
     }
 
+    function joinClub() {
+        $wechatUser = session('wechat.oauth_user');
+        $brands = $this->getBrands();
+        JavaScript::put([
+            'brands' => $brands,
+        ]);
+        return view('frontend.user.join_club', [
+            'wechatUser' => $wechatUser,
+        ]);
+    }
+
     function memberRegister(Request $request) {
         if($request->isMethod('post')) {
             $data = $request->all();
@@ -64,7 +75,7 @@ class WechatController extends Controller {
             if($validator->failed()) {
                 self::setMsgCode(9001);
             } else {
-		if($data['agree'] != 1)
+		        if($data['agree'] != 1)
                     self::setMsgCode(1005);
                 else if(User::nickUsed($data['nick']))
                     self::setMsgCode(1004);
@@ -77,7 +88,7 @@ class WechatController extends Controller {
                     $user = User::register($data);
 		            if (!$user)
                         self::setMsgCode(1001);
-		    // login the user
+		            // login the user
                     Auth::login($user);
                 }
             }
@@ -87,10 +98,10 @@ class WechatController extends Controller {
         if(User::isWechatRegisterUser()) {
             return redirect()->route('wechat.member_list');
         }
-       
+
         $config = []; // 支付配置信息
         $wechatUser = session('wechat.oauth_user'); // 拿到授权用户资料
-	if(!$wechatUser) {
+	    if(!$wechatUser) {
             abort(404);
         }
         // 下单, 若该用户已经有注册订单，则忽略
@@ -200,6 +211,7 @@ class WechatController extends Controller {
     }
 
     public function vehicleInfoCrawler() {
+        return false;
         set_time_limit(0);
         ini_set('memory_limit', '-1');
         $data = []; // 所有车辆数据
@@ -233,15 +245,26 @@ class WechatController extends Controller {
             'whitespaceTextNode' => false,
             //'cleanupInput' => false
         ]);
-        $nodeValues = $dom->find('div#tab-content .rank-list > dl > dd');
-        //var_dump(count($nodeValues));exit;
+        $nodeValues = $dom->find('div#tab-content .rank-list > dl');
+        $uniqeBrands = [];
         try {
             foreach ($nodeValues as $item) {
-                //dd($item->innerHtml);
-                //dd($item);
-                $brand = $item->firstChild()->firstChild()->text();
+                $brandNode = $item->firstChild()->firstChild()->nextSibling();
+                //dd($brandNode->firstChild()->href);
+                //dd($brandNode->text(true));
+                $brand = $brandNode->text(true);
+                if(!in_array($brand, $uniqeBrands))
+                    $uniqeBrands[] = $brand;
+                else
+                    continue;
                 $dataNode = $item->firstChild()->nextSibling();
-                $children = $dataNode->getChildren();
+                $seriesHtml = $dataNode->innerHtml;
+                $dom->load($seriesHtml, [
+                    'enforceEncoding' => 'gb2312',
+                    'whitespaceTextNode' => false,
+                    //'cleanupInput' => false
+                ]);
+                $children = $dom->find('h4');
                 Log::write('common', 'access brand:'.$brand);
                 // deal with brand
                 $brandItem = [];
@@ -254,8 +277,9 @@ class WechatController extends Controller {
                         continue;
                     }
                     $series = $li->firstChild()->text(true);  // 车系
-                    $detailUrl = $li->firstChild()->firstChild()->href; // 车系url
-                    $fileName = '/tmp/series/' . str_slug($series) . '.html'; // 保存该车系详情页
+                    $detailUrl = $li->firstChild()->href; // 车系url
+
+                    $fileName = '/tmp/series/' . md5($series) . '.html'; // 保存该车系详情页
                     Log::write('common', 'access series:'.$series);
                     $seriItem = [];
                     $seriItem['name'] = $series;
@@ -281,8 +305,8 @@ class WechatController extends Controller {
                         'whitespaceTextNode' => false,
                         //'cleanupInput' => false
                     ]);
-                    $nds = $dom->find('.tab-ys .current .interval01-list .interval01-list-cars');
-                    $tds = $dom->find('td.name_d');
+                    $nds = $dom->find('.tab-ys .interval01-list .interval01-list-cars');
+                    $tds = $dom->find('.name_d');
 //                    $alert = $dom->find('.alert-con');
 //                    if(count($alert) > 0) {
 //                        Log::write('common', 'no access style for serires:'.$series);
@@ -320,10 +344,24 @@ class WechatController extends Controller {
     }
 
     public function getBrands() {
+        $brandList = Brand::getActiveBrands();
+        $data = [];
+        foreach($brandList as $item) {
+            $firstChar = strtoupper(Utils::getStrFirstChar($item->name));
+            if(!isset($data[$firstChar])) {
+                $data[$firstChar] = [];
+            }
+            $data[$firstChar][] = $item;
+        }
+        ksort($data);
+        return $data;
+    }
+
+    public function getSeries(Request $request) {
 
     }
 
-    public function getBrandSeries(Request $request) {
+    public function getModels(Request $request) {
 
     }
 }

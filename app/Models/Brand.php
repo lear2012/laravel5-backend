@@ -26,4 +26,10 @@ class Brand extends Model
         return $this->hasMany('App\Models\Sery', 'brand_id', 'id');
     }
 
+    public static function getActiveBrands() {
+        return Brand::where('active', '=', 1)
+            ->whereNull('deleted_at')
+            ->select('name', 'code', 'detail')
+            ->get();
+    }
 }

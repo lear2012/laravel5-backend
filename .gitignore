@@ -9,7 +9,7 @@
 /public/semantic/
 
 /resources/assets/bower
-
+/database/migrations/tmp
 .DS_Store
 .idea
 _ide_helper.php
