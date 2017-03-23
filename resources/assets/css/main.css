@@ -22,11 +22,11 @@
 #timer {
     color:white;
     width:30%;
-    font-size: 0.4rem;
+    font-size: 0.6rem;
     margin-top: 36px;
     display:none;
 }
-#mobile {width:45%}
+#mobile {width:45%;line-height: .7rem }
 
 .timer_text {
     color:white;
