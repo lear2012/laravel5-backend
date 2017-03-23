@@ -71,7 +71,7 @@
         </div>
         <div class="brandBox">
             <label class="search-box">
-                <input placeholder="搜索" class="Ainp search" type="" name="" id="" value="" />
+                <input placeholder="搜索" class="Ainp search" type="" name="search" id="search" value="" />
                 <span class="tit-s search-but">搜索</span>
             </label>
             <div class="brandList">

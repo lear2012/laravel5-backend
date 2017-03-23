@@ -71,6 +71,7 @@ elixir(function(mix) {
         '../../../node_modules/jquery-countto/jquery.countTo.js',
         'jweixin-1.2.0.js',
         'lodash.min.js',
+        'Maillist.js',
         'main.js'
     ], 'public/js/all.js');
 

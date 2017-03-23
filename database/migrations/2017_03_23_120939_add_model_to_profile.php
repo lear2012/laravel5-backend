@@ -14,7 +14,7 @@ class AddModelToProfile extends Migration
     public function up()
     {
         //
-        Schema::table('user_profile', function (Blueprint $table) {
+        Schema::table('user_profiles', function (Blueprint $table) {
             $table->tinyInteger('model')->after('series')->nullable()->comment('车型');
         });
     }

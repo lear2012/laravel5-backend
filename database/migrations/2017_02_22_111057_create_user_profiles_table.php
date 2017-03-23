@@ -38,7 +38,7 @@ class CreateUserProfilesTable extends Migration
             // 车辆信息
             $table->string('brand')->nullable()->comment('车辆品牌信息');
             $table->string('series')->nullable()->comment('车辆车系信息');
-            $table->string('year')->nullable()->comment('车辆年份信息');
+            $table->string('year')->nullable()->comment('购买年份信息');
 
             $table->integer('created_at');
             $table->integer('updated_at');

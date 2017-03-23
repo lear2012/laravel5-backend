@@ -16,6 +16,9 @@ var site = {
             case '/wechat/member_list':
                 this.initMemberList();
                 break;
+            case '/wechat/join_club':
+                this.initJoinClub();
+                break;
             default:
         }
     },
@@ -450,6 +453,32 @@ var site = {
         wx.error(function(res){
             alert(JSON.stringify(res, null, 4));
             return false;
+        });
+    },
+
+    initJoinClub: function() {
+        console.log(brands);
+        $('.carinfo').on('click',function(){
+            $('.Vehicle-information').css('left','0px');
+            //生成列表
+            for(var i= 0 ; i<carList.length ; i++){
+                var str = '';
+                for(var j= 0 ; j<carList[i].children.length ; j++){
+                    str +='<li class="aLi">'+carList[i].children[j].name+'</li>'
+                }
+                var oSection = $('<section  nav-title='+carList[i].id+' id='+carList[i].id+'><h2>'+carList[i].id+'</h2>'+str+'</section>');
+                $('.brandList').append(oSection);
+            }
+        });
+        //点击召唤品牌信息
+        $('.brand').on('click',function(){
+            $('.brandBox').css('left','0px');
+            alphabetNav.init('nav-title');
+            $('.brandBox .brandList .aLi').on('click',function(event){
+                $('.brand input').val($(this).html());
+                $('.brandBox').css('left','15rem');
+                event.stopPropagation();
+            })
         });
     }
 
