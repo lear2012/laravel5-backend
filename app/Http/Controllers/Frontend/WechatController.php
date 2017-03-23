@@ -98,7 +98,6 @@ class WechatController extends Controller {
         if(User::isWechatRegisterUser()) {
             return redirect()->route('wechat.member_list');
         }
-
         $config = []; // 支付配置信息
         $wechatUser = session('wechat.oauth_user'); // 拿到授权用户资料
 	    if(!$wechatUser) {

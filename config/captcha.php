@@ -7,6 +7,7 @@ return [
         'width'     => 130,
         'height'    => 60,
         'quality'   => 90,
+        'fontColors'=> ['#fff'],
     ],
 
     'flat'   => [

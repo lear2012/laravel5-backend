@@ -163,9 +163,12 @@ var site = {
     setExpDriverInfo: function(user) {
         $('.username', $('#info_board')).text(user.username);
         $('.Wechat-number', $('#info_board')).text(user.nickname);
-        $('.vehicle', $('#info_board')).text(user.vehicle);
-        $('.age', $('#info_board')).text(user.profile.keye_age+'可野龄');
-        $('.autograph', $('#info_board')).text(user.profile.quotation);
+        if(user.vehicle)
+            $('.vehicle', $('#info_board')).text(user.vehicle);
+        if(parseInt(user.profile.keye_age) > 0)
+            $('.age', $('#info_board')).text(user.profile.keye_age+'可野龄');
+        if(user.profile.quotation)
+            $('.autograph', $('#info_board')).text('<img src="/img/yinh.png"/>'+user.profile.quotation);
     },
 
     initTimer: function() {
