@@ -168,7 +168,7 @@ var site = {
         if(parseInt(user.profile.keye_age) > 0)
             $('.age', $('#info_board')).text(user.profile.keye_age+'可野龄');
         if(user.profile.quotation)
-            $('.autograph', $('#info_board')).text('<img src="/img/yinh.png"/>'+user.profile.quotation);
+            $('.autograph', $('#info_board')).html('<img src="/img/yinh.png"/>'+user.profile.quotation);
     },
 
     initTimer: function() {

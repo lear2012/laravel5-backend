@@ -12,13 +12,15 @@
             </p>
             <P class='Wechat-number text-hidden'>{{ $user->profile->wechat_no }}</P>
             <div class="Age-job">
-                <span class="age">{{ $user->profile->keye_age }}可野龄</span>
+                <span class="age">{{ $user->profile->keye_age ? $user->profile->keye_age.'可野龄' : '' }}</span>
                 <span class="vehicle">{{ $user->vehicle }}</span>
             </div>
+            @if($user->profile->quotation)
             <p class="autograph ">
                 <img src="/img/yinh.png"/>
                 {{ $user->profile->quotation }}
             </p>
+            @endif
         </div>
 
     </section>
