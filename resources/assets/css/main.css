@@ -76,4 +76,4 @@ input,textarea{-webkit-appearance:none;}
     border-bottom: 0.02rem solid rgba(140, 105, 47, 0.6);
 }
 #expdriver_list img {height:2.4rem;width:2.4rem}
-#expdriver_list active-img {height:4rem;width:4rem}
+#expdriver_list .swiper-slide-active {height:4rem;width:4rem}

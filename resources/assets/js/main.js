@@ -99,7 +99,6 @@ var site = {
             onInit: function(swiper){
                 //Swiper初始化了
                 //alert(swiper.activeIndex);//提示Swiper的当前索引
-                console.log(swiper.activeIndex);
                 var theDrivers = _.values(expDrivers);
                 var theCenterDriver = theDrivers[that._centerSlideIndex];
                 $('img', $('#expdriver_list')).eq(that._centerSlideIndex).addClass('active-img');
@@ -166,6 +165,11 @@ var site = {
     setExpDriverInfo: function(user) {
         $('.username', $('#info_board')).text(user.username);
         $('.Wechat-number', $('#info_board')).text(user.nickname);
+        if(user.profile.sex == 1) {
+            $('.sex', $('#info_board')).attr('src', '/img/m.png');
+        } else {
+            $('.sex', $('#info_board')).attr('src', '/img/f.png');
+        }
         if(user.vehicle)
             $('.vehicle', $('#info_board')).text(user.vehicle);
         if(parseInt(user.profile.keye_age) > 0)

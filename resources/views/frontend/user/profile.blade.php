@@ -8,7 +8,7 @@
         <div class="info">
             <p class="name">
                 <span>{{ $user->username }}</span>
-                <img src="{{ $user->sex == 1 ? '/img/m.png' : '/img/f.png' }}"/>
+                <img src="{{ $user->profile->sex == 1 ? '/img/m.png' : '/img/f.png' }}"/>
             </p>
             <P class='Wechat-number text-hidden'>{{ $user->profile->wechat_no }}</P>
             <div class="Age-job">

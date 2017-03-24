@@ -23,7 +23,7 @@
         <div class="info" id="info_board">
             <p class="name">
                 <span class="username"></span>
-                <img src="/img/m.png" />
+                <img class="sex" src="" />
             </p>
             <P class='Wechat-number text-hidden'></P>
             <div class="Age-job">
