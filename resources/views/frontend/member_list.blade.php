@@ -50,7 +50,7 @@
                     <div class='add-bg'>
                         <a href="{{ route('wechat.member_register') }}">+</a>
                     </div>
-                    <img src="{{ config('custom.default_avatar') }}" />
+                    <img src="{{ $loginUser->avatar }}" />
                     <p>{{ $loginUser->nickname }}</p>
                     <span></span>
                 </li>

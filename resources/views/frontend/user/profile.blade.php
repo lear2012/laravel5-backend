@@ -24,7 +24,7 @@
         </div>
 
     </section>
-    @if($user->hasRole('exp_driver'))
+    @if($user->hasRole('exp_driver') && $user->profile->nest_info)
     <hr />
     <footer>
         <div id="nest_info">
