@@ -73,5 +73,6 @@
 a,img,button,input,textarea,label,span,i,ul,li,div,p{-webkit-tap-highlight-color:rgba(255,255,255,0);}
 input,textarea{-webkit-appearance:none;}
 #register_form li{
-    border-bottom: 0.02rem solid rgba(140, 105, 47, 0.5);
+    border-bottom: 0.02rem solid rgba(140, 105, 47, 0.6);
 }
+#expdriver_list {}

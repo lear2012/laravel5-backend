@@ -83,21 +83,23 @@ var site = {
         var expSize = _.keys(expDrivers).length;
         this._centerSlideIndex = Math.floor(expSize/2);
         var mySwiper = new Swiper(".swiper-container", {
-            slidesPerView: 3,
+            slidesPerView: 5,
             centeredSlides: true,
 			initialSlide :that._centerSlideIndex,
             autoplayDisableOnInteraction : false,
-            coverflow: {
-                rotate: 30,
-                stretch: 10,
-                depth: 60,
-                modifier: 2,
-                slideShadows: true
-            },
+            spaceBetween: 20,
+            // coverflow: {
+            //     rotate: 30,
+            //     stretch: 10,
+            //     depth: 60,
+            //     modifier: 2,
+            //     slideShadows: true
+            // },
             loop: true,
             onInit: function(swiper){
                 //Swiper初始化了
                 //alert(swiper.activeIndex);//提示Swiper的当前索引
+                console.log(swiper.activeIndex);
                 var theDrivers = _.values(expDrivers);
                 var theCenterDriver = theDrivers[that._centerSlideIndex];
                 that.setExpDriverInfo(theCenterDriver);
@@ -108,23 +110,23 @@ var site = {
             prevButton:'.swiper-button-prev',
             nextButton:'.swiper-button-next',
             slideToClickedSlide: true,
-            onProgress: function(swiper){
-                for (var i = 0; i < swiper.slides.length; i++){
-                    var slide = swiper.slides[i];
-                    var progress = slide.progress;
-                    scale = 1 - Math.min(Math.abs(progress * 0.2), 1);
-                    es = slide.style;
-                    es.opacity = 1 - Math.min(Math.abs(progress/2),1);
-                    es.webkitTransform = es.MsTransform = es.msTransform = es.MozTransform = es.OTransform = es.transform = 'translate3d(0px,0,'+(-Math.abs(progress*150))+'px)';
-                }
-            },
+            // onProgress: function(swiper){
+            //     for (var i = 0; i < swiper.slides.length; i++){
+            //         var slide = swiper.slides[i];
+            //         var progress = slide.progress;
+            //         scale = 1 - Math.min(Math.abs(progress * 0.2), 1);
+            //         es = slide.style;
+            //         es.opacity = 1 - Math.min(Math.abs(progress/2),1);
+            //         es.webkitTransform = es.MsTransform = es.msTransform = es.MozTransform = es.OTransform = es.transform = 'translate3d(0px,0,'+(-Math.abs(progress*150))+'px)';
+            //     }
+            // },
 
-            onSetTransition: function(swiper, speed) {
-                for (var i = 0; i < swiper.slides.length; i++) {
-                    es = swiper.slides[i].style;
-                    es.webkitTransitionDuration = es.MsTransitionDuration = es.msTransitionDuration = es.MozTransitionDuration = es.OTransitionDuration = es.transitionDuration = speed + 'ms';
-                }
-            },
+            // onSetTransition: function(swiper, speed) {
+            //     for (var i = 0; i < swiper.slides.length; i++) {
+            //         es = swiper.slides[i].style;
+            //         es.webkitTransitionDuration = es.MsTransitionDuration = es.msTransitionDuration = es.MozTransitionDuration = es.OTransitionDuration = es.transitionDuration = speed + 'ms';
+            //     }
+            // },
 
             onTouchEnd: function(swiper, event) {
                 var uid = _.replace(event.target.id, /[a-zA-Z]+/g, '');

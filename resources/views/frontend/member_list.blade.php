@@ -11,7 +11,7 @@
         @else
             <a href="{{ route('wechat.member_register') }}"><span class="join">加入</span></a>
         @endif
-        <div class="swiper-container">
+        <div class="swiper-container" id="expdriver_list">
 
             <div class="swiper-wrapper">
                 @foreach($expDrivers as $user)
