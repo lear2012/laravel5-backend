@@ -75,4 +75,5 @@ input,textarea{-webkit-appearance:none;}
 #register_form li{
     border-bottom: 0.02rem solid rgba(140, 105, 47, 0.6);
 }
-#expdriver_list {}
+#expdriver_list img {height:2.4rem;width:2.4rem}
+#expdriver_list active-img {height:4rem;width:4rem}

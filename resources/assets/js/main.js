@@ -87,7 +87,7 @@ var site = {
             centeredSlides: true,
 			initialSlide :that._centerSlideIndex,
             autoplayDisableOnInteraction : false,
-            spaceBetween: 20,
+            spaceBetween: 10,
             // coverflow: {
             //     rotate: 30,
             //     stretch: 10,
@@ -102,6 +102,7 @@ var site = {
                 console.log(swiper.activeIndex);
                 var theDrivers = _.values(expDrivers);
                 var theCenterDriver = theDrivers[that._centerSlideIndex];
+                $('img', $('#expdriver_list')).eq(that._centerSlideIndex).addClass('active-img');
                 that.setExpDriverInfo(theCenterDriver);
             },
             watchSlidesProgress: !0,
