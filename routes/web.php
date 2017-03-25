@@ -20,7 +20,7 @@ Route::get('/sya', '\App\Http\Controllers\Frontend\WechatController@vehicleInfoC
 Route::get('/get_brands', ['as' => 'get_brands', 'uses' => '\App\Http\Controllers\Frontend\WechatController@getBrands']);
 Route::get('/get_series/{code}', ['as' => 'get_series', 'uses' => '\App\Http\Controllers\Frontend\WechatController@getSeries']);
 Route::get('/get_models/{code}', ['as' => 'get_models', 'uses' => '\App\Http\Controllers\Frontend\WechatController@getModels']);
-Route::group(['namespace' => 'Frontend', 'middleware' => ['web']], function ()
+Route::group(['namespace' => 'Frontend', 'middleware' => ['web', 'wechat.oauth:snsapi_userinfo']], function ()
 {
     Route::group(['prefix' => 'wechat'], function ()
     {
