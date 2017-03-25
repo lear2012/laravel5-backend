@@ -31,7 +31,7 @@
     <hr />
     <footer>
         <div id="nest_info">
-            {{ $user->profile->nest_info }}
+            {!! $user->profile->nest_info !!}
         </div>
     </footer>
     @endif
