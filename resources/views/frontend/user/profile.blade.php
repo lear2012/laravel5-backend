@@ -6,7 +6,7 @@
     <section>
         <div>
             <img class="portrait" src="{{ $user->profile->avatar }}" />
-            <a href="{{ route('wechat.edit_profile') }}"><span class="join">编辑</span></a>
+            <a href="{{ route('wechat.edit_profile', ['id' => $user->uid]) }}"><span class="join">编辑</span></a>
         </div>
         <div class="info">
             <p class="name">
