@@ -57,8 +57,8 @@
             @endif
             @foreach($paidMembers as $user)
                 <li>
-                    <a href="{{ route('wechat.profile', ['id' => $user->uid]) }}"><img src="{{ ($user && $user->profile) ? $user->profile->avatar : '' }}" /></a>
-                    <p>{{ ($user && $user->profile) ? $user->profile->wechat_no : '' }}</p>
+                    <a href="{{ route('wechat.profile', ['id' => $user->uid]) }}"><img src="{{ ($user && $user->profile) ? $user->profile->avatar : config('custom.default_avatar') }}" /></a>
+                    <p>{{ ($user && $user->profile) ? $user->profile->wechat_no : '&nbsp;' }}</p>
                     <span>{{ ($user && $user->profile) ? $user->profile->keye_age.'可野龄' : '&nbsp;' }}</span>
                 </li>
             @endforeach

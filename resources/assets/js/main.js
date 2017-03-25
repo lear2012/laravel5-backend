@@ -87,7 +87,6 @@ var site = {
             centeredSlides: true,
 			initialSlide :that._centerSlideIndex,
             autoplayDisableOnInteraction : false,
-            spaceBetween: 20,
             // coverflow: {
             //     rotate: 30,
             //     stretch: 10,
@@ -105,28 +104,27 @@ var site = {
                 that.setExpDriverInfo(theCenterDriver);
             },
             watchSlidesProgress: !0,
-            pagination: ".swiper-pagination",
-            paginationClickable: !0,
-            prevButton:'.swiper-button-prev',
-            nextButton:'.swiper-button-next',
-            slideToClickedSlide: false,
-            // onProgress: function(swiper){
-            //     for (var i = 0; i < swiper.slides.length; i++){
-            //         var slide = swiper.slides[i];
-            //         var progress = slide.progress;
-            //         scale = 1 - Math.min(Math.abs(progress * 0.2), 1);
-            //         es = slide.style;
-            //         es.opacity = 1 - Math.min(Math.abs(progress/2),1);
-            //         es.webkitTransform = es.MsTransform = es.msTransform = es.MozTransform = es.OTransform = es.transform = 'translate3d(0px,0,'+(-Math.abs(progress*150))+'px)';
-            //     }
-            // },
+            slidesOffsetBefore: 100,
+            slidesOffsetAfter:100,
+            preventClicks: false,
+            effect: 'fade',
+            onProgress: function(swiper){
+                for (var i = 0; i < swiper.slides.length; i++){
+                    var slide = swiper.slides[i];
+                    var progress = slide.progress;
+                    scale = 1 - Math.min(Math.abs(progress * 0.2), 1);
+                    es = slide.style;
+                    es.opacity = 1 - Math.min(Math.abs(progress/2),1);
+                    es.webkitTransform = es.MsTransform = es.msTransform = es.MozTransform = es.OTransform = es.transform = 'translate3d(0px,0,'+(-Math.abs(progress*150))+'px)';
+                }
+            },
 
-            // onSetTransition: function(swiper, speed) {
-            //     for (var i = 0; i < swiper.slides.length; i++) {
-            //         es = swiper.slides[i].style;
-            //         es.webkitTransitionDuration = es.MsTransitionDuration = es.msTransitionDuration = es.MozTransitionDuration = es.OTransitionDuration = es.transitionDuration = speed + 'ms';
-            //     }
-            // },
+            onSetTransition: function(swiper, speed) {
+                for (var i = 0; i < swiper.slides.length; i++) {
+                    es = swiper.slides[i].style;
+                    es.webkitTransitionDuration = es.MsTransitionDuration = es.msTransitionDuration = es.MozTransitionDuration = es.OTransitionDuration = es.transitionDuration = speed + 'ms';
+                }
+            },
 
             onTouchEnd: function(swiper, event) {
                 var uid = _.replace(event.target.id, /[a-zA-Z]+/g, '');
@@ -145,19 +143,21 @@ var site = {
                 });
                 if(user == undefined)
                     return false;
-                that.setExpDriverInfo(user);
-            },
-
-            onDoubleTap: function(swiper, event) {
-                var uid = _.replace(event.target.id, /[a-zA-Z]+/g, '');
-                var user = _.find(expDrivers, function(item){
-                    return item.uid == uid;
-                });
-                if(user == undefined)
-                    return false;
                 window.location.href = '/wechat/profile/'+user.uid;
                 return true;
-            }
+                //that.setExpDriverInfo(user);
+            },
+
+            // onDoubleTap: function(swiper, event) {
+            //     var uid = _.replace(event.target.id, /[a-zA-Z]+/g, '');
+            //     var user = _.find(expDrivers, function(item){
+            //         return item.uid == uid;
+            //     });
+            //     if(user == undefined)
+            //         return false;
+            //     window.location.href = '/wechat/profile/'+user.uid;
+            //     return true;
+            // }
 
         });
     },
