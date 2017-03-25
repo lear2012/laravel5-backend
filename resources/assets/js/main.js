@@ -83,11 +83,11 @@ var site = {
         var expSize = _.keys(expDrivers).length;
         this._centerSlideIndex = Math.floor(expSize/2);
         var mySwiper = new Swiper(".swiper-container", {
-            slidesPerView: 5,
+            slidesPerView: 3,
             centeredSlides: true,
 			initialSlide :that._centerSlideIndex,
             autoplayDisableOnInteraction : false,
-            spaceBetween: 10,
+            spaceBetween: 20,
             // coverflow: {
             //     rotate: 30,
             //     stretch: 10,
@@ -109,7 +109,7 @@ var site = {
             paginationClickable: !0,
             prevButton:'.swiper-button-prev',
             nextButton:'.swiper-button-next',
-            slideToClickedSlide: true,
+            slideToClickedSlide: false,
             // onProgress: function(swiper){
             //     for (var i = 0; i < swiper.slides.length; i++){
             //         var slide = swiper.slides[i];

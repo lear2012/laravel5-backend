@@ -4,7 +4,10 @@
 @section('content')
 <div class="information">
     <section>
-        <img class="portrait" src="{{ $user->profile->avatar }}" />
+        <div>
+            <img class="portrait" src="{{ $user->profile->avatar }}" />
+            <a href="{{ route('wechat.member_register') }}"><span class="join">编辑</span></a>
+        </div>
         <div class="info">
             <p class="name">
                 <span>{{ $user->username }}</span>

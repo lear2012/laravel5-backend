@@ -43,7 +43,7 @@
                 <li class="bor-color">
                     <a href="{{ route('wechat.profile', ['id' => $loginUser->uid]) }}"><img src="{{ $loginUser ? $loginUser->profile->avatar : $loginUser->avatar }}" /></a>
                     <p>{{ $loginUser->username }}</p>
-                    <span>{{ $loginUser->profile->keye_age > 0 ? $loginUser->profile->keye_age.'可野龄' : '' }}</span>
+                    <span>{{ $loginUser->profile->keye_age > 0 ? $loginUser->profile->keye_age.'可野龄' : '&nbsp;' }}</span>
                 </li>
             @else
                 <li>
@@ -52,14 +52,14 @@
                     </div>
                     <img src="{{ $loginUser->avatar }}" />
                     <p>{{ $loginUser->nickname }}</p>
-                    <span></span>
+                    <span>&nbsp;</span>
                 </li>
             @endif
             @foreach($paidMembers as $user)
                 <li>
                     <a href="{{ route('wechat.profile', ['id' => $user->uid]) }}"><img src="{{ ($user && $user->profile) ? $user->profile->avatar : '' }}" /></a>
                     <p>{{ ($user && $user->profile) ? $user->profile->wechat_no : '' }}</p>
-                    <span>{{ ($user && $user->profile) ? $user->profile->keye_age.'可野龄' : '' }}</span>
+                    <span>{{ ($user && $user->profile) ? $user->profile->keye_age.'可野龄' : '&nbsp;' }}</span>
                 </li>
             @endforeach
         </ul>
