@@ -83,10 +83,13 @@ var site = {
         var expSize = _.keys(expDrivers).length;
         this._centerSlideIndex = Math.floor(expSize/2);
         var mySwiper = new Swiper(".swiper-container", {
-            slidesPerView: 3,
+            slidesPerView: 5,
             centeredSlides: true,
-			initialSlide :that._centerSlideIndex,
+            initialSlide :that._centerSlideIndex,
             autoplayDisableOnInteraction : false,
+            spaceBetween: 0,
+            slidesOffsetBefore:1,
+            slidesOffsetAfter:1,
             // coverflow: {
             //     rotate: 30,
             //     stretch: 10,
@@ -100,18 +103,18 @@ var site = {
                 //alert(swiper.activeIndex);//提示Swiper的当前索引
                 var theDrivers = _.values(expDrivers);
                 var theCenterDriver = theDrivers[that._centerSlideIndex];
-                $('img', $('#expdriver_list')).eq(that._centerSlideIndex).addClass('active-img');
+                //$('img:lt('+that._centerSlideIndex+')', $('#expdriver_list')).addClass('swiper-left');
+                //$('img:lt('+that._centerSlideIndex+')', $('#expdriver_list')).addClass('swiper-right');
                 that.setExpDriverInfo(theCenterDriver);
             },
+            visibilityFullFit: true,
+            autoResize: false,
             watchSlidesProgress: !0,
             pagination: ".swiper-pagination",
             paginationClickable: !0,
             prevButton:'.swiper-button-prev',
             nextButton:'.swiper-button-next',
-            slidesOffsetBefore: 100,
-            slidesOffsetAfter:100,
-            preventClicks: false,
-            effect: 'fade',
+            slideToClickedSlide: false,
             // onProgress: function(swiper){
             //     for (var i = 0; i < swiper.slides.length; i++){
             //         var slide = swiper.slides[i];
@@ -122,7 +125,7 @@ var site = {
             //         es.webkitTransform = es.MsTransform = es.msTransform = es.MozTransform = es.OTransform = es.transform = 'translate3d(0px,0,'+(-Math.abs(progress*150))+'px)';
             //     }
             // },
-            //
+
             // onSetTransition: function(swiper, speed) {
             //     for (var i = 0; i < swiper.slides.length; i++) {
             //         es = swiper.slides[i].style;
@@ -147,22 +150,10 @@ var site = {
                 });
                 if(user == undefined)
                     return false;
+                //that.setExpDriverInfo(user);
                 window.location.href = '/wechat/profile/'+user.uid;
                 return true;
-                //that.setExpDriverInfo(user);
-            },
-
-            // onDoubleTap: function(swiper, event) {
-            //     var uid = _.replace(event.target.id, /[a-zA-Z]+/g, '');
-            //     var user = _.find(expDrivers, function(item){
-            //         return item.uid == uid;
-            //     });
-            //     if(user == undefined)
-            //         return false;
-            //     window.location.href = '/wechat/profile/'+user.uid;
-            //     return true;
-            // }
-
+            }
         });
     },
 
