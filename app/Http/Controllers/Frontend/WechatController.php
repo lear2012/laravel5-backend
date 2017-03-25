@@ -164,6 +164,19 @@ class WechatController extends Controller
         ]);
     }
 
+    public function editProfile($id)
+    {
+        $user = User::where([
+            'uid' => $id
+        ])->first();
+        if (!$user) {
+            abort(404);
+        }
+        return view('frontend.user.edit_profile', [
+            'user' => $user
+        ]);
+    }
+
     public function notify(Request $request)
     {
 //        $str = file_get_contents('php://input');

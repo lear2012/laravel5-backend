@@ -36,6 +36,7 @@ Route::group(['namespace' => 'Frontend', 'middleware' => ['web', 'wechat.oauth:s
         Route::get('sendSms', ['as' => 'wechat.send_sms', 'uses' => 'WechatController@sendSms']);
 
         Route::get('profile/{id}', ['as' => 'wechat.profile', 'uses' => 'WechatController@profile']);
+        Route::get('edit_profile/{id}', ['as' => 'wechat.edit_profile', 'uses' => 'WechatController@editProfile']);
         Route::get('join_club', ['as' => 'wechat.join_club', 'uses' => 'WechatController@joinClub']);
         Route::get('logout', 'Auth\LoginController@logout');
 
