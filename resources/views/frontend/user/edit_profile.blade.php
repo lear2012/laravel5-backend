@@ -4,12 +4,14 @@
 @section('content')
     <div class="JoinKY">
         <header>
-            <img class="portrait" src="{{ $user->profile->avatar }}" />
-            <p class="name">
-                <span>{{ $user->username }}</span>
-                <img src="{{ $user->profile->sex == 1 ? '/img/m.png' : '/img/f.png' }}"/>
-            </p>
-            <P class='Wechat-number text-hidden'>{{ $user->profile->wechat_no }}</P>
+            <div class="info">
+                <img class="portrait" src="{{ $user->profile->avatar }}" />
+                <p class="name">
+                    <span>{{ $user->username }}</span>
+                    <img src="{{ $user->profile->sex == 1 ? '/img/m.png' : '/img/f.png' }}"/>
+                </p>
+                <p class='Wechat-number text-hidden'>{{ $user->profile->wechat_no }}</p>
+            </div>
         </header>
         <section style="padding-bottom: 2.4rem;">
             <ul class="form" id="profile_form">
