@@ -23,6 +23,7 @@ use Facebook\WebDriver\Remote\RemoteWebDriver;
 use Facebook\WebDriver\WebDriverExpectedCondition;
 use Facebook\WebDriver\WebDriverBy;
 use App\Models\Brand;
+use DB;
 
 class WechatController extends Controller
 {
@@ -172,6 +173,10 @@ class WechatController extends Controller
         if (!$user) {
             abort(404);
         }
+        $brands = $this->getBrands();
+        JavaScript::put([
+            'brands' => $brands,
+        ]);
         return view('frontend.user.edit_profile', [
             'user' => $user
         ]);
@@ -222,7 +227,7 @@ class WechatController extends Controller
                 self::setMsgCode(1002);
             }
             // generate the code
-            $code = strtoupper(str_random(5));
+            $code = strtoupper(rand(1000,9999));
             Session::put('_register_code', $code);
             Session::save();
             Utils::sendSms($request->get('mobile'), ['code' => $code], env('ALIYUN_LEAR_SMS_TEMPLATE_CODE'));
@@ -374,7 +379,7 @@ class WechatController extends Controller
         $brandList = Brand::getActiveBrands();
         $data = [];
         foreach ($brandList as $item) {
-            $firstChar = strtoupper(Utils::getStrFirstChar($item->name));
+            $firstChar = $item->firstchar;
             if (!isset($data[$firstChar])) {
                 $data[$firstChar] = [];
             }
@@ -386,12 +391,33 @@ class WechatController extends Controller
 
     public function getSeries(Request $request)
     {
-
+        $code = $request->get('code');
+        if(!$code) {
+            self::setMsgCode(9001);
+            self::sendJsonMsg();
+        }
+        $brand = Brand::where('code', '=', $code);
+        if(!$brand){
+            self::setMsgCode(9003);
+            self::sendJsonMsg();
+        }
+        $series = Sery::where('brand_id', $brand->id);
+        return $series;
     }
 
     public function getModels(Request $request)
     {
         Log::write('common', 'Get models');
+    }
+
+    public function capBrands() {
+        $brandList = Brand::getActiveBrands();
+        foreach ($brandList as &$item) {
+            $firstChar = strtoupper(Utils::getStrFirstChar($item->name));
+            DB::table('brands')
+                ->where('code', $item->code)
+                ->update(['firstchar' => $firstChar]);
+        }
     }
 }
 

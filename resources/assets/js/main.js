@@ -6,20 +6,18 @@ var site = {
 
     init: function() {
         var path = url('path');
-        switch(path){
-            case '/wechat/register':
-                this.initRegister();
-                break;
-            case '/wechat/login':
-                this.initLogin();
-                break;
-            case '/wechat/member_list':
-                this.initMemberList();
-                break;
-            case '/wechat/join_club':
-                this.initJoinClub();
-                break;
-            default:
+        if(_.startsWith(path, '/wechat/register')) {
+            this.initRegister();
+        } else if(_.startsWith(path, '/wechat/login')) {
+            this.initLogin();
+        } else if(_.startsWith(path, '/wechat/member_list')) {
+            this.initMemberList();
+        } else if(_.startsWith(path, '/wechat/join_club')) {
+            this.initJoinClub();
+        } else if(_.startsWith(path, '/wechat/edit_profile')) {
+            this.initEditProfile();
+        } else {
+
         }
     },
 
@@ -431,27 +429,46 @@ var site = {
         });
     },
 
-    initJoinClub: function() {
-        console.log(brands);
+    initEditProfile: function () {
         $('.carinfo').on('click',function(){
             $('.Vehicle-information').css('left','0px');
-            //生成列表
-            for(var i= 0 ; i<carList.length ; i++){
+            for(var i in brands) {
                 var str = '';
-                for(var j= 0 ; j<carList[i].children.length ; j++){
-                    str +='<li class="aLi">'+carList[i].children[j].name+'</li>'
+                for(var j in brands[i]) {
+                    str +='<li class="aLi" code="'+brands[i][j].code+'">'+brands[i][j].name+'</li>'
                 }
-                var oSection = $('<section  nav-title='+carList[i].id+' id='+carList[i].id+'><h2>'+carList[i].id+'</h2>'+str+'</section>');
+                var oSection = $('<section nav-title='+i+' id='+i+'><h2>'+i+'</h2>'+str+'</section>');
                 $('.brandList').append(oSection);
             }
         });
+
         //点击召唤品牌信息
         $('.brand').on('click',function(){
             $('.brandBox').css('left','0px');
             alphabetNav.init('nav-title');
             $('.brandBox .brandList .aLi').on('click',function(event){
+                var code = $(this).attr('code');
                 $('.brand input').val($(this).html());
                 $('.brandBox').css('left','15rem');
+                // send ajax to get series
+                $.ajax({
+                    type: "GET",
+                    dataType: "json", //dataType (xml html script json jsonp text)
+                    url: '/wechat/get_series/'+code,
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    //beforeSend: bstool.submit_loading, //执行ajax前执行loading函数.直到success
+                    success: function(rs) {//成功获得的也是json对象
+                        console.log(rs);
+                        return;
+                        if(rs.errno == 0) {
+                            that.successField($('#mobile'));
+                        } else {
+                            that.errorField($('#mobile'));
+                        }
+                    }
+                });
                 event.stopPropagation();
             })
         });

@@ -17,6 +17,7 @@ class Brand extends Model
     protected $fillable = [
         'code',
         'name',
+        'firstchar',
         'detail',
         'active',
     ];
@@ -29,7 +30,7 @@ class Brand extends Model
     public static function getActiveBrands() {
         return Brand::where('active', '=', 1)
             ->whereNull('deleted_at')
-            ->select('name', 'code', 'detail')
+            ->select('name', 'firstchar','code', 'detail')
             ->get();
     }
 }

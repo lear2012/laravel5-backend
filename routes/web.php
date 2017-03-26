@@ -18,6 +18,7 @@ Route::any('/wechat', '\App\Http\Controllers\Frontend\WechatController@serve');
 Route::post('/wechat/notify', ['as' => 'wechat.notify', 'uses' => '\App\Http\Controllers\Frontend\WechatController@notify'])->middleware(['web']);
 Route::get('/sya', '\App\Http\Controllers\Frontend\WechatController@vehicleInfoCrawler');
 Route::get('/get_brands', ['as' => 'get_brands', 'uses' => '\App\Http\Controllers\Frontend\WechatController@getBrands']);
+Route::get('/cap_brands', ['as' => 'cap_brands', 'uses' => '\App\Http\Controllers\Frontend\WechatController@capBrands']);
 Route::get('/get_series/{code}', ['as' => 'get_series', 'uses' => '\App\Http\Controllers\Frontend\WechatController@getSeries']);
 Route::get('/get_models/{code}', ['as' => 'get_models', 'uses' => '\App\Http\Controllers\Frontend\WechatController@getModels']);
 Route::group(['namespace' => 'Frontend', 'middleware' => ['web', 'wechat.oauth:snsapi_userinfo']], function ()
