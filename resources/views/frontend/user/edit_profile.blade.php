@@ -5,7 +5,10 @@
     <div class="JoinKY">
         <header>
             <img class="portrait" src="{{ $user->profile->avatar }}" />
-            <p class="sign">{{ $user->username }}</p>
+            <p class="name">
+                <span>{{ $user->username }}</span>
+                <img src="{{ $user->profile->sex == 1 ? '/img/m.png' : '/img/f.png' }}"/>
+            </p>
         </header>
         <section style="padding-bottom: 2.4rem;">
             <ul class="form" id="profile_form">
