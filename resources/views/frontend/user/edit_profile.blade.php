@@ -9,6 +9,7 @@
                 <span>{{ $user->username }}</span>
                 <img src="{{ $user->profile->sex == 1 ? '/img/m.png' : '/img/f.png' }}"/>
             </p>
+            <P class='Wechat-number text-hidden'>{{ $user->profile->wechat_no }}</P>
         </header>
         <section style="padding-bottom: 2.4rem;">
             <ul class="form" id="profile_form">
