@@ -104,7 +104,7 @@ var site = {
             prevButton:'.swiper-button-prev',
             nextButton:'.swiper-button-next',
             slideToClickedSlide: false,
-            onTouchEnd: function(swiper, event) {
+            onTransitionEnd: function(swiper) {
                 that.renderActiveExpdriver(swiper);
             },
             onClick: function(swiper, event) {
@@ -116,7 +116,7 @@ var site = {
     },
 
     renderActiveExpdriver: function(swiper){
-        var activeId = $('.swiper-slide img').eq(swiper.activeIndex).attr('id');
+        var activeId = $('.swiper-slide-active img').attr('id');
         var uid = _.replace(activeId, /[a-zA-Z]+/g, '');
         var user = _.find(expDrivers, function(item){
             return item.uid == uid;
@@ -127,6 +127,7 @@ var site = {
     },
 
     setExpDriverInfo: function(user) {
+        $('#info_board').hide().fadeIn();
         $('.username', $('#info_board')).text(user.username);
         $('.Wechat-number', $('#info_board')).text(user.nickname);
         if(user.profile.sex == 1) {
