@@ -537,7 +537,7 @@ input {-webkit-appearance:none; /*去除input默认样式*/}
     border: none;
 }
 .JoinKY .brandList li{
-    font-size:.3rem;
+    font-size:.6rem;
     color:rgba(223,201,166,1);
     line-height: 1.4rem;
     border-bottom: 0.02rem solid rgba(153,111,40,0.5);
