@@ -26,6 +26,9 @@
     margin-top: 36px;
     display:none;
 }
+.timer {
+    margin-top: 36px;
+}
 #mobile {width:45%;line-height: .7rem }
 
 .timer_text {
@@ -117,7 +120,7 @@ input,textarea{-webkit-appearance:none;}
 }
 .brandList {margin-top:2.2rem}
 .brandList li{
-    font-size:.3rem;
+    font-size:.6rem;
 }
 
 .selectBox img, .Vehicle-information img{
