@@ -12,6 +12,7 @@ class CarInfoSeeder extends Seeder
     public function run()
     {
         //
+        return;
         $content = file_get_contents('/tmp/carInfo.json');
         $data = json_decode($content);
         DB::beginTransaction();

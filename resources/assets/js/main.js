@@ -75,7 +75,8 @@ var site = {
     },
 
     initMemberList: function() {
-        //
+        if(expDrivers.length == 0)
+            return false;
         var that = this;
         var expSize = _.keys(expDrivers).length;
         this._centerSlideIndex = Math.floor(expSize/2);
@@ -276,16 +277,18 @@ var site = {
                         }
                     });
                 } else {
-                    //$('#err_msg').html(rs.msg);
-                    //$('#reg_fail').show();
-                    swal({
-                        html: true,
-                        title: "出问题啦！",
-                        text: rs.msg,
-                        type: 'error'
-                    });
+                    that.showError(rs);
                 }
             }
+        });
+    },
+
+    showError: function(rs) {
+        swal({
+            html: true,
+            title: "出问题啦！",
+            text: rs.msg,
+            type: 'error'
         });
     },
 
@@ -430,15 +433,19 @@ var site = {
     },
 
     initEditProfile: function () {
+        var that = this;
+
         $('.carinfo').on('click',function(){
             $('.Vehicle-information').css('left','0px');
-            for(var i in brands) {
-                var str = '';
-                for(var j in brands[i]) {
-                    str +='<li class="aLi" code="'+brands[i][j].code+'">'+brands[i][j].name+'</li>'
+            if($('.brandList').html() == '') {
+                for (var i in brands) {
+                    var str = '';
+                    for (var j in brands[i]) {
+                        str += '<li class="aLi" code="' + brands[i][j].code + '">' + brands[i][j].name + '</li>'
+                    }
+                    var oSection = $('<section nav-title=' + i + ' id=' + i + '><h2>' + i + '</h2>' + str + '</section>');
+                    $('.brandList').append(oSection);
                 }
-                var oSection = $('<section nav-title='+i+' id='+i+'><h2>'+i+'</h2>'+str+'</section>');
-                $('.brandList').append(oSection);
             }
         });
 
@@ -446,31 +453,93 @@ var site = {
         $('.brand').on('click',function(){
             $('.brandBox').css('left','0px');
             alphabetNav.init('nav-title');
-            $('.brandBox .brandList .aLi').on('click',function(event){
+            $('.brandBox .brandList .aLi').unbind('click').on('click',function(event){
                 var code = $(this).attr('code');
                 $('.brand input').val($(this).html());
                 $('.brandBox').css('left','15rem');
+                $('.alphabetList').hide();
                 // send ajax to get series
                 $.ajax({
                     type: "GET",
                     dataType: "json", //dataType (xml html script json jsonp text)
-                    url: '/wechat/get_series/'+code,
+                    url: '/get_series/'+code,
                     headers: {
                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                     },
                     //beforeSend: bstool.submit_loading, //执行ajax前执行loading函数.直到success
                     success: function(rs) {//成功获得的也是json对象
-                        console.log(rs);
-                        return;
                         if(rs.errno == 0) {
-                            that.successField($('#mobile'));
+                            that.setSeriesHtml(rs.data);
                         } else {
-                            that.errorField($('#mobile'));
+                            that.showError(rs);
                         }
                     }
                 });
+
                 event.stopPropagation();
             })
+        });
+
+        $('.series').click(function(){
+            $('.seriesBox').css('left','0px');
+            $('.myselect', $('.seriesBox')).show();
+        });
+
+        $('.myselect-close').click(function(){
+            $('.selectBox').css('left','15rem');
+        });
+        $('.vehicle-close').click(function(){
+            $('.Vehicle-information').css('left','15rem');
+        });
+
+    },
+
+    setSeriesHtml: function(data) {
+        var str = '<ul class="myselect">';
+        for(var i in data){
+            str +='<li class="aLi" code="'+data[i].code+'">'+data[i].name+'</li>';
+        }
+        str += '</ul>';
+        $('.seriesList').html(str);
+        // bind event
+        $('.seriesBox .seriesList .aLi').unbind('click').on('click',function(event) {
+            var code = $(this).attr('code');
+            $('.series input').val($(this).html());
+            $('.seriesBox').css('left', '15rem');
+            // send ajax to get series
+            $.ajax({
+                type: "GET",
+                dataType: "json", //dataType (xml html script json jsonp text)
+                url: '/get_models/'+code,
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                //beforeSend: bstool.submit_loading, //执行ajax前执行loading函数.直到success
+                success: function(rs) {//成功获得的也是json对象
+                    if(rs.errno == 0) {
+                        that.setMotomodels(rs.data);
+                    } else {
+                        that.showError(rs);
+                    }
+                }
+            });
+
+            event.stopPropagation();
+        });
+    },
+
+    setMotomodels: function(data) {
+        var str = '<ul class="myselect">';
+        for(var i in data){
+            str +='<li class="aLi" code="'+data[i].code+'">'+data[i].name+'</li>';
+        }
+        str += '</ul>';
+        $('.motomodelList').html(str);
+        // bind event
+        $('.motomodelBox .motomodelList .aLi').unbind('click').on('click',function(event) {
+            $('.motomodel input').val($(this).html());
+            $('.motomodelBox').css('left', '15rem');
+            event.stopPropagation();
         });
     }
 

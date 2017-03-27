@@ -1,6 +1,7 @@
 void function(d, e){
 	var inited = false, // 是否初始化
 			list, // 导航条
+			lastPos,
 			indicator; // 指示器
 
 	
@@ -132,9 +133,12 @@ void function(d, e){
 //		});
 //
 		if(showIndicator){
-			list.addEventListener('touchend', function(){
+			lastPos = 0;
+			list.addEventListener('touchend', function(e){
 				indicator.style.display = 'none';
-				$(".brandBox").scrollTop($('#'+indicator.innerHTML).offset().top);
+				var curPos = $('#'+indicator.innerHTML).offset().top;
+                $(".brandBox").delay(100).animate({scrollTop: curPos+lastPos }, 1000);
+                lastPos = curPos+lastPos;
 				e.stopPropagation();
 			});
 		}

@@ -24,7 +24,7 @@ class Controller extends BaseController
     public static $ret = [
         'errno' => 0,
         'msg' => '',
-        'extra' => ''
+        'data' => ''
     ];
 
     public static function sendJsonMsg() {
@@ -34,6 +34,10 @@ class Controller extends BaseController
     public static function setMsgCode($code) {
         self::$ret['errno'] = $code;
         self::$ret['msg'] = self::$msgs[$code];
+    }
+
+    public static function setData($data) {
+        self::$ret['data'] = $data;
     }
 
     public static $msgs = [

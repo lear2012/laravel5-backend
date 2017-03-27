@@ -58,7 +58,6 @@ class UserController extends BaseController
             'backurl' => $request->fullUrl()
         ]);
         $users = $this->users->orderBy('id', 'desc')->paginate(10);
-
         return view('backend.user.index', ['users' => $users]);
     }
 

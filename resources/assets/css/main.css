@@ -85,3 +85,48 @@ input,textarea{-webkit-appearance:none;}
 #expdriver_list .swiper-slide-next img{margin-right:0px;}
 #expdriver_list .swiper-slide-prev img{margin-left:0px;}
 #profile_form li .Ainp{width:60%}
+.JoinKY .info {
+    text-align: center;
+}
+.JoinKY .info .name {
+    font-family: "HelveticaNeue-CondensedBold";
+    color: white;
+    font-size: 1rem;
+    text-indent: 0.6rem;
+}
+.JoinKY .info .Wechat-number {
+    font-size: 0.6rem;
+    padding: 0.2rem 0.5rem;
+    color: rgba(255, 255, 255, 0.8);
+}
+.myselect{
+    position: fixed;
+    width: 14rem;
+    color: white;
+    top: 2rem;
+    display: none;
+    padding: 0.45rem .5rem;
+}
+.myselect li{
+    font-size:.6rem;
+    color: rgb(223,201,166);
+    text-align: center;
+    line-height: 0.8rem;
+    padding:0.3rem 0;
+    border-bottom: 0.02rem solid rgba(153, 111, 40, 0.6);
+}
+.brandList {margin-top:2.2rem}
+.brandList li{
+    font-size:.3rem;
+}
+
+.selectBox img, .Vehicle-information img{
+    float:left;
+    margin:1rem;
+}
+.selectBox .form, .Vehicle-information .form{
+    margin-top:2.4rem;
+    padding:.3rem 1rem;
+}
+.alphabetList {top:10%;font-size:.6rem;
+    text-align: center;}

@@ -11,12 +11,14 @@ class RolesTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('roles')->delete();
-
+        Schema::disableForeignKeyConstraints();
+        DB::table('roles')->truncate();
+        Schema::enableForeignKeyConstraints();
         $roleArr = array(
-            array('name' => 'admin', 'display_name' => 'administrator', 'description' => '超级管理员'),
-            array('name' => 'news_admin', 'display_name' => '新闻管理', 'description' => '管理新闻'),
-            array('name' => 'user_admin', 'display_name' => '用户管理', 'description' => '管理用户'),
+            array('name' => 'admin', 'display_name' => '管理员', 'description' => '超级管理员'),
+            array('name' => 'register_member', 'display_name' => '注册会员', 'description' => '注册会员'),
+            array('name' => 'paid_member', 'display_name' => '付费会员', 'description' => '付费会员'),
+            array('name' => 'exp_driver', 'display_name' => '老司机', 'description' => '老司机'),
         );
 
         foreach ($roleArr as $role) {

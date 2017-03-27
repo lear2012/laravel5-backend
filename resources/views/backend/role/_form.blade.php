@@ -21,12 +21,12 @@
 
 <div class="form-group">
     <label class="col-lg-2 control-label">权限</label>
-    <div class="col-lg-3">
+    <div class="col-lg-6">
         <ul class="list-unstyled">
         @if (count($permissions) > 0)
             @foreach($permissions as $perm)
                 <li class="pull-left">
-                <input type="checkbox" class="btn bg-purple btn-flat margin  pull-right" value="{{$perm->id}}" name="assignees_permissions[]" {{in_array($perm->id, $rolePermissions) ? 'checked' : ''}} id="perm-{{$perm->id}}" />
+                <input type="checkbox" value="{{$perm->id}}" name="assignees_permissions[]" {{in_array($perm->id, $rolePermissions) ? 'checked' : ''}} id="perm-{{$perm->id}}" />
                 <label for="perm-{{$perm->id}}">{!! $perm->display_name !!}({!! $perm->name !!})</label>
                 </li>
             @endforeach

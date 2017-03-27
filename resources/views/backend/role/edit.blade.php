@@ -3,8 +3,6 @@
 @section('title', '编辑角色')
 
 @section('styles')
-    <!-- iCheck -->
-    <link rel="stylesheet" href="{{ asset('plugins/iCheck/square/blue.css') }}">
 @endsection
 
 @section('breadcrumb')
@@ -46,17 +44,6 @@
 @endsection
 
 @section('scripts')
-    <!-- iCheck -->
-    <script src="{{ asset('plugins/iCheck/icheck.min.js') }}"></script>
-    <script>
 
-        $(function () {
-            $('input').iCheck({
-                checkboxClass: 'icheckbox_square-blue',
-                radioClass: 'iradio_square-blue',
-                increaseArea: '20%' // optional
-            });
-        });
-    </script>
 @endsection
 

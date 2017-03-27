@@ -6,6 +6,7 @@
 }
 body,h1,h2,h3,h4,h5,h6,p,dl,dd,ol,ul,form, pre,th,td,input,textarea,select{
     margin:0;padding:0;
+    font-weight:lighter;
 }
 li{
     list-style:none;
@@ -47,7 +48,7 @@ input {-webkit-appearance:none; /*去除input默认样式*/}
     padding:0.1rem 0;
 }
 .sel-left{
-    background:url(../img/left.png) 13rem 0.8rem no-repeat;
+    background:url(../img/left.png) 12.4rem 0.8rem no-repeat;
 }
 .submit{
     width: 15rem;
@@ -381,7 +382,6 @@ input {-webkit-appearance:none; /*去除input默认样式*/}
     color: white;
     text-align: left;
 }
-/*--*/
 .JoinKY {
     width: 13.8rem;
     font-size: 0.75rem;
@@ -416,12 +416,11 @@ input {-webkit-appearance:none; /*去除input默认样式*/}
 .JoinKY .form li{
     height: 2rem;
     border-bottom: 0.02rem solid rgba(255,255,255,0.5);
-    font-size:0px ;
     padding-left: 0.5rem;
 }
 .JoinKY .form li .tit-s{
     font-size: 0.6rem;
-    color: white;
+    color: rgb(223,201,166);
     line-height: 2rem;
     margin-right: 0.5rem;
     width: 2rem;
@@ -443,14 +442,13 @@ input {-webkit-appearance:none; /*去除input默认样式*/}
     font-size: 0.6rem;
     color: white;
     line-height: 2rem;
-    width: 60%;
+    width: 56%;
 }
 .JoinKY .But{
     font-size: 0.6rem;
     color: #ad7a00;
 }
 .JoinKY .Vehicle-information{
-    padding-top: 1.5rem;
     width: 15rem;
     min-height: 100vh;
     position: fixed;
@@ -460,6 +458,36 @@ input {-webkit-appearance:none; /*去除input默认样式*/}
     background: url(../img/bg_img.png);
 }
 .JoinKY .brandBox{
+    width: 15rem;
+    height: 100vh;
+    overflow: auto;
+    position: fixed;
+    top: 0px;
+    left:15rem;
+    transition:500ms ;
+    background: url(../img/bg_img.png);
+}
+.JoinKY .seriesBox{
+    width: 15rem;
+    height: 100vh;
+    overflow: auto;
+    position: fixed;
+    top: 0px;
+    left:15rem;
+    transition:500ms ;
+    background: url(../img/bg_img.png);
+}
+.JoinKY .motomodelBox{
+    width: 15rem;
+    height: 100vh;
+    overflow: auto;
+    position: fixed;
+    top: 0px;
+    left:15rem;
+    transition:500ms ;
+    background: url(../img/bg_img.png);
+}
+.JoinKY .dateBox{
     width: 15rem;
     height: 100vh;
     overflow: auto;
@@ -498,7 +526,7 @@ input {-webkit-appearance:none; /*去除input默认样式*/}
     line-height: 1.5rem;
 }
 .JoinKY .brandList{
-    padding: 0px 1rem;
+    padding: 0px 1.4rem;
     color: white;
     font-size: 0.4rem;
 }
@@ -509,8 +537,10 @@ input {-webkit-appearance:none; /*去除input默认样式*/}
     border: none;
 }
 .JoinKY .brandList li{
-    line-height: 1.2rem;
-    border-bottom: 0.02rem solid rgba(255,255,255,0.5);
+    font-size:.3rem;
+    color:rgba(223,201,166,1);
+    line-height: 1.4rem;
+    border-bottom: 0.02rem solid rgba(153,111,40,0.5);
 }
 
 
@@ -578,11 +608,11 @@ html::-webkit-scrollbar-thumb
     height: 2rem;
     border-bottom: 0.02rem solid rgba(255,255,255,0.5);
     font-size:0px ;
-    padding-left: 0.5rem;
+    padding-left: .3rem;
 }
 .register .form li .tit-s{
     font-size: 0.6rem;
-    color: white;
+    color: rgb(223,201,166);
     line-height: 2rem;
     margin-right: 0.5rem;
     width: 10%;

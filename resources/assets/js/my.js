@@ -43,10 +43,11 @@ var site = {
             radioClass: 'iradio_square-purple',
             increaseArea: '20%' // optional
         });
-        $('input[type=checkbox]').on('ifChanged', function(event){
-            var val = $(this).val() == 1 ? 0 : 1;
-            $(this).val(val);
-        });
+        if((typeof $('.list-unstyled')) != 'object')
+            $('input[type=checkbox]').on('ifChanged', function(event){
+                var val = $(this).val() == 1 ? 0 : 1;
+                $(this).val(val);
+            });
     },
 
     init_fileinput: function() {

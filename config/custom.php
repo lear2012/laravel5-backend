@@ -12,8 +12,8 @@ return [
     'static_domain' => '',
 
     //
-    'register_member_code' => 5,
-    'paid_member_code' => 6,
+    'register_member_code' => 2,
+    'paid_member_code' => 3,
     'exp_driver_code' => 4,
     'admin_code' => 1
 ];

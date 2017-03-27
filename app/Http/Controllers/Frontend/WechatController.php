@@ -23,6 +23,8 @@ use Facebook\WebDriver\Remote\RemoteWebDriver;
 use Facebook\WebDriver\WebDriverExpectedCondition;
 use Facebook\WebDriver\WebDriverBy;
 use App\Models\Brand;
+use App\Models\Sery;
+use App\Models\Motomodel;
 use DB;
 
 class WechatController extends Controller
@@ -389,25 +391,36 @@ class WechatController extends Controller
         return $data;
     }
 
-    public function getSeries(Request $request)
+    public function getSeries($code)
     {
-        $code = $request->get('code');
         if(!$code) {
             self::setMsgCode(9001);
             self::sendJsonMsg();
         }
-        $brand = Brand::where('code', '=', $code);
+        $brand = Brand::where('code', '=', $code)->first();
         if(!$brand){
             self::setMsgCode(9003);
             self::sendJsonMsg();
         }
-        $series = Sery::where('brand_id', $brand->id);
-        return $series;
+        $series = Sery::where('brand_id', $brand->id)->get();
+        self::setData($series);
+        self::sendJsonMsg();
     }
 
-    public function getModels(Request $request)
+    public function getModels($code)
     {
-        Log::write('common', 'Get models');
+        if(!$code) {
+            self::setMsgCode(9001);
+            self::sendJsonMsg();
+        }
+        $sery = Sery::where('code', '=', $code)->first();
+        if(!$sery){
+            self::setMsgCode(9003);
+            self::sendJsonMsg();
+        }
+        $models = Motomodel::where('sery_id', $sery->id)->get();
+        self::setData($models);
+        self::sendJsonMsg();
     }
 
     public function capBrands() {

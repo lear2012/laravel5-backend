@@ -71,9 +71,9 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
 
     public static $userColors = [
         1 => 'red',
+        2 => 'green',
+        3 => 'yellow',
         4 => 'light-blue',
-        5 => 'green',
-        6 => 'yellow'
     ];
 
     public function getStatusAttribute($value)

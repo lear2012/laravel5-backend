@@ -11,13 +11,12 @@ class PermissionsTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('permissions')->delete();
+        Schema::disableForeignKeyConstraints();
+        DB::table('permissions')->truncate();
+        Schema::enableForeignKeyConstraints();
 
         $permissionArr = array(
-            array('name' => 'add_user', 'display_name' => '添加用户'),
-            array('name' => 'delete_user', 'display_name' => '删除用户'),
-            array('name' => 'add_news', 'display_name' => '添加新闻'),
-            array('name' => 'edit_news', 'display_name' => '编辑新闻')
+            array('name' => 'decorate_home', 'display_name' => '装饰老司机个人页面'),
         );
 
         foreach ($permissionArr as $perm) {

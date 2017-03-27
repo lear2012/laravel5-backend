@@ -64,7 +64,7 @@ class UsersTableSeeder extends Seeder
                 'birth_place' => $faker->address,
                 'birth_date' => $faker->date()
             ]);
-            $user->roles()->attach([4,5,6][rand(0,2)]);
+            $user->roles()->attach([2,3,4][rand(0,2)]);
         }
     }
 

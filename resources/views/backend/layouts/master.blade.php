@@ -13,7 +13,7 @@
     @if(env('APP_ENV') == 'prod')
         <link rel="stylesheet" href="{{ elixir('css/all_bk.css', null) }}" />
     @else
-        <link rel="stylesheet" href="{{ asset('css/all_bk.css') }}" />
+        <link rel="stylesheet" href="{{ asset('css/all_bk.css', null) }}" />
     @endif
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -70,7 +70,7 @@
 @if(env('APP_ENV') == 'prod')
     <script type="text/javascript" src="{{ elixir('js/all_bk.js', null) }}"></script>
 @else
-    <script type="text/javascript" src="{{ asset('js/all_bk.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/all_bk.js', null) }}"></script>
 @endif
 @yield('scripts')
 {{--<script src="{{ elixir('js/my.js') }}"></script>--}}

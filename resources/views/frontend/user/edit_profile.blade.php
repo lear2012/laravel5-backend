@@ -52,42 +52,56 @@
 
         </section>
         <div class="Vehicle-information">
-            <ul class="form">
-                <li class="sel-left brand">
-                    <label>
-                        <span class="tit-s ">品牌</span>
-                        <input readonly="readonly" class="Ainp" type="" name="" id="" value="" />
-                    </label>
-                </li>
-                <li class="sel-left">
-                    <label>
-                        <span class="tit-s">车系</span>
-                        <input readonly="readonly" class="Ainp" type="" name="" id="" value="" />
-                    </label>
-                </li>
-                <li class="sel-left">
-                    <label>
-                        <span class="tit-s">型号</span>
-                        <input readonly="readonly" class="Ainp" type="" name="" id="" value="" />
-                    </label>
-                </li>
-                <li class="sel-left">
-                    <label>
-                        <span class="tit-s">使用时间</span>
-                        <input readonly="readonly" class="Ainp" type="" name="" id="" value="" />
-                    </label>
-                </li>
-            </ul>
+            <div><img src="/img/left-arrow.png" class="vehicle-close"></div>
+            <div>
+                <ul class="form">
+                    <li class="sel-left brand">
+                        <label>
+                            <span class="tit-s ">品牌</span>
+                            <input readonly="readonly" class="Ainp" type="" name="" id="" value="" />
+                        </label>
+                    </li>
+                    <li class="sel-left series">
+                        <label>
+                            <span class="tit-s">车系</span>
+                            <input readonly="readonly" class="Ainp" type="" name="" id="" value="" />
+                        </label>
+                    </li>
+                    <li class="sel-left motomodel">
+                        <label>
+                            <span class="tit-s">型号</span>
+                            <input readonly="readonly" class="Ainp" type="" name="" id="" value="" />
+                        </label>
+                    </li>
+                    <li class="sel-left buy-date">
+                        <label>
+                            <span class="tit-s">购买时间</span>
+                            <input readonly="readonly" class="Ainp" type="" name="" id="" value="" />
+                        </label>
+                    </li>
+                </ul>
+            </div>
         </div>
-        <div class="brandBox">
+        <div class="brandBox selectBox">
             {{--<label class="search-box">--}}
                 {{--<input placeholder="搜索" class="Ainp search" type="" name="" id="" value="" />--}}
                 {{--<span class="tit-s search-but">搜索</span>--}}
             {{--</label>--}}
+            <div><img src="/img/left-arrow.png" class="myselect-close"></div>
             <div class="brandList"></div>
         </div>
-        <div class="seriesBox"></div>
-        <div class="motomodelBox"></div>
+        <div class="seriesBox selectBox">
+            <div><img src="/img/left-arrow.png" class="myselect-close"></div>
+            <div class="seriesList"></div>
+        </div>
+        <div class="motomodelBox selectBox">
+            <div><img src="/img/left-arrow.png" class="myselect-close"></div>
+            <div class="motomodelList"></div>
+        </div>
+        <div class="dateBox selectBox">
+            <div><img src="/img/left-arrow.png" class="myselect-close"></div>
+            <div class="dateList"></div>
+        </div>
     </div>
 @endsection
 

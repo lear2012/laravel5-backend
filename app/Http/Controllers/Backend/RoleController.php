@@ -6,6 +6,7 @@ use App\Contracts\Repositories\PermissionRepository;
 use App\Contracts\Repositories\RoleRepository;
 use Illuminate\Http\Request;
 use App\Http\Requests\Backend;
+use App\Models\Role;
 
 class RoleController extends BaseController
 {
@@ -85,7 +86,6 @@ class RoleController extends BaseController
     public function edit($id)
     {
         $role = $this->roles->find($id);
-
         return view(
             'backend.role.edit',
             [
@@ -104,7 +104,12 @@ class RoleController extends BaseController
      */
     public function update($id, Request $request)
     {
-        $this->roles->update($request->all(), $id);
+        $data = $request->all();
+        if(!isset($data['assignees_permissions'])) {
+            $role = Role::find($id);
+            $role->permissions()->detach();
+        } else
+            $this->roles->update($data, $id);
         return redirect()->route('admin.auth.role.index')->with('jsmsg', amaran_msg(trans('alerts.roles.updated'), 'success'));
     }
 
