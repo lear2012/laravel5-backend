@@ -4,6 +4,8 @@ var site = {
 
     _centerSlideIndex: 0,
 
+    vehicleInfo: {},
+
     init: function() {
         var path = url('path');
         if(_.startsWith(path, '/wechat/register')) {
@@ -434,7 +436,7 @@ var site = {
 
     initEditProfile: function () {
         var that = this;
-
+        this.initDateBox();
         $('.carinfo').on('click',function(){
             $('.Vehicle-information').css('left','0px');
             if($('.brandList').html() == '') {
@@ -456,6 +458,7 @@ var site = {
             $('.brandBox .brandList .aLi').unbind('click').on('click',function(event){
                 var code = $(this).attr('code');
                 $('.brand input').val($(this).html());
+                that.vehicleInfo.brand = $(this).html();
                 $('.brandBox').css('left','15rem');
                 $('.alphabetList').hide();
                 // send ajax to get series
@@ -484,14 +487,41 @@ var site = {
             $('.seriesBox').css('left','0px');
             $('.myselect', $('.seriesBox')).show();
         });
+        $('.motomodel').click(function(){
+            $('.motomodelBox').css('left','0px');
+            $('.myselect', $('.motomodelBox')).show();
+        });
+        $('.buy-date').click(function(){
+            $('.dateBox').css('left','0px');
+            $('.myselect', $('.dateBox')).show();
+        });
 
         $('.myselect-close').click(function(){
             $('.selectBox').css('left','15rem');
+            $('.alphabetList').hide();
         });
         $('.vehicle-close').click(function(){
             $('.Vehicle-information').css('left','15rem');
         });
+        $('.complete-btn').click(function(){
+            var vehicleInfo = that.getVehicleInfo();
+            $('#vehicle').val(vehicleInfo);
+            $('.Vehicle-information').css('left','15rem');
+        });
 
+    },
+
+    getVehicleInfo: function () {
+        var ret = '';
+        if(this.vehicleInfo.brand != undefined)
+            ret += this.vehicleInfo.brand;
+        if(this.vehicleInfo.sery != undefined)
+            ret += '-'+this.vehicleInfo.sery;
+        if(this.vehicleInfo.motomodel != undefined)
+            ret += '-'+this.vehicleInfo.motomodel;
+        if(this.vehicleInfo.buyyear != undefined)
+            ret += '-'+this.vehicleInfo.buyyear;
+        return ret;
     },
 
     setSeriesHtml: function(data) {
@@ -506,6 +536,7 @@ var site = {
         $('.seriesBox .seriesList .aLi').unbind('click').on('click',function(event) {
             var code = $(this).attr('code');
             $('.series input').val($(this).html());
+            that.vehicleInfo.sery = $(this).html();
             $('.seriesBox').css('left', '15rem');
             // send ajax to get series
             $.ajax({
@@ -530,6 +561,7 @@ var site = {
     },
 
     setMotomodels: function(data) {
+        var that = this;
         var str = '<ul class="myselect">';
         for(var i in data){
             str +='<li class="aLi" code="'+data[i].code+'">'+data[i].name+'</li>';
@@ -539,7 +571,26 @@ var site = {
         // bind event
         $('.motomodelBox .motomodelList .aLi').unbind('click').on('click',function(event) {
             $('.motomodel input').val($(this).html());
+            that.vehicleInfo.motomodel = $(this).html();
             $('.motomodelBox').css('left', '15rem');
+            event.stopPropagation();
+        });
+    },
+
+    initDateBox: function() {
+        var that = this;
+        var str = '<ul class="myselect">';
+        var curYear = new Date().getFullYear();
+        for(var i=curYear;i>1949;i--) {
+            str +='<li class="aLi" year="'+i+'">'+i+'</li>';
+        }
+        str += '</ul>';
+        $('.dateList').html(str);
+        // bind event
+        $('.dateBox .dateList .aLi').unbind('click').on('click',function(event) {
+            $('.buy-date input').val($(this).html());
+            that.vehicleInfo.buyyear = $(this).html();
+            $('.dateBox').css('left', '15rem');
             event.stopPropagation();
         });
     }

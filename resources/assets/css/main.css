@@ -1,8 +1,10 @@
-#captcha_label input {
-
+#captcha_label {
+    height:2rem;
+}
+#captcha_label img {
+    margin-top:.4rem;
 }
 .captcha {
-    margin-top:20px;
     cursor:pointer;
 }
 #Agreement {margin-left:5px;}
@@ -79,6 +81,9 @@ input,textarea{-webkit-appearance:none;}
 #register_form li{
     border-bottom: 0.02rem solid rgba(140, 105, 47, 0.6);
 }
+#profile_form li{
+    border-bottom: 0.02rem solid rgba(140, 105, 47, 0.6);
+}
 #expdriver_list img {height:2.4rem;width:2.4rem;margin-top:.8rem;}
 #expdriver_list .swiper-slide-active img{height:3rem;width:3rem;margin-top:.5rem;border:.04rem solid rgba(255,255,255,.5);}
 .homepage h2 {padding-top:1.2rem; padding-bottom:0.4rem}
@@ -134,3 +139,41 @@ input,textarea{-webkit-appearance:none;}
 }
 .alphabetList {top:10%;font-size:.6rem;
     text-align: center;}
+.headline {margin-top:4rem;font-size:1.6rem;margin-bottom:1rem;border-bottom: 0.02rem solid rgba(153, 111, 40, 0.6);}
+.error-content {font-size:.6rem;}
+.JoinKY  .info{
+    text-align: center;
+    margin-top: 0.4rem;
+    color: rgba(255,255,255);
+}
+.JoinKY .info .name{
+    font-family: "HelveticaNeue-CondensedBold";
+    color: white;
+    font-size: 1rem;
+    text-indent: 0.6rem;
+    margin-top:0.6rem;
+}
+.JoinKY  .info .Wechat-number{
+    font-size: 0.6rem;
+    padding: 0.2rem 0.5rem;
+    color: rgba(255,255,255,0.8);
+}
+.JoinKY section .portrait{
+    width: 3.6rem;
+    height: 3.6rem;
+    border-radius:2rem;
+    border: 0.04rem solid rgba(255,255,255,0.5);
+    padding: 0.2rem;
+    margin-top: 2.01rem;
+}
+.JoinKY section .name{
+    font-size: 0.8rem;
+    color: white;
+    margin-top: 0.6rem;
+}
+#vehicle-select-form .complete-btn {font-size:.6rem;border-bottom:none;line-height: 2rem}
+#vehicle-select-form .complete-btn a {
+    float: right;
+    padding-right:.5rem;
+    color:#ad7a00;
+}

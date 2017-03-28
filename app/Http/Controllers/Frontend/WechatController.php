@@ -169,9 +169,9 @@ class WechatController extends Controller
 
     public function editProfile($id)
     {
-        if(Auth::user()->uid != $id) {
-            abort(401);
-        }
+//        if(!Auth::user() || Auth::user()->uid != $id) {
+//            abort(401);
+//        }
         $user = User::where([
             'uid' => $id
         ])->first();
@@ -231,10 +231,18 @@ class WechatController extends Controller
             if ($validator->fails()) {
                 self::setMsgCode(1002);
             }
-            // generate the code
-            $code = strtoupper(rand(1000,9999));
-            Session::put('_register_code', $code);
-            Session::save();
+            // 每个ip每天最多发三次注册短信--TODO
+            if (!empty(Session::get('_reg_sms_expires')) && time() < Session::get('_reg_sms_expires')) {
+                // 如果30分钟内请求，则返回
+                $code = Session::get('_register_code');
+            } else {
+                // generate the code
+                $code = strtoupper(rand(1000,9999));
+                Session::put('_register_code', $code);
+                $lifetime = time() + 60 * 30; // one year
+                Session::put('_reg_sms_expires', $lifetime);
+                Session::save();
+            }
             Utils::sendSms($request->get('mobile'), ['code' => $code], env('ALIYUN_LEAR_SMS_TEMPLATE_CODE'));
             self::sendJsonMsg();
         }

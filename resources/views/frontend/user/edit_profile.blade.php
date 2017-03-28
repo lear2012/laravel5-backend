@@ -4,8 +4,8 @@
 @section('content')
     <div class="JoinKY">
         <header>
+            <div><img class="portrait" src="{{ $user->profile->avatar }}" /></div>
             <div class="info">
-                <img class="portrait" src="{{ $user->profile->avatar }}" />
                 <p class="name">
                     <span>{{ $user->username }}</span>
                     <img src="{{ $user->profile->sex == 1 ? '/img/m.png' : '/img/f.png' }}"/>
@@ -54,7 +54,7 @@
         <div class="Vehicle-information">
             <div><img src="/img/left-arrow.png" class="vehicle-close"></div>
             <div>
-                <ul class="form">
+                <ul class="form" id="vehicle-select-form">
                     <li class="sel-left brand">
                         <label>
                             <span class="tit-s ">品牌</span>
@@ -79,6 +79,7 @@
                             <input readonly="readonly" class="Ainp" type="" name="" id="" value="" />
                         </label>
                     </li>
+                    <li class="complete-btn"><a href="javascript:;" id="complete-btn">完成</a></li>
                 </ul>
             </div>
         </div>

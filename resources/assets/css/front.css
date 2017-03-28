@@ -415,7 +415,7 @@ input {-webkit-appearance:none; /*去除input默认样式*/}
 }
 .JoinKY .form li{
     height: 2rem;
-    border-bottom: 0.02rem solid rgba(255,255,255,0.5);
+    border-bottom: 0.02rem solid rgba(153, 111, 40, 0.6);
     padding-left: 0.5rem;
 }
 .JoinKY .form li .tit-s{
@@ -432,7 +432,6 @@ input {-webkit-appearance:none; /*去除input默认样式*/}
     outline: none;
     font-size: 0.6rem;
     color: white;
-    line-height: 2rem;
     width: 75%;
 }
 .JoinKY .form li .phone{

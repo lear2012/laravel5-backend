@@ -6,9 +6,9 @@
     <section>
         <div>
             <img class="portrait" src="{{ $user->profile->avatar }}" />
-            @if(Auth::user() && Auth::user()->uid == $user->uid)
+            {{--@if(Auth::user() && Auth::user()->uid == $user->uid)--}}
             <a href="{{ route('wechat.edit_profile', ['id' => $user->uid]) }}"><span class="join">编辑</span></a>
-            @endif
+            {{--@endif--}}
         </div>
         <div class="info">
             <p class="name">
