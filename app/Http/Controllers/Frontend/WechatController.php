@@ -156,6 +156,7 @@ class WechatController extends Controller
 
     public function profile($id)
     {
+        dd(Auth::user());
         $user = User::where([
             'uid' => $id
         ])->first();

@@ -27,7 +27,7 @@
     display:none;
 }
 .timer {
-    margin-top: 36px;
+    line-height: 2rem;
 }
 #mobile {width:45%;line-height: .7rem }
 
@@ -35,9 +35,10 @@
     color:white;
     float:right;
     font-size: 0.6rem;
-    margin-top: 36px;
+    line-height: 2rem;
 }
-.But{float:right;margin-top: 36px;}
+.But{float:right;
+    line-height:2rem;}
 .radio_on {}
 .radio_off {
     background: none;
@@ -79,7 +80,7 @@ input,textarea{-webkit-appearance:none;}
     border-bottom: 0.02rem solid rgba(140, 105, 47, 0.6);
 }
 #expdriver_list img {height:2.4rem;width:2.4rem;margin-top:.8rem;}
-#expdriver_list .swiper-slide-active img{height:3rem;width:3rem;margin-top:.5rem;}
+#expdriver_list .swiper-slide-active img{height:3rem;width:3rem;margin-top:.5rem;border:.04rem solid rgba(255,255,255,.5);}
 .homepage h2 {padding-top:1.2rem; padding-bottom:0.4rem}
 #expdriver_list .swiper-left {margin-right:0px}
 #expdriver_list .swiper-right {margin-left:0px}

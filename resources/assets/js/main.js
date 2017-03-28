@@ -495,6 +495,7 @@ var site = {
     },
 
     setSeriesHtml: function(data) {
+        var that = this;
         var str = '<ul class="myselect">';
         for(var i in data){
             str +='<li class="aLi" code="'+data[i].code+'">'+data[i].name+'</li>';
