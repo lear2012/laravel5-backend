@@ -156,7 +156,6 @@ class WechatController extends Controller
 
     public function profile($id)
     {
-        dd(Auth::user());
         $user = User::where([
             'uid' => $id
         ])->first();
@@ -170,6 +169,9 @@ class WechatController extends Controller
 
     public function editProfile($id)
     {
+        if(Auth::user()->uid != $id) {
+            abort(401);
+        }
         $user = User::where([
             'uid' => $id
         ])->first();
