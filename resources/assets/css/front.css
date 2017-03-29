@@ -424,7 +424,6 @@ input {-webkit-appearance:none; /*去除input默认样式*/}
     line-height: 2rem;
     margin-right: 0.5rem;
     width: 2rem;
-
 }
 .JoinKY .form li .Ainp{
     border: none;
@@ -440,7 +439,6 @@ input {-webkit-appearance:none; /*去除input默认样式*/}
     outline: none;
     font-size: 0.6rem;
     color: white;
-    line-height: 2rem;
     width: 56%;
 }
 .JoinKY .But{

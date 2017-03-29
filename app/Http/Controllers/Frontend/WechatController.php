@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Helpers\Utils;
 use App\Http\Controllers\Controller;
+use App\Models\Invitation;
+use App\Models\LimitedOp;
 use App\Models\UserProfile;
 use ChannelLog as Log;
 use EasyWeChat;
@@ -26,6 +28,7 @@ use App\Models\Brand;
 use App\Models\Sery;
 use App\Models\Motomodel;
 use DB;
+use App\Http\Requests\Frontend\SaveProfileRequest;
 
 class WechatController extends Controller
 {
@@ -113,7 +116,7 @@ class WechatController extends Controller
         if (!$wechatUser) {
             abort(404);
         }
-        // 下单, 若该用户已经有注册订单，则忽略
+        // 如果没有单，则下单，如果有单，则返回单
         Log::write('common', 'Wechat User:' . $wechatUser->nickname . ', openid:' . $wechatUser->id . ' not registered, set payconfig now');
         $order = User::setRegisterOrder();
         if (!empty($order)) {
@@ -125,6 +128,7 @@ class WechatController extends Controller
                 Log::write('wechat', 'Get pay config with params:' . http_build_query($config));
             }
         }
+
         JavaScript::put([
             'config' => $config,
         ]);
@@ -132,6 +136,28 @@ class WechatController extends Controller
             'wechatUser' => $wechatUser,
             'js' => $this->js
         ]);
+    }
+
+    public function getInvitationPayconfig(Request $request) {
+        $data = $request->only('code');
+        if(trim($data['code']) == '') {
+            self::setMsgCode(9001);
+        }
+        if(!Invitation::codeValid($data['code']))
+            self::setMsgCode(1010);
+        $config = [];
+        $order = User::setRegisterOrder($data);
+        if (!empty($order)) {
+            $o = new Order($order);
+            $payment = $this->wechat->payment;
+            $result = $payment->prepare($o);
+            if ($result->return_code == 'SUCCESS' && $result->result_code == 'SUCCESS') {
+                $config = $payment->configForJSSDKPayment($result->prepay_id);
+                Log::write('wechat', 'Get pay config with params:' . http_build_query($config));
+            }
+        }
+        self::setData($config);
+        self::sendJsonMsg();
     }
 
     function checkImgCode(Request $request)
@@ -187,6 +213,31 @@ class WechatController extends Controller
         ]);
     }
 
+    public function saveProfile(SaveProfileRequest $request) {
+        $data = $request->only('real_name', 'id_no', 'brand', 'sery', 'motomodel', 'buy_year', 'self_get');
+        // check if current user is id verified in db
+        if(Auth::user()->profile->is_verified != 1) {
+            // check how many times does this user apply for verification
+            if(User::getActionCount(Auth::user()->uid, 'id_card_verify') >= config('custom.ID_CARD_VERIFY_DAY_ALLOW') ) {
+                self::setMsgCode(1008);
+            }
+            // verify the user
+            $result = Utils::verifyIDCard($data['real_name'], $data['id_no']);
+            $data['is_verified'] = $result->isok ? 1 : 0;
+            // record action
+            User::recordLimitAction(Auth::user()->uid, config('custom.limited_ops.id_card_verify'));
+            if($data['is_verified'] == 0) {
+                self::setMsgCode(1011);
+            }
+        }
+        // save profile info
+        $userProfile = Auth::user()->profile;
+        if(!$userProfile->update($data)) {
+            self::setMsgCode(1007);
+        }
+        self::sendJsonMsg();
+    }
+
     public function notify(Request $request)
     {
 //        $str = file_get_contents('php://input');
@@ -231,7 +282,12 @@ class WechatController extends Controller
             if ($validator->fails()) {
                 self::setMsgCode(1002);
             }
-            // 每个ip每天最多发三次注册短信--TODO
+            $wechatUser = session('wechat.oauth_user');
+            // check how many times does this user apply for sms
+            if(User::getActionCount($wechatUser->id, 'sms_register') >= config('custom.SMS_REGISTER_VERIFY_DAY_ALLOW') ) {
+                self::setMsgCode(1009);
+                self::sendJsonMsg();
+            }
             if (!empty(Session::get('_reg_sms_expires')) && time() < Session::get('_reg_sms_expires')) {
                 // 如果30分钟内请求，则返回
                 $code = Session::get('_register_code');
@@ -244,6 +300,8 @@ class WechatController extends Controller
                 Session::save();
             }
             Utils::sendSms($request->get('mobile'), ['code' => $code], env('ALIYUN_LEAR_SMS_TEMPLATE_CODE'));
+            // record action
+            User::recordLimitAction($wechatUser->id, config('custom.limited_ops.sms_register'));
             self::sendJsonMsg();
         }
     }

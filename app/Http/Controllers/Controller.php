@@ -14,10 +14,13 @@ class Controller extends BaseController
 
     protected $wechat;
 
+    protected $wechatUser;
+
     protected $js;
 
     public function __construct(Application $wechat){
         $this->wechat = $wechat;
+        $this->wechatUser = session('wechat.oauth_user');
         $this->js = $this->wechat->js;
     }
 
@@ -34,6 +37,7 @@ class Controller extends BaseController
     public static function setMsgCode($code) {
         self::$ret['errno'] = $code;
         self::$ret['msg'] = self::$msgs[$code];
+        self::sendJsonMsg();
     }
 
     public static function setData($data) {
@@ -48,7 +52,11 @@ class Controller extends BaseController
         1004 => '该用户名已经被注册!',
         1005 => '您必须同意会员规则！',
         1006 => '您输入的短信验证码有误！',
-        1007 => '',
+        1007 => '保存用户信息失败',
+        1008 => '您今天的实名认证次数超过3次，请明天重试!',
+        1009 => '您今天发送验证短信次数超过三次，请明天重试!',
+        1010 => '您输入的邀请码无效，请联系邀请人！',
+        1011 => '实名认证失败，请重试!',
 
         9001 => '参数错误',
         9002 => '未知错误',

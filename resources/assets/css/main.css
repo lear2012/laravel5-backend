@@ -76,8 +76,10 @@
     font-size:0.6rem;
     color:#000;
 }
-a,img,button,input,textarea,label,span,i,ul,li,div,p{-webkit-tap-highlight-color:rgba(255,255,255,0);}
+a,img,button,input,textarea,label,span,i,ul,li,div,p,a:visited{-webkit-tap-highlight-color:rgba(255,255,255,0);}
 input,textarea{-webkit-appearance:none;}
+a:focus{outline:none;}
+
 #register_form li{
     border-bottom: 0.02rem solid rgba(140, 105, 47, 0.6);
 }
@@ -85,7 +87,8 @@ input,textarea{-webkit-appearance:none;}
     border-bottom: 0.02rem solid rgba(140, 105, 47, 0.6);
 }
 #expdriver_list img {height:2.4rem;width:2.4rem;margin-top:.8rem;}
-#expdriver_list .swiper-slide-active img{height:3rem;width:3rem;margin-top:.5rem;border:.04rem solid rgba(255,255,255,.5);}
+#expdriver_list .swiper-slide-active {}
+#expdriver_list .swiper-slide-active img{height:2.8rem;width:2.8rem;margin-top:.4rem;border:.04rem solid rgba(255,255,255,.5);padding:2px;}
 .homepage h2 {padding-top:1.2rem; padding-bottom:0.4rem}
 #expdriver_list .swiper-left {margin-right:0px}
 #expdriver_list .swiper-right {margin-left:0px}
@@ -177,3 +180,7 @@ input,textarea{-webkit-appearance:none;}
     padding-right:.5rem;
     color:#ad7a00;
 }
+.memberRules {
+    text-align: left;
+}
+.sa-button-container {text-align:center;}

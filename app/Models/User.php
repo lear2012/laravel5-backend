@@ -17,6 +17,7 @@ use ChannelLog as Log;
 use Faker;
 use App\Helpers\Utils;
 use Auth;
+use Carbon\Carbon;
 
 /**
  * App\Models\User
@@ -196,21 +197,80 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
         return $user ? true : false;
     }
 
-    public static function setRegisterOrder(){
+    public static function isWechatRegisterUser() {
+        $wechatUser = session('wechat.oauth_user'); // 拿到授权用户资料
+        if(!isset($wechatUser) || empty($wechatUser))
+            return false;
+        Log::write('common', 'Wechat User:'.$wechatUser->nickname.', openid:'.$wechatUser->id.' access register page');
+        $profile = UserProfile::where([
+            'wechat_id' => $wechatUser->id
+        ])->first();
+        if($profile) {
+            Log::write('common', 'Wechat User:'.$wechatUser->nickname.', openid:'.$wechatUser->id.' already registered, redirect to member list');
+            $user = User::find($profile->user_id);
+            Auth::login($user);
+            return $user;
+        }
+        return false;
+    }
+
+    public static function getActionCount($identifier, $action) {
+        if(!$identifier || !$action)
+            return false;
+        return LimitedOp::where('identifier', '=', $identifier)
+                        ->where('action_type', '=', config('custom.limited_ops.'.$action))
+                        ->where('created_at', '>', Carbon::today()->timestamp)
+                        ->where('created_at', '<', Carbon::today()->addDay()->timestamp)
+                        ->count();
+    }
+
+    public static function recordLimitAction($identifier, $action) {
+        if(!$identifier || !$action)
+            return false;
+        $op = new LimitedOp;
+        $op->identifier = $identifier;
+        $op->action_type = $action;
+        $op->save();
+    }
+
+    public static function setRegisterOrder($data=null) {
         $wechatUser = session('wechat.oauth_user'); // 拿到授权用户资料
         if(!$wechatUser)
             return false;
-        $order = Utils::getStaticOrderInfo('register');
+        $order = [];
+        if(isset($data['invitationCode']) && trim($data['invitationCode']) != '') {
+            // check invitation code
+            if(Invitation::codeValid($data['invitationCode'])) {
+                // 如果code合法，则优惠价，否则全价
+                $order = Utils::getStaticOrderInfo('register_discount');
+            } else
+                $order = Utils::getStaticOrderInfo('register_full');
+        } else {
+            // if no invitation code, check how many paid users are there,
+            // and if the user sequence is less than 50, give him a discount
+            if(self::getPaidMemberCount() < 50) {
+                $order = Utils::getStaticOrderInfo('register_discount');
+            } else {
+                $order = Utils::getStaticOrderInfo('register_full');
+            }
+        }
         $order['openid'] = $wechatUser->id;
         // check if the user has already got an register order
         $orderCheck = \App\Models\Order::where([
             'wechat_openid' => $order['openid'],
             'order_type' => 1
-        ])->first();
+        ])->orderBy('created_at', 'desc')->first();
         if($orderCheck) {
-            // 如果有未支付的订单，直接返回订单
-            $order['out_trade_no'] = $orderCheck->oid;
-            return $order;
+            if(!isset($data['invitationCode'])) {
+                // 如果有未支付的订单，直接返回订单
+                Log::write('wechat', '订单已存在，直接返回订单oid:'.$orderCheck->oid);
+                $order['out_trade_no'] = $orderCheck->oid;
+                return $order;
+            } else {
+                Log::write('wechat', '订单已存在，删除旧订单:'.$orderCheck->oid);
+                // 删除旧订单，生成新订单
+                $orderCheck->delete();
+            }
         }
         // save info into db
         $dbOrder = new Order();
@@ -233,22 +293,10 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
         return $order;
     }
 
-    public static function isWechatRegisterUser() {
-        $wechatUser = session('wechat.oauth_user'); // 拿到授权用户资料
-        if(!isset($wechatUser) || empty($wechatUser))
-            return false;
-        Log::write('common', 'Wechat User:'.$wechatUser->nickname.', openid:'.$wechatUser->id.' access register page');
-        $profile = UserProfile::where([
-            'wechat_id' => $wechatUser->id
-        ])->first();
-        if($profile) {
-            Log::write('common', 'Wechat User:'.$wechatUser->nickname.', openid:'.$wechatUser->id.' already registered, redirect to member list');
-            $user = User::find($profile->user_id);
-            Auth::login($user);
-            return $user;
-        }
-        return false;
+    public static function getPaidMemberCount() {
+        $members = Role::find(config('custom.paid_member_code'))->users->reject(function ($item, $key) {
+            return $item->getOriginal('status') != 1;
+        });
+        return $members ? count($members) : 0;
     }
-
-
 }

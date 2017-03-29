@@ -14,8 +14,6 @@ var site = {
             this.initLogin();
         } else if(_.startsWith(path, '/wechat/member_list')) {
             this.initMemberList();
-        } else if(_.startsWith(path, '/wechat/join_club')) {
-            this.initJoinClub();
         } else if(_.startsWith(path, '/wechat/edit_profile')) {
             this.initEditProfile();
         } else {
@@ -29,18 +27,7 @@ var site = {
         $('.captcha').on('click', function(){
             that.refreshCaptcha();
         });
-        // checkbox
-        var onoff = true;
-        $('.Radiobox').on('click',function(){
-            if(onoff){
-                $('.Radiobox i').removeClass('Radio');
-                $('#agree').val(0);
-            } else {
-                $('.Radiobox i').addClass('Radio');
-                $('#agree').val(1);
-            }
-            onoff = !onoff;
-        });
+        this.initSingleCheckbox($('#agree'));
         // send sms
         $('#send_sms_btn').click(function(){
             if(!validator.isMobilePhone($('#mobile').val(), 'zh-CN')) {
@@ -48,9 +35,6 @@ var site = {
                 return false;
             }
             that.clearField($('#mobile'));
-            that.initTimer();
-            $('#timer').show();
-            $(this).hide();
             that.sendSms();
         });
 
@@ -70,10 +54,41 @@ var site = {
             that.showMemberRule();
             event.stopPropagation();
         });
+        // 邀请码
+        $('#invite_no').on('blur',function(event){
+            that.checkInvitationCode();
+            event.stopPropagation();
+        });
     },
 
     initLogin: function() {
 
+    },
+
+    checkInvitationCode: function() {
+        var that = this;
+        // send rq to backend to sync the perms
+        var data = {};
+        data.code = $('#invite_no').val();
+        if($.trim(data.code) == '')
+            return false;
+        $.ajax({
+            type: "POST",
+            dataType: "json", //dataType (xml html script json jsonp text)
+            data: data, //json 数据
+            url: '/wechat/get_invitation_payconfig',
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            //beforeSend: bstool.submit_loading, //执行ajax前执行loading函数.直到success
+            success: function(rs) {//成功获得的也是json对象
+                if(rs.errno == 0) {
+                    that.successField($('#invite_no'));
+                } else {
+                    that.showError(rs);
+                }
+            }
+        });
     },
 
     initMemberList: function() {
@@ -95,6 +110,7 @@ var site = {
                 //Swiper初始化了
                 var theDrivers = _.values(expDrivers);
                 var theCenterDriver = theDrivers[that._centerSlideIndex];
+                //$('.swiper-slide-active').css('width', '180px');
                 that.setExpDriverInfo(theCenterDriver);
             },
             visibilityFullFit: true,
@@ -106,6 +122,7 @@ var site = {
             nextButton:'.swiper-button-next',
             slideToClickedSlide: false,
             onTransitionEnd: function(swiper) {
+                //$('.swiper-slide-active').css('width', '180px');
                 that.renderActiveExpdriver(swiper);
             },
             onClick: function(swiper, event) {
@@ -204,7 +221,6 @@ var site = {
                 } else {
                     that.errorField($('#captcha'));
                 }
-
             }
         });
     },
@@ -215,6 +231,8 @@ var site = {
         var data = {};
         data.mobile = $.trim($('#mobile').val());
         data.bg = 'register';
+        if($.trim(data.mobile) == '' || !$.isNumeric(data.mobile))
+            return false;
         $.ajax({
             type: "GET",
             dataType: "json", //dataType (xml html script json jsonp text)
@@ -226,9 +244,12 @@ var site = {
             //beforeSend: bstool.submit_loading, //执行ajax前执行loading函数.直到success
             success: function(rs) {//成功获得的也是json对象
                 if(rs.errno == 0) {
+                    that.initTimer();
+                    $('#timer').show();
+                    $('#send_sms_btn').hide();
                     that.successField($('#mobile'));
                 } else {
-                    that.errorField($('#mobile'));
+                    that.showError(rs);
                 }
             }
         });
@@ -296,6 +317,7 @@ var site = {
 
     checkRegister: function(params) {
         var that = this;
+        var error = {};
         this.clearAllField();
         if(params.nick == '') {
             that.errorField($('#nick'));
@@ -324,7 +346,8 @@ var site = {
             return false;
         }
         if(params.agree != 1) {
-            $('i', $('#cki')).addClass('checkbox_err');
+            error.msg = '您必须同意注册须知才可以注册！';
+            that.showError(error);
             return false;
         }
         return true;
@@ -339,15 +362,54 @@ var site = {
     },
 
     showMemberRule: function() {
+        var text = this.getMemberText();
         swal({
             html: true,
-            title: "会员规则",
-            text: "Here's a custom image.",
+            title: "注册须知",
+            text: text,
             allowOutsideClick: true,
             confirmButtonText: '关闭',
-            customClass: 'aleat'
+            confirmButtonColor: '#f7b000',
+            customClass: 'memberRules'
             //imageUrl: "images/thumbs-up.jpg"
         });
+    },
+
+    getMemberText: function() {
+        var str = '';
+        str += '<p>一、遵守中华人民共和国有关法律、法规，承担一切因您的行为而直接或间接引起的法律责任。</p>'+
+            '<p>二、在可野Club发表言论请注意以下几条规定，若有违反，本坛有权删除。<br />'+
+            '1 、反对国家宪法所确定的基本原则的；<br />'+
+            '2 、危害国家安全，泄露国家秘密，颠覆国家政权，破坏国家统一的；<br />'+
+            '3 、损害国家荣誉和利益的；<br />'+
+            '4 、煽动民族仇恨、民族歧视，破坏民族团结的；<br />'+
+            '5 、破坏国家宗教政策，宣扬邪教和封建迷信的；<br />'+
+            '6 、散布谣言，扰乱社会秩序，破坏社会稳定的；<br />'+
+            '7 、散布淫秽、色情、赌博、暴力、凶杀、恐怖或者教唆犯罪的；<br />'+
+            '8 、侮辱或者诽谤他人，侵害他人合法权益的；<br />'+
+            '9 、含有法律、行政法规禁止的其他内容的；<br />'+
+            '10、请勿张贴未经公开报道、未经证实的消息；亲身经历者请注明；<br />'+
+            '11、请勿张贴宣扬种族歧视、破坏民族团结的言论和消息；<br />'+
+            '12、请注意使用文明用语，任何人不得以任何原因对任何一位网友进行人身攻击、谩骂、诋毁的言论；<br />'+
+            '13、未经管理人员同意，请勿张贴任何形式的广告；<br />'+
+            '14、非官方信息可野Club不承担责任。</p>'+
+            '<p>三、ID注册和使用昵称注意事项：<br />'+
+            '1、请勿以党和国家领导人或其他名人的真实姓名、字、号、艺名、笔名注册和使用昵称；<br />'+
+            '2、请勿以国家组织机构或其他组织机构的名称注册和使用昵称；<br />'+
+            '3、请勿注册和使用与其他网友相同、相仿的名字或昵称；<br />'+
+            '4、请勿注册和使用不文明、不健康的ID和昵称；<br />'+
+            '5、请勿注册和使用易产生歧义、引起他人误解的ID和昵称。<br />'+
+            '四、签名档填写注意事项：<br />'+
+            '1、签名档内容规定与上贴规定一致，要积极健康；<br />'+
+            '2、签名档中不能超链接其他网站、文章和音乐；<br />'+
+            '3、为方便阅读，请尽量使签名档不超过4行。</p>'+
+            '<p>五、请注意版权问题：<br />'+
+            '1、可野出品原创文章欢迎大家分享，但如用于个人或企业平台，请注明原始出处、作者及时间，否则本站有权责令删除；<br />' +
+            '2、转发文章时请注意原发表单位的版权声明，并负担由此可能产生的版权责任。<br />' +
+            '3、您在可野Club社群中发表的原创文字及图片，本站有权转载或引用；<br />' +
+            '4、您注册了可野Club会员或可野人，即表明您已阅读并接受了上述各项条款；<br />' +
+            '5、本站拥有管理页面和ID及昵称的一切权力，请网友服从本站管理，如对管理有意见请用发邮件向论坛管理员（ruochen.lang@wisdommer.com）反映。</p>';
+        return str;
     },
 
     showMessage: function(type, text) {
@@ -436,7 +498,9 @@ var site = {
 
     initEditProfile: function () {
         var that = this;
-        this.initDateBox();
+        this.initDateBox(); // init the date box
+        this.initSingleCheckbox($('#self_get')); // init the checkbox
+        // init carinfo select box
         $('.carinfo').on('click',function(){
             $('.Vehicle-information').css('left','0px');
             if($('.brandList').html() == '') {
@@ -451,7 +515,7 @@ var site = {
             }
         });
 
-        //点击召唤品牌信息
+        // init brand click to show select box
         $('.brand').on('click',function(){
             $('.brandBox').css('left','0px');
             alphabetNav.init('nav-title');
@@ -482,45 +546,79 @@ var site = {
                 event.stopPropagation();
             })
         });
-
+        // init series click to show select box
         $('.series').click(function(){
             $('.seriesBox').css('left','0px');
             $('.myselect', $('.seriesBox')).show();
         });
+        // init motomodel click to show select box
         $('.motomodel').click(function(){
             $('.motomodelBox').css('left','0px');
             $('.myselect', $('.motomodelBox')).show();
         });
+        // init buy-date click to show select box
         $('.buy-date').click(function(){
             $('.dateBox').css('left','0px');
             $('.myselect', $('.dateBox')).show();
         });
-
+        // init close box click
         $('.myselect-close').click(function(){
             $('.selectBox').css('left','15rem');
             $('.alphabetList').hide();
         });
+        // init carinfo select box close
         $('.vehicle-close').click(function(){
             $('.Vehicle-information').css('left','15rem');
         });
+        // init complete box close
         $('.complete-btn').click(function(){
             var vehicleInfo = that.getVehicleInfo();
             $('#vehicle').val(vehicleInfo);
             $('.Vehicle-information').css('left','15rem');
         });
-
+        // init save button
+        $('#save_profile_btn').click(function(){
+            var data = {};
+            data.real_name = $.trim($('#real_name').val());
+            data.id_no = $.trim($('#id_no').val());
+            data.address = $.trim($('#address').val());
+            data.brand = $.trim(that.vehicleInfo.brand);
+            data.sery = $.trim(that.vehicleInfo.sery);
+            data.motomodel = $.trim(that.vehicleInfo.motomodel);
+            data.buy_year = $.trim(that.vehicleInfo.buyyear);
+            data.self_get = $('#self_get').val();
+            console.log(data);
+            // send ajax to save profile info
+            $.ajax({
+                type: "POST",
+                data: data,
+                dataType: "json", //dataType (xml html script json jsonp text)
+                url: '/wechat/save_profile',
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                //beforeSend: bstool.submit_loading, //执行ajax前执行loading函数.直到success
+                success: function(rs) {//成功获得的也是json对象
+                    if(rs.errno == 0) {
+                        window.location.href = '/wechat/profile/'+rs.data.uid;
+                    } else {
+                        that.showError(rs);
+                    }
+                }
+            });
+        });
     },
 
     getVehicleInfo: function () {
         var ret = '';
-        if(this.vehicleInfo.brand != undefined)
-            ret += this.vehicleInfo.brand;
+        // if(this.vehicleInfo.brand != undefined)
+        //     ret += this.vehicleInfo.brand;
         if(this.vehicleInfo.sery != undefined)
-            ret += '-'+this.vehicleInfo.sery;
+            ret += ''+this.vehicleInfo.sery;
         if(this.vehicleInfo.motomodel != undefined)
             ret += '-'+this.vehicleInfo.motomodel;
-        if(this.vehicleInfo.buyyear != undefined)
-            ret += '-'+this.vehicleInfo.buyyear;
+        // if(this.vehicleInfo.buyyear != undefined)
+        //     ret += '-'+this.vehicleInfo.buyyear;
         return ret;
     },
 
@@ -592,6 +690,21 @@ var site = {
             that.vehicleInfo.buyyear = $(this).html();
             $('.dateBox').css('left', '15rem');
             event.stopPropagation();
+        });
+    },
+
+    initSingleCheckbox: function(elm) {
+        // checkbox
+        var onoff = true;
+        $('.Radiobox').on('click',function(){
+            if(onoff){
+                $('.Radiobox i').removeClass('Radio');
+                elm.val(0);
+            } else {
+                $('.Radiobox i').addClass('Radio');
+                elm.val(1);
+            }
+            onoff = !onoff;
         });
     }
 

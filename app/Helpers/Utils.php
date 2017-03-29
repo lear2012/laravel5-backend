@@ -220,10 +220,15 @@ class Utils {
         }
         return false;
     }
-
+    /*
+     * @param $type   格式：register_debug, register_discount, register_full
+     *
+     * */
     public static function getStaticOrderInfo($type) {
         $ret = [];
-        switch ($type) {
+        $types = explode("_", $type);
+        // check invitationCode if valid
+        switch ($types[0]) {
             case 'register':
                 $ret = [
                     'appid'            => env('WECHAT_APPID'),
@@ -235,6 +240,12 @@ class Utils {
                     'total_fee'        => 1, // for debug
                     'notify_url'       => env('APP_URL').'/wechat/notify', // 支付结果通知网址，如果不设置则会使用配置里的默认地址
                 ];
+                if(isset($types[1]) && $types[1] == 'debug')
+                    $ret['total_fee'] = 1;
+                else if(isset($types[1]) && $types[1] == 'discount')
+                    $ret['total_fee'] = 100;
+                if(isset($types[1]) && $types[1] == 'full')
+                    $ret['total_fee'] = 60000;
                 break;
             default:
         }

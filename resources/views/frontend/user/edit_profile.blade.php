@@ -48,7 +48,7 @@
                 </div>
             </div>
             <input type="hidden" name="self_get" id="self_get" value="1" />
-            <button class="submit" id="register_btn">保存</button>
+            <button class="submit" id="save_profile_btn">保存</button>
 
         </section>
         <div class="Vehicle-information">
