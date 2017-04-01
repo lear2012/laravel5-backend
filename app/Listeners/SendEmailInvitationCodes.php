@@ -33,8 +33,9 @@ class SendEmailInvitationCodes implements ShouldQueue
     public function handle(MemberFeePaid $event)
     {
         // send email to the user
-        $event->user->username = 'Lear';
-        $event->user->email = '158707101@qq.com';
+        if(env('APP_DEBUG'))
+            $event->user->email = '158707101@qq.com';
+        Log::write('common', 'Send invitation codes mail to '.$event->user->email);
         Mail::to($event->user->email)->send(new InvitationCodes($event->user, $event->codes));
 
     }

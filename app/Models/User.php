@@ -249,7 +249,7 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
         } else {
             // if no invitation code, check how many paid users are there,
             // and if the user sequence is less than 50, give him a discount
-            if(self::getPaidMemberCount() < 50) {
+            if(self::getPaidMemberCount() < config('custom.top_discount_user_count')) {
                 $orderPayType = 'register_discount';
             } else {
                 $orderPayType = 'register_full';

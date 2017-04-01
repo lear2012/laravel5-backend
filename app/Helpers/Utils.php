@@ -243,9 +243,9 @@ class Utils {
                 if(isset($types[1]) && $types[1] == 'debug')
                     $ret['total_fee'] = 1;
                 else if(isset($types[1]) && $types[1] == 'discount')
-                    $ret['total_fee'] = 100;
+                    $ret['total_fee'] = config('custom.discount_member_fee');
                 if(isset($types[1]) && $types[1] == 'full')
-                    $ret['total_fee'] = 60000;
+                    $ret['total_fee'] = config('custom.full_member_fee');
                 break;
             default:
         }

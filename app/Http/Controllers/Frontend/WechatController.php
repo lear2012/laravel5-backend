@@ -264,7 +264,7 @@ class WechatController extends Controller
                     $user->roles()->attach(config('custom.paid_member_code'));
                     // check to see if we can send him invitation codes
                     $paidMemberCount = User::getPaidMemberCount();
-                    if($paidMemberCount <= 50 || (int)$order->amount == 60000) {
+                    if($paidMemberCount <= config('custom.top_discount_user_count') || (int)$order->amount == config('custom.full_member_fee')) {
                         // check if the user has $c invitation codes
                         $codeCount = Invitation::where('user_id', '=', $user->id)->count();
                         if($codeCount == 0) {
