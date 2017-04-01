@@ -238,22 +238,26 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
         if(!$wechatUser)
             return false;
         $order = [];
+        $orderPayType = '';
         if(isset($data['invitationCode']) && trim($data['invitationCode']) != '') {
             // check invitation code
             if(Invitation::codeValid($data['invitationCode'])) {
                 // 如果code合法，则优惠价，否则全价
-                $order = Utils::getStaticOrderInfo('register_discount');
+                $orderPayType = 'register_discount';
             } else
-                $order = Utils::getStaticOrderInfo('register_full');
+                $orderPayType = 'register_full';
         } else {
             // if no invitation code, check how many paid users are there,
             // and if the user sequence is less than 50, give him a discount
             if(self::getPaidMemberCount() < 50) {
-                $order = Utils::getStaticOrderInfo('register_discount');
+                $orderPayType = 'register_discount';
             } else {
-                $order = Utils::getStaticOrderInfo('register_full');
+                $orderPayType = 'register_full';
             }
         }
+        if(env('PAYMENT_DEBUG'))
+            $orderPayType = 'register_debug';
+        $order = Utils::getStaticOrderInfo($orderPayType);
         $order['openid'] = $wechatUser->id;
         // check if the user has already got an register order
         $orderCheck = \App\Models\Order::where([
