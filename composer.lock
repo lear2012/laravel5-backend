@@ -668,34 +668,37 @@
         },
         {
             "name": "facebook/webdriver",
-            "version": "1.3.0",
+            "version": "1.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/facebook/php-webdriver.git",
-                "reference": "77300c4ab2025d4316635f592ec849ca7323bd8c"
+                "reference": "3ea034c056189e11c0ce7985332a9f4b5b2b5db2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://files.phpcomposer.com/files/facebook/php-webdriver/77300c4ab2025d4316635f592ec849ca7323bd8c.zip",
-                "reference": "77300c4ab2025d4316635f592ec849ca7323bd8c",
+                "url": "https://files.phpcomposer.com/files/facebook/php-webdriver/3ea034c056189e11c0ce7985332a9f4b5b2b5db2.zip",
+                "reference": "3ea034c056189e11c0ce7985332a9f4b5b2b5db2",
                 "shasum": ""
             },
             "require": {
                 "ext-curl": "*",
+                "ext-zip": "*",
                 "php": "^5.5 || ~7.0",
                 "symfony/process": "^2.8 || ^3.1"
             },
             "require-dev": {
-                "friendsofphp/php-cs-fixer": "^1.11",
+                "friendsofphp/php-cs-fixer": "^2.0",
                 "php-mock/php-mock-phpunit": "^1.1",
                 "phpunit/phpunit": "4.6.* || ~5.0",
                 "satooshi/php-coveralls": "^1.0",
                 "squizlabs/php_codesniffer": "^2.6"
             },
-            "suggest": {
-                "phpdocumentor/phpdocumentor": "2.*"
-            },
             "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-community": "1.5-dev"
+                }
+            },
             "autoload": {
                 "psr-4": {
                     "Facebook\\WebDriver\\": "lib/"
@@ -705,7 +708,7 @@
             "license": [
                 "Apache-2.0"
             ],
-            "description": "A PHP client for WebDriver",
+            "description": "A PHP client for Selenium WebDriver",
             "homepage": "https://github.com/facebook/php-webdriver",
             "keywords": [
                 "facebook",
@@ -713,7 +716,7 @@
                 "selenium",
                 "webdriver"
             ],
-            "time": "2017-01-13T15:48:08+00:00"
+            "time": "2017-03-22T10:56:03+00:00"
         },
         {
             "name": "filp/whoops",
@@ -1371,16 +1374,16 @@
         },
         {
             "name": "laravel/framework",
-            "version": "v5.3.30",
+            "version": "v5.3.31",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "2d4e8c95f584b38d2279b552e2868fc447b97578"
+                "reference": "e641e75fc5b26ad0ba8c19b7e83b08cad1d03b89"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://files.phpcomposer.com/files/laravel/framework/2d4e8c95f584b38d2279b552e2868fc447b97578.zip",
-                "reference": "2d4e8c95f584b38d2279b552e2868fc447b97578",
+                "url": "https://files.phpcomposer.com/files/laravel/framework/e641e75fc5b26ad0ba8c19b7e83b08cad1d03b89.zip",
+                "reference": "e641e75fc5b26ad0ba8c19b7e83b08cad1d03b89",
                 "shasum": ""
             },
             "require": {
@@ -1495,7 +1498,7 @@
                 "framework",
                 "laravel"
             ],
-            "time": "2017-01-26T14:29:55+00:00"
+            "time": "2017-03-24T16:31:06+00:00"
         },
         {
             "name": "laravelcollective/html",
@@ -1553,16 +1556,16 @@
         },
         {
             "name": "league/flysystem",
-            "version": "1.0.36",
+            "version": "1.0.37",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thephpleague/flysystem.git",
-                "reference": "d9c1698582dfbfbd092ec9c5c3325f862cdb3297"
+                "reference": "78b5cc4feb61a882302df4fbaf63b7662e5e4ccd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://files.phpcomposer.com/files/thephpleague/flysystem/d9c1698582dfbfbd092ec9c5c3325f862cdb3297.zip",
-                "reference": "d9c1698582dfbfbd092ec9c5c3325f862cdb3297",
+                "url": "https://files.phpcomposer.com/files/thephpleague/flysystem/78b5cc4feb61a882302df4fbaf63b7662e5e4ccd.zip",
+                "reference": "78b5cc4feb61a882302df4fbaf63b7662e5e4ccd",
                 "shasum": ""
             },
             "require": {
@@ -1632,7 +1635,7 @@
                 "sftp",
                 "storage"
             ],
-            "time": "2017-03-18T16:02:30+00:00"
+            "time": "2017-03-22T15:43:14+00:00"
         },
         {
             "name": "league/fractal",
@@ -2231,16 +2234,16 @@
         },
         {
             "name": "overtrue/wechat",
-            "version": "3.2.5",
+            "version": "3.2.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/overtrue/wechat.git",
-                "reference": "ac77966d3549e14222c15e3950bc2c6949c2ce31"
+                "reference": "cef13613738e167f49a53ce830a6000d28b67eba"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://files.phpcomposer.com/files/overtrue/wechat/ac77966d3549e14222c15e3950bc2c6949c2ce31.zip",
-                "reference": "ac77966d3549e14222c15e3950bc2c6949c2ce31",
+                "url": "https://files.phpcomposer.com/files/overtrue/wechat/cef13613738e167f49a53ce830a6000d28b67eba.zip",
+                "reference": "cef13613738e167f49a53ce830a6000d28b67eba",
                 "shasum": ""
             },
             "require": {
@@ -2255,7 +2258,7 @@
                 "symfony/psr-http-message-bridge": "~0.3|^1.0"
             },
             "require-dev": {
-                "mockery/mockery": "^1.0@dev",
+                "mockery/mockery": "^0.9.9",
                 "overtrue/phplint": "dev-master",
                 "phpunit/phpunit": "~4.0"
             },
@@ -2285,7 +2288,7 @@
                 "weixin",
                 "weixin-sdk"
             ],
-            "time": "2017-02-04T05:38:34+00:00"
+            "time": "2017-03-31T02:26:19+00:00"
         },
         {
             "name": "paquettg/php-html-parser",
@@ -2535,16 +2538,16 @@
         },
         {
             "name": "prettus/l5-repository",
-            "version": "2.6.17",
+            "version": "2.6.18",
             "source": {
                 "type": "git",
                 "url": "https://github.com/andersao/l5-repository.git",
-                "reference": "12aadec101505d4f8892ae0257818c63f0a28b6e"
+                "reference": "5fbab77b9f295f0c3d2bb1f8b1e42f6ff0affad7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://files.phpcomposer.com/files/andersao/l5-repository/12aadec101505d4f8892ae0257818c63f0a28b6e.zip",
-                "reference": "12aadec101505d4f8892ae0257818c63f0a28b6e",
+                "url": "https://files.phpcomposer.com/files/andersao/l5-repository/5fbab77b9f295f0c3d2bb1f8b1e42f6ff0affad7.zip",
+                "reference": "5fbab77b9f295f0c3d2bb1f8b1e42f6ff0affad7",
                 "shasum": ""
             },
             "require": {
@@ -2591,7 +2594,7 @@
                 "model",
                 "repository"
             ],
-            "time": "2017-03-15T14:41:04+00:00"
+            "time": "2017-03-29T10:49:41+00:00"
         },
         {
             "name": "prettus/laravel-validation",
@@ -2805,16 +2808,16 @@
         },
         {
             "name": "ramsey/uuid",
-            "version": "3.6.0",
+            "version": "3.6.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ramsey/uuid.git",
-                "reference": "0b7bdfb180e72c8d76e75a649ced67e392201458"
+                "reference": "4ae32dd9ab8860a4bbd750ad269cba7f06f7934e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://files.phpcomposer.com/files/ramsey/uuid/0b7bdfb180e72c8d76e75a649ced67e392201458.zip",
-                "reference": "0b7bdfb180e72c8d76e75a649ced67e392201458",
+                "url": "https://files.phpcomposer.com/files/ramsey/uuid/4ae32dd9ab8860a4bbd750ad269cba7f06f7934e.zip",
+                "reference": "4ae32dd9ab8860a4bbd750ad269cba7f06f7934e",
                 "shasum": ""
             },
             "require": {
@@ -2826,9 +2829,9 @@
             },
             "require-dev": {
                 "apigen/apigen": "^4.1",
-                "codeception/aspect-mock": "1.0.0",
+                "codeception/aspect-mock": "^1.0 | ^2.0",
                 "doctrine/annotations": "~1.2.0",
-                "goaop/framework": "1.0.0-alpha.2",
+                "goaop/framework": "1.0.0-alpha.2 | ^1.0 | ^2.1",
                 "ircmaxell/random-lib": "^1.1",
                 "jakub-onderka/php-parallel-lint": "^0.9.0",
                 "mockery/mockery": "^0.9.4",
@@ -2883,7 +2886,7 @@
                 "identifier",
                 "uuid"
             ],
-            "time": "2017-03-18T15:38:09+00:00"
+            "time": "2017-03-26T20:37:53+00:00"
         },
         {
             "name": "sebastian/diff",

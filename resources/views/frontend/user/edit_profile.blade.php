@@ -36,9 +36,29 @@
                 </li>
                 <li>
                     <label>
+                        <span class="tit-s">车牌号</span>
+                        <input class="Ainp" type="" name="car_no" id="car_no" value="{{$user->profile->car_no}}" />
+                    </label>
+                </li>
+                @if($user->hasRole('paid_member'))
+                <li>
+                    <label>
+                        <span class="tit-s">可野会员编号</span>
+                        <input class="Ainp" type="" name="member_no" id="member_no" value="{{$user->profile->member_no}}" />
+                    </label>
+                </li>
+                @endif
+                <li>
+                    <label>
                         <span class="tit-s">收货地址</span>
                         <input placeholder="选填" class="Ainp" type="" name="address" id="address" value="{{$user->address}}" />
                     </label>
+                </li>
+                <li>
+                    <ul class="notice">
+                        <li>1. 可野付费会员才可以拥有可野会员编号</li>
+                        <li>2. 可野会员可以填写收货地址来获取会员福利，也可自取</li>
+                    </ul>
                 </li>
             </ul>
             <div class="Agreement">

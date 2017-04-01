@@ -29,6 +29,7 @@ use App\Models\Sery;
 use App\Models\Motomodel;
 use DB;
 use App\Http\Requests\Frontend\SaveProfileRequest;
+use App\Events\MemberFeePaid;
 
 class WechatController extends Controller
 {
@@ -214,7 +215,7 @@ class WechatController extends Controller
     }
 
     public function saveProfile(SaveProfileRequest $request) {
-        $data = $request->only('real_name', 'id_no', 'brand', 'sery', 'motomodel', 'buy_year', 'self_get');
+        $data = $request->only('real_name', 'id_no', 'brand', 'sery', 'motomodel', 'buy_year', 'car_no', 'self_get');
         // check if current user is id verified in db
         if(Auth::user()->profile->is_verified != 1) {
             // check how many times does this user apply for verification
@@ -261,6 +262,18 @@ class WechatController extends Controller
                     $profile = UserProfile::where('wechat_id', $order->wechat_openid)->first();
                     $user = User::find($profile->user_id);
                     $user->roles()->attach(config('custom.paid_member_code'));
+                    // check to see if we can send him invitation codes
+                    $paidMemberCount = User::getPaidMemberCount();
+                    if($paidMemberCount <= 50 || (int)$order->amount == 60000) {
+                        // check if the user has $c invitation codes
+                        $codeCount = Invitation::where('user_id', '=', $user->id)->count();
+                        if($codeCount == 0) {
+                            // generate the invitation codes for the users
+                            Invitation::generateInvitationCodes(3, $codes, $user->id);
+                            Log::write('common', 'Generated invitation codes for '.$user->id.':'.implode(',', $codes));
+                            event(new MemberFeePaid($user, $codes));
+                        }
+                    }
                 } catch (Exception $e) {
                     Log::write('common', 'Set user to paid user failed for oid:' . $order->oid);
                 }

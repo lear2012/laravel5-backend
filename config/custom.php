@@ -17,6 +17,7 @@ return [
     'exp_driver_code' => 4,
     'admin_code' => 1,
 
+
     // limited actions
     'limited_ops' => [
         'sms_register' => 1,
@@ -24,4 +25,6 @@ return [
     ],
     'ID_CARD_VERIFY_DAY_ALLOW' => 3, // 实名认证每天可以验证的次数
     'SMS_REGISTER_VERIFY_DAY_ALLOW' => 3, // 注册短信验证每天可以发送的次数
+    'MAIL_FROM' => '可野Club',
+    'MEMBER_PAID_MAIL_SUBJECT' => '欢迎加入可野Club付费会员，成为可野人',
 ];
