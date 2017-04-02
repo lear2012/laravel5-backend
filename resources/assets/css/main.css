@@ -183,8 +183,9 @@ a:focus{outline:none;}
 .memberRules {
     text-align: left;
     height: 80%;
+    overflow: auto;
 }
 .memberRules .rule-content {
-    overflow: auto;
+
 }
 .sa-button-container {text-align:center;}
