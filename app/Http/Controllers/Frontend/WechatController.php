@@ -269,9 +269,9 @@ class WechatController extends Controller
                         $codeCount = Invitation::where('user_id', '=', $user->id)->count();
                         if($codeCount == 0) {
                             // generate the invitation codes for the users
-                            Invitation::generateInvitationCodes(3, $codes, $user->id);
-                            Log::write('common', 'Generated invitation codes for '.$user->id.':'.implode(',', $codes));
-                            event(new MemberFeePaid($user, $codes));
+                            //Invitation::generateInvitationCodes(3, $codes, $user->id);
+                            //Log::write('common', 'Generated invitation codes for '.$user->id.':'.implode(',', $codes));
+                            //event(new MemberFeePaid($user, $codes));
                         }
                     }
                 } catch (Exception $e) {

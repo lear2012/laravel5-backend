@@ -182,5 +182,6 @@ a:focus{outline:none;}
 }
 .memberRules {
     text-align: left;
+    overflow:scroll;
 }
 .sa-button-container {text-align:center;}
