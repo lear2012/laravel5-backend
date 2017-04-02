@@ -376,7 +376,7 @@ var site = {
     },
 
     getMemberText: function() {
-        var str = '';
+        var str = '<div class="rule-content">';
         str += '<p>一、遵守中华人民共和国有关法律、法规，承担一切因您的行为而直接或间接引起的法律责任。</p>'+
             '<p>二、在可野Club发表言论请注意以下几条规定，若有违反，本坛有权删除。<br />'+
             '1 、反对国家宪法所确定的基本原则的；<br />'+
@@ -409,7 +409,7 @@ var site = {
             '3、您在可野Club社群中发表的原创文字及图片，本站有权转载或引用；<br />' +
             '4、您注册了可野Club会员或可野人，即表明您已阅读并接受了上述各项条款；<br />' +
             '5、本站拥有管理页面和ID及昵称的一切权力，请网友服从本站管理，如对管理有意见请用发邮件向论坛管理员（ruochen.lang@wisdommer.com）反映。</p>';
-        return str;
+        return str+'</div>';
     },
 
     showMessage: function(type, text) {
