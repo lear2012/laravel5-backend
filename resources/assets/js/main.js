@@ -268,8 +268,8 @@ var site = {
             //beforeSend: bstool.submit_loading, //执行ajax前执行loading函数.直到success
             success: function(rs) {//成功获得的也是json对象
                 if(rs.errno == 0) {
-                    that.initTimer($('#id_verify_btn'));
-                    $('#timer').show();
+                    //that.initTimer($('#id_verify_btn'));
+                    //$('#timer').show();
                     $('#id_verify_btn').hide();
                     //that.successField($('#id_no'));
                     $('.verified').html('已认证');

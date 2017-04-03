@@ -211,7 +211,10 @@ a:focus{outline:none;}
 .verified {
     font-size:.4rem;
     color:white;
-    background: #ad7a00;
     padding:5px;
-    border: .02rem solid rgba(140, 105, 47, 0.6)
+    border: .02rem solid rgba(140, 105, 47, 0.6);
 }
+#profile_form .carinfo {
+    background: url(../img/left.png) 13.2rem 0.8rem no-repeat;
+}
+#save_profile_btn {color:#000}

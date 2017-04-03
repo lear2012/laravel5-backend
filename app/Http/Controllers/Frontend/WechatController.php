@@ -545,19 +545,23 @@ class WechatController extends Controller
             if(User::getActionCount($wechatUser->id, 'id_card_verify') >= config('custom.ID_CARD_VERIFY_DAY_ALLOW') ) {
                 self::setMsgCode(1008);
             }
+            $data = $request->only('real_name', 'id_no');
             // check whether the id_no has already verified
-            $userProfile = UserProfile::where('id_no', '=', $request->get('id_no'))
+            $userProfile = UserProfile::where('id_no', '=', $data['id_no'])
                 ->where('is_verified', '=', 1)
                 ->first();
             if($userProfile) {
                 self::setMsgCode(1012);
             }
             Log::write('idcard', 'Verify user id no:' . http_build_query($request->all()));
-            $rs = Utils::verifyIDCard($request->get('real_name'), $request->get('id_no'));
+            $rs = Utils::verifyIDCard($data['real_name'], $data['id_no']);
             // record action
             User::recordLimitAction($wechatUser->id, config('custom.limited_ops.id_card_verify'));
             if(!$rs->isok) {
                 self::setMsgCode(1011);
+            } else {
+                $profile = Auth::user()->profile;
+                $profile->update($data);
             }
             self::sendJsonMsg();
         }

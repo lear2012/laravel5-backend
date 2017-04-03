@@ -33,7 +33,7 @@
                     </label>
                     <a class="But" href="javascript:;" id="id_verify_btn">实名认证</a>
                     <span id="timer">
-                        <span class="timer"></span><span class="timer_text">秒后可重新发送</span>
+                        重新发送(<span class="timer"></span>)<span class="timer_text">秒后可</span>
                     </span>
                 </li>
                 <li class="sel-left carinfo">
