@@ -269,8 +269,20 @@ class WechatController extends Controller
                         $codeCount = Invitation::where('user_id', '=', $user->id)->count();
                         if($codeCount == 0) {
                             // generate the invitation codes for the users
-                            //Invitation::generateInvitationCodes(3, $codes, $user->id);
-                            //Log::write('common', 'Generated invitation codes for '.$user->id.':'.implode(',', $codes));
+                            Invitation::generateInvitationCodes(3, $codes, $user->id);
+                            Log::write('common', 'Generated invitation codes for '.$user->id.':'.implode(',', $codes));
+                            $messageId = $this->notice->send([
+                                'touser' => $order->wechat_openid,
+                                'template_id' => config('custom.MEMBER_INVITATION_CODES_TEMPLATE_ID'),
+                                'url' => env('APP_URL'),
+                                'data' => [
+                                    "first"  => "欢迎成为可野Club付费会员!",
+                                    "UID"   => $user->username,
+                                    "CtripCode"  => implode(",", $codes),
+                                    "remark" => "您可以将邀请码发送给您的朋友，使用该邀请码的朋友只需付1元即可成为可野人，一个邀请码仅可使用一次。！",
+                                ],
+                            ]);
+                            Log::write('common', 'Send notice invitation codes for '.$user->id.':'.implode(',', $codes).' with messageid:'.$messageId);
                             //event(new MemberFeePaid($user, $codes));
                         }
                     }
@@ -512,6 +524,42 @@ class WechatController extends Controller
             DB::table('brands')
                 ->where('code', $item->code)
                 ->update(['firstchar' => $firstChar]);
+        }
+    }
+
+    public function verifyId(Request $request) {
+        if ($request->isMethod('post')) {
+            $rules = [
+                'real_name' => 'required|real_name',
+                'id_no' => 'required|id_no',
+            ];
+            $validator = Validator::make($request->all(), $rules);
+            if ($validator->fails()) {
+                self::setMsgCode(1011);
+            }
+            // check if user already verified
+            if(Auth::user()->profile->is_verified)
+                self::setMsgCode(1012);
+            $wechatUser = session('wechat.oauth_user');
+            // check how many times does this user apply for sms
+            if(User::getActionCount($wechatUser->id, 'id_card_verify') >= config('custom.ID_CARD_VERIFY_DAY_ALLOW') ) {
+                self::setMsgCode(1008);
+            }
+            // check whether the id_no has already verified
+            $userProfile = UserProfile::where('id_no', '=', $request->get('id_no'))
+                ->where('is_verified', '=', 1)
+                ->first();
+            if($userProfile) {
+                self::setMsgCode(1012);
+            }
+            Log::write('idcard', 'Verify user id no:' . http_build_query($request->all()));
+            $rs = Utils::verifyIDCard($request->get('real_name'), $request->get('id_no'));
+            // record action
+            User::recordLimitAction($wechatUser->id, config('custom.limited_ops.id_card_verify'));
+            if(!$rs->isok) {
+                self::setMsgCode(1011);
+            }
+            self::sendJsonMsg();
         }
     }
 }

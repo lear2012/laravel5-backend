@@ -88,7 +88,7 @@ a:focus{outline:none;}
 }
 #expdriver_list img {height:2.4rem;width:2.4rem;margin-top:.8rem;}
 #expdriver_list .swiper-slide-active {}
-#expdriver_list .swiper-slide-active img{height:2.8rem;width:2.8rem;margin-top:.4rem;border:.04rem solid rgba(255,255,255,.5);padding:2px;}
+#expdriver_list .swiper-slide-active img{height:2.8rem;width:2.8rem;margin-top:.4rem;padding:2px;}
 .homepage h2 {padding-top:1.2rem; padding-bottom:0.4rem}
 #expdriver_list .swiper-left {margin-right:0px}
 #expdriver_list .swiper-right {margin-left:0px}
@@ -189,3 +189,29 @@ a:focus{outline:none;}
 
 }
 .sa-button-container {text-align:center;}
+#profile_notice {
+    margin-top:20px;
+    font-size:.4rem;
+    color:rgba(255,255,255,0.5);
+}
+#profile_notice ul {
+    padding-top:10px;
+}
+#profile_notice li {
+    border:none;
+    height:.8rem;
+}
+#profile_notice .not-first {
+    margin-left:20px;
+}
+#profile_notice img {
+    float:left;
+    padding:5px 10px 5px 5px;
+}
+.verified {
+    font-size:.4rem;
+    color:white;
+    background: #ad7a00;
+    padding:5px;
+    border: .02rem solid rgba(140, 105, 47, 0.6)
+}

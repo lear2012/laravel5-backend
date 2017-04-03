@@ -9,6 +9,11 @@
                 <p class="name">
                     <span>{{ $user->username }}</span>
                     <img src="{{ $user->profile->sex == 1 ? '/img/m.png' : '/img/f.png' }}"/>
+                    <span class="verified">
+                    @if($user->profile->is_verified)
+                    已认证
+                    @endif
+                    </span>
                 </p>
                 <p class='Wechat-number text-hidden'>{{ $user->profile->wechat_no }}</p>
             </div>
@@ -27,6 +32,9 @@
                         <input class="phone" type="" name="id_no" id="id_no" value="{{$user->profile->id_no}}" />
                     </label>
                     <a class="But" href="javascript:;" id="id_verify_btn">实名认证</a>
+                    <span id="timer">
+                        <span class="timer"></span><span class="timer_text">秒后可重新发送</span>
+                    </span>
                 </li>
                 <li class="sel-left carinfo">
                     <label>
@@ -38,6 +46,15 @@
                     <label>
                         <span class="tit-s">车牌号</span>
                         <input class="Ainp" type="" name="car_no" id="car_no" value="{{$user->profile->car_no}}" />
+                    </label>
+                </li>
+                <li id="profile_notice">
+                    <label>
+                        <img src="{{asset('img/notice.png')}}" />
+                        <ul>
+                            <li>可野付费会员才可以拥有可野会员编号</li>
+                            <li class="not-first">可野付费会员可以填写收货地址来获取会员福利，也可自取</li>
+                        </ul>
                     </label>
                 </li>
                 @if($user->hasRole('paid_member'))
@@ -54,12 +71,7 @@
                         <input placeholder="选填" class="Ainp" type="" name="address" id="address" value="{{$user->address}}" />
                     </label>
                 </li>
-                <li>
-                    <ul class="notice">
-                        <li>1. 可野付费会员才可以拥有可野会员编号</li>
-                        <li>2. 可野会员可以填写收货地址来获取会员福利，也可自取</li>
-                    </ul>
-                </li>
+
             </ul>
             <div class="Agreement">
                 <div class="Radiobox" id="cki">

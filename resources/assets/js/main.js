@@ -161,7 +161,7 @@ var site = {
             $('.autograph', $('#info_board')).html('<img src="/img/yinh.png"/>'+user.profile.quotation);
     },
 
-    initTimer: function() {
+    initTimer: function(elm) {
         $('.timer').countTo({
             from: 60,
             to: 0,
@@ -174,7 +174,7 @@ var site = {
             },
             onComplete: function (value) {
                 //console.debug('complete');
-                $('#send_sms_btn').show();
+                elm.show();
                 $('#timer').hide();
             }
         });
@@ -244,10 +244,35 @@ var site = {
             //beforeSend: bstool.submit_loading, //执行ajax前执行loading函数.直到success
             success: function(rs) {//成功获得的也是json对象
                 if(rs.errno == 0) {
-                    that.initTimer();
+                    that.initTimer($('#send_sms_btn'));
                     $('#timer').show();
                     $('#send_sms_btn').hide();
                     that.successField($('#mobile'));
+                } else {
+                    that.showError(rs);
+                }
+            }
+        });
+    },
+
+    verifyID: function(params) {
+        var that = this;
+        $.ajax({
+            type: "POST",
+            dataType: "json", //dataType (xml html script json jsonp text)
+            data: params, //json 数据
+            url: '/wechat/verify_id',
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            //beforeSend: bstool.submit_loading, //执行ajax前执行loading函数.直到success
+            success: function(rs) {//成功获得的也是json对象
+                if(rs.errno == 0) {
+                    that.initTimer($('#id_verify_btn'));
+                    $('#timer').show();
+                    $('#id_verify_btn').hide();
+                    //that.successField($('#id_no'));
+                    $('.verified').html('已认证');
                 } else {
                     that.showError(rs);
                 }
@@ -500,6 +525,23 @@ var site = {
         var that = this;
         this.initDateBox(); // init the date box
         this.initSingleCheckbox($('#self_get')); // init the checkbox
+        // id verify
+        $('#id_verify_btn').click(function(){
+            var params = {};
+            params.real_name = $.trim($('#real_name').val());
+            params.id_no = $.trim($('#id_no').val());
+            if(params.real_name == '') {
+                that.errorField($('#real_name'));
+                return false;
+            }
+            if(params.id_no == '') {
+                that.errorField($('#id_no'));
+                return false;
+            }
+            that.clearField($('#real_name'));
+            that.clearField($('#id_no'));
+            that.verifyID(params);
+        });
         // init carinfo select box
         $('.carinfo').on('click',function(){
             $('.Vehicle-information').css('left','0px');

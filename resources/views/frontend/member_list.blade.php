@@ -41,11 +41,20 @@
     <section>
         <h2>可野人</h2>
         <ul class="user-list">
-            @if(Auth::user())
+            @if(Auth::user() && Auth::user()->hasRole('paid_member'))
                 <li class="bor-color">
                     <a href="{{ route('wechat.profile', ['id' => $loginUser->uid]) }}"><img src="{{ $loginUser ? $loginUser->profile->avatar : $loginUser->avatar }}" /></a>
                     <p>{{ $loginUser->username }}</p>
                     <span>{{ $loginUser->profile->keye_age > 0 ? $loginUser->profile->keye_age.'可野龄' : '&nbsp;' }}</span>
+                </li>
+            @elseif(Auth::user() && Auth::user()->hasRole('register_member'))
+                <li>
+                    <div class='add-bg'>
+                        <a href="{{ route('wechat.edit_profile', ['id' => $loginUser->uid]) }}">+</a>
+                    </div>
+                    <img src="{{ $loginUser->avatar }}" />
+                    <p>{{ $loginUser->nickname }}</p>
+                    <span><a href="{{ route('wechat.edit_profile', ['id' => $loginUser->uid]) }}">加入可野人</a></span>
                 </li>
             @else
                 <li>

@@ -35,6 +35,7 @@ Route::group(['namespace' => 'Frontend', 'middleware' => ['web', 'wechat.oauth:s
 
         Route::get('checkImgCode', ['as' => 'wechat.check_imgcode', 'uses' => 'WechatController@checkImgCode']);
         Route::get('sendSms', ['as' => 'wechat.send_sms', 'uses' => 'WechatController@sendSms']);
+        Route::post('verify_id', ['as' => 'wechat.verify_id', 'uses' => 'WechatController@verifyId']);
 
         Route::get('profile/{id}', ['as' => 'wechat.profile', 'uses' => 'WechatController@profile']);
         Route::get('edit_profile/{id}', ['as' => 'wechat.edit_profile', 'uses' => 'WechatController@editProfile']);

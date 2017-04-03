@@ -6,8 +6,10 @@
     <section>
         <div>
             <img class="portrait" src="{{ $user->profile->avatar }}" />
-            {{--@if(Auth::user() && Auth::user()->uid == $user->uid)--}}
-            <a href="{{ route('wechat.edit_profile', ['id' => $user->uid]) }}"><span class="join">编辑</span></a>
+            {{--@if(Auth::user() && Auth::user()->uid == $user->uid && Auth::user()->hasRole('paid_member'))--}}
+                <a href="{{ route('wechat.edit_profile', ['id' => $user->uid]) }}"><span class="join">编辑</span></a>
+            {{--@elseif(Auth::user() && Auth::user()->uid == $user->uid && Auth::user()->hasRole('register_member'))--}}
+                {{--<a href="{{ route('wechat.edit_profile', ['id' => $user->uid]) }}"><span class="join">加入可野人</span></a>--}}
             {{--@endif--}}
         </div>
         <div class="info">
@@ -15,7 +17,7 @@
                 <span>{{ $user->username }}</span>
                 <img src="{{ $user->profile->sex == 1 ? '/img/m.png' : '/img/f.png' }}"/>
             </p>
-            <P class='Wechat-number text-hidden'>{{ $user->profile->wechat_no }}</P>
+            <p class='Wechat-number text-hidden'>{{ $user->profile->wechat_no }}</p>
             <div class="Age-job">
                 <span class="age">{{ $user->profile->keye_age ? $user->profile->keye_age.'可野龄' : '' }}</span>
                 <span class="vehicle">{{ $user->vehicle }}</span>

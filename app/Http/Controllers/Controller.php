@@ -14,6 +14,8 @@ class Controller extends BaseController
 
     protected $wechat;
 
+    protected $notice;
+
     protected $wechatUser;
 
     protected $js;
@@ -22,6 +24,7 @@ class Controller extends BaseController
         $this->wechat = $wechat;
         $this->wechatUser = session('wechat.oauth_user');
         $this->js = $this->wechat->js;
+        $this->notice = $this->wechat->notice;
     }
 
     public static $ret = [
@@ -57,6 +60,7 @@ class Controller extends BaseController
         1009 => '您今天发送验证短信次数超过三次，请明天重试!',
         1010 => '您输入的邀请码无效，请联系邀请人！',
         1011 => '实名认证失败，请重试!',
+        1012 => '该身份证号已经认证通过！',
 
         9001 => '参数错误',
         9002 => '未知错误',
