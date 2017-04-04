@@ -562,6 +562,7 @@ var site = {
         $('.brand').on('click',function(e){
             $('.brandBox').css('left','0px');
             alphabetNav.init('nav-title');
+            $('.alphabetList').show();
             $('.brandBox .brandList .aLi').unbind('click').on('click',function(event){
                 var code = $(this).attr('code');
                 $('.brand input').val($(this).html());

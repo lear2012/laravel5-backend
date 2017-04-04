@@ -35,7 +35,8 @@ class UserProfile extends Model
         'address',
         'brand',
         'series',
-        'year'
+        'year',
+        'car_no'
     ];
 
     protected $guarded = [];
