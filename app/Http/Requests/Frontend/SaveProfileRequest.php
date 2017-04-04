@@ -30,7 +30,6 @@ class SaveProfileRequest extends Request
         return [
             'real_name'  => 'required|real_name',
             'id_no' => 'required|id_no',
-            'brand' => 'required',
             'address' => 'max:100',
             'self_get' => 'required|boolean',
         ];
@@ -41,7 +40,6 @@ class SaveProfileRequest extends Request
         return [
             'real_name' => '请输入正确的真实姓名',
             'id_no'  => '请输入合法身份证号',
-            'brand' => '请选择一个品牌',
         ];
     }
 }
