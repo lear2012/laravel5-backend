@@ -36,6 +36,7 @@ class UserProfile extends Model
         'brand',
         'series',
         'year',
+        'is_verified',
         'car_no'
     ];
 
