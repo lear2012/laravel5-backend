@@ -215,7 +215,11 @@ class WechatController extends Controller
     }
 
     public function saveProfile(SaveProfileRequest $request) {
-        $data = $request->only('real_name', 'id_no', 'brand', 'sery', 'motomodel', 'buy_year', 'car_no', 'self_get', 'member_no');
+        $data = $request->only('real_name', 'id_no', 'vehicle', 'brand', 'sery', 'motomodel', 'buy_year', 'car_no', 'self_get', 'member_no');
+        $data['series'] = $data['sery'];
+        $data['model'] = $data['motomodel'];
+        unset($data['sery']);
+        unset($data['motomodel']);
         Log::write('common', 'Get params:'.http_build_query($data));
         // check if member_no exist
         if(!is_numeric($data['member_no']) || (int)$data['member_no'] <= 0 || (int)$data['member_no'] > 150)
@@ -225,8 +229,17 @@ class WechatController extends Controller
         $userProfile = UserProfile::where('member_no', '=', $data['member_no'])->first();
         if($userProfile)
             self::setMsgCode(1014);
+        $userProfile = Auth::user()->profile;
+        if(Auth::user()->vehicle == $data['vehicle']) {
+            // 不更新车辆信息
+            unset($data['brand']);
+            unset($data['series']);
+            unset($data['model']);
+        }
+        if($data['buy_year'] == '')
+            unset($data['buy_year']);
         // check if current user is id verified in db
-        if(Auth::user()->profile->is_verified != 1) {
+        if($userProfile->is_verified != 1) {
             // check how many times does this user apply for verification
             if(User::getActionCount(Auth::user()->uid, 'id_card_verify') >= config('custom.ID_CARD_VERIFY_DAY_ALLOW') ) {
                 self::setMsgCode(1008);
@@ -241,11 +254,6 @@ class WechatController extends Controller
             }
         }
         // save profile info
-        $data['series'] = $data['sery'];
-        $data['model'] = $data['motomodel'];
-        unset($data['sery']);
-        unset($data['motomodel']);
-        $userProfile = Auth::user()->profile;
         $userProfile->fill($data);
         if(!$userProfile->save()) {
             self::setMsgCode(1007);
