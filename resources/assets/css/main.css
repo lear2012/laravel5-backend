@@ -206,7 +206,7 @@ a:focus{outline:none;}
 }
 #profile_notice img {
     float:left;
-    padding:5px 10px 5px 5px;
+    padding:8px 10px 5px 5px;
 }
 .verified {
     font-size:.4rem;

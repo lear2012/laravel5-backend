@@ -543,7 +543,7 @@ var site = {
             that.verifyID(params);
         });
         // init carinfo select box
-        $('.carinfo').on('click',function(){
+        $('.carinfo').on('click',function(e){
             $('.Vehicle-information').css('left','0px');
             if($('.brandList').html() == '') {
                 for (var i in brands) {
@@ -558,7 +558,7 @@ var site = {
         });
 
         // init brand click to show select box
-        $('.brand').on('click',function(){
+        $('.brand').on('click',function(e){
             $('.brandBox').css('left','0px');
             alphabetNav.init('nav-title');
             $('.brandBox .brandList .aLi').unbind('click').on('click',function(event){
@@ -577,6 +577,7 @@ var site = {
                     },
                     //beforeSend: bstool.submit_loading, //执行ajax前执行loading函数.直到success
                     success: function(rs) {//成功获得的也是json对象
+                        console.log(rs);
                         if(rs.errno == 0) {
                             that.setSeriesHtml(rs.data);
                         } else {
@@ -584,24 +585,27 @@ var site = {
                         }
                     }
                 });
-
                 event.stopPropagation();
-            })
+            });
+            e.stopPropagation();
         });
         // init series click to show select box
-        $('.series').click(function(){
+        $('.series').click(function(e){
             $('.seriesBox').css('left','0px');
             $('.myselect', $('.seriesBox')).show();
+            e.stopPropagation();
         });
         // init motomodel click to show select box
-        $('.motomodel').click(function(){
+        $('.motomodel').click(function(e){
             $('.motomodelBox').css('left','0px');
             $('.myselect', $('.motomodelBox')).show();
+            e.stopPropagation();
         });
         // init buy-date click to show select box
-        $('.buy-date').click(function(){
+        $('.buy-date').click(function(e){
             $('.dateBox').css('left','0px');
             $('.myselect', $('.dateBox')).show();
+            e.stopPropagation();
         });
         // init close box click
         $('.myselect-close').click(function(){
@@ -672,6 +676,7 @@ var site = {
         }
         str += '</ul>';
         $('.seriesList').html(str);
+        console.log(str);
         // bind event
         $('.seriesBox .seriesList .aLi').unbind('click').on('click',function(event) {
             var code = $(this).attr('code');
@@ -695,7 +700,6 @@ var site = {
                     }
                 }
             });
-
             event.stopPropagation();
         });
     },
