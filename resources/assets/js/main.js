@@ -391,10 +391,6 @@ var site = {
             that.errorField($('#id_no'));
             return false;
         }
-        if(params.brand == '') {
-            that.errorField($('#vehicle'));
-            return false;
-        }
         if(params.car_no == '') {
             that.errorField($('#car_no'));
             return false;
@@ -662,6 +658,7 @@ var site = {
             data.car_no = $.trim($('#car_no').val());
             data.member_no = $.trim($('#member_no').val());
             data.self_get = $('#self_get').val();
+            console.log(data);
             if(!that.checkProfile(data))
                 return false;
             // send ajax to save profile info
