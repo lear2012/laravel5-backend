@@ -59,14 +59,14 @@
                         </ul>
                     </label>
                 </li>
-                @if($user->hasRole('paid_member'))
-                <li id="member_no_li">
+                {{--@if($user->hasRole('paid_member'))--}}
+                <li class="member_no_li">
                     <label>
                         <span class="tit-s">可野会员编号</span><span class="member_no_prefix">KY.88</span>
                         <input class="Ainp" type="" name="member_no" id="member_no" value="{{substr($user->profile->member_no, 5)}}" />
                     </label>
                 </li>
-                @endif
+                {{--@endif--}}
                 <li>
                     <label>
                         <span class="tit-s">收货地址</span>
