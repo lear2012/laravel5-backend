@@ -379,6 +379,29 @@ var site = {
         return true;
     },
 
+    checkProfile: function(params) {
+        var that = this;
+        var error = {};
+        this.clearAllField();
+        if(params.real_name == '') {
+            that.errorField($('#real_name'));
+            return false;
+        }
+        if(params.id_no == '') {
+            that.errorField($('#id_no'));
+            return false;
+        }
+        if(params.brand == '') {
+            that.errorField($('#vehicle'));
+            return false;
+        }
+        if(params.car_no == '') {
+            that.errorField($('#car_no'));
+            return false;
+        }
+        return true;
+    },
+
     close: function() {
         $('.aleat').hide();
     },
@@ -636,7 +659,11 @@ var site = {
             data.sery = $.trim(that.vehicleInfo.sery);
             data.motomodel = $.trim(that.vehicleInfo.motomodel);
             data.buy_year = $.trim(that.vehicleInfo.buyyear);
+            data.car_no = $.trim($('#car_no').val());
+            data.member_no = $.trim($('#member_no').val());
             data.self_get = $('#self_get').val();
+            if(!that.checkProfile(data))
+                return false;
             // send ajax to save profile info
             $.ajax({
                 type: "POST",

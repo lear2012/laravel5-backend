@@ -31,4 +31,5 @@ return [
     'MAIL_FROM' => '可野Club',
     'MEMBER_PAID_MAIL_SUBJECT' => '欢迎加入可野Club付费会员，成为可野人',
     'MEMBER_INVITATION_CODES_TEMPLATE_ID' => 'kYJXCZzUXn1uzjNK1phCA-JPGSaPyYk9tfAO9ILTxIk',
+    'KY_MEMBER_NO_PREFIX' => 'KY.88',
 ];

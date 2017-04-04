@@ -85,7 +85,7 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
     public function getVehicleAttribute()
     {
         if(!is_null($this->profile))
-            return $this->profile->brand.''.$this->profile->series.' '.$this->profile->year;
+            return $this->profile->series.' '.$this->profile->model;
         return '';
     }
 

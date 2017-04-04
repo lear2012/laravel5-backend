@@ -52,8 +52,8 @@
                     <label>
                         <img src="{{asset('img/notice.png')}}" />
                         <ul>
-                            <li>可野付费会员才可以拥有可野会员编号</li>
-                            <li class="not-first">可野付费会员可以填写收货地址来获取会员福利，也可自取</li>
+                            <li>可野付费会员才可以拥有可野会员编号，目前可以选择001-150之间的编号。</li>
+                            <li class="not-first">可野付费会员可以填写收货地址来获取会员福利，也可自取。</li>
                         </ul>
                     </label>
                 </li>

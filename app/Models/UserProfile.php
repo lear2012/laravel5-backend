@@ -35,7 +35,10 @@ class UserProfile extends Model
         'address',
         'brand',
         'series',
+        'model',
         'year',
+        'buy_year',
+        'self_get',
         'is_verified',
         'car_no'
     ];

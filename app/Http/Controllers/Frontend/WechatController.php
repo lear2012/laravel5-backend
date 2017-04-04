@@ -215,8 +215,15 @@ class WechatController extends Controller
     }
 
     public function saveProfile(SaveProfileRequest $request) {
-        $data = $request->only('real_name', 'id_no', 'brand', 'sery', 'motomodel', 'buy_year', 'car_no', 'self_get');
+        $data = $request->only('real_name', 'id_no', 'brand', 'sery', 'motomodel', 'buy_year', 'car_no', 'self_get', 'member_no');
         Log::write('common', 'Get params:'.http_build_query($data));
+        // check if member_no exist
+        if(!is_numeric($data['member_no']) || (int)$data['member_no'] <= 0 || (int)$data['member_no'] > 150)
+            self::setMsgCode(1013);
+        $data['member_no'] = str_pad($data['member_no'], 3, "0", STR_PAD_LEFT);
+        $userProfile = UserProfile::where('member_no', '=', config('custom.KY_MEMBER_NO_PREFIX').$data['member_no'])->first();
+        if($userProfile)
+            self::setMsgCode(1014);
         // check if current user is id verified in db
         if(Auth::user()->profile->is_verified != 1) {
             // check how many times does this user apply for verification
@@ -235,10 +242,8 @@ class WechatController extends Controller
         // save profile info
         $data['series'] = $data['sery'];
         $data['model'] = $data['motomodel'];
-        $data['year'] = $data['buy_year'];
         unset($data['sery']);
         unset($data['motomodel']);
-        unset($data['buy_year']);
         $userProfile = Auth::user()->profile;
         $userProfile->fill($data);
         if(!$userProfile->save()) {
