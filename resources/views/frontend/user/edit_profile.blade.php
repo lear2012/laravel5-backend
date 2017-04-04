@@ -31,7 +31,9 @@
                         <span class="tit-s">身份证号</span>
                         <input class="phone" type="" name="id_no" id="id_no" value="{{$user->profile->id_no}}" />
                     </label>
+                    @if(!$user->profile->is_verified)
                     <a class="But" href="javascript:;" id="id_verify_btn">实名认证</a>
+                    @endif
                     <span id="timer">
                         重新发送(<span class="timer"></span>)<span class="timer_text">秒后可</span>
                     </span>
@@ -60,8 +62,8 @@
                 @if($user->hasRole('paid_member'))
                 <li>
                     <label>
-                        <span class="tit-s">可野会员编号</span>
-                        <input class="Ainp" type="" name="member_no" id="member_no" value="{{$user->profile->member_no}}" />
+                        <span class="tit-s">可野会员编号&nbsp;&nbsp;KY.88</span>
+                        <input class="Ainp" type="" name="member_no" id="member_no" value="{{substr($user->profile->member_no, 4)}}" />
                     </label>
                 </li>
                 @endif
