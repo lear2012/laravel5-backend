@@ -336,7 +336,8 @@ var site = {
             html: true,
             title: "出问题啦！",
             text: rs.msg,
-            type: 'error'
+            type: 'error',
+            confirmButtonText: '关闭'
         });
     },
 
@@ -577,7 +578,6 @@ var site = {
                     },
                     //beforeSend: bstool.submit_loading, //执行ajax前执行loading函数.直到success
                     success: function(rs) {//成功获得的也是json对象
-                        console.log(rs);
                         if(rs.errno == 0) {
                             that.setSeriesHtml(rs.data);
                         } else {
@@ -636,7 +636,6 @@ var site = {
             data.motomodel = $.trim(that.vehicleInfo.motomodel);
             data.buy_year = $.trim(that.vehicleInfo.buyyear);
             data.self_get = $('#self_get').val();
-            console.log(data);
             // send ajax to save profile info
             $.ajax({
                 type: "POST",

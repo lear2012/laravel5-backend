@@ -236,6 +236,7 @@ class WechatController extends Controller
         if(!$userProfile->update($data)) {
             self::setMsgCode(1007);
         }
+        self::setData(Auth::user()->uid);
         self::sendJsonMsg();
     }
 
