@@ -233,6 +233,12 @@ class WechatController extends Controller
             }
         }
         // save profile info
+        $data['series'] = $data['sery'];
+        $data['model'] = $data['motomodel'];
+        $data['year'] = $data['buy_year'];
+        unset($data['sery']);
+        unset($data['motomodel']);
+        unset($data['buy_year']);
         $userProfile = Auth::user()->profile;
         $userProfile->fill($data);
         if(!$userProfile->save()) {
