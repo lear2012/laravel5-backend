@@ -10,6 +10,8 @@
                 <a href="{{ route('wechat.edit_profile', ['id' => $user->uid]) }}"><span class="join">编辑</span></a>
             @elseif(Auth::user() && Auth::user()->uid == $user->uid && Auth::user()->hasRole('register_member'))
                 <a href="{{ route('wechat.edit_profile', ['id' => $user->uid]) }}"><span class="join">加入可野人</span></a>
+            @else
+                <a href="{{ route('wechat.edit_profile', ['id' => $user->uid]) }}"><span class="join">编辑</span></a>
             @endif
         </div>
         <div class="info">

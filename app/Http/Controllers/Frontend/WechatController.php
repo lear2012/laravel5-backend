@@ -65,7 +65,8 @@ class WechatController extends Controller
         return view('frontend.member_list', [
             'expDrivers' => $expDrivers,
             'paidMembers' => $paidMembers,
-            'loginUser' => $user
+            'loginUser' => $user,
+            'wechatUser' => $wechatUser
         ]);
     }
 
@@ -305,7 +306,7 @@ class WechatController extends Controller
                                     "first"  => "欢迎成为可野Club付费会员!",
                                     "UID"   => $user->username,
                                     "CtripCode"  => implode(",", $codes),
-                                    "remark" => "您可以将邀请码发送给您的朋友，使用该邀请码的朋友只需付1元即可成为可野人，一个邀请码仅可使用一次。！",
+                                    "Remark" => "您可以将邀请码发送给您的朋友，使用该邀请码的朋友只需付1元即可成为可野人，一个邀请码仅可使用一次！",
                                 ],
                             ]);
                             Log::write('common', 'Send notice invitation codes for '.$user->id.':'.implode(',', $codes).' with messageid:'.$messageId);

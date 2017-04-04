@@ -44,7 +44,7 @@
             @if(Auth::user() && Auth::user()->hasRole('paid_member'))
                 <li class="bor-color">
                     <a href="{{ route('wechat.profile', ['id' => $loginUser->uid]) }}"><img src="{{ $loginUser ? $loginUser->profile->avatar : $loginUser->avatar }}" /></a>
-                    <p>{{ $loginUser->username }}</p>
+                    <p>{{ $loginUser->username ? $loginUser->username : $wechatUser->nickname }}</p>
                     <span>{{ $loginUser->profile->keye_age > 0 ? $loginUser->profile->keye_age.'可野龄' : '&nbsp;' }}</span>
                 </li>
             @elseif(Auth::user() && Auth::user()->hasRole('register_member'))
@@ -52,8 +52,8 @@
                     <div class='add-bg'>
                         <a href="{{ route('wechat.edit_profile', ['id' => $loginUser->uid]) }}">+</a>
                     </div>
-                    <img src="{{ $loginUser->avatar }}" />
-                    <p>{{ $loginUser->nickname }}</p>
+                    <img src="{{ isset($loginUser->profile) ? $loginUser->profile->avatar : $loginUser->avatar }}" />
+                    <p>{{ $loginUser->username ? $loginUser->username : $wechatUser->nickname }}</p>
                     <span><a href="{{ route('wechat.edit_profile', ['id' => $loginUser->uid]) }}">加入可野人</a></span>
                 </li>
             @else
@@ -61,8 +61,8 @@
                     <div class='add-bg'>
                         <a href="{{ route('wechat.member_register') }}">+</a>
                     </div>
-                    <img src="{{ $loginUser->avatar }}" />
-                    <p>{{ $loginUser->nickname }}</p>
+                    <img src="{{ isset($loginUser->profile) ? $loginUser->profile->avatar : $loginUser->avatar }}" />
+                    <p>{{ $loginUser->username ? $loginUser->username : $wechatUser->nickname }}</p>
                     <span>&nbsp;</span>
                 </li>
             @endif

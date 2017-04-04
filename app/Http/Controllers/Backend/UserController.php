@@ -145,12 +145,21 @@ class UserController extends BaseController
      */
     public function update($id, Backend\UpdateUserRequest $request)
     {
-        $data = $request->only(['username', 'email', 'password', 'role_ids', 'is_front', 'status']);
+        //dd($request->all());
+        $data = $request->all();
         $user = User::findOrFail($id);
         if(!isset($data['status']))
             $data['status'] = 0;
         if(!isset($data['is_front']))
             $data['is_front'] = 0;
+        if(isset($data['password']) && $data['password'] == '')
+            unset($data['password']);
+        if(isset($data['password']) && isset($data['password_confirmation']) && $data['password'] != $data['password_confirmation']) {
+            return redirect()->back()
+                ->with('jsmsg', amaran_msg(trans('message.password_not_match'), 'success'));
+        }
+        if(isset($data['password_confirmation']))
+            unset($data['password_confirmation']);
         try {
             DB::transaction(function () use ($user, $data) {
                 $role_ids = explode(",", $data['role_ids']);
@@ -162,6 +171,17 @@ class UserController extends BaseController
                 $user->is_front = $data['is_front'];
                 $user->save();
                 $user->roles()->sync($role_ids);
+                // profile
+                $profileData = [
+                    'real_name' => $data['real_name'],
+                    'id_no' => $data['id_no'],
+                    'keye_age' => $data['keye_age'],
+                    'quotation' => $data['quotation'],
+                    'avatar' => $data['avatar'],
+                    'nest_info' => $data['nest_info'],
+                    'member_no' => $data['member_no'],
+                ];
+                UserProfile::updateOrCreate(['user_id' => $user->id], $profileData);
             });
         } catch(\Exception $e) {
             return redirect()->back()->with('jsmsg', amaran_msg(trans('message.update_user_failed'), 'error'));

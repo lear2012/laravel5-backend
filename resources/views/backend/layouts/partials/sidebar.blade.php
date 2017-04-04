@@ -14,18 +14,7 @@
 
         <!-- sidebar menu: : style can be found in sidebar.less -->
         <ul class="sidebar-menu">
-            <li @if(Request::is('admin/expdriver*')) class="treeview active" @else class="treeview" @endif>
-                <a href="#">
-                    <i class="fa fa-edit"></i>
-                    <span>老司机专栏</span>
-                    <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span>
-                </a>
-                <ul class="treeview-menu">
-                    <li @if(Request::is('admin/expdriver/home')) class="active" @endif>
-                        <a href="{{ url('admin/expdriver/home') }}"><i class="fa fa-circle-o"></i>个人页面展示</a>
-                    </li>
-                </ul>
-            </li>
+
 
             <li class="header">系统设置</li>
             <li @if(Request::is('admin/auth/*')) class="treeview active" @else class="treeview" @endif>
@@ -47,17 +36,7 @@
                 </ul>
             </li>
 
-            <li class="header">帮助</li>
-            <li>
-                <a href="https://almsaeedstudio.com/themes/AdminLTE/index.html" target="_blank">
-                    <i class="fa fa-book"></i> <span>模板Demo</span>
-                </a>
-            </li>
-            <li>
-                <a href="https://almsaeedstudio.com/themes/AdminLTE/documentation/index.html" target="_blank">
-                    <i class="fa fa-book"></i> <span>模板使用文档</span>
-                </a>
-            </li>
+
             <li class="header">其它</li>
             <li><a href="/admin/logout"><i class="fa fa-circle-o text-red"></i> <span>退出</span></a></li>
         </ul>
