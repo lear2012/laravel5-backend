@@ -222,13 +222,15 @@ class WechatController extends Controller
         unset($data['motomodel']);
         Log::write('common', 'Get params:'.http_build_query($data));
         // check if member_no exist
-        if(!is_numeric($data['member_no']) || (int)$data['member_no'] <= 0 || (int)$data['member_no'] > 150)
-            self::setMsgCode(1013);
-        $data['member_no'] = str_pad($data['member_no'], 3, "0", STR_PAD_LEFT);
-        $data['member_no'] = config('custom.KY_MEMBER_NO_PREFIX').$data['member_no'];
-        $userProfile = UserProfile::where('member_no', '=', $data['member_no'])->first();
-        if($userProfile)
-            self::setMsgCode(1014);
+        if(isset($data['member_no']) && $data['member_no'] != '') {
+            if (!is_numeric($data['member_no']) || (int)$data['member_no'] <= 0 || (int)$data['member_no'] > 150)
+                self::setMsgCode(1013);
+            $data['member_no'] = str_pad($data['member_no'], 3, "0", STR_PAD_LEFT);
+            $data['member_no'] = config('custom.KY_MEMBER_NO_PREFIX') . $data['member_no'];
+            $userProfile = UserProfile::where('member_no', '=', $data['member_no'])->where('user_id', '!=', Auth::$user->id)->first();
+            if ($userProfile)
+                self::setMsgCode(1014);
+        }
         $userProfile = Auth::user()->profile;
         if(Auth::user()->vehicle == $data['vehicle']) {
             // 不更新车辆信息
