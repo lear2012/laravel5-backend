@@ -63,7 +63,7 @@
                 <li>
                     <label>
                         <span class="tit-s">可野会员编号&nbsp;&nbsp;KY.88</span>
-                        <input class="Ainp" type="" name="member_no" id="member_no" value="{{substr($user->profile->member_no, 4)}}" />
+                        <input class="Ainp" type="" name="member_no" id="member_no" value="{{substr($user->profile->member_no, 5)}}" />
                     </label>
                 </li>
                 @endif
