@@ -227,7 +227,7 @@ class WechatController extends Controller
                 self::setMsgCode(1013);
             $data['member_no'] = str_pad($data['member_no'], 3, "0", STR_PAD_LEFT);
             $data['member_no'] = config('custom.KY_MEMBER_NO_PREFIX') . $data['member_no'];
-            $userProfile = UserProfile::where('member_no', '=', $data['member_no'])->where('user_id', '!=', Auth::$user->id)->first();
+            $userProfile = UserProfile::where('member_no', '=', $data['member_no'])->where('user_id', '!=', Auth::user()->id)->first();
             if ($userProfile)
                 self::setMsgCode(1014);
         }
