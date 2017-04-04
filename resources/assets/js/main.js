@@ -592,19 +592,22 @@ var site = {
         // init series click to show select box
         $('.series').click(function(e){
             $('.seriesBox').css('left','0px');
-            $('.myselect', $('.seriesBox')).show().css("display","inline");;
+            $('div', $('.seriesBox')).css('position', 'absolute');
+            $('.myselect', $('.seriesBox')).show();
             e.stopPropagation();
         });
         // init motomodel click to show select box
         $('.motomodel').click(function(e){
             $('.motomodelBox').css('left','0px');
-            $('.myselect', $('.motomodelBox')).show().css("display","inline");;
+            $('div', $('.motomodelBox')).css('position', 'absolute');
+            $('.myselect', $('.motomodelBox')).show();
             e.stopPropagation();
         });
         // init buy-date click to show select box
         $('.buy-date').click(function(e){
             $('.dateBox').css('left','0px');
-            $('.myselect', $('.dateBox')).show().css("display","inline");;
+            $('div', $('.dateBox')).css('position', 'absolute');
+            $('.myselect', $('.dateBox')).show();
             e.stopPropagation();
         });
         // init close box click
@@ -676,7 +679,6 @@ var site = {
         }
         str += '</ul>';
         $('.seriesList').html(str);
-        console.log(str);
         // bind event
         $('.seriesBox .seriesList .aLi').unbind('click').on('click',function(event) {
             var code = $(this).attr('code');
