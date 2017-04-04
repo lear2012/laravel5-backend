@@ -70,7 +70,7 @@
                 <li>
                     <label>
                         <span class="tit-s">收货地址</span>
-                        <input placeholder="选填" class="Ainp" type="" name="address" id="address" value="{{$user->address}}" />
+                        <input placeholder="选填" class="Ainp" type="" name="address" id="address" value="{{$user->profile->address}}" />
                     </label>
                 </li>
 

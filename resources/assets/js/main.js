@@ -651,6 +651,7 @@ var site = {
             data.real_name = $.trim($('#real_name').val());
             data.id_no = $.trim($('#id_no').val());
             data.address = $.trim($('#address').val());
+            data.vehicle = $.trim($('#vehicle').val());
             data.brand = $.trim(that.vehicleInfo.brand);
             data.sery = $.trim(that.vehicleInfo.sery);
             data.motomodel = $.trim(that.vehicleInfo.motomodel);
