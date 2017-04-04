@@ -592,19 +592,19 @@ var site = {
         // init series click to show select box
         $('.series').click(function(e){
             $('.seriesBox').css('left','0px');
-            $('.myselect', $('.seriesBox')).show();
+            $('.myselect', $('.seriesBox')).show().css("display","inline");;
             e.stopPropagation();
         });
         // init motomodel click to show select box
         $('.motomodel').click(function(e){
             $('.motomodelBox').css('left','0px');
-            $('.myselect', $('.motomodelBox')).show();
+            $('.myselect', $('.motomodelBox')).show().css("display","inline");;
             e.stopPropagation();
         });
         // init buy-date click to show select box
         $('.buy-date').click(function(e){
             $('.dateBox').css('left','0px');
-            $('.myselect', $('.dateBox')).show();
+            $('.myselect', $('.dateBox')).show().css("display","inline");;
             e.stopPropagation();
         });
         // init close box click
