@@ -218,4 +218,5 @@ a:focus{outline:none;}
     background: url(../img/left.png) 13.2rem 0.8rem no-repeat;
 }
 #save_profile_btn {color:#000}
-#member_no {width:40%}
+#member_no_li .member_no_prefix{align:right}
+member_no_li .Ainp{width:40%;}

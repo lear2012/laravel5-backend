@@ -658,7 +658,6 @@ var site = {
             data.car_no = $.trim($('#car_no').val());
             data.member_no = $.trim($('#member_no').val());
             data.self_get = $('#self_get').val();
-            console.log(data);
             if(!that.checkProfile(data))
                 return false;
             // send ajax to save profile info

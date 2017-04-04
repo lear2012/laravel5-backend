@@ -60,9 +60,9 @@
                     </label>
                 </li>
                 @if($user->hasRole('paid_member'))
-                <li>
+                <li id="member_no_li">
                     <label>
-                        <span class="tit-s">可野会员编号&nbsp;&nbsp;KY.88</span>
+                        <span class="tit-s">可野会员编号</span><span class="member_no_prefix">KY.88</span>
                         <input class="Ainp" type="" name="member_no" id="member_no" value="{{substr($user->profile->member_no, 5)}}" />
                     </label>
                 </li>
