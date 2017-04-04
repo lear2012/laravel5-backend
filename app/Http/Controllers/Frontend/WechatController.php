@@ -221,7 +221,8 @@ class WechatController extends Controller
         if(!is_numeric($data['member_no']) || (int)$data['member_no'] <= 0 || (int)$data['member_no'] > 150)
             self::setMsgCode(1013);
         $data['member_no'] = str_pad($data['member_no'], 3, "0", STR_PAD_LEFT);
-        $userProfile = UserProfile::where('member_no', '=', config('custom.KY_MEMBER_NO_PREFIX').$data['member_no'])->first();
+        $data['member_no'] = config('custom.KY_MEMBER_NO_PREFIX').$data['member_no'];
+        $userProfile = UserProfile::where('member_no', '=', $data['member_no'])->first();
         if($userProfile)
             self::setMsgCode(1014);
         // check if current user is id verified in db
