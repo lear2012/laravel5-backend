@@ -195,11 +195,14 @@ class WechatController extends Controller
         ]);
     }
 
-    public function editProfile($id)
+    public function editProfile($id, Request $request)
     {
-//        if(!Auth::user() || Auth::user()->uid != $id) {
-//            abort(401);
-//        }
+        if(!Auth::user() || Auth::user()->uid != $id) {
+            abort(401);
+        }
+        Log::write('common', 'Get params:' . http_build_query($request->all()));
+        $config = []; // 支付配置信息
+        $paying = $request->get('paying');
         $user = User::where([
             'uid' => $id
         ])->first();
@@ -327,7 +330,7 @@ class WechatController extends Controller
 
     public function sendSms(Request $request)
     {
-        Log::write('sms', 'Get params:' . http_build_query($request->all()));
+                Log::write('sms', 'Get params:' . http_build_query($request->all()));
         if ($request->isMethod('get')) {
             $rules = ['mobile' => 'required|mobile'];
             $validator = Validator::make($request->all(), $rules);
