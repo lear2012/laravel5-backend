@@ -216,6 +216,7 @@ class WechatController extends Controller
 
     public function saveProfile(SaveProfileRequest $request) {
         $data = $request->only('real_name', 'id_no', 'brand', 'sery', 'motomodel', 'buy_year', 'car_no', 'self_get');
+        Log::write('common', 'Get params:'.http_build_query($data));
         // check if current user is id verified in db
         if(Auth::user()->profile->is_verified != 1) {
             // check how many times does this user apply for verification
@@ -236,6 +237,7 @@ class WechatController extends Controller
         if(!$userProfile->update($data)) {
             self::setMsgCode(1007);
         }
+        Log::write('common', 'Update profile for user:'.Auth::user()->uid);
         self::setData(Auth::user()->uid);
         self::sendJsonMsg();
     }

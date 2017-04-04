@@ -676,6 +676,7 @@ var site = {
         for(var i in data){
             str +='<li class="aLi" code="'+data[i].code+'">'+data[i].name+'</li>';
         }
+        str +='<li class="aLi" code="0">其它</li>';
         str += '</ul>';
         $('.seriesList').html(str);
         // bind event
@@ -711,6 +712,7 @@ var site = {
         for(var i in data){
             str +='<li class="aLi" code="'+data[i].code+'">'+data[i].name+'</li>';
         }
+        str +='<li class="aLi" code="0">其它</li>';
         str += '</ul>';
         $('.motomodelList').html(str);
         // bind event
