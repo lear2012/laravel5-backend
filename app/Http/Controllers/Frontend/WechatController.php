@@ -234,7 +234,8 @@ class WechatController extends Controller
         }
         // save profile info
         $userProfile = Auth::user()->profile;
-        if(!$userProfile->update($data)) {
+        $userProfile->fill($data);
+        if(!$userProfile->save()) {
             self::setMsgCode(1007);
         }
         Log::write('common', 'Update profile for user:'.Auth::user()->uid);
