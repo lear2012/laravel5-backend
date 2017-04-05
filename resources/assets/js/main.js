@@ -308,7 +308,7 @@ var site = {
                     //$('#reg_success').show();
                     swal({
                         html: true,
-                        title: "<p>注册成功</p>",
+                        title: "<p>注册成功,接着看如何成为可野人，享受可野人福利</p>",
                         text: that.getPayMemberText(),
                         imageUrl: "/img/success_icon@2X.png",
                         showCancelButton: true,
