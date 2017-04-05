@@ -265,16 +265,17 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
             'order_type' => 1
         ])->orderBy('created_at', 'desc')->first();
         if($orderCheck) {
-            if(!isset($data['invitationCode'])) {
-                // 如果有未支付的订单，直接返回订单
-                Log::write('wechat', '订单已存在，直接返回订单oid:'.$orderCheck->oid);
-                $order['out_trade_no'] = $orderCheck->oid;
-                return $order;
-            } else {
-                Log::write('wechat', '订单已存在，删除旧订单:'.$orderCheck->oid);
-                // 删除旧订单，生成新订单
-                $orderCheck->delete();
-            }
+            $orderCheck->delete();
+//            if(!isset($data['invitationCode'])) {
+//                // 如果有未支付的订单，直接返回订单
+//                Log::write('wechat', '订单已存在，直接返回订单oid:'.$orderCheck->oid);
+//                $order['out_trade_no'] = $orderCheck->oid;
+//                return $order;
+//            } else {
+//                Log::write('wechat', '订单已存在，删除旧订单:'.$orderCheck->oid);
+//                // 删除旧订单，生成新订单
+//                $orderCheck->delete();
+//            }
         }
         // save info into db
         $dbOrder = new Order();
