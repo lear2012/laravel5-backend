@@ -74,7 +74,16 @@
     right: 0.6rem;
     top: 0.8rem;
     font-size:0.6rem;
-    color:#000;
+    color:#ad7a00;
+}
+.return {
+    position: absolute;
+    width: 3.2rem;
+    height: 0.84rem;
+    left: 0.6rem;
+    top: 0.8rem;
+    font-size:0.6rem;
+    color:#ad7a00;
 }
 a,img,button,input,textarea,label,span,i,ul,li,div,p,a:visited{-webkit-tap-highlight-color:rgba(255,255,255,0);}
 input,textarea{-webkit-appearance:none;}

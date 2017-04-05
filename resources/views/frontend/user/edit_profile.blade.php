@@ -5,6 +5,7 @@
     <div class="JoinKY">
         <header>
             <div><img class="portrait" src="{{ $user->profile->avatar }}" /></div>
+            <a href="{{ route('wechat.profile', ['id' => $user->uid]) }}"><span class="return">返回</span></a>
             <div class="info">
                 <p class="name">
                     <span>{{ $user->username }}</span>
