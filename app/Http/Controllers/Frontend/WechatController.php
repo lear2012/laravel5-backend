@@ -213,6 +213,7 @@ class WechatController extends Controller
         }
         $brands = $this->getBrands();
         $order = User::setRegisterOrder();
+        Log::write('wechat', 'Get order params:' . http_build_query($order));
         if (!empty($order)) {
             $o = new Order($order);
             $payment = $this->wechat->payment;

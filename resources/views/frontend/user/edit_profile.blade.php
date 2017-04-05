@@ -4,8 +4,10 @@
 @section('content')
     <div class="JoinKY">
         <header>
-            <div><img class="portrait" src="{{ $user->profile->avatar }}" /></div>
-            <img src="/img/left-arrow.png" class="return" />
+            <div>
+                <img class="portrait" src="{{ $user->profile->avatar }}" />
+                <img src="/img/left-arrow.png" class="return" />
+            </div>
             <div class="info">
                 <p class="name">
                     <span>{{ $user->username }}</span>
