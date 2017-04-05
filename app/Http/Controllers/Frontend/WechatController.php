@@ -121,6 +121,7 @@ class WechatController extends Controller
         // 如果没有单，则下单，如果有单，则返回单
         Log::write('common', 'Wechat User:' . $wechatUser->nickname . ', openid:' . $wechatUser->id . ' not registered, set payconfig now');
         $order = User::setRegisterOrder();
+        Log::write('wechat', 'Get order params:' . http_build_query($order));
         if (!empty($order)) {
             $o = new Order($order);
             $payment = $this->wechat->payment;
