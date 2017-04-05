@@ -266,7 +266,7 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
         ])->whereNull('deleted_at')->orderBy('created_at', 'desc')->first();
         if($orderCheck) {
             Log::write('wechat', '订单已存在，删除该订单:'.$orderCheck->oid);
-            Order::destroy($orderCheck->id);
+            $orderCheck->forceDelete();
 //            if(!isset($data['invitationCode'])) {
 //                // 如果有未支付的订单，直接返回订单
 //                Log::write('wechat', '订单已存在，直接返回订单oid:'.$orderCheck->oid);
