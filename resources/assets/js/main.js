@@ -92,6 +92,7 @@ var site = {
     },
 
     initMemberList: function() {
+        var myLazyLoad = new LazyLoad();
         if(expDrivers.length == 0)
             return false;
         var that = this;

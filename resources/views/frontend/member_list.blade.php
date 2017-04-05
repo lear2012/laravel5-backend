@@ -69,7 +69,7 @@
             @foreach($paidMembers as $user)
                 @if($user->uid != $loginUser->uid)
                 <li>
-                    <a href="{{ route('wechat.profile', ['id' => $user->uid]) }}"><img src="{{ ($user && $user->profile) ? $user->profile->avatar : config('custom.default_avatar') }}" /></a>
+                    <a href="{{ route('wechat.profile', ['id' => $user->uid]) }}"><img data-original="{{ ($user && $user->profile) ? $user->profile->avatar : config('custom.default_avatar') }}" /></a>
                     <p>{{ ($user && $user->profile->wechat_no) ? $user->profile->wechat_no : '&nbsp;' }}</p>
                     <span>{{ ($user && $user->profile->keye_age > 0) ? $user->profile->keye_age.'可野龄' : '&nbsp;' }}</span>
                 </li>

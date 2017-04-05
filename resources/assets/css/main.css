@@ -223,3 +223,13 @@ a:focus{outline:none;}
 #nest_info {
     padding:20px;
 }
+/* Prevents img without src to appear */
+img:not([src]) {
+    visibility: hidden;
+}
+/* Fixes Firefox anomaly */
+@-moz-document url-prefix() {
+    img:-moz-loading {
+        visibility: hidden;
+    }
+}
