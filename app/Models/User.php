@@ -263,9 +263,10 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
         $orderCheck = \App\Models\Order::where([
             'wechat_openid' => $order['openid'],
             'order_type' => 1
-        ])->orderBy('created_at', 'desc')->first();
+        ])->whereNull('deleted_at')->orderBy('created_at', 'desc')->first();
         if($orderCheck) {
-            $orderCheck->delete();
+            Log::write('wechat', '订单已存在，删除该订单:'.$orderCheck->oid);
+            Order::destroy($orderCheck->id);
 //            if(!isset($data['invitationCode'])) {
 //                // 如果有未支付的订单，直接返回订单
 //                Log::write('wechat', '订单已存在，直接返回订单oid:'.$orderCheck->oid);

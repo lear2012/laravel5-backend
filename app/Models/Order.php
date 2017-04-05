@@ -12,6 +12,8 @@ class Order extends Model
 
     protected $dateFormat = 'U';
 
+    protected $primaryKey = 'id';
+
     protected $fillable = [
         'oid',
         'title',
