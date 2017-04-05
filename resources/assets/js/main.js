@@ -310,14 +310,14 @@ var site = {
                         html: true,
                         title: "<p>注册成功</p>",
                         text: that.getPayMemberText(),
-                        type: 'success',
                         imageUrl: "/img/success_icon@2X.png",
                         showCancelButton: true,
                         confirmButtonColor: "#DD6B55",
                         confirmButtonText: "我付费,我光荣！",
                         cancelButtonText: "再逛逛",
                         closeOnConfirm: false,
-                        closeOnCancel: false
+                        closeOnCancel: false,
+                        customClass: 'memberRules'
                     }, function (isConfirm) {
                         if (isConfirm) {
                             that.payMemberFee();
