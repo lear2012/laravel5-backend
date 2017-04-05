@@ -57,11 +57,13 @@ class AppServiceProvider extends ServiceProvider
             return $value && implode($name) == $value;
         });
         Validator::extend('id_no', function ($attribute, $value, $parameters) {
-
             return  preg_match("/^\d{17}(\d|X|x)$/", $value);
         });
         Validator::extend('100x', function ($attribute, $value, $parameters) {
             return  preg_match("/^[1-9][0-9]*0{2}$/", $value);
+        });
+        Validator::extend('nick', function ($attribute, $value, $parameters) {
+            return  preg_match("/^[\u4e00-\u9fa5_a-zA-Z0-9]+$/", $value);
         });
 //        $smsTime = 5;//临时变量储存剩余过期时间
 //        Validator::extend('sms', function ($attribute, $value, $parameters) use(&$smsTime) {

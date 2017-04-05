@@ -5,7 +5,7 @@
     <div class="JoinKY">
         <header>
             <div><img class="portrait" src="{{ $user->profile->avatar }}" /></div>
-            <a href="{{ route('wechat.profile', ['id' => $user->uid]) }}"><span class="return">返回</span></a>
+            <img src="/img/left-arrow.png" class="return" />
             <div class="info">
                 <p class="name">
                     <span>{{ $user->username }}</span>
@@ -83,6 +83,7 @@
                 </div>
             </div>
             <input type="hidden" name="self_get" id="self_get" value="1" />
+            <input type="hidden" name="uid" id="uid" value="{{$user->uid}}" />
             <button class="submit" id="save_profile_btn">保存</button>
 
         </section>

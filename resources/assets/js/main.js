@@ -16,6 +16,8 @@ var site = {
             this.initMemberList();
         } else if(_.startsWith(path, '/wechat/edit_profile')) {
             this.initEditProfile();
+        } else if(_.startsWith(path, '/wechat/profile')) {
+            this.initProfile();
         } else {
 
         }
@@ -305,29 +307,45 @@ var site = {
             //beforeSend: bstool.submit_loading, //执行ajax前执行loading函数.直到success
             success: function(rs) {//成功获得的也是json对象
                 if(rs.errno == 0) {
-                    //$('#reg_success').show();
-                    swal({
-                        html: true,
-                        title: "<p>注册成功,接着看如何成为可野人，享受可野人福利</p>",
-                        text: that.getPayMemberText(),
-                        imageUrl: "/img/success_icon@2X.png",
-                        showCancelButton: true,
-                        confirmButtonColor: "#DD6B55",
-                        confirmButtonText: "我付费,我光荣！",
-                        cancelButtonText: "再逛逛",
-                        closeOnConfirm: false,
-                        closeOnCancel: false,
-                        customClass: 'memberRules'
-                    }, function (isConfirm) {
-                        if (isConfirm) {
-                            that.payMemberFee();
-                        } else {
-                            window.location.href='/wechat/member_list';
-                        }
-                    });
+                    that.showPayModal({from:'register'});
                 } else {
                     that.showError(rs);
                 }
+            }
+        });
+    },
+
+    showPayModal: function(params) {
+        var that = this;
+        var title = '';
+        var loc = '/wechat/member_list';
+        switch(params.from) {
+            case 'register':
+                title = "<p>注册成功，接着看如何成为可野人，享受可野人福利</p>";
+                break;
+            case 'profile':
+                title = "<p>付费成为可野人，享受可野人福利</p>";
+                loc = '/wechat/profile/'+params.uid;
+                break;
+            default:
+        }
+        swal({
+            html: true,
+            title: title,
+            text: that.getPayMemberText(),
+            imageUrl: "/img/success_icon@2X.png",
+            showCancelButton: true,
+            confirmButtonColor: "#DD6B55",
+            confirmButtonText: "我付费,我光荣！",
+            cancelButtonText: "再逛逛",
+            closeOnConfirm: false,
+            closeOnCancel: false,
+            customClass: 'memberRules'
+        }, function (isConfirm) {
+            if (isConfirm) {
+                that.payMemberFee();
+            } else {
+                window.location.href=loc;
             }
         });
     },
@@ -561,10 +579,20 @@ var site = {
         });
     },
 
+    initProfile: function() {
+        $('.return').on('click', function(e){
+            window.location.href = '/wechat/member_list';
+        });
+    },
+
     initEditProfile: function () {
         var that = this;
         this.initDateBox(); // init the date box
         this.initSingleCheckbox($('#self_get')); // init the checkbox
+        $('.return').on('click', function(e){
+            window.location.href = '/wechat/profile/'+$('#uid').val();
+            return;
+        });
         // id verify
         $('#id_verify_btn').click(function(){
             var params = {};
@@ -693,8 +721,12 @@ var site = {
                 //beforeSend: bstool.submit_loading, //执行ajax前执行loading函数.直到success
                 success: function(rs) {//成功获得的也是json对象
                     if(rs.errno == 0) {
-                        window.location.href = '/wechat/profile/'+rs.data;
-                        return;
+                        if(userIsRegister)
+                            that.showPayModal({from:'profile', uid: rs.data});
+                        else {
+                            window.location.href = '/wechat/profile/'+rs.data;
+                            return;
+                        }
                     } else {
                         that.showError(rs);
                     }

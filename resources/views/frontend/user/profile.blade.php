@@ -11,7 +11,7 @@
             @elseif(Auth::user() && Auth::user()->uid == $user->uid && Auth::user()->hasRole('register_member'))
                 <a href="{{ route('wechat.edit_profile', ['id' => $user->uid, 'paying' => 1]) }}"><span class="join">加入可野人</span></a>
             @endif
-            <a href="{{ route('wechat.member_list') }}"><span class="return">返回</span></a>
+            <img src="/img/left-arrow.png" class="return" />
         </div>
         <div class="info">
             <p class="name">

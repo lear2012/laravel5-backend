@@ -132,7 +132,7 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
     }
 
     public static $registerRule = [
-        'nick' => 'required|string',
+        'nick' => 'required|nick',
         'mobile' => 'required|mobile',
         //'password' => 'required|confirmed',
         //'password_confirmation' => 'required',

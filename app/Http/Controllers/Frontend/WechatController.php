@@ -203,6 +203,8 @@ class WechatController extends Controller
         Log::write('common', 'Get params:' . http_build_query($request->all()));
         $config = []; // 支付配置信息
         $paying = $request->get('paying');
+        $wechatUser = session('wechat.oauth_user'); // 拿到授权用户资料
+        $userIsRegister = Auth::user()->hasRole('register_member');
         $user = User::where([
             'uid' => $id
         ])->first();
@@ -210,8 +212,20 @@ class WechatController extends Controller
             abort(404);
         }
         $brands = $this->getBrands();
+        $order = User::setRegisterOrder();
+        if (!empty($order)) {
+            $o = new Order($order);
+            $payment = $this->wechat->payment;
+            $result = $payment->prepare($o);
+            if ($result->return_code == 'SUCCESS' && $result->result_code == 'SUCCESS') {
+                $config = $payment->configForJSSDKPayment($result->prepay_id);
+                Log::write('wechat', 'Get pay config with params:' . http_build_query($config));
+            }
+        }
         JavaScript::put([
             'brands' => $brands,
+            'config' => $config,
+            'userIsRegister' => $userIsRegister
         ]);
         return view('frontend.user.edit_profile', [
             'user' => $user
@@ -330,7 +344,7 @@ class WechatController extends Controller
 
     public function sendSms(Request $request)
     {
-                Log::write('sms', 'Get params:' . http_build_query($request->all()));
+        Log::write('sms', 'Get params:' . http_build_query($request->all()));
         if ($request->isMethod('get')) {
             $rules = ['mobile' => 'required|mobile'];
             $validator = Validator::make($request->all(), $rules);
