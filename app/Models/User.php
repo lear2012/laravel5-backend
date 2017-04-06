@@ -259,6 +259,7 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
             $orderPayType = 'register_debug';
         $order = Utils::getStaticOrderInfo($orderPayType);
         $order['openid'] = $wechatUser->id;
+        $order['pay_config'] = '';
         // check if the user has already got an register order
         $orderCheck = \App\Models\Order::where([
             'wechat_openid' => $order['openid'],
@@ -271,11 +272,12 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
                 // 如果有未支付的订单，直接返回订单
                 Log::write('wechat', '订单已存在，直接返回订单oid:'.$orderCheck->oid);
                 $order['out_trade_no'] = $orderCheck->oid;
+                $order['pay_config'] = $orderCheck->pay_config;
                 return $order;
             } else {
-                //Log::write('wechat', '订单已存在，删除旧订单:'.$orderCheck->oid);
-                // 删除旧订单，生成新订单
-                //$orderCheck->forceDelete();
+                Log::write('wechat', '订单已存在，删除旧订单:'.$orderCheck->oid);
+                //删除旧订单，生成新订单
+                $orderCheck->forceDelete();
             }
         }
         // save info into db

@@ -122,14 +122,20 @@ class WechatController extends Controller
         Log::write('common', 'Wechat User:' . $wechatUser->nickname . ', openid:' . $wechatUser->id . ' not registered, set payconfig now');
         $order = User::setRegisterOrder();
         Log::write('wechat', 'Get order params:' . http_build_query($order));
-        if (!empty($order)) {
+        if (!empty($order) && empty($order['pay_config'])) {
             $o = new Order($order);
             $payment = $this->wechat->payment;
             $result = $payment->prepare($o);
             if ($result->return_code == 'SUCCESS' && $result->result_code == 'SUCCESS') {
                 $config = $payment->configForJSSDKPayment($result->prepay_id);
+                $dbOrder = \App\Models\Order::where('oid', '=', $order['out_trade_no']);
+                $dbOrder->pay_config = serialize($config);
+                $dbOrder->save();
                 Log::write('wechat', 'Get pay config with params:' . http_build_query($config));
             }
+        } else if(!empty($order['pay_config'])) {
+            // 直接获取订单的pay_config
+            $config = unserialize($order['pay_config']);
         }
 
         JavaScript::put([
@@ -213,15 +219,21 @@ class WechatController extends Controller
             abort(404);
         }
         $brands = $this->getBrands();
-        $order = User::setRegisterOrder();
-        Log::write('wechat', 'Get order params:' . http_build_query($order));
-        if (!empty($order)) {
-            $o = new Order($order);
-            $payment = $this->wechat->payment;
-            $result = $payment->prepare($o);
-            if ($result->return_code == 'SUCCESS' && $result->result_code == 'SUCCESS') {
-                $config = $payment->configForJSSDKPayment($result->prepay_id);
-                Log::write('wechat', 'Get pay config with params:' . http_build_query($config));
+        if($userIsRegister) {
+            // 如果是注册会员，需要有支付会费的config
+            $order = User::setRegisterOrder();
+            Log::write('wechat', 'Get order params:' . http_build_query($order));
+            if (!empty($order) && empty($order['pay_config'])) {
+                $o = new Order($order);
+                $payment = $this->wechat->payment;
+                $result = $payment->prepare($o);
+                if ($result->return_code == 'SUCCESS' && $result->result_code == 'SUCCESS') {
+                    $config = $payment->configForJSSDKPayment($result->prepay_id);
+                    Log::write('wechat', 'Get pay config with params:' . http_build_query($config));
+                }
+            } else if (!empty($order['pay_config'])) {
+                // 直接获取订单的pay_config
+                $config = unserialize($order['pay_config']);
             }
         }
         JavaScript::put([
