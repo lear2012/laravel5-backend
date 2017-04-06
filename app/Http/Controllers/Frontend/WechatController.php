@@ -128,7 +128,7 @@ class WechatController extends Controller
             $result = $payment->prepare($o);
             if ($result->return_code == 'SUCCESS' && $result->result_code == 'SUCCESS') {
                 $config = $payment->configForJSSDKPayment($result->prepay_id);
-                $dbOrder = \App\Models\Order::where('oid', '=', $order['out_trade_no']);
+                $dbOrder = \App\Models\Order::where('oid', '=', $order['out_trade_no'])->first();
                 $dbOrder->pay_config = serialize($config);
                 $dbOrder->save();
                 Log::write('wechat', 'Get pay config with params:' . http_build_query($config));
