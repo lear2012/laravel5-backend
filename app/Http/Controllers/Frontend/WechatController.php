@@ -202,8 +202,9 @@ class WechatController extends Controller
         ]);
     }
 
-    public function editProfile($id, Request $request)
+    public function editProfile(Request $request)
     {
+        $id = $request->get('id');
         if(!Auth::user() || Auth::user()->uid != $id) {
             abort(401);
         }
