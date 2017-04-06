@@ -96,6 +96,8 @@ class WechatController extends Controller
                     self::setMsgCode(1004);
                 else if (User::isRegisterd($data)) {
                     self::setMsgCode(1003);
+                } else if (isset($data['invite_no']) && !empty($data['invite_no']) && !Invitation::codeValid($data['invite_no'])) {
+                        self::setMsgCode(1010);
                 } else if (!$this->checkSmsCode($data['mb_verify_code'])) {
                     self::setMsgCode(1006);
                 } else {
@@ -162,6 +164,9 @@ class WechatController extends Controller
             $result = $payment->prepare($o);
             if ($result->return_code == 'SUCCESS' && $result->result_code == 'SUCCESS') {
                 $config = $payment->configForJSSDKPayment($result->prepay_id);
+                $dbOrder = \App\Models\Order::where('oid', '=', $order['out_trade_no'])->first();
+                $dbOrder->pay_config = serialize($config);
+                $dbOrder->save();
                 Log::write('wechat', 'Get pay config with params:' . http_build_query($config));
             }
         }
@@ -224,7 +229,8 @@ class WechatController extends Controller
             // 如果是注册会员，需要有支付会费的config
             $order = User::setRegisterOrder();
             Log::write('wechat', 'Get order params:' . http_build_query($order));
-            if (!empty($order) && empty($order['pay_config'])) {
+            // 如果订单的pay_config为空，或者如果该注册会员邀请码已经使用则重新生成订单支付配置
+            if ((!empty($order) && empty($order['pay_config'])) || (!empty($user->profile->invite_no) && !Invitation::codeValid($user->profile->invite_no))) {
                 $o = new Order($order);
                 $payment = $this->wechat->payment;
                 $result = $payment->prepare($o);
@@ -322,6 +328,15 @@ class WechatController extends Controller
                     $profile = UserProfile::where('wechat_id', $order->wechat_openid)->first();
                     $user = User::find($profile->user_id);
                     $user->roles()->attach(config('custom.paid_member_code'));
+                    // check if this user has invite number
+                    $inviteNo = $profile->invite_no;
+                    if(!empty($inviteNo)) {
+                        // 更新邀请码状态
+                        $invite = Invitation::where('invitation_code', '=', $inviteNo)->first();
+                        $invite->invited_user_id = $user->id;
+                        $invite->used = 1;
+                        $invite->save();
+                    }
                     // check to see if we can send him invitation codes
                     $paidMemberCount = User::getPaidMemberCount();
                     if($paidMemberCount <= config('custom.top_discount_user_count') || (int)$order->amount == config('custom.full_member_fee')) {
