@@ -242,7 +242,8 @@ class WechatController extends Controller
             'userIsRegister' => $userIsRegister
         ]);
         return view('frontend.user.edit_profile', [
-            'user' => $user
+            'user' => $user,
+            'js' => $this->js
         ]);
     }
 

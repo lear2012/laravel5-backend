@@ -15,7 +15,7 @@ class AddPayconfigToOrders extends Migration
     {
         //
         Schema::table('orders', function (Blueprint $table) {
-            $table->string('pay_config')->after('pay_at')->nullable()->comment('支付配置信息');
+            $table->string('pay_config', 2000)->after('pay_at')->nullable()->comment('支付配置信息');
         });
     }
 
