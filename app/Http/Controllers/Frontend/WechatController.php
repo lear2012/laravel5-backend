@@ -327,6 +327,7 @@ class WechatController extends Controller
                     // 指定该单用户为付费用户
                     $profile = UserProfile::where('wechat_id', $order->wechat_openid)->first();
                     $user = User::find($profile->user_id);
+                    $user->roles()->detach(config('custom.register_member_code'));
                     $user->roles()->attach(config('custom.paid_member_code'));
                     // check if this user has invite number
                     $inviteNo = $profile->invite_no;
