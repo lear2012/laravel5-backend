@@ -45,7 +45,7 @@
                 <li class="bor-color">
                     <a href="{{ route('wechat.profile', ['id' => $loginUser->uid]) }}"><img src="{{ $loginUser ? $loginUser->profile->avatar : $loginUser->avatar }}" /></a>
                     <p>{{ $loginUser->username ? $loginUser->username : $wechatUser->nickname }}</p>
-                    <span>{{ $loginUser->profile->keye_age > 0 ? $loginUser->profile->keye_age.'可野龄' : '&nbsp;' }}</span>
+                    <span>{{ $loginUser->profile->member_no ? $loginUser->profile->member_no : '&nbsp;' }}</span>
                 </li>
             @elseif(Auth::user() && Auth::user()->hasRole('register_member'))
                 <li>
@@ -71,7 +71,7 @@
                 <li>
                     <a href="{{ route('wechat.profile', ['id' => $user->uid]) }}"><img data-original="{{ ($user && $user->profile) ? $user->profile->avatar : config('custom.default_avatar') }}" /></a>
                     <p>{{ ($user && $user->profile->wechat_no) ? $user->profile->wechat_no : '&nbsp;' }}</p>
-                    <span>{{ ($user && $user->profile->keye_age > 0) ? $user->profile->keye_age.'可野龄' : '&nbsp;' }}</span>
+                    <span>{{ $loginUser->profile->member_no ? $loginUser->profile->member_no : '&nbsp;' }}</span>
                 </li>
                 @endif
             @endforeach

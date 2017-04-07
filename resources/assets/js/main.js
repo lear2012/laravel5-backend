@@ -325,7 +325,7 @@ var site = {
                 break;
             case 'profile':
                 title = "<p>付费成为可野人，享受可野人福利</p>";
-                loc = '/wechat/profile/'+params.uid;
+                loc = '/wechat/edit_profile?id='+params.uid;
                 break;
             default:
         }

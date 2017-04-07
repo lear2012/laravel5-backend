@@ -350,7 +350,7 @@ class WechatController extends Controller
                             $messageId = $this->notice->send([
                                 'touser' => $order->wechat_openid,
                                 'template_id' => config('custom.MEMBER_INVITATION_CODES_TEMPLATE_ID'),
-                                'url' => env('APP_URL'),
+                                'url' => env('APP_URL').'/wechat/rule',
                                 'data' => [
                                     "first"  => "欢迎成为可野Club付费会员!",
                                     "UID"   => $user->username,

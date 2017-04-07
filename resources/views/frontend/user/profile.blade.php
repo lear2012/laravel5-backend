@@ -26,8 +26,10 @@
             <p class='Wechat-number text-hidden'>{{ $user->profile->wechat_no }}</p>
             <div class="Age-job">
                 <span class="age">{{ $user->profile->keye_age ? $user->profile->keye_age.'可野龄' : '' }}</span>
-                <span class="vehicle">{{ $user->vehicle }}</span>
                 <span class="car_no">{{ $user->profile->member_no }}</span>
+            </div>
+            <div>
+                <span class="vehicle">{{ $user->vehicle }}</span>
             </div>
             @if($user->profile->quotation)
             <p class="autograph ">

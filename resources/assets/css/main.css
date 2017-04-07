@@ -14,9 +14,11 @@
 }
 .Radio {
     margin-right: 20px;
+    background-size:cover;
+    border:0px;
 }
 #register_form li.success {
-    border-color:green;
+    border-bottom:0.04rem solid green;
 }
 #register_form li.error{
     border-bottom: 0.04rem solid red;
