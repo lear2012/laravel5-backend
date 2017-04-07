@@ -81,7 +81,6 @@ input {-webkit-appearance:none; /*去除input默认样式*/}
 }
 .Agreement .Radio{
     margin-right: 0.4rem;
-    vertical-align: -0.14rem;
     background: url(../img/yes.png) no-repeat -0.04rem;
     background-size:100% 100%;
 
