@@ -156,6 +156,7 @@ input {-webkit-appearance:none; /*去除input默认样式*/}
 .homepage .user-list{
     padding: 0.78rem 0rem;
     font-size: 0px;
+    min-height:14rem;
 }
 .homepage .user-list li{
     width:3.24rem;
@@ -443,9 +444,9 @@ input {-webkit-appearance:none; /*去除input默认样式*/}
 }
 .JoinKY .Vehicle-information{
     width: 15rem;
-    min-height: 100vh;
+    min-height: 300vh;
     position: fixed;
-    top: 0px;
+    top: 1rem;
     left:15rem;
     transition:500ms ;
     background: url(../img/bg_img.png);

@@ -590,6 +590,9 @@ var site = {
         var that = this;
         this.initDateBox(); // init the date box
         this.initSingleCheckbox($('#self_get')); // init the checkbox
+        $('input[readonly]').on('focus', function(ev) {
+            $(this).trigger('blur');
+        });
         $('.return').on('click', function(e){
             window.location.href = '/wechat/profile/'+$('#uid').val();
             return;
