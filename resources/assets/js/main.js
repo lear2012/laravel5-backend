@@ -697,7 +697,7 @@ var site = {
             event.stopPropagation();
         });
         // init car imgs
-        var prevHtml = this.getCarimgsHtml($('#car_imgs').val());
+        var prevHtml = this.getCarimgsHtml($('#car_imgs').val().split(','));
         if(prevHtml) {
             $('#car_img_preview').html(prevHtml);
             $('#car_preview').fadeIn();
