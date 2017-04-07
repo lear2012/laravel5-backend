@@ -804,20 +804,32 @@ var site = {
 
     initCarimgUpload: function(){
         $( '.inputfile' ).each( function() {
-            var $input	 = $( this ),
+            var $input	 = $(this),
                 $label	 = $input.next( 'label' ),
                 labelVal = $label.html();
-
-            $input.on( 'change', function( e ) {
+            var that = this;
+            $input.on('change', function(e) {
                 var fileName = '';
-                if( this.files && this.files.length > 1 )
-                    fileName = ( this.getAttribute( 'data-multiple-caption' ) || '' ).replace( '{count}', this.files.length );
-                else if( e.target.value )
-                    fileName = e.target.value.split( '\\' ).pop();
-                if( fileName )
-                    $label.find( 'span' ).html( fileName );
-                else
-                    $label.html( labelVal );
+                $.ajax({
+                    url: "/wechat/upload", // Url to which the request is send
+                    type: "POST",             // Type of request to be send, called as method
+                    data: new FormData($('#uploadimage')), // Data sent to server, a set of key/value pairs (i.e. form fields and values)
+                    contentType: false,       // The content type used when sending data to the server.
+                    cache: false,             // To unable request pages to be cached
+                    processData:false,        // To send DOMDocument or non processed data file it is set to false
+                    success: function(data) {  // A function to be called if request succeeds
+                        if(that.files && that.files.length > 1)
+                            fileName = ( that.getAttribute( 'data-multiple-caption' ) || '' ).replace( '{count}', that.files.length );
+                        else if(e.target.value)
+                            fileName = e.target.value.split( '\\' ).pop();
+                        if(fileName)
+                            $label.find('span').html( fileName );
+                        else
+                            $label.html( labelVal );
+                        console.log(data);
+                    }
+                });
+
             });
             // Firefox bug fix
             $input

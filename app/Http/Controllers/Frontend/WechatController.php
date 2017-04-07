@@ -639,5 +639,13 @@ class WechatController extends Controller
             self::sendJsonMsg();
         }
     }
+
+    public function upload(Request $request) {
+        if ($request->file('file')->isValid()) {
+            //
+            $files = $request->file('file');
+            var_dump($files);
+        }
+    }
 }
 

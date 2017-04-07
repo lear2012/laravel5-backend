@@ -40,6 +40,7 @@ Route::group(['namespace' => 'Frontend', 'middleware' => ['web', 'wechat.oauth:s
         Route::get('profile/{id}', ['as' => 'wechat.profile', 'uses' => 'WechatController@profile']);
         Route::get('edit_profile', ['as' => 'wechat.edit_profile', 'uses' => 'WechatController@editProfile']);
         Route::post('save_profile', ['as' => 'wechat.save_profile', 'uses' => 'WechatController@saveProfile']);
+        Route::post('upload', ['as' => 'wechat.upload', 'uses' => 'WechatController@upload']);
         Route::get('join_club', ['as' => 'wechat.join_club', 'uses' => 'WechatController@joinClub']);
         Route::post('get_invitation_payconfig', ['as' => 'wechat.get_invitation_payconfig', 'uses' => 'WechatController@getInvitationPayconfig']);
         Route::get('logout', 'Auth\LoginController@logout');
