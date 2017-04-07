@@ -376,7 +376,7 @@ img:not([src]) {
 }
 .loading {display: none;float:right;margin-left:1rem;margin-top:1rem;}
 .JoinKY form {display:inline-block}
-.car_img_basetext {color:white;font-size:.6rem;margin-bottom: .6rem;}
+.car_img_basetext {color:white;font-size:.6rem;margin-top: 0rem;vertical-align: middle;display: inline-block}
 .list {
     line-height: 2rem; text-align: left;
 }
