@@ -60,8 +60,13 @@
                 @if($user->hasRole('paid_member'))
                 <li class="member_no_li">
                     <label>
-                        <span class="tit-s">可野会员编号</span><span class="member_no_prefix">KY.88</span>
-                        <input class="Ainp" type="" name="member_no" id="member_no" value="{{substr($user->profile->member_no, 5)}}" />
+                        <span class="tit-s">可野会员编号</span>
+                        @if($user->profile->member_no)
+                            $user->profile->member_no
+                        @else
+                            <span class="member_no_prefix">KY.88</span>
+                            <input class="Ainp" type="" name="member_no" id="member_no" value="{{substr($user->profile->member_no, 5)}}" />
+                        @endif
                     </label>
                 </li>
                 @endif
