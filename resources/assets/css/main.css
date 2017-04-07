@@ -182,11 +182,15 @@ a:focus{outline:none;}
     color: white;
     margin-top: 0.6rem;
 }
-#vehicle-select-form .complete-btn {font-size:.6rem;border-bottom:none;line-height: 2rem}
+#vehicle-select-form .complete-btn {
+    font-size:.6rem;border-bottom:none;line-height: 2rem;
+    margin-top:2rem;
+    text-align: center;
+}
 #vehicle-select-form .complete-btn a {
-    float: right;
+    text-align: center;
     padding-right:.5rem;
-    color:#ad7a00;
+    color:white;
 }
 .memberRules {
     text-align: left;

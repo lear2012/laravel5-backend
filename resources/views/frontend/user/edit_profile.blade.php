@@ -12,10 +12,7 @@
                 <p class="name">
                     <span>{{ $user->username }}</span>
                     <img src="{{ $user->profile->sex == 1 ? '/img/m.png' : '/img/f.png' }}"/>
-                    @if($user->profile->is_verified)
-                    <span class="verified">
-                    </span>
-                    @endif
+                    <span class="{{ $user->profile->is_verified ? 'verified' : '' }}" id="verified"></span>
                 </p>
                 <p class='Wechat-number text-hidden'>{{ $user->profile->wechat_no }}</p>
             </div>

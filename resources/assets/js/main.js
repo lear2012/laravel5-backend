@@ -275,7 +275,7 @@ var site = {
                     //$('#timer').show();
                     $('#id_verify_btn').hide();
                     //that.successField($('#id_no'));
-                    $('.verified').html('已认证');
+                    $('#verified').addClass('verified');
                 } else {
                     that.showError(rs);
                 }
