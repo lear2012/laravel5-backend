@@ -57,6 +57,7 @@ elixir(function(mix) {
         'swiper.min.css',
         '../bower/js-offcanvas/dist/_css/js-offcanvas.css',
         '../bower/sweetalert/dist/sweetalert.css',
+        '../bower/loaders.css/loaders.min.css',
         'main.css'
     ], 'public/css/all.css');
     mix.scripts([
