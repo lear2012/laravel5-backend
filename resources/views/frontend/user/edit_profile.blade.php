@@ -66,7 +66,7 @@
                 <li class="quotation">
                     <label>
                         <span class="tit-s">心语</span>
-                        <input class="Ainp" type="" name="quotation" id="quotation" value="{{$user->profile->quotation}}" size="20"/>
+                        <input class="Ainp" type="" name="quotation" id="quotation" value="{{$user->profile->quotation}}" size="30"/>
                     </label>
                 </li>
                 <li class="member_no_li">
