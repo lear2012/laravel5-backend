@@ -241,3 +241,10 @@ img:not([src]) {
         visibility: hidden;
     }
 }
+#quotation {
+    width:100%;
+}
+.vehicle {
+    font-size: .6rem;
+    color:white;
+}
