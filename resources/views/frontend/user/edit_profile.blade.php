@@ -53,14 +53,15 @@
                     <label>
                         <img src="{{asset('img/notice.png')}}" />
                         <ul>
-                            <li>成为付费会员后，我们会在俱乐部基地定制您的纪念车牌</li>
+                            <li>成为付费会员，我们会在俱乐部基地定制您的纪念车牌</li>
                         </ul>
                     </label>
                 </li>
-                <li>
+                <li id="car_img_li">
                     <label>
                         <span class="tit-s">爱车风采</span>
-                        <input class="Ainp" type="file" name="car_imgs" id="car_imgs" />
+                        <input class="Ainp inputfile" type="file" name="file" id="file" data-multiple-caption="{count} files selected" multiple />
+                        <label for="file"><strong>Choose a file</strong></label>
                     </label>
                 </li>
                 @if($user->hasRole('register_member'))
