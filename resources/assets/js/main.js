@@ -816,6 +816,7 @@ var site = {
                     var previewHtml = that.getCarimgsHtml(rs.data);
                     $('#car_img_preview').html(previewHtml);
                     $('#car_preview').fadeIn();
+                    $('#car_imgs').val(rs.data.join(','));
                 } else {
                     that.showError(rs);
                 }
