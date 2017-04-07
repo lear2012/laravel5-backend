@@ -329,7 +329,7 @@ input {-webkit-appearance:none; /*去除input默认样式*/}
     color: white;
     font-size: 1rem;
     text-indent: 0.6rem;
-
+    padding-left:18%;
 }
 .information  .info .Wechat-number{
     font-size: 0.6rem;

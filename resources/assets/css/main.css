@@ -221,6 +221,7 @@ a:focus{outline:none;}
     color:white;
     padding:5px;
     border: .02rem solid rgba(140, 105, 47, 0.6);
+    background-color: #c1b920;
 }
 #profile_form .carinfo {
     background: url(../img/left.png) 13.2rem 0.8rem no-repeat;
