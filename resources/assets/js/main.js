@@ -698,7 +698,10 @@ var site = {
         });
         // init car imgs
         var prevHtml = this.getCarimgsHtml($('#car_imgs').val());
-        $('#car_img_preview').html(prevHtml);
+        if(prevHtml) {
+            $('#car_img_preview').html(prevHtml);
+            $('#car_preview').fadeIn();
+        }
         // init save button
         $('#save_profile_btn').click(function(){
             var data = {};
