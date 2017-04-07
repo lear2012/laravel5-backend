@@ -205,6 +205,7 @@ a:focus{outline:none;}
     margin-top:20px;
     font-size:.5rem;
     color:rgba(255,255,255,0.5);
+    height:4rem;
 }
 #profile_notice ul {
     padding-top:10px;
@@ -283,6 +284,7 @@ img:not([src]) {
 }
 #carno_notice {
     margin-top:20px;
+    height:1.1rem;
     font-size:.5rem;
     color:rgba(255,255,255,0.5);
 }
