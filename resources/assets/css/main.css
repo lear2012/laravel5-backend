@@ -278,3 +278,6 @@ img:not([src]) {
     text-shadow: 0 0 2px #c00;
     box-shadow: 0 0 2px #c00;
 }
+.static-text{
+    font-size:.6rem;color:white;
+}

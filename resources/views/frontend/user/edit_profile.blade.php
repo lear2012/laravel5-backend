@@ -62,7 +62,7 @@
                     <label>
                         <span class="tit-s">可野会员编号</span>
                         @if($user->profile->member_no)
-                            {{ $user->profile->member_no }}
+                            <span class="static-text">{{ $user->profile->member_no }}</span>
                         @else
                             <span class="member_no_prefix">KY.88</span>
                             <input class="Ainp" type="" name="member_no" id="member_no" value="{{substr($user->profile->member_no, 5)}}" />
