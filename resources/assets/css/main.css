@@ -285,7 +285,6 @@ img:not([src]) {
     margin-top:20px;
     font-size:.5rem;
     color:rgba(255,255,255,0.5);
-    height:1rem;
 }
 #carno_notice ul {
     padding-top:10px;

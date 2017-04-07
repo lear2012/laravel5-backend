@@ -22,7 +22,7 @@ class Invitation extends Model
     ];
 
     public static function codeValid($code) {
-        return Invitation::where('invitation_code', '=', $code)
+        return Invitation::where('invitation_code', '=', strtoupper($code))
                         ->where('used', '!=', 1)
                         ->where('active', '=', 1)
                         ->whereNull('deleted_at')

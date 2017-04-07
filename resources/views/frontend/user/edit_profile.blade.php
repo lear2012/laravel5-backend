@@ -53,7 +53,7 @@
                     <label>
                         <img src="{{asset('img/notice.png')}}" />
                         <ul>
-                            <li>您成为付费会员后，我们会在俱乐部基地定制您的纪念车牌。</li>
+                            <li>成为付费会员后，我们会在俱乐部基地定制您的纪念车牌</li>
                         </ul>
                     </label>
                 </li>
