@@ -809,8 +809,16 @@ var site = {
                 extra: 'info'
             },
             onComplete: function(response) {
-                console.log('custom handler for file:');
                 alert(JSON.stringify(response));
+                var previewHtml = '';
+                if(response.rs == 0) {
+                    previewHtml += '<ul>';
+                    for(var i in response.data) {
+                        previewHtml += '<li><img src="'+response.data[i]+'" class="car_img_preview" /></li>';
+                    }
+                    previewHtml += '</ul>';
+                    $('#preview').html(previewHtml);
+                }
             },
             onStart: function() {
 

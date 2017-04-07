@@ -30,6 +30,7 @@ use App\Models\Motomodel;
 use DB;
 use App\Http\Requests\Frontend\SaveProfileRequest;
 use App\Events\MemberFeePaid;
+use Image;
 
 class WechatController extends Controller
 {
@@ -655,9 +656,22 @@ class WechatController extends Controller
                 if(!in_array($file->extension(), config('custom.car_img_valid_ext')))
                     continue;
                 $path = $file->store('images/car_imgs');
-                $data[] = $path;
+                $fileName = basename($path);
+                $fileArr = explode('.', $fileName);
+                $fileArr[0] = $fileArr[0].'_thumb';
+                $thumbFileName = implode(".", $fileArr);
+                $img = Image::make($path)->resize(config('custom.car_img_width'), config('custom.car_img_height'));
+                $img->save($carImgDir.'/'.$thumbFileName);
+                $data[] = $carImgDir.'/'.$thumbFileName;
             }
         }
+        if(count($data) > config('custom.car_img_max')) {
+            self::setMsgCode(1015);
+        }
+        // save the data
+        $profile = Auth::user()->profile;
+        $profile->car_imgs = implode(',', $data);
+        $profile->save();
         self::setData($data);
         self::sendJsonMsg();
     }

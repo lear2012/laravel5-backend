@@ -68,6 +68,9 @@
                         </label>
                     </label>
                 </li>
+                <li id="preview">
+
+                </li>
                 </form>
                 @if($user->hasRole('register_member'))
                 <li>

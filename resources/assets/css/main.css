@@ -341,13 +341,13 @@ img:not([src]) {
 /* style 3 */
 
 .inputfile + label {
-    color: #c1b920;
+    color: #f7b000;
 }
 
 .inputfile:focus + label,
 .inputfile.has-focus + label,
 .inputfile + label:hover {
-    color: #c1b920;
+    color: #f7b000;
 }
 .inputfile + label svg {
     width: .6rem;

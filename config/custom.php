@@ -32,6 +32,9 @@ return [
     'MEMBER_PAID_MAIL_SUBJECT' => '欢迎加入可野Club付费会员，成为可野人',
     'MEMBER_INVITATION_CODES_TEMPLATE_ID' => 'kYJXCZzUXn1uzjNK1phCA-JPGSaPyYk9tfAO9ILTxIk',
     'KY_MEMBER_NO_PREFIX' => 'KY.88',
+    'car_img_width' => 180,
+    'car_img_height' => 120,
+    'car_img_max' => 9, // 最大上传车的图片数量
     'car_img_path' => '/uploads/images/car_imgs',
     'car_img_valid_ext' => [
         'jpg',
