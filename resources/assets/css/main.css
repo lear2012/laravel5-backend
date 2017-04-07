@@ -369,6 +369,11 @@ img:not([src]) {
     height:1.6rem;
     padding:.2rem;
 }
+.profile_car_img {
+    width:6rem;
+    height:4rem;
+    padding:.2rem;
+}
 .loading {display: none;float:right;margin-left:1rem;margin-top:1rem;}
 .JoinKY form {display:inline-block}
 .car_img_basetext {color:white;font-size:.6rem;margin-bottom: .6rem;}
