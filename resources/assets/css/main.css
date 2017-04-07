@@ -371,3 +371,4 @@ img:not([src]) {
 }
 .loading {display: none}
 .JoinKY form {display:inline-block}
+.car_img_basetext {color:white;font-size:.6rem;margin-bottom: .6rem;}
