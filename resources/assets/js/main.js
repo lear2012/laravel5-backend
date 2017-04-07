@@ -734,12 +734,12 @@ var site = {
 
     getVehicleInfo: function () {
         var ret = '';
-        // if(this.vehicleInfo.brand != undefined)
-        //     ret += this.vehicleInfo.brand;
+        if(this.vehicleInfo.brand != undefined)
+            ret += this.vehicleInfo.brand;
         if(this.vehicleInfo.sery != undefined)
             ret += ''+this.vehicleInfo.sery;
-        // if(this.vehicleInfo.buyyear != undefined)
-        //     ret += '-'+this.vehicleInfo.buyyear;
+        if(this.vehicleInfo.buyyear != undefined)
+            ret += '-'+this.vehicleInfo.buyyear;
         return ret;
     },
 
