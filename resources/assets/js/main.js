@@ -690,6 +690,11 @@ var site = {
             $('#vehicle').val(vehicleInfo);
             $('.Vehicle-information').css('left','15rem');
         });
+        // 邀请码
+        $('#invite_no').on('blur',function(event){
+            that.checkInvitationCode();
+            event.stopPropagation();
+        });
         // init save button
         $('#save_profile_btn').click(function(){
             var data = {};
@@ -704,6 +709,7 @@ var site = {
             data.member_no = $.trim($('#member_no').val());
             data.self_get = $('#self_get').val();
             data.quotation = $.trim($('#quotation').val());
+            data.invite_no = $.trim($('#invite_no').val());
             if(!that.checkProfile(data))
                 return false;
             // send ajax to save profile info

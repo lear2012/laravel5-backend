@@ -49,7 +49,7 @@
                         <input class="Ainp" type="" name="car_no" id="car_no" value="{{$user->profile->car_no}}" />
                     </label>
                 </li>
-                <li id="profile_notice">
+                <li id="carno_notice">
                     <label>
                         <img src="{{asset('img/notice.png')}}" />
                         <ul>
@@ -57,6 +57,22 @@
                         </ul>
                     </label>
                 </li>
+                @if($user->hasRole('register_member'))
+                <li>
+                    <label>
+                        <span class="tit-s">邀请码</span>
+                        <input class="Ainp" type="" name="invite_no" id="invite_no" value="{{$user->profile->invite_no}}" />
+                    </label>
+                </li>
+                <li id="carno_notice">
+                    <label>
+                        <img src="{{asset('img/notice.png')}}" />
+                        <ul>
+                            <li>输入邀请码，1元即可成为可野人。</li>
+                        </ul>
+                    </label>
+                </li>
+                @endif
                 @if($user->hasRole('paid_member'))
                 <li class="member_no_li">
                     <label>

@@ -239,9 +239,9 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
             return false;
         $order = [];
         $orderPayType = '';
-        if(isset($data['invitationCode']) && trim($data['invitationCode']) != '') {
+        if(isset($data['code']) && trim($data['code']) != '') {
             // check invitation code
-            if(Invitation::codeValid($data['invitationCode'])) {
+            if(Invitation::codeValid($data['code'])) {
                 // 如果code合法，则优惠价，否则全价
                 $orderPayType = 'register_discount';
             } else
@@ -268,7 +268,7 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
         if($orderCheck) {
             Log::write('wechat', '订单已存在:'.$orderCheck->oid);
             //$orderCheck->forceDelete();
-            if(!isset($data['invitationCode'])) {
+            if(!isset($data['code'])) {
                 // 如果有未支付的订单，直接返回订单
                 Log::write('wechat', '订单已存在，直接返回订单oid:'.$orderCheck->oid);
                 $order['out_trade_no'] = $orderCheck->oid;

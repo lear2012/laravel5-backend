@@ -203,7 +203,7 @@ a:focus{outline:none;}
 .sa-button-container {text-align:center;}
 #profile_notice {
     margin-top:20px;
-    font-size:.4rem;
+    font-size:.5rem;
     color:rgba(255,255,255,0.5);
 }
 #profile_notice ul {
@@ -280,4 +280,24 @@ img:not([src]) {
 }
 .static-text{
     font-size:.6rem;color:white;
+}
+#carno_notice {
+    margin-top:20px;
+    font-size:.5rem;
+    color:rgba(255,255,255,0.5);
+    height:1rem;
+}
+#carno_notice ul {
+    padding-top:10px;
+}
+#carno_notice li {
+    border:none;
+    height:.8rem;
+}
+#carno_notice .not-first {
+    margin-left:15px;
+}
+#carno_notice img {
+    float:left;
+    padding:10px 10px 5px 5px;
 }

@@ -255,7 +255,7 @@ class WechatController extends Controller
     }
 
     public function saveProfile(SaveProfileRequest $request) {
-        $data = $request->only('real_name', 'id_no', 'vehicle', 'brand', 'sery', 'buy_year', 'car_no', 'self_get', 'member_no', 'address', 'quotation');
+        $data = $request->only('real_name', 'id_no', 'vehicle', 'brand', 'sery', 'buy_year', 'car_no', 'self_get', 'member_no', 'address', 'quotation', 'invite_no');
         $data['series'] = $data['sery'];
         unset($data['sery']);
         Log::write('common', 'Get params:'.http_build_query($data));
