@@ -75,12 +75,12 @@ input {-webkit-appearance:none; /*去除input默认样式*/}
     width: 0.6rem;
     height: 0.6rem;
     border-radius:50%;
-    vertical-align: -0.08rem;
+
     border:0.04rem solid #f5a623;
 
 }
 .Agreement .Radio{
-    margin-right: 0.4rem;
+    /*margin-right: 0.4rem;*/
     background: url(../img/yes.png) no-repeat -0.04rem;
     background-size:100% 100%;
 
