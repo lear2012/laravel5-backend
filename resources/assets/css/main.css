@@ -349,3 +349,13 @@ img:not([src]) {
 .inputfile + label:hover {
     color: #722040;
 }
+.inputfile + label svg {
+    width: .8rem;
+    height: .8rem;
+    vertical-align: middle;
+    fill: currentColor;
+    margin-top: -0.25em;
+    /* 4px */
+    margin-right: 0.25em;
+    /* 4px */
+}
