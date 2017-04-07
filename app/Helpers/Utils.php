@@ -258,4 +258,7 @@ class Utils {
         return $str ? $str[0] : 'UNKNOWN';
     }
 
+    public static function prepareForFront(&$data) {
+        
+    }
 }
