@@ -353,12 +353,12 @@ img:not([src]) {
     margin-right: 0.25em;
     /* 4px */
 }
-.inputfile-3 + label {
+.inputfile + label {
     color: #d3394c;
 }
 
-.inputfile-3:focus + label,
-.inputfile-3.has-focus + label,
-.inputfile-3 + label:hover {
+.inputfile:focus + label,
+.inputfile.has-focus + label,
+.inputfile + label:hover {
     color: #722040;
 }
