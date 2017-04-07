@@ -372,3 +372,12 @@ img:not([src]) {
 .loading {display: none;float:right;margin-left:1rem;margin-top:1rem;}
 .JoinKY form {display:inline-block}
 .car_img_basetext {color:white;font-size:.6rem;margin-bottom: .6rem;}
+.list {
+    line-height: 2rem; text-align: left;
+}
+.list ul {
+    padding:0px ;width:14rem;
+}
+.list li {
+    padding:2px 0px 2px 10px; width:6rem; display:block; float:left;list-style: none;
+}

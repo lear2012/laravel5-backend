@@ -36,6 +36,13 @@
             </p>
             @endif
         </div>
+        <div class="list">
+            <ul>
+                @foreach($carImgs as $img)
+                <li><img src="{{$img}}" class="profile_car_img" /></li>
+                @endforeach
+            </ul>
+        </div>
 
     </section>
     @if($user->hasRole('exp_driver') && $user->profile->nest_info)
