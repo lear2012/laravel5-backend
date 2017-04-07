@@ -63,10 +63,10 @@
                     </label>
                 </li>
                 @if($user->hasRole('paid_member'))
-                <li class="member_no_li">
+                <li class="quotation">
                     <label>
                         <span class="tit-s">心语</span>
-                        <input class="Ainp" type="" name="quotation" id="quotation" value="{{$user->profile->quotation}}" />
+                        <input class="Ainp" type="" name="quotation" id="quotation" value="{{$user->profile->quotation}}" size="20"/>
                     </label>
                 </li>
                 <li class="member_no_li">
