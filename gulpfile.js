@@ -72,6 +72,7 @@ elixir(function(mix) {
         'jweixin-1.2.0.js',
         'lodash.min.js',
         'Maillist.js',
+        'jquery.ajaxfileupload.js',
         'main.js'
     ], 'public/js/all.js');
 

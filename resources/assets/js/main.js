@@ -810,25 +810,36 @@ var site = {
             var that = this;
             $input.on('change', function(e) {
                 var fileName = '';
-                $.ajax({
-                    url: "/wechat/upload", // Url to which the request is send
-                    type: "POST",             // Type of request to be send, called as method
-                    data: new FormData($('#uploadimage')), // Data sent to server, a set of key/value pairs (i.e. form fields and values)
-                    contentType: false,       // The content type used when sending data to the server.
-                    cache: false,             // To unable request pages to be cached
-                    processData:false,        // To send DOMDocument or non processed data file it is set to false
-                    success: function(data) {  // A function to be called if request succeeds
-                        if(that.files && that.files.length > 1)
-                            fileName = ( that.getAttribute( 'data-multiple-caption' ) || '' ).replace( '{count}', that.files.length );
-                        else if(e.target.value)
-                            fileName = e.target.value.split( '\\' ).pop();
-                        if(fileName)
-                            $label.find('span').html( fileName );
-                        else
-                            $label.html( labelVal );
-                        console.log(data);
+                console.log('send request');
+                $("#file").AjaxFileUpload({
+                    action: "/wechat/upload",
+                    onComplete: function(filename, response) {
+                        // $("#uploads").append(
+                        //     $("<img />").attr("src", filename).attr("width", 200)
+                        // );
+                        console.log(filename);
+                        console.log(response);
                     }
                 });
+                // $.ajax({
+                //     url: "/wechat/upload", // Url to which the request is send
+                //     type: "POST",             // Type of request to be send, called as method
+                //     data: new FormData($('#uploadimage')), // Data sent to server, a set of key/value pairs (i.e. form fields and values)
+                //     contentType: false,       // The content type used when sending data to the server.
+                //     cache: false,             // To unable request pages to be cached
+                //     processData:false,        // To send DOMDocument or non processed data file it is set to false
+                //     success: function(data) {  // A function to be called if request succeeds
+                //         if(that.files && that.files.length > 1)
+                //             fileName = ( that.getAttribute( 'data-multiple-caption' ) || '' ).replace( '{count}', that.files.length );
+                //         else if(e.target.value)
+                //             fileName = e.target.value.split( '\\' ).pop();
+                //         if(fileName)
+                //             $label.find('span').html( fileName );
+                //         else
+                //             $label.html( labelVal );
+                //         console.log(data);
+                //     }
+                // });
 
             });
             // Firefox bug fix
