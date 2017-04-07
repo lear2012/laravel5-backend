@@ -203,6 +203,7 @@ class WechatController extends Controller
         if (!$user) {
             abort(404);
         }
+        dd($user->profile->car_imgs);
         return view('frontend.user.profile', [
             'user' => $user
         ]);

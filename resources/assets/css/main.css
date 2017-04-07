@@ -361,8 +361,10 @@ img:not([src]) {
 }
 #car_preview {
     display: none;
+    height: 2rem;
 }
 .car_img_preview {
     width:2rem;
     height:1.6rem;
 }
+.loading {display: none}

@@ -811,13 +811,14 @@ var site = {
             },
             onComplete: function(rs) {
                 //alert(JSON.stringify(rs));
+                $('.loading').hide();
                 var previewHtml = '';
                 if(rs.errno == 0) {
-                    previewHtml += '<ul>';
                     for(var i in rs.data) {
-                        previewHtml += '<li><img src="'+rs.data[i]+'" class="car_img_preview" /></li>';
+                        previewHtml += '<img src="'+rs.data[i]+'" class="car_img_preview" />';
                     }
-                    previewHtml += '</ul>';
+                    if(rs.data.length > 3)
+                        previewHtml += '等'+rs.data.length+'张图片';
                     $('#car_img_preview').html(previewHtml);
                     $('#car_preview').fadeIn();
                 } else {
@@ -825,7 +826,7 @@ var site = {
                 }
             },
             onStart: function() {
-
+                $('.loading').show();
             },
             onCancel: function() {
                 console.log('no file selected');
