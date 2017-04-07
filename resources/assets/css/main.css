@@ -370,3 +370,4 @@ img:not([src]) {
     padding:.2rem;
 }
 .loading {display: none}
+.JoinKY form {display:inline-block}

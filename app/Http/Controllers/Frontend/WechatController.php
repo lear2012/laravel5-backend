@@ -257,7 +257,7 @@ class WechatController extends Controller
     }
 
     public function saveProfile(SaveProfileRequest $request) {
-        $data = $request->only('real_name', 'id_no', 'vehicle', 'brand', 'sery', 'buy_year', 'car_no', 'self_get', 'member_no', 'address', 'quotation', 'invite_no');
+        $data = $request->only('real_name', 'id_no', 'vehicle', 'brand', 'sery', 'buy_year', 'car_no', 'self_get', 'member_no', 'address', 'quotation', 'invite_no', 'car_imgs');
         $data['series'] = $data['sery'];
         unset($data['sery']);
         Log::write('common', 'Get params:'.http_build_query($data));
@@ -669,10 +669,6 @@ class WechatController extends Controller
         if(count($data) > config('custom.car_img_max')) {
             self::setMsgCode(1015);
         }
-        // save the data
-        $profile = Auth::user()->profile;
-        $profile->car_imgs = implode(',', $data);
-        $profile->save();
         self::setData($data);
         self::sendJsonMsg();
     }

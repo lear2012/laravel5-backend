@@ -40,7 +40,8 @@ class UserProfile extends Model
         'buy_year',
         'self_get',
         'is_verified',
-        'car_no'
+        'car_no',
+        'car_imgs',
     ];
 
     protected $guarded = [];

@@ -136,6 +136,7 @@
                 </div>
             </div>
             <input type="hidden" name="self_get" id="self_get" value="1" />
+            <input type="hidden" name="car_imgs" id="car_imgs" value="{{$user->profile->car_imgs}}" />
             <input type="hidden" name="uid" id="uid" value="{{$user->uid}}" />
             <button class="submit" id="save_profile_btn">保存</button>
 
