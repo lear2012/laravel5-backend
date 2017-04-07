@@ -56,15 +56,14 @@
                     <label>
                         <img src="{{asset('img/notice.png')}}" />
                         <ul>
-                            <li>可野付费会员可拥有可野会员编号，目前可选择001-150之间的编号。</li>
-                            <li class="not-first">可野付费会员可填写收货地址来获取会员福利，也可自取。</li>
+                            <li>您成为付费会员后，我们会在俱乐部基地定制您的纪念车牌。</li>
                         </ul>
                     </label>
                 </li>
                 @if($user->hasRole('paid_member'))
                 <li class="quotation">
                     <label>
-                        <span class="tit-s">心语</span>
+                        <span class="tit-s">个性签名</span>
                         <input class="Ainp" type="" name="quotation" id="quotation" value="{{$user->profile->quotation}}" size="30"/>
                     </label>
                 </li>
@@ -81,6 +80,23 @@
                         <input placeholder="选填" class="Ainp" type="" name="address" id="address" value="{{$user->profile->address}}" />
                     </label>
                 </li>
+                <li id="profile_notice">
+                    <label>
+                        <img src="{{asset('img/notice.png')}}" />
+                        <ul>
+                            <li>可野付费会员可拥有可野会员编号，目前可选择001-150之间的编号。</li>
+                            <li class="not-first">可野付费会员可填写收货地址来获取会员福利，也可自取。</li>
+                        </ul>
+                    </label>
+                </li>
+                @if($user->hasRole('paid_member'))
+                <li class="quotation">
+                    <label>
+                        <span class="tit-s">个性签名</span>
+                        <input class="Ainp" type="" name="quotation" id="quotation" value="{{$user->profile->quotation}}" size="30"/>
+                    </label>
+                </li>
+                @endif
             </ul>
             <div class="Agreement">
                 <div class="Radiobox" id="cki">

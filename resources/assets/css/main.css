@@ -252,15 +252,15 @@ img:not([src]) {
 .verified:after {
     content:"已认证";
     position:absolute;
-    top:4rem;
-    left:8rem;
+    top:14rem;
+    left:6rem;
     z-index:1;
     font-family:Arial,sans-serif;
-    -webkit-transform: rotate(-45deg); /* Safari */
-    -moz-transform: rotate(-45deg); /* Firefox */
-    -ms-transform: rotate(-45deg); /* IE */
-    -o-transform: rotate(-45deg); /* Opera */
-    transform: rotate(-45deg);
+    -webkit-transform: rotate(-25deg); /* Safari */
+    -moz-transform: rotate(-25deg); /* Firefox */
+    -ms-transform: rotate(-25deg); /* IE */
+    -o-transform: rotate(-25deg); /* Opera */
+    transform: rotate(-25deg);
     font-size:.6rem;
     color:#c00;
     background:#c1b920;

@@ -71,7 +71,7 @@
                 <li>
                     <a href="{{ route('wechat.profile', ['id' => $user->uid]) }}"><img data-original="{{ ($user && $user->profile) ? $user->profile->avatar : config('custom.default_avatar') }}" /></a>
                     <p>{{ ($user && $user->profile->wechat_no) ? $user->profile->wechat_no : '&nbsp;' }}</p>
-                    <span>{{ $loginUser->profile->member_no ? $loginUser->profile->member_no : '&nbsp;' }}</span>
+                    <span>{{ $user->profile->member_no ? $user->profile->member_no : '&nbsp;' }}</span>
                 </li>
                 @endif
             @endforeach
