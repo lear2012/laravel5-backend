@@ -343,7 +343,7 @@ var site = {
             customClass: 'memberRules'
         }, function (isConfirm) {
             if (isConfirm) {
-                that.payMemberFee();
+                that.payMemberFee(loc);
             } else {
                 window.location.href=loc;
             }
@@ -551,7 +551,7 @@ var site = {
         });
     },
 
-    payMemberFee: function() {
+    payMemberFee: function(loc) {
         this._payConfig = config;
         wx.chooseWXPay({
             timestamp: this._payConfig.timestamp,
@@ -562,11 +562,11 @@ var site = {
             success: function (res) {
                 // 支付成功后的回调函数
                 if(res.errMsg == "chooseWXPay:ok" ) {
-                    window.location.href='/wechat/member_list';
+                    window.location.href=loc;
                     return false;
                 } else if(res.err_msg == "chooseWXPay:fail" ) {
                     alert('支付失败，请稍后重试！');
-                    window.location.href='/wechat/member_list';
+                    window.location.href=loc;
                     return false;
                 } else {
                     alert(JSON.stringify(res, null, 4));
@@ -708,6 +708,7 @@ var site = {
             data.car_no = $.trim($('#car_no').val());
             data.member_no = $.trim($('#member_no').val());
             data.self_get = $('#self_get').val();
+            data.quotation = $.trim($('#quotation').val());
             if(!that.checkProfile(data))
                 return false;
             // send ajax to save profile info
