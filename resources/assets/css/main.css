@@ -298,7 +298,7 @@ img:not([src]) {
     height:.8rem;
 }
 #carno_notice .not-first {
-    margin-left:12px;
+    margin-left:.8rem;
 }
 #carno_notice img {
     float:left;
