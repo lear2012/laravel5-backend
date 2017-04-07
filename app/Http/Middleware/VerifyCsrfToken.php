@@ -14,6 +14,7 @@ class VerifyCsrfToken extends BaseVerifier
     protected $except = [
         //
         '/wechat',
-        '/wechat/notify'
+        '/wechat/notify',
+        '/wechat/upload',
     ];
 }
