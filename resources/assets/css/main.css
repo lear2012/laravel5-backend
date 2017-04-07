@@ -221,7 +221,7 @@ a:focus{outline:none;}
 }
 #profile_notice img {
     float:left;
-    padding:10px 10px 5px 5px;
+    padding:.3rem .2rem;
 }
 /*.verified {*/
     /*font-size:.4rem;*/
@@ -285,8 +285,8 @@ img:not([src]) {
     font-size:.6rem;color:white;
 }
 #carno_notice {
-    margin-top:20px;
-    height:1.1rem;
+    margin-top:.2rem;
+    height:1.2rem;
     font-size:.5rem;
     color:rgba(255,255,255,0.5);
 }
@@ -298,9 +298,9 @@ img:not([src]) {
     height:.8rem;
 }
 #carno_notice .not-first {
-    margin-left:15px;
+    margin-left:12px;
 }
 #carno_notice img {
     float:left;
-    padding:10px 10px 5px 5px;
+    padding:.3rem .2rem;
 }
