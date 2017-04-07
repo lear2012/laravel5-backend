@@ -641,16 +641,16 @@ class WechatController extends Controller
     }
 
     public function upload(Request $request) {
-        if ($request->file('file')->isValid()) {
-            //
-            $files = $request->file('file');
-            //var_dump($files);
-            $data = [];
-            foreach($files as $file) {
+
+        //
+        $files = $request->file('file');
+        //var_dump($files);
+        $data = [];
+        foreach($files as $file) {
+            if($file->isValid())
                 $data[] = $file->path();
-            }
-            self::setData($data);
         }
+        self::setData($data);
         self::sendJsonMsg();
     }
 }
