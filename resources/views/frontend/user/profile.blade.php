@@ -17,11 +17,9 @@
             <p class="name">
                 <span>{{ $user->username }}</span>
                 <img src="{{ $user->profile->sex == 1 ? '/img/m.png' : '/img/f.png' }}"/>
-                <span class="verified">
-                    @if($user->profile->is_verified)
-                        已认证
-                    @endif
-                    </span>
+                @if($user->profile->is_verified)
+                <span class="verified"></span>
+                @endif
             </p>
             <p class='Wechat-number text-hidden'>{{ $user->profile->wechat_no }}</p>
             <div class="Age-job">

@@ -216,13 +216,13 @@ a:focus{outline:none;}
     float:left;
     padding:10px 10px 5px 5px;
 }
-.verified {
-    font-size:.4rem;
-    color:white;
-    padding:5px;
-    border: .02rem solid rgba(140, 105, 47, 0.6);
-    background-color: #c1b920;
-}
+/*.verified {*/
+    /*font-size:.4rem;*/
+    /*color:white;*/
+    /*padding:5px;*/
+    /*border: .02rem solid rgba(140, 105, 47, 0.6);*/
+    /*background-color: #c1b920;*/
+/*}*/
 #profile_form .carinfo {
     background: url(../img/left.png) 13.2rem 0.8rem no-repeat;
 }
@@ -252,8 +252,8 @@ img:not([src]) {
 .verified:after {
     content:"已认证";
     position:absolute;
-    top:2rem;
-    left:4rem;
+    top:4rem;
+    left:8rem;
     z-index:1;
     font-family:Arial,sans-serif;
     -webkit-transform: rotate(-45deg); /* Safari */
@@ -261,10 +261,10 @@ img:not([src]) {
     -ms-transform: rotate(-45deg); /* IE */
     -o-transform: rotate(-45deg); /* Opera */
     transform: rotate(-45deg);
-    font-size:40px;
+    font-size:.6rem;
     color:#c00;
-    background:#fff;
-    border:solid 4px #c00;
+    background:#c1b920;
+    border:solid 2px #c00;
     padding:5px;
     border-radius:5px;
     zoom:1;
