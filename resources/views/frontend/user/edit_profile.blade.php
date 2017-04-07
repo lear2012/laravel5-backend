@@ -68,8 +68,11 @@
                         </label>
                     </label>
                 </li>
-                <li id="preview">
-
+                <li id="car_preview">
+                    <label>
+                        <span class="tit-s">&nbsp;</span>
+                        <label id="car_img_preview"></label>
+                    </label>
                 </li>
                 </form>
                 @if($user->hasRole('register_member'))

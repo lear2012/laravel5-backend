@@ -803,21 +803,25 @@ var site = {
     },
 
     initCarimgUpload: function(){
+        var that = this;
         $('#file').ajaxfileupload({
             action: '/wechat/upload',
             params: {
                 extra: 'info'
             },
-            onComplete: function(response) {
-                alert(JSON.stringify(response));
+            onComplete: function(rs) {
+                //alert(JSON.stringify(rs));
                 var previewHtml = '';
-                if(response.rs == 0) {
+                if(rs.errno == 0) {
                     previewHtml += '<ul>';
-                    for(var i in response.data) {
-                        previewHtml += '<li><img src="'+response.data[i]+'" class="car_img_preview" /></li>';
+                    for(var i in rs.data) {
+                        previewHtml += '<li><img src="'+rs.data[i]+'" class="car_img_preview" /></li>';
                     }
                     previewHtml += '</ul>';
-                    $('#preview').html(previewHtml);
+                    $('#car_img_preview').html(previewHtml);
+                    $('#car_preview').fadeIn();
+                } else {
+                    that.showError(rs);
                 }
             },
             onStart: function() {

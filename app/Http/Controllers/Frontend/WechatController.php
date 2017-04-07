@@ -662,7 +662,7 @@ class WechatController extends Controller
                 $thumbFileName = implode(".", $fileArr);
                 $img = Image::make(public_path('uploads').'/'.$path)->resize(config('custom.car_img_width'), config('custom.car_img_height'));
                 $img->save($carImgDir.'/'.$thumbFileName);
-                $data[] = $carImgDir.'/'.$thumbFileName;
+                $data[] = config('custom.car_img_path').'/'.$thumbFileName;
             }
         }
         if(count($data) > config('custom.car_img_max')) {

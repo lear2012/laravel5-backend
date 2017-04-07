@@ -359,3 +359,10 @@ img:not([src]) {
     margin-right: 0.25em;
     /* 4px */
 }
+#car_preview {
+    display: none;
+}
+.car_img_preview {
+    width:2rem;
+    height:1.6rem;
+}
