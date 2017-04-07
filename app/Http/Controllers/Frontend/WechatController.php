@@ -641,14 +641,22 @@ class WechatController extends Controller
     }
 
     public function upload(Request $request) {
-
         //
+        $carImgDir = public_path().config('custom.car_img_path');
+        if(!file_exists($carImgDir)) {
+            Log::write('common', 'Create car image directory:'.$carImgDir);
+            mkdir($carImgDir, 0755);
+        }
         $files = $request->file('file');
         //var_dump($files);
         $data = [];
         foreach($files as $file) {
-            if($file->isValid())
-                $data[] = $file->path();
+            if($file->isValid()) {
+                if(!in_array($file->extension(), config('custom.car_img_valid_ext')))
+                    continue;
+                $path = $file->store('images/car_imgs');
+                $data[] = $path;
+            }
         }
         self::setData($data);
         self::sendJsonMsg();

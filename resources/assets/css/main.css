@@ -341,17 +341,17 @@ img:not([src]) {
 /* style 3 */
 
 .inputfile + label {
-    color: #d3394c;
+    color: #c1b920;
 }
 
 .inputfile:focus + label,
 .inputfile.has-focus + label,
 .inputfile + label:hover {
-    color: #722040;
+    color: #c1b920;
 }
 .inputfile + label svg {
-    width: .8rem;
-    height: .8rem;
+    width: .6rem;
+    height: .6rem;
     vertical-align: middle;
     fill: currentColor;
     margin-top: -0.25em;
