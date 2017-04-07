@@ -384,5 +384,5 @@ img:not([src]) {
     padding:0px ;width:14rem;
 }
 .list li {
-    padding:.5rem; width:6.4rem; display:block; float:left;list-style: none;
+    padding:.4rem; width:6rem; display:block; float:left;list-style: none;
 }
