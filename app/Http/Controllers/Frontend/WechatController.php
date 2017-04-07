@@ -255,11 +255,9 @@ class WechatController extends Controller
     }
 
     public function saveProfile(SaveProfileRequest $request) {
-        $data = $request->only('real_name', 'id_no', 'vehicle', 'brand', 'sery', 'motomodel', 'buy_year', 'car_no', 'self_get', 'member_no', 'address', 'quotation');
+        $data = $request->only('real_name', 'id_no', 'vehicle', 'brand', 'sery', 'buy_year', 'car_no', 'self_get', 'member_no', 'address', 'quotation');
         $data['series'] = $data['sery'];
-        $data['model'] = $data['motomodel'];
         unset($data['sery']);
-        unset($data['motomodel']);
         Log::write('common', 'Get params:'.http_build_query($data));
         // check if member_no exist
         if(isset($data['member_no']) && $data['member_no'] != '') {
@@ -276,7 +274,6 @@ class WechatController extends Controller
             // 不更新车辆信息
             unset($data['brand']);
             unset($data['series']);
-            unset($data['model']);
         }
         if($data['buy_year'] == '')
             unset($data['buy_year']);

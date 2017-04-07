@@ -665,13 +665,6 @@ var site = {
             $('.myselect', $('.seriesBox')).show();
             e.stopPropagation();
         });
-        // init motomodel click to show select box
-        $('.motomodel').click(function(e){
-            $('.motomodelBox').css('left','0px');
-            $('div', $('.motomodelBox')).css('position', 'absolute');
-            $('.myselect', $('.motomodelBox')).show();
-            e.stopPropagation();
-        });
         // init buy-date click to show select box
         $('.buy-date').click(function(e){
             $('.dateBox').css('left','0px');
@@ -703,7 +696,6 @@ var site = {
             data.vehicle = $.trim($('#vehicle').val());
             data.brand = $.trim(that.vehicleInfo.brand);
             data.sery = $.trim(that.vehicleInfo.sery);
-            data.motomodel = $.trim(that.vehicleInfo.motomodel);
             data.buy_year = $.trim(that.vehicleInfo.buyyear);
             data.car_no = $.trim($('#car_no').val());
             data.member_no = $.trim($('#member_no').val());
@@ -743,8 +735,6 @@ var site = {
         //     ret += this.vehicleInfo.brand;
         if(this.vehicleInfo.sery != undefined)
             ret += ''+this.vehicleInfo.sery;
-        if(this.vehicleInfo.motomodel != undefined)
-            ret += '-'+this.vehicleInfo.motomodel;
         // if(this.vehicleInfo.buyyear != undefined)
         //     ret += '-'+this.vehicleInfo.buyyear;
         return ret;
@@ -765,41 +755,6 @@ var site = {
             $('.series input').val($(this).html());
             that.vehicleInfo.sery = $(this).html();
             $('.seriesBox').css('left', '15rem');
-            // send ajax to get series
-            $.ajax({
-                type: "GET",
-                dataType: "json", //dataType (xml html script json jsonp text)
-                url: '/get_models/'+code,
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                },
-                //beforeSend: bstool.submit_loading, //执行ajax前执行loading函数.直到success
-                success: function(rs) {//成功获得的也是json对象
-                    if(rs.errno == 0) {
-                        that.setMotomodels(rs.data);
-                    } else {
-                        that.showError(rs);
-                    }
-                }
-            });
-            event.stopPropagation();
-        });
-    },
-
-    setMotomodels: function(data) {
-        var that = this;
-        var str = '<ul class="myselect">';
-        for(var i in data){
-            str +='<li class="aLi" code="'+data[i].code+'">'+data[i].name+'</li>';
-        }
-        str +='<li class="aLi" code="0">其它</li>';
-        str += '</ul>';
-        $('.motomodelList').html(str);
-        // bind event
-        $('.motomodelBox .motomodelList .aLi').unbind('click').on('click',function(event) {
-            $('.motomodel input').val($(this).html());
-            that.vehicleInfo.motomodel = $(this).html();
-            $('.motomodelBox').css('left', '15rem');
             event.stopPropagation();
         });
     },

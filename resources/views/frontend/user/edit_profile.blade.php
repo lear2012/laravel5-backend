@@ -61,12 +61,6 @@
                     </label>
                 </li>
                 @if($user->hasRole('paid_member'))
-                <li class="quotation">
-                    <label>
-                        <span class="tit-s">个性签名</span>
-                        <input class="Ainp" type="" name="quotation" id="quotation" value="{{$user->profile->quotation}}" size="30"/>
-                    </label>
-                </li>
                 <li class="member_no_li">
                     <label>
                         <span class="tit-s">可野会员编号</span><span class="member_no_prefix">KY.88</span>
@@ -121,13 +115,7 @@
                     </li>
                     <li class="sel-left series">
                         <label>
-                            <span class="tit-s">车系</span>
-                            <input readonly="readonly" class="Ainp" type="" name="" id="" value="" />
-                        </label>
-                    </li>
-                    <li class="sel-left motomodel">
-                        <label>
-                            <span class="tit-s">型号</span>
+                            <span class="tit-s">车型</span>
                             <input readonly="readonly" class="Ainp" type="" name="" id="" value="" />
                         </label>
                     </li>
@@ -152,10 +140,6 @@
         <div class="seriesBox selectBox">
             <div><img src="/img/left-arrow.png" class="myselect-close"></div>
             <div class="seriesList"></div>
-        </div>
-        <div class="motomodelBox selectBox">
-            <div><img src="/img/left-arrow.png" class="myselect-close"></div>
-            <div class="motomodelList"></div>
         </div>
         <div class="dateBox selectBox">
             <div><img src="/img/left-arrow.png" class="myselect-close"></div>
