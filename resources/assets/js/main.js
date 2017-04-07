@@ -847,7 +847,7 @@ var site = {
             previewHtml += '<img src="'+imgArr[i]+'" class="car_img_preview" />';
         }
         if(imgArr.length > 3)
-            previewHtml += '<span class="static-text">等'+imgArr.length+'张图片</span>';
+            previewHtml += '<span class="car_img_basetext">等'+imgArr.length+'张图片</span>';
         return previewHtml;
     }
 
