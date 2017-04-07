@@ -641,6 +641,7 @@ class WechatController extends Controller
     }
 
     public function upload(Request $request) {
+        echo 'haha';exit;
         if ($request->file('file')->isValid()) {
             //
             $files = $request->file('file');

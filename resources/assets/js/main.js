@@ -803,6 +803,23 @@ var site = {
     },
 
     initCarimgUpload: function(){
+        $('#file').ajaxfileupload({
+            action: '/wechat/upload',
+            params: {
+                extra: 'info'
+            },
+            onComplete: function(response) {
+                console.log('custom handler for file:');
+                alert(JSON.stringify(response));
+            },
+            onStart: function() {
+
+            },
+            onCancel: function() {
+                console.log('no file selected');
+            }
+        });
+        return;
         $( '.inputfile' ).each( function() {
             var $input	 = $(this),
                 $label	 = $input.next( 'label' ),
@@ -811,16 +828,7 @@ var site = {
             $input.on('change', function(e) {
                 var fileName = '';
                 console.log('send request');
-                $("#file").AjaxFileUpload({
-                    action: "/wechat/upload",
-                    onComplete: function(filename, response) {
-                        // $("#uploads").append(
-                        //     $("<img />").attr("src", filename).attr("width", 200)
-                        // );
-                        console.log(filename);
-                        console.log(response);
-                    }
-                });
+
                 // $.ajax({
                 //     url: "/wechat/upload", // Url to which the request is send
                 //     type: "POST",             // Type of request to be send, called as method
