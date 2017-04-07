@@ -57,6 +57,12 @@
                         </ul>
                     </label>
                 </li>
+                <li>
+                    <label>
+                        <span class="tit-s">爱车风采</span>
+                        <input class="Ainp" type="file" name="car_imgs" id="car_imgs" />
+                    </label>
+                </li>
                 @if($user->hasRole('register_member'))
                 <li>
                     <label>
