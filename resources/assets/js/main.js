@@ -711,6 +711,7 @@ var site = {
             data.self_get = $('#self_get').val();
             data.quotation = $.trim($('#quotation').val());
             data.invite_no = $.trim($('#invite_no').val());
+            data.car_imgs = $.trim($('#car_imgs').val());
             if(!that.checkProfile(data))
                 return false;
             // send ajax to save profile info
