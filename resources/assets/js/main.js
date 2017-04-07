@@ -815,10 +815,12 @@ var site = {
                 var previewHtml = '';
                 if(rs.errno == 0) {
                     for(var i in rs.data) {
+                        if(i == 3)
+                            break;
                         previewHtml += '<img src="'+rs.data[i]+'" class="car_img_preview" />';
                     }
                     if(rs.data.length > 3)
-                        previewHtml += '等'+rs.data.length+'张图片';
+                        previewHtml += '<span class="static-text">等'+rs.data.length+'张图片</span>';
                     $('#car_img_preview').html(previewHtml);
                     $('#car_preview').fadeIn();
                 } else {
