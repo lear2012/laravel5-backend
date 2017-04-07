@@ -304,7 +304,7 @@ img:not([src]) {
     float:left;
     padding:.3rem .2rem;
 }
-
+#uploadimage {display:inline-block}
 .inputfile {
     width: 0.1px;
     height: 0.1px;
@@ -317,11 +317,6 @@ img:not([src]) {
     font-size: .6rem;
     color: white;
     display: inline-block;
-}
-
-.inputfile:focus + label,
-.inputfile + label:hover {
-
 }
 .inputfile + label {
     cursor: pointer; /* "hand" cursor */
