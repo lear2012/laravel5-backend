@@ -446,7 +446,7 @@ input {-webkit-appearance:none; /*去除input默认样式*/}
     width: 15rem;
     min-height: 300vh;
     position: fixed;
-    top: 1rem;
+    top: 0px;
     left:15rem;
     transition:500ms ;
     background: url(../img/bg_img.png);
