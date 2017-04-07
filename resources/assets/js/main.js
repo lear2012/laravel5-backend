@@ -437,6 +437,7 @@ var site = {
             customClass: 'memberRules'
             //imageUrl: "images/thumbs-up.jpg"
         });
+        $('.memberRules').scrollTop(0)
     },
 
     getMemberText: function() {

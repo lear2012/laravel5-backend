@@ -75,15 +75,13 @@ input {-webkit-appearance:none; /*去除input默认样式*/}
     width: 0.6rem;
     height: 0.6rem;
     border-radius:50%;
-
     border:0.04rem solid #f5a623;
-
 }
 .Agreement .Radio{
-    /*margin-right: 0.4rem;*/
-    background: url(../img/yes.png) no-repeat -0.04rem;
+    margin-right: 0.4rem;
+    background: url(../img/yes.png) no-repeat;
     background-size:100% 100%;
-
+    box-shadow: 0 0 1px #fff inset;
 }
 .Agreement span{
     font-size: 0.6rem;
