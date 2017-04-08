@@ -354,9 +354,9 @@ img:not([src]) {
     height: .6rem;
     vertical-align: middle;
     fill: currentColor;
-    margin-top: -0.25em;
+    margin-top: -.4rem;
     /* 4px */
-    margin-right: 0.25em;
+    margin-right: .4rem;
     /* 4px */
 }
 #car_preview {
@@ -376,7 +376,7 @@ img:not([src]) {
 }
 .loading {display: none;float:right;margin-left:1rem;margin-top:1rem;}
 .JoinKY form {display:inline-block}
-.car_img_basetext {color:white;font-size:.6rem;margin-top: 0rem;margin-bottom: .6rem;vertical-align: middle;display: inline-block}
+.car_img_basetext {color:white;font-size:.5rem;margin-top: 0rem;margin-bottom: .6rem;vertical-align: middle;display: inline-block}
 .list {
     line-height: 2rem; text-align: left;
 }

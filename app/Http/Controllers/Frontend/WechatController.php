@@ -295,6 +295,9 @@ class WechatController extends Controller
                 self::setMsgCode(1011);
             }
         }
+        // if no images
+        if(!isset($data['car_imgs']) || $data['car_imgs'] == '')
+            unset($data['car_imgs']);
         // save profile info
         $userProfile->fill($data);
         if(!$userProfile->save()) {

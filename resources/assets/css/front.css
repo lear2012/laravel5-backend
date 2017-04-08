@@ -156,7 +156,7 @@ input {-webkit-appearance:none; /*去除input默认样式*/}
 .homepage .user-list{
     padding: 0.78rem 0rem;
     font-size: 0px;
-    min-height:14rem;
+    min-height:16rem;
 }
 .homepage .user-list li{
     width:3.24rem;
