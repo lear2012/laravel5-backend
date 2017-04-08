@@ -618,6 +618,7 @@ var site = {
         // init carinfo select box
         $('.carinfo').on('click',function(e){
             $('.Vehicle-information').css('left','0px');
+            $('.Vehicle-information').css('z-index','900');
             if($('.brandList').html() == '') {
                 for (var i in brands) {
                     var str = '';
@@ -633,6 +634,7 @@ var site = {
         // init brand click to show select box
         $('.brand').on('click',function(e){
             $('.brandBox').css('left','0px');
+            $('.brandBox').css('z-index','999');
             alphabetNav.init('nav-title');
             $('.alphabetList').show();
             $('.brandBox .brandList .aLi').unbind('click').on('click',function(event){
@@ -640,6 +642,7 @@ var site = {
                 $('.brand input').val($(this).html());
                 that.vehicleInfo.brand = $(this).html();
                 $('.brandBox').css('left','15rem');
+                $('.brandBox').css('z-index','900');
                 $('.alphabetList').hide();
                 // send ajax to get series
                 $.ajax({
@@ -665,6 +668,7 @@ var site = {
         // init series click to show select box
         $('.series').click(function(e){
             $('.seriesBox').css('left','0px');
+            $('.seriesBox').css('z-index','999');
             $('div', $('.seriesBox')).css('position', 'absolute');
             $('.myselect', $('.seriesBox')).show();
             e.stopPropagation();
@@ -672,6 +676,7 @@ var site = {
         // init buy-date click to show select box
         $('.buy-date').click(function(e){
             $('.dateBox').css('left','0px');
+            $('.dateBox').css('z-index','999');
             $('div', $('.dateBox')).css('position', 'absolute');
             $('.myselect', $('.dateBox')).show();
             e.stopPropagation();
@@ -679,17 +684,20 @@ var site = {
         // init close box click
         $('.myselect-close').click(function(){
             $('.selectBox').css('left','15rem');
+            $('.selectBox').css('z-index','900');
             $('.alphabetList').hide();
         });
         // init carinfo select box close
         $('.vehicle-close').click(function(){
             $('.Vehicle-information').css('left','15rem');
+            $('.Vehicle-information').css('z-index','900');
         });
         // init complete box close
         $('.complete-btn').click(function(){
             var vehicleInfo = that.getVehicleInfo();
             $('#vehicle').val(vehicleInfo);
             $('.Vehicle-information').css('left','15rem');
+            $('.Vehicle-information').css('z-index','900');
         });
         // 邀请码
         $('#invite_no').on('blur',function(event){
@@ -772,6 +780,7 @@ var site = {
             $('.series input').val($(this).html());
             that.vehicleInfo.sery = $(this).html();
             $('.seriesBox').css('left', '15rem');
+            $('.seriesBox').css('z-index', '900');
             event.stopPropagation();
         });
     },
@@ -790,6 +799,7 @@ var site = {
             $('.buy-date input').val($(this).html());
             that.vehicleInfo.buyyear = $(this).html();
             $('.dateBox').css('left', '15rem');
+            $('.dateBox').css('z-index','900');
             event.stopPropagation();
         });
     },

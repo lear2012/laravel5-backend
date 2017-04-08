@@ -261,7 +261,7 @@ img:not([src]) {
     position:absolute;
     top:14rem;
     left:6rem;
-    z-index:1;
+    z-index:-1;
     font-family:Arial,sans-serif;
     -webkit-transform: rotate(-25deg); /* Safari */
     -moz-transform: rotate(-25deg); /* Firefox */
