@@ -272,7 +272,7 @@ img:not([src]) {
     color:#c00;
     background:#c1b920;
     border:solid 2px #c00;
-    padding:5px;
+    padding:.4rem;
     border-radius:5px;
     zoom:1;
     filter:alpha(opacity=20);
@@ -280,6 +280,7 @@ img:not([src]) {
     -webkit-text-shadow: 0 0 2px #c00;
     text-shadow: 0 0 2px #c00;
     box-shadow: 0 0 2px #c00;
+    text-indent:0rem;
 }
 .static-text{
     font-size:.6rem;color:white;
@@ -354,9 +355,9 @@ img:not([src]) {
     height: .6rem;
     vertical-align: middle;
     fill: currentColor;
-    margin-top: -.4rem;
+    margin-top: -.3rem;
     /* 4px */
-    margin-right: .4rem;
+    margin-right: .3rem;
     /* 4px */
 }
 #car_preview {
