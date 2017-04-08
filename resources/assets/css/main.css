@@ -272,7 +272,7 @@ img:not([src]) {
     color:#c00;
     background:#c1b920;
     border:solid 2px #c00;
-    padding:.4rem;
+    padding:.2rem .4rem;
     border-radius:5px;
     zoom:1;
     filter:alpha(opacity=20);
@@ -356,9 +356,7 @@ img:not([src]) {
     vertical-align: middle;
     fill: currentColor;
     margin-top: -.3rem;
-    /* 4px */
-    margin-right: .3rem;
-    /* 4px */
+    margin-right: .2rem;
 }
 #car_preview {
     display: none;
