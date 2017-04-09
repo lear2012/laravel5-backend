@@ -145,7 +145,7 @@
 
         </section>
         <div class="Vehicle-information">
-            <div><img src="/img/left-arrow.png" class="vehicle-close"></div>
+            <img src="/img/left-arrow.png" class="vehicle-close">
             <div>
                 <ul class="form" id="vehicle-select-form">
                     <li class="sel-left brand">
@@ -175,15 +175,15 @@
                 {{--<input placeholder="搜索" class="Ainp search" type="" name="" id="" value="" />--}}
                 {{--<span class="tit-s search-but">搜索</span>--}}
             {{--</label>--}}
-            <div><img src="/img/left-arrow.png" class="myselect-close"></div>
+            <img src="/img/left-arrow.png" class="myselect-close">
             <div class="brandList"></div>
         </div>
         <div class="seriesBox selectBox">
-            <div><img src="/img/left-arrow.png" class="myselect-close"></div>
+            <img src="/img/left-arrow.png" class="myselect-close">
             <div class="seriesList"></div>
         </div>
         <div class="dateBox selectBox">
-            <div><img src="/img/left-arrow.png" class="myselect-close"></div>
+            <img src="/img/left-arrow.png" class="myselect-close">
             <div class="dateList"></div>
         </div>
     </div>
