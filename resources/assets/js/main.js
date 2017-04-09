@@ -678,7 +678,7 @@ var site = {
             e.stopPropagation();
         });
         // init close box click
-        $('.selectBox').on('click', '.myselect-close',function(e){
+        $('.selectBox').on('click', ':first-child',function(e){
             $('.selectBox').css('left','15rem');
             $('.alphabetList').hide();
             //e.stopPropagation();
