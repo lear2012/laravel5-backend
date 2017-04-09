@@ -444,8 +444,8 @@ input {-webkit-appearance:none; /*去除input默认样式*/}
 }
 .JoinKY .Vehicle-information{
     width: 15rem;
-    min-height: 100vh;
-    position: absolute;
+    min-height: 300vh;
+    position: fixed;
     top: 0px;
     left:15rem;
     transition:500ms ;

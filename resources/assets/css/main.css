@@ -140,6 +140,7 @@ a:focus{outline:none;}
     font-size:.6rem;
 }
 
+.selectBox {position:fixed}
 .selectBox img, .Vehicle-information img{
     float:left;
     margin:1rem;
