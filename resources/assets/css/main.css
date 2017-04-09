@@ -139,12 +139,16 @@ a:focus{outline:none;}
 .brandList li{
     font-size:.6rem;
 }
+.seriesList {margin-top:2.2rem}
+.seriesList li{
+    font-size:.6rem;
+}
 
 .selectBox {
     position:fixed
 }
 .selectBox:first-child {
-    position: fixed;
+    position: absolute;
 }
 .selectBox img, .Vehicle-information img{
     float:left;
