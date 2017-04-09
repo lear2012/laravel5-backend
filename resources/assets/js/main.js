@@ -666,20 +666,19 @@ var site = {
         // init series click to show select box
         $('.series').click(function(e){
             $('.seriesBox').css('left','0px');
-            $('div', $('.seriesBox')).css('position', 'absolute');
+            $('div', $('.seriesBox')).css('position', 'fixed');
             $('.myselect', $('.seriesBox')).show();
             e.stopPropagation();
         });
         // init buy-date click to show select box
         $('.buy-date').click(function(e){
             $('.dateBox').css('left','0px');
-            $('div', $('.dateBox')).css('position', 'absolute');
+            $('div', $('.dateBox')).css('position', 'fixed');
             $('.myselect', $('.dateBox')).show();
             e.stopPropagation();
         });
         // init close box click
-        $('.myselect-close').click(function(e){
-            console.log('close it');
+        $('.myselect-close').live('click', function(e){
             $('.selectBox').css('left','15rem');
             $('.alphabetList').hide();
             e.stopPropagation();
