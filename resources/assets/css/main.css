@@ -120,7 +120,7 @@ a:focus{outline:none;}
     color: rgba(255, 255, 255, 0.8);
 }
 .myselect{
-    position: fixed;
+    position: relative;
     width: 14rem;
     color: white;
     top: 2rem;
