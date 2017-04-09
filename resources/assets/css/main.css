@@ -140,18 +140,17 @@ a:focus{outline:none;}
     font-size:.6rem;
 }
 #seriesList {
-    position:fixed;
+    position:absolute;
 }
 #dateList {
-    position:fixed;
+    position:absolute;
 }
 .selectBox {
     position:fixed
 }
-.selectBox:first-child {
+.close-div {
     position: absolute;
-    width:2rem;
-    height:2rem;
+    height:2.2rem;
 }
 .selectBox img, .Vehicle-information img{
     float:left;
@@ -390,11 +389,11 @@ img:not([src]) {
 .JoinKY form {display:inline-block}
 .car_img_basetext {color:white;font-size:.5rem;margin-top: 0rem;margin-bottom: .6rem;vertical-align: middle;display: inline-block}
 .list {
-    line-height: 2rem; text-align: left;
+    line-height: 1.8rem; text-align: left;
 }
 .list ul {
     padding:0px ;width:14rem;
 }
 .list li {
-    padding:.2rem .4rem; width:6rem; display:block; float:left;list-style: none;
+    padding:0rem .4rem; width:6rem; display:block; float:left;list-style: none;
 }
