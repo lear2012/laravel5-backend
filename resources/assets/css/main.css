@@ -144,7 +144,7 @@ a:focus{outline:none;}
     position:fixed
 }
 .selectBox:first-child {
-    position: absolute;
+    position: fixed;
 }
 .selectBox img, .Vehicle-information img{
     float:left;
