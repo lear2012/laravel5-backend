@@ -628,6 +628,7 @@ var site = {
                     $('.brandList').append(oSection);
                 }
             }
+            e.stopPropagation();
         });
 
         // init brand click to show select box
@@ -677,19 +678,23 @@ var site = {
             e.stopPropagation();
         });
         // init close box click
-        $('.myselect-close').click(function(){
+        $('.myselect-close').click(function(e){
+            console.log('close it');
             $('.selectBox').css('left','15rem');
             $('.alphabetList').hide();
+            e.stopPropagation();
         });
         // init carinfo select box close
-        $('.vehicle-close').click(function(){
+        $('.vehicle-close').click(function(e){
             $('.Vehicle-information').css('left','15rem');
+            e.stopPropagation();
         });
         // init complete box close
-        $('.complete-btn').click(function(){
+        $('.complete-btn').click(function(e){
             var vehicleInfo = that.getVehicleInfo();
             $('#vehicle').val(vehicleInfo);
             $('.Vehicle-information').css('left','15rem');
+            e.stopPropagation();
         });
         // 邀请码
         $('#invite_no').on('blur',function(event){
