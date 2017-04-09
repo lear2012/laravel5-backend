@@ -681,7 +681,7 @@ var site = {
         $('.selectBox').on('click', '.myselect-close',function(e){
             $('.selectBox').css('left','15rem');
             $('.alphabetList').hide();
-            e.stopPropagation();
+            //e.stopPropagation();
         });
         // init carinfo select box close
         $('.vehicle-close').click(function(e){
