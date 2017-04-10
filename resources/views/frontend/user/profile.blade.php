@@ -2,6 +2,10 @@
 @section('styles')
 @endsection
 @section('content')
+<div class="img-full-view">
+    <span class="modal-close-btn"></span>
+    <img src="" />
+</div>
 <div class="information">
     <section>
         <div>
@@ -43,11 +47,6 @@
                 @endforeach
             </ul>
         </div>
-        <div class="img-full-view">
-            <span class="modal-close-btn"></span>
-            <img src="" />
-        </div>
-
     </section>
     @if($user->hasRole('exp_driver') && $user->profile->nest_info)
     <hr />

@@ -595,7 +595,12 @@ var site = {
             console.log(that._sourseElm);
             console.log(that._destElm);
             $('img', that._destElm).attr('src', $(this).attr('src'));
-            ramjet.transform(that._sourseElm, that._destElm);
+            ramjet.transform(that._sourseElm, that._destElm, {
+                done: function(){
+                    that._destElm.show();
+                },
+                appendToBody: true
+            });
         });
 
         $('.modal-close-btn').on('click', function(e){
