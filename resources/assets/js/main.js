@@ -591,9 +591,10 @@ var site = {
 
         $('.list').on('click', '.profile_car_img', function(e){
             that._sourseElm = e.target;
-            that._destElm = $('.img-full-view');
+            that._destElm = $('#img-full-view');
             console.log(that._sourseElm);
             console.log(that._destElm);
+            console.log($(this).attr('src'));
             $('img', that._destElm).attr('src', $(this).attr('src'));
             ramjet.transform(that._sourseElm, that._destElm, {
                 done: function(){

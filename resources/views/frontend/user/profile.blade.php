@@ -2,7 +2,7 @@
 @section('styles')
 @endsection
 @section('content')
-<div class="img-full-view">
+<div id="img-full-view">
     <span class="modal-close-btn"></span>
     <img src="" />
 </div>

@@ -410,7 +410,7 @@ img:not([src]) {
     cursor: pointer;
     transition: 0.3s ease;
 }
-.img-full-view {
+#img-full-view {
     position: absolute;
     width:100%;
     top:0rem;
