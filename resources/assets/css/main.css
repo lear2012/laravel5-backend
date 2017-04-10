@@ -416,4 +416,10 @@ img:not([src]) {
     top:0rem;
     display:none;
     margin:0 auto;
+    z-index:999;
 }
+#img-full-view img{
+    height: auto;
+    width:14rem;
+}
+

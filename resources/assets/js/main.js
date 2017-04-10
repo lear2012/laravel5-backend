@@ -604,6 +604,7 @@ var site = {
         });
 
         $('.modal-close-btn').on('click', function(e){
+            console.log('clicked');
             ramjet.transform(that._destElm, that._sourseElm);
         });
     },
