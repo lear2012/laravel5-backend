@@ -271,7 +271,7 @@ img:not([src]) {
 .verified:after {
     content:"已认证";
     position:absolute;
-    top:14rem;
+    top:16rem;
     left:6rem;
     z-index:900;
     font-family:Arial,sans-serif;
@@ -424,3 +424,13 @@ img:not([src]) {
     width:100%;
 }
 
+#car_img_list .swiper-button-prev {
+    left:-.6rem;
+    margin-top:-.2rem;
+    width:1.6rem;
+}
+#car_img_list .swiper-button-next {
+    right:-.6rem;
+    margin-top:-.2rem;
+    width:1.6rem;
+}
