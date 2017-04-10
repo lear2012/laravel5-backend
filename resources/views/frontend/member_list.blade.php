@@ -16,7 +16,7 @@
             <div class="swiper-wrapper">
                 @foreach($expDrivers as $user)
                     <div class="swiper-slide">
-                        <img src="{{ ($user && $user->profile) ? $user->profile->avatar : config('custom.default_avatar') }}" class="main-img" id="user{{$user->uid}}" />
+                        <img data-original="{{ ($user && $user->profile) ? $user->profile->avatar : config('custom.default_avatar') }}" class="main-img" id="user{{$user->uid}}" />
                     </div>
                 @endforeach
             </div>
@@ -43,7 +43,7 @@
         <ul class="user-list">
             @if(Auth::user() && Auth::user()->hasRole('paid_member'))
                 <li class="bor-color">
-                    <a href="{{ route('wechat.profile', ['id' => $loginUser->uid]) }}"><img src="{{ $loginUser ? $loginUser->profile->avatar : $loginUser->avatar }}" /></a>
+                    <a href="{{ route('wechat.profile', ['id' => $loginUser->uid]) }}"><img data-original="{{ $loginUser ? $loginUser->profile->avatar : $loginUser->avatar }}" /></a>
                     <p>{{ $loginUser->username ? $loginUser->username : $wechatUser->nickname }}</p>
                     <span>{{ $loginUser->profile->member_no ? $loginUser->profile->member_no : '&nbsp;' }}</span>
                 </li>
@@ -52,7 +52,7 @@
                     <div class='add-bg'>
                         <a href="{{ route('wechat.edit_profile', ['id' => $loginUser->uid]) }}">+</a>
                     </div>
-                    <img src="{{ isset($loginUser->profile) ? $loginUser->profile->avatar : $loginUser->avatar }}" />
+                    <img data-original="{{ isset($loginUser->profile) ? $loginUser->profile->avatar : $loginUser->avatar }}" />
                     <p>{{ $loginUser->username ? $loginUser->username : $wechatUser->nickname }}</p>
                     <span><a href="{{ route('wechat.edit_profile', ['id' => $loginUser->uid]) }}">加入可野人</a></span>
                 </li>
@@ -61,7 +61,7 @@
                     <div class='add-bg'>
                         <a href="{{ route('wechat.member_register') }}">+</a>
                     </div>
-                    <img src="{{ isset($loginUser->profile) ? $loginUser->profile->avatar : $loginUser->avatar }}" />
+                    <img data-original="{{ isset($loginUser->profile) ? $loginUser->profile->avatar : $loginUser->avatar }}" />
                     <p>{{ $loginUser->username ? $loginUser->username : $wechatUser->nickname }}</p>
                     <span>&nbsp;</span>
                 </li>

@@ -599,7 +599,7 @@ var site = {
             //$(that._destElm).css('display', 'block');
             ramjet.transform(that._sourseElm, that._destElm, {
                 done: function(){
-                    //$(that._destElm).css('display', 'block');
+                    $(that._destElm).css('visibility', 'visible');
                 }
             });
         });
