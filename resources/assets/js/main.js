@@ -592,9 +592,11 @@ var site = {
         $('.list').on('click', '.profile_car_img', function(e){
             that._sourseElm = e.target;
             that._destElm = document.getElementById('img-full-view');
-            if($(that._destElm).css('visibility') == 'visible') {
+            if($(that._destElm).css('visibility') == 'visible' && e.target == that._sourseElm) {
                 $('.modal-close-btn').click();
             } else {
+                if($(that._destElm).css('visibility') == 'visible')
+                    $('.modal-close-btn').click();
                 var previewImgSrc = $(this).attr('src').replace('_thumb.', '_preview.');
                 $('img', $(that._destElm)).attr('src', previewImgSrc);
                 ramjet.transform(that._sourseElm, that._destElm, {
