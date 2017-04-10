@@ -70,6 +70,7 @@ elixir(function(mix) {
         '../bower/swiper/dist/js/swiper.jquery.min.js',
         '../../../node_modules/jquery-countto/jquery.countTo.js',
         '../../../node_modules/vanilla-lazyload/dist/lazyload.transpiled.min.js',
+        '../../../node_modules/ramjet/dist/ramjet.umd.min.js',
         'jweixin-1.2.0.js',
         'lodash.min.js',
         'Maillist.js',

@@ -6,6 +6,9 @@ var site = {
 
     vehicleInfo: {},
 
+    _sourseElm: '',
+    _destElm: '',
+
     init: function() {
         var path = url('path');
         if(_.startsWith(path, '/wechat/register')) {
@@ -581,8 +584,22 @@ var site = {
     },
 
     initProfile: function() {
+        var that = this;
         $('.return').on('click', function(e){
             window.location.href = '/wechat/member_list';
+        });
+
+        $('.list').on('click', '.profile_car_img', function(e){
+            that._sourseElm = e.target;
+            that._destElm = $('.img-full-view');
+            console.log(that._sourseElm);
+            console.log(that._destElm);
+            $('img', that._destElm).attr('src', $(this).attr('src'));
+            ramjet.transform(that._sourseElm, that._destElm);
+        });
+
+        $('.modal-close-btn').on('click', function(e){
+            ramjet.transform(that._destElm, that._sourseElm);
         });
     },
 

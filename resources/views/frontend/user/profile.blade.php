@@ -43,6 +43,10 @@
                 @endforeach
             </ul>
         </div>
+        <div class="img-full-view">
+            <span class="modal-close-btn"></span>
+            <img src="" />
+        </div>
 
     </section>
     @if($user->hasRole('exp_driver') && $user->profile->nest_info)
