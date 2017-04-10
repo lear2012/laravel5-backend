@@ -500,42 +500,6 @@ var site = {
     },
 
     showMessage: function(type, text) {
-        // $.noty.defaults = {
-        //     layout: 'top',
-        //     theme: 'defaultTheme', // or relax
-        //     type: type, // success, error, warning, information, notification
-        //     text: text, // [string|html] can be HTML or STRING
-        //
-        //     dismissQueue: false, // [boolean] If you want to use queue feature set this true
-        //     force: false, // [boolean] adds notification to the beginning of queue when set to true
-        //     maxVisible: 5, // [integer] you can set max visible notification count for dismissQueue true option,
-        //
-        //     template: '<div class="noty_message"><span class="noty_text"></span><div class="noty_close"></div></div>',
-        //
-        //     timeout: false, // [integer|boolean] delay for closing event in milliseconds. Set false for sticky notifications
-        //     progressBar: false, // [boolean] - displays a progress bar
-        //
-        //     animation: {
-        //         open: {height: 'toggle'}, // or Animate.css class names like: 'animated bounceInLeft'
-        //         close: {height: 'toggle'}, // or Animate.css class names like: 'animated bounceOutLeft'
-        //         easing: 'swing',
-        //         speed: 500 // opening & closing animation speed
-        //     },
-        //     closeWith: ['click'], // ['click', 'button', 'hover', 'backdrop'] // backdrop click will close all notifications
-        //
-        //     modal: false, // [boolean] if true adds an overlay
-        //     killer: false, // [boolean] if true closes all notifications and shows itself
-        //
-        //     callback: {
-        //         onShow: function() {},
-        //         afterShow: function() {},
-        //         onClose: function() {},
-        //         afterClose: function() {},
-        //         onCloseClick: function() {}
-        //     },
-        //
-        //     buttons: false // [boolean|array] an array of buttons, for creating confirmation dialogs.
-        // };
         var n = $('#message').noty({
             layout: 'top',
             theme: 'defaultTheme', // or relax
@@ -589,37 +553,71 @@ var site = {
             window.location.href = '/wechat/member_list';
         });
 
-        $('.list').on('click', '.profile_car_img', function(e){
-            that._destElm = document.getElementById('img-full-view');
-            if($(that._destElm).css('visibility') == 'visible' && e.target == that._sourseElm) {
-                console.log('target same, close it');
-                $('.modal-close-btn').click();
-            } else {
-                var previewImgSrc = $(this).attr('src').replace('_thumb.', '_preview.');
-                if($(that._destElm).css('visibility') == 'visible') {
-                    console.log('visible, change src directly');
-                    $('img', $(that._destElm)).attr('src', previewImgSrc);
-                    that._sourseElm = e.target;
-                    return true;
-                }
-                $('img', $(that._destElm)).attr('src', previewImgSrc);
-                that._sourseElm = e.target;
-                ramjet.transform(that._sourseElm, that._destElm, {
-                    done: function () {
-                        $(that._destElm).css('visibility', 'visible');
-                    }
-                });
+        var mySwiper = new Swiper(".swiper-container", {
+            slidesPerView: 3,
+            centeredSlides: true,
+            //initialSlide :that._centerSlideIndex,
+            autoplayDisableOnInteraction : false,
+            spaceBetween: 0,
+            slidesOffsetBefore:1,
+            slidesOffsetAfter:1,
+            loop: true,
+            onInit: function(swiper){
+                //Swiper初始化了
+                // var theDrivers = _.values(expDrivers);
+                // var theCenterDriver = theDrivers[that._centerSlideIndex];
+                // //$('.swiper-slide-active').css('width', '180px');
+                // that.setExpDriverInfo(theCenterDriver);
+            },
+            visibilityFullFit: true,
+            autoResize: false,
+            watchSlidesProgress: !0,
+            pagination: ".swiper-pagination",
+            paginationClickable: !0,
+            prevButton:'.swiper-button-prev',
+            nextButton:'.swiper-button-next',
+            slideToClickedSlide: false,
+            onTransitionEnd: function(swiper) {
+                //$('.swiper-slide-active').css('width', '180px');
+                //that.renderActiveExpdriver(swiper);
+            },
+            onClick: function(swiper, event) {
+                // var uid = _.replace(event.target.id, /[a-zA-Z]+/g, '');
+                // window.location.href = '/wechat/profile/'+uid;
+                // return true;
             }
         });
-
-        $('.modal-close-btn').on('click', function(e){
-            $(that._destElm).css('visibility', 'hidden');
-            ramjet.transform(that._destElm, that._sourseElm, {
-                done: function() {
-
-                }
-            });
-        });
+        // $('.list').on('click', '.profile_car_img', function(e){
+        //     that._destElm = document.getElementById('img-full-view');
+        //     if($(that._destElm).css('visibility') == 'visible' && e.target == that._sourseElm) {
+        //         console.log('target same, close it');
+        //         $('.modal-close-btn').click();
+        //     } else {
+        //         var previewImgSrc = $(this).attr('src').replace('_thumb.', '_preview.');
+        //         if($(that._destElm).css('visibility') == 'visible') {
+        //             console.log('visible, change src directly');
+        //             $('img', $(that._destElm)).attr('src', previewImgSrc);
+        //             that._sourseElm = e.target;
+        //             return true;
+        //         }
+        //         $('img', $(that._destElm)).attr('src', previewImgSrc);
+        //         that._sourseElm = e.target;
+        //         ramjet.transform(that._sourseElm, that._destElm, {
+        //             done: function () {
+        //                 $(that._destElm).css('visibility', 'visible');
+        //             }
+        //         });
+        //     }
+        // });
+        //
+        // $('.modal-close-btn').on('click', function(e){
+        //     $(that._destElm).css('visibility', 'hidden');
+        //     ramjet.transform(that._destElm, that._sourseElm, {
+        //         done: function() {
+        //
+        //         }
+        //     });
+        // });
     },
 
     initEditProfile: function () {

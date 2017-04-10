@@ -40,12 +40,14 @@
             </p>
             @endif
         </div>
-        <div class="list">
-            <ul>
+        <div class="swiper-container" id="car_img_list">
+            <div class="swiper-wrapper">
                 @foreach($carImgs as $img)
-                <li><img src="{{$img}}" class="profile_car_img" /></li>
+                    <div class="swiper-slide">
+                        <img data-original="{{$img}}" class="main-img" />
+                    </div>
                 @endforeach
-            </ul>
+            </div>
         </div>
     </section>
     @if($user->hasRole('exp_driver') && $user->profile->nest_info)
