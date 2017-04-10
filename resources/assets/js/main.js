@@ -562,6 +562,8 @@ var site = {
             slidesOffsetBefore:1,
             slidesOffsetAfter:1,
             loop: true,
+            nextButton: '.swiper-button-next',
+            prevButton: '.swiper-button-prev',
             onInit: function(swiper){
                 //Swiper初始化了
                 // var theDrivers = _.values(expDrivers);

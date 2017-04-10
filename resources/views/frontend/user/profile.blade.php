@@ -48,6 +48,8 @@
                     </div>
                 @endforeach
             </div>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
         </div>
     </section>
     @if($user->hasRole('exp_driver') && $user->profile->nest_info)
