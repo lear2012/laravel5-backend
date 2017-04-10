@@ -414,7 +414,7 @@ img:not([src]) {
     position: absolute;
     width:100%;
     top:0rem;
-    display: block;
+    visibility: hidden;
     margin:0 auto;
     z-index:999;
 }

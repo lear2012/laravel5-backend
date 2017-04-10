@@ -596,10 +596,9 @@ var site = {
             console.log(that._destElm);
             console.log($(this).attr('src'));
             $('img', $(that._destElm)).attr('src', $(this).attr('src'));
-            $(that._destElm).css('display', 'block');
+            //$(that._destElm).css('display', 'block');
             ramjet.transform(that._sourseElm, that._destElm, {
                 done: function(){
-                    console.log('open done');
                     //$(that._destElm).css('display', 'block');
                 }
             });
@@ -608,8 +607,7 @@ var site = {
         $('.modal-close-btn').on('click', function(e){
             ramjet.transform(that._destElm, that._sourseElm, {
                 done: function() {
-                    console.log('close done');
-                    $(that._destElm).css('display', 'none');
+                    $(that._destElm).css('visibility', 'hidden');
                 }
             });
             //$(that._destElm).hide();
