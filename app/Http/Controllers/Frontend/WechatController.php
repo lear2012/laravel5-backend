@@ -663,10 +663,19 @@ class WechatController extends Controller
                 $path = $file->store('images/car_imgs');
                 $fileName = basename($path);
                 $fileArr = explode('.', $fileName);
-                $fileArr[0] = $fileArr[0].'_thumb';
-                $thumbFileName = implode(".", $fileArr);
+                $fileName = $fileArr[0];
+                $fileArr[0] = $fileName.'_thumb';
+                $thumbFileName = implode(".", $fileArr); // thumbnail
+                $fileArr[0] = $fileName.'_preview';
+                $previewFileName = implode(".", $fileArr); // preview
+                // deal with thumbnail
                 $img = Image::make(public_path('uploads').'/'.$path)->resize(config('custom.car_img_width'), config('custom.car_img_height'));
                 $img->save($carImgDir.'/'.$thumbFileName);
+                // deal with preview image
+                $img_preview = Image::make(public_path('uploads').'/'.$path);
+                $imgHeight = (540*$img_preview->height())/$img_preview->width();
+                $img_preview = $img_preview->resize(540, (int)$imgHeight);
+                $img_preview->save($carImgDir.'/'.$previewFileName);
                 $data[] = config('custom.car_img_path').'/'.$thumbFileName;
             }
         }
