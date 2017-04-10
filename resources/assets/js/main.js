@@ -590,17 +590,20 @@ var site = {
         });
 
         $('.list').on('click', '.profile_car_img', function(e){
-            that._sourseElm = e.target;
             that._destElm = document.getElementById('img-full-view');
             if($(that._destElm).css('visibility') == 'visible' && e.target == that._sourseElm) {
+                console.log('target same, close it');
                 $('.modal-close-btn').click();
             } else {
                 var previewImgSrc = $(this).attr('src').replace('_thumb.', '_preview.');
                 if($(that._destElm).css('visibility') == 'visible') {
+                    console.log('visible, change src directly');
                     $('img', $(that._destElm)).attr('src', previewImgSrc);
-                    return;
+                    that._sourseElm = e.target;
+                    return true;
                 }
                 $('img', $(that._destElm)).attr('src', previewImgSrc);
+                that._sourseElm = e.target;
                 ramjet.transform(that._sourseElm, that._destElm, {
                     done: function () {
                         $(that._destElm).css('visibility', 'visible');
