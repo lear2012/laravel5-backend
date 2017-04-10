@@ -595,9 +595,11 @@ var site = {
             if($(that._destElm).css('visibility') == 'visible' && e.target == that._sourseElm) {
                 $('.modal-close-btn').click();
             } else {
-                if($(that._destElm).css('visibility') == 'visible')
-                    $('.modal-close-btn').click();
                 var previewImgSrc = $(this).attr('src').replace('_thumb.', '_preview.');
+                if($(that._destElm).css('visibility') == 'visible') {
+                    $('img', $(that._destElm)).attr('src', previewImgSrc);
+                    return;
+                }
                 $('img', $(that._destElm)).attr('src', previewImgSrc);
                 ramjet.transform(that._sourseElm, that._destElm, {
                     done: function () {
