@@ -598,7 +598,7 @@ var site = {
             $('img', $(that._destElm)).attr('src', $(this).attr('src'));
             ramjet.transform(that._sourseElm, that._destElm, {
                 done: function(){
-                    $(that._destElm).show();
+                    $(that._destElm).css('display', 'block');
                 }
             });
         });
@@ -606,6 +606,7 @@ var site = {
         $('.modal-close-btn').on('click', function(e){
             console.log('clicked');
             ramjet.transform(that._destElm, that._sourseElm);
+            ramjet.hide(that._destElm);
         });
     },
 

@@ -419,7 +419,8 @@ img:not([src]) {
     z-index:999;
 }
 #img-full-view img{
+    top:0;
     height: auto;
-    width:14rem;
+    width:100%;
 }
 
