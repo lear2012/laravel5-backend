@@ -549,7 +549,6 @@ var site = {
 
     initProfile: function() {
         var that = this;
-        var myLazyLoad = new LazyLoad();
         $('.return').on('click', function(e){
             window.location.href = '/wechat/member_list';
         });

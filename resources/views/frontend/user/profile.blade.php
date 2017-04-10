@@ -44,7 +44,7 @@
             <div class="swiper-wrapper">
                 @foreach($carImgs as $img)
                     <div class="swiper-slide">
-                        <img data-original="{{$img}}" class="main-img" />
+                        <img src="{{$img}}" class="main-img" />
                     </div>
                 @endforeach
             </div>
