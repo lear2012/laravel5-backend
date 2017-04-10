@@ -596,17 +596,23 @@ var site = {
             console.log(that._destElm);
             console.log($(this).attr('src'));
             $('img', $(that._destElm)).attr('src', $(this).attr('src'));
+            $(that._destElm).css('display', 'block');
             ramjet.transform(that._sourseElm, that._destElm, {
                 done: function(){
-                    $(that._destElm).css('display', 'block');
+                    console.log('open done');
+                    //$(that._destElm).css('display', 'block');
                 }
             });
         });
 
         $('.modal-close-btn').on('click', function(e){
-            console.log('clicked');
-            ramjet.transform(that._destElm, that._sourseElm);
-            ramjet.hide(that._destElm);
+            ramjet.transform(that._destElm, that._sourseElm, {
+                done: function() {
+                    console.log('close done');
+                    $(that._destElm).css('display', 'none');
+                }
+            });
+            //$(that._destElm).hide();
         });
     },
 
