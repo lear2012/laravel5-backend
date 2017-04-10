@@ -606,9 +606,10 @@ var site = {
         });
 
         $('.modal-close-btn').on('click', function(e){
+            $(that._destElm).css('visibility', 'hidden');
             ramjet.transform(that._destElm, that._sourseElm, {
                 done: function() {
-                    $(that._destElm).css('visibility', 'hidden');
+
                 }
             });
         });
@@ -864,7 +865,7 @@ var site = {
                 $('.loading').show();
             },
             onCancel: function() {
-                console.log('no file selected');
+                //console.log('no file selected');
             }
         });
     },
