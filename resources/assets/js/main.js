@@ -878,7 +878,7 @@ var site = {
     },
 
     getCarimgsHtml: function(imgArr) {
-        if(imgArr.length == 0)
+        if(imgArr == '' || imgArr == undefined || imgArr.length == 0)
             return '';
         var previewHtml = '';
         for(var i in imgArr) {
