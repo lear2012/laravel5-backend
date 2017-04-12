@@ -162,6 +162,7 @@ return [
         Overtrue\LaravelWechat\ServiceProvider::class,
         'Laracasts\Utilities\JavaScript\JavaScriptServiceProvider',
         Overtrue\LaravelPinyin\ServiceProvider::class,
+        Rap2hpoutre\LaravelLogViewer\LaravelLogViewerServiceProvider::class,
     ],
     /*
     |--------------------------------------------------------------------------

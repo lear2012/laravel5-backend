@@ -68,6 +68,9 @@ Route::group(['namespace' => 'Backend'], function () {
     // need to auth controller
     Route::group(['as' => 'admin.', 'prefix' => 'admin', 'middleware' => 'auth.admin'], function ()
     {
+        // logs view
+        Route::get('logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index');
+
         //dashboard
         Route::get('/', ['as' => 'dashboard', 'uses' => 'DashboardController@index']);
         Route::get('dashboard', ['as' => 'dashboard', 'uses' => 'DashboardController@index']);
