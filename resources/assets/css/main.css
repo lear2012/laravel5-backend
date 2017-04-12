@@ -271,7 +271,7 @@ img:not([src]) {
 .verified:after {
     content:"已认证";
     position:absolute;
-    top:12rem;
+    top:10rem;
     left:6rem;
     z-index:900;
     font-family:Arial,sans-serif;
