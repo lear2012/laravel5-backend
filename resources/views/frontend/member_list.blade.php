@@ -52,7 +52,7 @@
                     <div class='add-bg'>
                         <a href="{{ route('wechat.edit_profile', ['id' => $loginUser->uid]) }}">+</a>
                     </div>
-                    <img data-original="{{ isset($loginUser->profile) ? $loginUser->profile->avatar : $loginUser->avatar }}" />
+                    <img data-original="{{ isset($loginUser->profile) && !empty($loginUser->profile->avatar) ? $loginUser->profile->avatar : $loginUser->avatar }}" />
                     <p>{{ $loginUser->username ? $loginUser->username : $wechatUser->nickname }}</p>
                     <span><a href="{{ route('wechat.edit_profile', ['id' => $loginUser->uid]) }}">加入可野人</a></span>
                 </li>

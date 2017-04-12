@@ -29,7 +29,7 @@ use App\Models\Sery;
 use App\Models\Motomodel;
 use DB;
 use App\Http\Requests\Frontend\SaveProfileRequest;
-use App\Events\MemberFeePaid;
+//use App\Events\MemberFeePaid;
 use Image;
 
 class WechatController extends Controller
