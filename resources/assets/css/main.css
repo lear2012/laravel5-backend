@@ -425,12 +425,14 @@ img:not([src]) {
 }
 
 #car_img_list .swiper-button-prev {
-    left:-.6rem;
+    left:-.4rem;
     margin-top:-.4rem;
     width:1.6rem;
+    background-image: url('../img/left-arrow.png');
 }
 #car_img_list .swiper-button-next {
-    right:-.6rem;
+    right:-.4rem;
     margin-top:-.4rem;
     width:1.6rem;
+    background-image: url('../img/right-arrow.png');
 }
