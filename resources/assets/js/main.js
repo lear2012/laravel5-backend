@@ -554,7 +554,7 @@ var site = {
         });
 
         var mySwiper = new Swiper(".swiper-container", {
-            slidesPerView: 3,
+            slidesPerView: 1,
             centeredSlides: true,
             //initialSlide :that._centerSlideIndex,
             autoplayDisableOnInteraction : false,

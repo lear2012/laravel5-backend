@@ -426,11 +426,11 @@ img:not([src]) {
 
 #car_img_list .swiper-button-prev {
     left:-.6rem;
-    margin-top:-.2rem;
+    margin-top:-.4rem;
     width:1.6rem;
 }
 #car_img_list .swiper-button-next {
     right:-.6rem;
-    margin-top:-.2rem;
+    margin-top:-.4rem;
     width:1.6rem;
 }
