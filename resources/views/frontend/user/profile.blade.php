@@ -40,6 +40,7 @@
             </p>
             @endif
         </div>
+        {{var_dump($carImgs);}}
         @if(count($carImgs) > 0)
         <div class="swiper-container" id="car_img_list">
             <div class="swiper-wrapper">
