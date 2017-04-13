@@ -40,6 +40,7 @@
             </p>
             @endif
         </div>
+        @if(count($carImgs) > 0)
         <div class="swiper-container" id="car_img_list">
             <div class="swiper-wrapper">
                 @foreach($carImgs as $img)
@@ -51,6 +52,7 @@
             <div class="swiper-button-next"></div>
             <div class="swiper-button-prev"></div>
         </div>
+        @endif
     </section>
     @if($user->hasRole('exp_driver') && $user->profile->nest_info)
     <hr />
