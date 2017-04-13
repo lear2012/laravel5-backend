@@ -260,26 +260,35 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
         $order = Utils::getStaticOrderInfo($orderPayType);
         $order['openid'] = $wechatUser->id;
         $order['pay_config'] = '';
-        // check if the user has already got an register order
-        $orderCheck = \App\Models\Order::where([
-            'wechat_openid' => $order['openid'],
-            'order_type' => 1
-        ])->whereNull('deleted_at')->orderBy('created_at', 'desc')->first();
-        if($orderCheck) {
-            Log::write('wechat', '订单已存在:'.$orderCheck->oid);
-            //$orderCheck->forceDelete();
-            if(!isset($data['code'])) {
-                // 如果有未支付的订单，直接返回订单
-                Log::write('wechat', '订单已存在，直接返回订单oid:'.$orderCheck->oid);
-                $order['out_trade_no'] = $orderCheck->oid;
-                $order['pay_config'] = $orderCheck->pay_config;
-                return $order;
-            } else {
-                Log::write('wechat', '订单已存在，删除旧订单:'.$orderCheck->oid);
-                //删除旧订单，生成新订单
-                $orderCheck->forceDelete();
+        if(isset($data['force']) && $data['force']) {
+            // 删除旧订单，强制重新下单
+            DB::table('orders')->where([
+                'wechat_openid' => $order['openid'],
+                'order_type' => 1
+            ])->whereNull('deleted_at')->delete();
+        } else {
+            // check if the user has already got an register order
+            $orderCheck = \App\Models\Order::where([
+                'wechat_openid' => $order['openid'],
+                'order_type' => 1
+            ])->whereNull('deleted_at')->orderBy('created_at', 'desc')->first();
+            if($orderCheck) {
+                Log::write('wechat', '订单已存在:'.$orderCheck->oid);
+                //$orderCheck->forceDelete();
+                if(!isset($data['code'])) {
+                    // 如果有未支付的订单，直接返回订单
+                    Log::write('wechat', '订单已存在，直接返回订单oid:'.$orderCheck->oid);
+                    $order['out_trade_no'] = $orderCheck->oid;
+                    $order['pay_config'] = $orderCheck->pay_config;
+                    return $order;
+                } else {
+                    Log::write('wechat', '订单已存在，删除旧订单:'.$orderCheck->oid);
+                    //删除旧订单，生成新订单
+                    $orderCheck->forceDelete();
+                }
             }
         }
+
         // save info into db
         $dbOrder = new Order();
         $oid = genId();
