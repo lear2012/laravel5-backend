@@ -204,7 +204,6 @@ class WechatController extends Controller
             abort(404);
         }
         $carImgs = $user->profile->car_imgs ? explode(',', $user->profile->car_imgs) : [];
-        dd($carImgs);
         return view('frontend.user.profile', [
             'user' => $user,
             'carImgs' => $carImgs
