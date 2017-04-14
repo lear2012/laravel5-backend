@@ -448,8 +448,9 @@ input {-webkit-appearance:none; /*去除input默认样式*/}
     position: fixed;
     top: 0px;
     left:15rem;
-    transition:500ms ;
-    background: url(../img/bg_img.png);
+    transition:500ms;
+    background: url(../img/bg_img.png) no-repeat;
+    background-size:100%;
 }
 .JoinKY .brandBox{
     width: 15rem;
@@ -459,7 +460,8 @@ input {-webkit-appearance:none; /*去除input默认样式*/}
     top: 0px;
     left:15rem;
     transition:500ms ;
-    background: url(../img/bg_img.png);
+    background: url(../img/bg_img.png) no-repeat;
+    background-size:100%;
 }
 .JoinKY .seriesBox{
     width: 15rem;
@@ -469,7 +471,8 @@ input {-webkit-appearance:none; /*去除input默认样式*/}
     top: 0px;
     left:15rem;
     transition:500ms ;
-    background: url(../img/bg_img.png);
+    background: url(../img/bg_img.png) no-repeat;
+    background-size:100%;
 }
 .JoinKY .motomodelBox{
     width: 15rem;
@@ -479,7 +482,8 @@ input {-webkit-appearance:none; /*去除input默认样式*/}
     top: 0px;
     left:15rem;
     transition:500ms ;
-    background: url(../img/bg_img.png);
+    background: url(../img/bg_img.png) no-repeat;
+    background-size:100%;
 }
 .JoinKY .dateBox{
     width: 15rem;
@@ -489,7 +493,8 @@ input {-webkit-appearance:none; /*去除input默认样式*/}
     top: 0px;
     left:15rem;
     transition:500ms ;
-    background: url(../img/bg_img.png);
+    background: url(../img/bg_img.png) no-repeat;
+    background-size:100%;
 }
 .JoinKY .search{
     width: 10rem;
