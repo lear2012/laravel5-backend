@@ -208,6 +208,7 @@ a:focus{outline:none;}
     text-align: left;
     height: 80%;
     overflow: auto;
+    font-size:.8rem;
 }
 .memberRules .rule-content {
     min-height: 80%;
