@@ -210,8 +210,8 @@ a:focus{outline:none;}
     overflow: auto;
 }
 .memberRules .rule-content {
-    height: 80%;
-    font-size:.6rem;
+    min-height: 80%;
+    font-size:.8rem;
     overflow: auto;
 }
 .sa-button-container {text-align:center;}
