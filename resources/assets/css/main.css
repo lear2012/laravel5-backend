@@ -213,7 +213,7 @@ a:focus{outline:none;}
 .memberRules .rule-content p{
     font-size:.6rem;
 }
-
+.sweet-alert {width:10rem;}
 .sa-button-container {text-align:center;}
 #profile_notice {
     margin-top:20px;
