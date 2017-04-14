@@ -11,7 +11,7 @@ return [
     /*
      * 使用 Laravel 的缓存系统
      */
-    'use_laravel_cache' => false,
+    'use_laravel_cache' => true,
 
     /*
      * 账号基本信息，请从微信公众平台/开放平台获取

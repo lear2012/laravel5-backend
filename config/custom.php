@@ -26,7 +26,7 @@ return [
     'ID_CARD_VERIFY_DAY_ALLOW' => 3, // 实名认证每天可以验证的次数
     'SMS_REGISTER_VERIFY_DAY_ALLOW' => 3, // 注册短信验证每天可以发送的次数
     'top_discount_user_count' => 50, // 前50个付费用户只需付费1元
-    'full_member_fee' => 60000, // 全额付费用户需要600元
+    'full_member_fee' => 66600, // 全额付费用户需要666元
     'discount_member_fee' => 100, // 会员折扣价1元
     'MAIL_FROM' => '可野Club',
     'MEMBER_PAID_MAIL_SUBJECT' => '欢迎加入可野Club付费会员，成为可野人',
@@ -40,5 +40,7 @@ return [
         'jpg',
         'png',
         'jpeg'
-    ]
+    ],
+    'avatar_img_width' => 50,
+    'avatar_img_height' => 50,
 ];

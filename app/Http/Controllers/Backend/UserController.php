@@ -16,6 +16,7 @@ use App\Models\User;
 use DB;
 use Zizaco\Entrust\Entrust;
 use Auth;
+use Image;
 
 class UserController extends BaseController
 {
@@ -181,6 +182,18 @@ class UserController extends BaseController
                     'nest_info' => isset($data['nest_info']) ? $data['nest_info'] : '',
                     'member_no' => isset($data['member_no']) ? $data['member_no'] : '',
                 ];
+                if(isset($data['avatar']) && $data['avatar'] != '') {
+                    // deal with avatar
+                    $pos = strrpos($data['avatar'], ".");
+                    if($pos !== false) {
+                        $a = substr($data['avatar'], 0, $pos);
+                        $z = substr($data['avatar'], $pos);
+                        $thumbFileName = $a.'_thumb'.$z;
+                        $profileData['avatar'] = $thumbFileName;
+                    }
+                    $img = Image::make(public_path() . $data['avatar'])->resize(config('custom.avatar_img_width'), config('custom.avatar_img_height'));
+                    $img->save(public_path().$thumbFileName);
+                }
                 UserProfile::updateOrCreate(['user_id' => $user->id], $profileData);
             });
         } catch(\Exception $e) {
