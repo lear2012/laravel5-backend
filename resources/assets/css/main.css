@@ -206,15 +206,19 @@ a:focus{outline:none;}
 }
 .memberRules {
     text-align: left;
-    height: 80%;
+    height: 85%;
     width:10rem !important;
     overflow: auto;
     font-size:.6rem;
+    margin-left:2rem;
 }
 .memberRules .rule-content p{
 
 }
-.sweet-alert {width:10rem;}
+.sweet-alert {
+    width:10rem;
+    margin-left:2rem;
+}
 .sa-button-container {text-align:center;}
 #profile_notice {
     margin-top:20px;
