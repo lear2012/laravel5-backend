@@ -207,11 +207,12 @@ a:focus{outline:none;}
 .memberRules {
     text-align: left;
     height: 80%;
+    width:10rem !important;
     overflow: auto;
     font-size:.6rem;
 }
 .memberRules .rule-content p{
-    font-size:.6rem;
+
 }
 .sweet-alert {width:10rem;}
 .sa-button-container {text-align:center;}
