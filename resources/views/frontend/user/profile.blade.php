@@ -9,7 +9,7 @@
 <div class="information">
     <section>
         <div>
-            <img class="portrait" src="{{ $user->profile->avatar }}" />
+            <img class="portrait {{ $user->hasRole('paid_member') ? 'paid-border' : '' }}" src="{{ $user->profile->avatar }}" />
             @if(Auth::user() && Auth::user()->uid == $user->uid && Auth::user()->hasRole('paid_member'))
                 <a href="{{ route('wechat.edit_profile', ['id' => $user->uid]) }}"><span class="join">编辑</span></a>
             @elseif(Auth::user() && Auth::user()->uid == $user->uid && Auth::user()->hasRole('register_member'))

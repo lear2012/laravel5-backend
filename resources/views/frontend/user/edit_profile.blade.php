@@ -5,7 +5,7 @@
     <div class="JoinKY">
         <header>
             <div>
-                <img class="portrait" src="{{ $user->profile->avatar }}" />
+                <img class="portrait {{ $user->hasRole('paid_member') ? 'paid-border' : '' }}" src="{{ $user->profile->avatar }}" />
                 <img src="/img/left-arrow.png" class="return" />
             </div>
             <div class="info">
