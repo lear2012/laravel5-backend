@@ -206,14 +206,12 @@ a:focus{outline:none;}
 }
 .memberRules {
     text-align: left;
-    height: 80%;
+    min-height: 60%;
     overflow: auto;
     font-size:.8rem;
 }
 .memberRules .rule-content {
-    min-height: 80%;
-    font-size:.8rem;
-    overflow: auto;
+
 }
 .sa-button-container {text-align:center;}
 #profile_notice {
