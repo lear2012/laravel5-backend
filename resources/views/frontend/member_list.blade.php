@@ -12,15 +12,13 @@
             <a href="{{ route('wechat.member_register') }}"><span class="join">加入</span></a>
         @endif
         <div class="swiper-container" id="expdriver_list">
-
             <div class="swiper-wrapper">
                 @foreach($expDrivers as $user)
                     <div class="swiper-slide">
-                        <img data-original="{{ ($user && $user->profile) ? $user->profile->avatar : config('custom.default_avatar') }}" class="main-img" id="user{{$user->uid}}" />
+                        <img src="{{ ($user && $user->profile) ? $user->profile->avatar : config('custom.default_avatar') }}" class="main-img" id="user{{$user->uid}}" />
                     </div>
                 @endforeach
             </div>
-
         </div>
         <div class="info" id="info_board">
             <p class="name">
