@@ -217,9 +217,7 @@ a:focus{outline:none;}
 .sweet-alert {
     width:10rem;
     margin: auto;
-    transform: translateX(-50%);
-    -webkit-transition-delay: 0s; /* Safari */
-    transition-delay: 0s;
+    left:-50%;
 }
 .sa-button-container {text-align:center;}
 #profile_notice {
