@@ -443,6 +443,9 @@ img:not([src]) {
     width:1.6rem;
     background-image: url('../img/right-arrow.png');
 }
-.paid-border {
+.information header .paid-border {
+    border: 0.1rem solid #f6d107;
+}
+.JoinKY header .paid-border {
     border: 0.1rem solid #f6d107;
 }
