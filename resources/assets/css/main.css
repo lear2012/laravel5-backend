@@ -208,11 +208,12 @@ a:focus{outline:none;}
     text-align: left;
     height: 80%;
     overflow: auto;
-    font-size:1rem;
+    font-size:.6rem;
 }
-.memberRules .rule-content {
+.memberRules .rule-content p{
+    font-size:.6rem;
+}
 
-}
 .sa-button-container {text-align:center;}
 #profile_notice {
     margin-top:20px;
