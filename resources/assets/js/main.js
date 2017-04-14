@@ -113,7 +113,6 @@ var site = {
             slidesOffsetAfter:1,
             loop: true,
             onInit: function(swiper){
-                console.log('swiper inited');
                 //Swiper初始化了
                 var theDrivers = _.values(expDrivers);
                 var theCenterDriver = theDrivers[that._centerSlideIndex];
@@ -133,7 +132,6 @@ var site = {
                 that.renderActiveExpdriver(swiper);
             },
             onClick: function(swiper, event) {
-                console.log(event.target.id);
                 var uid = _.replace(event.target.id, /[a-zA-Z]+/g, '');
                 window.location.href = '/wechat/profile/'+uid;
                 return true;

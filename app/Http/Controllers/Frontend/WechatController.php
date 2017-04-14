@@ -263,7 +263,7 @@ class WechatController extends Controller
         unset($data['sery']);
         Log::write('common', 'Get params:'.http_build_query($data));
         // check if member_no exist
-        if(isset($data['member_no']) && $data['member_no'] != '') {
+        if(isset($data['member_no']) && !empty($data['member_no'])) {
             if (!is_numeric($data['member_no']) || (int)$data['member_no'] <= 0 || (int)$data['member_no'] > 150)
                 self::setMsgCode(1013);
             $data['member_no'] = str_pad($data['member_no'], 3, "0", STR_PAD_LEFT);
