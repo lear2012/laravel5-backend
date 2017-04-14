@@ -206,11 +206,10 @@ a:focus{outline:none;}
 }
 .memberRules {
     text-align: left;
-    height: 85%;
+    height: 80%;
     width:10rem !important;
     overflow: auto;
     font-size:.6rem;
-    margin-left:2rem;
 }
 .memberRules .rule-content p{
 
