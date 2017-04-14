@@ -165,7 +165,7 @@ class UserController extends BaseController
                 $role_ids = explode(",", $data['role_ids']);
                 unset($data['role_ids']);
                 $user->username = $data['username'];
-                if(trim($data['password']) != '')
+                if(isset($data['password']) && trim($data['password']) != '')
                     $user->password = \Hash::make($data['password']);
                 $user->status = $data['status'];
                 $user->is_front = $data['is_front'];
@@ -173,13 +173,13 @@ class UserController extends BaseController
                 $user->roles()->sync($role_ids);
                 // profile
                 $profileData = [
-                    'real_name' => $data['real_name'],
-                    'id_no' => $data['id_no'],
-                    'keye_age' => $data['keye_age'],
-                    'quotation' => $data['quotation'],
-                    'avatar' => $data['avatar'],
-                    'nest_info' => $data['nest_info'],
-                    'member_no' => $data['member_no'],
+                    'real_name' => isset($data['real_name']) ? $data['real_name'] : '',
+                    'id_no' => isset($data['id_no']) ? $data['id_no'] : '',
+                    'keye_age' => isset($data['keye_age']) ? $data['keye_age'] : '',
+                    'quotation' => isset($data['quotation']) ? $data['quotation'] : '',
+                    'avatar' => isset($data['avatar']) ? $data['avatar'] : '',
+                    'nest_info' => isset($data['nest_info']) ? $data['nest_info'] : '',
+                    'member_no' => isset($data['member_no']) ? $data['member_no'] : '',
                 ];
                 UserProfile::updateOrCreate(['user_id' => $user->id], $profileData);
             });
