@@ -103,7 +103,7 @@
                             <span class="static-text">{{ $user->profile->member_no }}</span>
                         @else
                             <span class="member_no_prefix">KY.88</span>
-                            <input class="Ainp" type="" name="member_no" id="member_no" value="{{substr($user->profile->member_no, 5)}}" />
+                            <input class="Ainp" type="" name="member_no" id="member_no" value="" />
                         @endif
                     </label>
                 </li>
@@ -141,7 +141,7 @@
             <input type="hidden" name="self_get" id="self_get" value="1" />
             <input type="hidden" name="car_imgs" id="car_imgs" value="{{$user->profile->car_imgs}}" />
             @if(!empty($user->profile->member_no))
-                <input type="hidden" name="member_no" id="member_no" value="{{$user->profile->member_no}}" />
+                <input type="hidden" name="member_no" id="member_no" value="{{substr($user->profile->member_no, 5)}}" />
             @endif
             <input type="hidden" name="uid" id="uid" value="{{$user->uid}}" />
             <button class="submit" id="save_profile_btn">保存</button>
