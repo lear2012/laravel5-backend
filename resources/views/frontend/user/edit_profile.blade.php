@@ -140,7 +140,7 @@
             </div>
             <input type="hidden" name="self_get" id="self_get" value="1" />
             <input type="hidden" name="car_imgs" id="car_imgs" value="{{$user->profile->car_imgs}}" />
-            @if(!emtpy($user->profile->member_no))
+            @if(!empty($user->profile->member_no))
                 <input type="hidden" name="member_no" id="member_no" value="{{$user->profile->member_no}}" />
             @endif
             <input type="hidden" name="uid" id="uid" value="{{$user->uid}}" />
