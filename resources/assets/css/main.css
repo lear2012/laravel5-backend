@@ -254,7 +254,7 @@ a:focus{outline:none;}
 }
 #save_profile_btn {color:#000}
 #profile_form .member_no_li .member_no_prefix{text-align:right;font-size:.6rem;color:white;}
-#profile_form .member_no_li input{width:20%;}
+#profile_form .member_no_li input{width:52%;}
 #nest_info {
     padding:20px;
 }
