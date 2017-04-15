@@ -103,7 +103,7 @@
                             <span class="static-text">{{ $user->profile->member_no }}</span>
                         @else
                             <span class="member_no_prefix">KY.88</span>
-                            <input class="Ainp" type="" name="member_no" id="member_no" value="" />
+                            <input class="Ainp" type="" name="member_no" id="member_no" value="" placeholder="请选取001-150间三位数字"/>
                         @endif
                     </label>
                 </li>
