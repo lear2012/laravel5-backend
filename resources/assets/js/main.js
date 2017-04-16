@@ -109,8 +109,6 @@ var site = {
             initialSlide :that._centerSlideIndex,
             autoplayDisableOnInteraction : false,
             spaceBetween: 0,
-            slidesOffsetBefore:1,
-            slidesOffsetAfter:1,
             loop: true,
             onInit: function(swiper){
                 //Swiper初始化了
@@ -122,10 +120,10 @@ var site = {
             visibilityFullFit: true,
             autoResize: false,
             watchSlidesProgress: !0,
-            pagination: ".swiper-pagination",
-            paginationClickable: !0,
-            prevButton:'.swiper-button-prev',
-            nextButton:'.swiper-button-next',
+            // pagination: ".swiper-pagination",
+            // paginationClickable: !0,
+            // prevButton:'.swiper-button-prev',
+            // nextButton:'.swiper-button-next',
             slideToClickedSlide: false,
             onTransitionEnd: function(swiper) {
                 //$('.swiper-slide-active').css('width', '180px');

@@ -102,8 +102,8 @@ a:focus{outline:none;}
 #expdriver_list .swiper-right {margin-left:0px}
 #expdriver_list .swiper-slide {width:100%}
 #expdriver_list .swiper-slide-active {width:100%}
-#expdriver_list .swiper-slide-next img{margin-right:0px;}
-#expdriver_list .swiper-slide-prev img{margin-left:0px;}
+#expdriver_list .swiper-slide-next img{margin-right:5px;}
+#expdriver_list .swiper-slide-prev img{margin-left:5px;}
 #profile_form li .Ainp{width:60%}
 .JoinKY .info {
     text-align: center;
