@@ -177,6 +177,7 @@ class UserController extends BaseController
                 // profile
                 $profileData = [
                     'real_name' => isset($data['real_name']) ? $data['real_name'] : '',
+                    'sex' => isset($data['sex']) ? $data['sex'] : '',
                     'id_no' => isset($data['id_no']) ? $data['id_no'] : '',
                     'keye_age' => isset($data['keye_age']) ? $data['keye_age'] : '',
                     'quotation' => isset($data['quotation']) ? $data['quotation'] : '',
