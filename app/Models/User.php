@@ -319,7 +319,6 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
 
     public static function getSexes() {
         return [
-            '0' => '',
             '1' => '男',
             '2' => '女',
         ];
