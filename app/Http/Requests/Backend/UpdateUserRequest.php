@@ -24,7 +24,6 @@ class UpdateUserRequest extends Request {
 		return [
             'id' => 'required|int',
 			'username'  => 'required|max:20',
-			'email' => 'required|email',
             'role_ids' => 'required',
         ];
 	}
