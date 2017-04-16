@@ -126,13 +126,15 @@ class UserController extends BaseController
     {
         $user = $this->users->find($id);
         $roleIds = $user->getRoleIds();
+        $sexes = User::getSexes();
         return view(
             'backend.user.edit',
             [
                 'user' => $user,
                 'userRoles' => $user->roles->pluck('id')->all(),
                 'roles' => $this->roles->all(),
-                'roleIds' => $roleIds
+                'roleIds' => $roleIds,
+                'sexes' => $sexes
             ]
         );
     }
