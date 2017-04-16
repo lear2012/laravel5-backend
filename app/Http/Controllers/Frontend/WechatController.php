@@ -107,6 +107,7 @@ class WechatController extends Controller
                     if (!$user)
                         self::setMsgCode(1001);
                     // login the user
+                    self::setData($user->uid);
                     Auth::login($user);
                 }
             }
@@ -343,7 +344,7 @@ class WechatController extends Controller
                     }
                     // check to see if we can send him invitation codes
                     $paidMemberCount = User::getPaidMemberCount();
-                    if($paidMemberCount <= config('custom.top_discount_user_count') || (int)$order->amount == config('custom.full_member_fee')) {
+                    if($paidMemberCount <= config('custom.top_discount_user_count')) {
                         // check if the user has $c invitation codes
                         $codeCount = Invitation::where('user_id', '=', $user->id)->count();
                         if($codeCount == 0) {

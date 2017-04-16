@@ -310,7 +310,7 @@ var site = {
             //beforeSend: bstool.submit_loading, //执行ajax前执行loading函数.直到success
             success: function(rs) {//成功获得的也是json对象
                 if(rs.errno == 0) {
-                    that.showPayModal({from:'register'});
+                    that.showPayModal({from:'register',uid:rs.data});
                 } else {
                     that.showError(rs);
                 }
@@ -325,10 +325,11 @@ var site = {
         switch(params.from) {
             case 'register':
                 title = "<p>注册成功，接着看如何成为可野人，享受可野人福利</p>";
+                loc = '/wechat/edit_profile?id='+params.uid;
                 break;
             case 'profile':
                 title = "<p>付费成为可野人，享受可野人福利</p>";
-                loc = '/wechat/edit_profile?id='+params.uid;
+                //loc = '/wechat/edit_profile?id='+params.uid;
                 break;
             default:
         }
@@ -484,7 +485,7 @@ var site = {
         var str = '<div class="rule-content">';
         str += '<p>一、申请条件：</p>'+
             '1 、填写个人、车辆信息等入会完整信息<br />'+
-            '2 、交纳入会费600元（赠送定制金属车贴，专属会员编号，车牌号定制展览，3个1元推荐名额及各种服务、活动、优惠等）<br />'+
+            '2 、交纳入会费666元（赠送定制金属车贴，专属会员编号，车牌号定制展览及各种服务、活动、优惠等）<br />'+
             '<p>二、付费成为可野人专享<br />'+
             '1 、专属会员编号、特别定制高档金属车贴（印有会员编号）、车牌号定制展览<br />'+
             '2 、可野老司机线下party、可野798全球自驾主题空间沙龙等活动永久免费参加<br />'+
@@ -530,7 +531,7 @@ var site = {
                 // 支付成功后的回调函数
                 if(res.errMsg == "chooseWXPay:ok" ) {
                     window.location.href=loc;
-                    return false;
+                    return true;
                 } else if(res.err_msg == "chooseWXPay:fail" ) {
                     alert('支付失败，请稍后重试！');
                     window.location.href=loc;
