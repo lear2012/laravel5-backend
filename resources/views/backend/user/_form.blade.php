@@ -34,6 +34,17 @@
 </div>
 
 <div class="form-group">
+    <label class="col-lg-2 control-label">性别</label>
+    <div class="col-lg-3">
+        @if(isset($user->id))
+            <input type="checkbox" value="{{$user->sex}}" id="sex" name="sex" {{$user->sex == 1 ? 'checked' : ''}}/>
+        @else
+            <input type="checkbox" value="1" name="sex" checked/>
+        @endif
+    </div>
+</div>
+
+<div class="form-group">
     {!! Form::label('id_no', '身份证号码', ['class' => 'col-lg-2 control-label']) !!}
     <div class="col-lg-3">
         {!! Form::text('id_no', (isset($user->profile) ? $user->profile->id_no : ''), ['class' => 'form-control', 'placeholder' => '身份证号码']) !!}
