@@ -36,11 +36,16 @@
 <div class="form-group">
     <label class="col-lg-2 control-label">性别</label>
     <div class="col-lg-3">
-        @if(isset($user->id))
-            <input type="checkbox" value="{{$user->sex}}" id="sex" name="sex" {{$user->sex == 1 ? 'checked' : ''}}/>
-        @else
-            <input type="checkbox" value="1" name="sex" checked/>
-        @endif
+        <select class="form-control select2" name="sex" id="sex">
+            <option selected="selected" value="">请选择性别</option>
+            @foreach(User::getSexes() as $k => $t)
+                @if($k == $user->profile->sex)
+                    <option value="{{$k}}" selected>{{$t}}</option>
+                @else
+                    <option value="{{$k}}">{{$t}}</option>
+                @endif
+            @endforeach
+        </select>
     </div>
 </div>
 

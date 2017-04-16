@@ -316,4 +316,12 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
         });
         return $members ? count($members) : 0;
     }
+
+    public static function getSexes() {
+        return [
+            '0' => '',
+            '1' => '男',
+            '2' => '女',
+        ];
+    }
 }

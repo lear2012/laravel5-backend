@@ -11,6 +11,7 @@ var site = {
     normal_init: function() {
         this.ops_alert();
         this.init_select();
+        this.init_normal_select();
         this.init_checkbox();
     },
 
