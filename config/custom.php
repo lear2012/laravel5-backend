@@ -41,6 +41,6 @@ return [
         'png',
         'jpeg'
     ],
-    'avatar_img_width' => 50,
-    'avatar_img_height' => 50,
+    'avatar_img_width' => 640,
+    'avatar_img_height' => 640,
 ];
