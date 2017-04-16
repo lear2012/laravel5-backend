@@ -73,7 +73,7 @@
     <div class="col-lg-6">
         <div class="clearfix">
             <input type="file" name="file" id="file"  class="col-xs-10 col-sm-5" />
-            <input type="hidden" name="avatar" id="avatar"  value="{!! isset($user->profile->avatar) ? $user->profile->avatar : '' !!}" />
+            <input type="hidden" name="avatar" id="avatar" value="" />
         </div>
     </div>
 </div>
