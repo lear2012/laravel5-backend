@@ -195,7 +195,8 @@ class UserController extends BaseController
                     }
                     $img = Image::make(public_path() . $data['avatar'])->resize(config('custom.avatar_img_width'), config('custom.avatar_img_height'));
                     $img->save(public_path().$thumbFileName);
-                }
+                } else
+                    unset($profileData['avatar']);
                 UserProfile::updateOrCreate(['user_id' => $user->id], $profileData);
             });
         } catch(\Exception $e) {
