@@ -197,7 +197,6 @@ class UserController extends BaseController
                 UserProfile::updateOrCreate(['user_id' => $user->id], $profileData);
             });
         } catch(\Exception $e) {
-            dd($e);
             return redirect()->back()->with('jsmsg', amaran_msg(trans('message.update_user_failed'), 'error'));
         }
         $url = session('backurl', route('admin.auth.user.index'));
