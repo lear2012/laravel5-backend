@@ -406,14 +406,17 @@ var site = {
         this.clearAllField();
         if(params.real_name == '') {
             that.errorField($('#real_name'));
+            $('#profile_form').scrollTop(0);
             return false;
         }
         if(params.id_no == '') {
             that.errorField($('#id_no'));
+            $('#profile_form').scrollTop(0);
             return false;
         }
         if(params.car_no == '') {
             that.errorField($('#car_no'));
+            $('#profile_form').scrollTop(0);
             return false;
         }
         return true;
