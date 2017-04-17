@@ -107,7 +107,7 @@ class WechatController extends Controller
                     if (!$user)
                         self::setMsgCode(1001);
                     // login the user
-                    self::setData($user->uid);
+                    self::setData((string)$user->uid);
                     Auth::login($user);
                 }
             }
