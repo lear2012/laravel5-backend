@@ -21,6 +21,12 @@
 #register_form li.error{
     border-bottom: 0.04rem solid red;
 }
+#profile_form li.success {
+    border-bottom:0.04rem solid green;
+}
+#profile_form li.error{
+    border-bottom: 0.04rem solid red;
+}
 #timer {
     color:white;
     width:30%;
