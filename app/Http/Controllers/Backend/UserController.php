@@ -69,10 +69,12 @@ class UserController extends BaseController
      */
     public function create()
     {
+        $sexes = User::getSexes();
         return view('backend.user.create',
             [
                 'roles' => $this->roles->all(),
-                'userRoles' => array()
+                'userRoles' => array(),
+                'sexes' => $sexes
             ]
         );
     }
