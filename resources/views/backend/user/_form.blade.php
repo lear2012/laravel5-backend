@@ -39,7 +39,7 @@
         <select class="form-control select2" name="sex" id="sex">
             <option selected="selected" value="">请选择性别</option>
             @foreach($sexes as $k => $t)
-                @if($k == $user->profile->sex)
+                @if(isset($user->profile) && $k == $user->profile->sex)
                     <option value="{{$k}}" selected>{{$t}}</option>
                 @else
                     <option value="{{$k}}">{{$t}}</option>
