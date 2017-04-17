@@ -74,7 +74,8 @@ class UserController extends BaseController
             [
                 'roles' => $this->roles->all(),
                 'userRoles' => array(),
-                'sexes' => $sexes
+                'sexes' => $sexes,
+                'user' => Auth::user()
             ]
         );
     }
