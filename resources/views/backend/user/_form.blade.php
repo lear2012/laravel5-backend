@@ -108,7 +108,7 @@
     <label class="col-lg-2 control-label">角色</label>
     <div class="col-lg-3">
         <select id="role_selection" class="form-control role-select" multiple="multiple" name="assignees_roles[]">
-        @if (count($roles) > 0)
+        @if (isset($roles) && count($roles) > 0)
             @foreach($roles as $role)
                 <option value="{{$role->id}}" {{in_array($role->id, $userRoles) ? 'selected' : ''}}>{!! $role->display_name !!}</option>
             @endforeach
@@ -138,7 +138,7 @@
 </div><!--form control-->
 @if(isset($user->id))
     <input type="hidden" name="id" value="{{$user->id}}" />
-    <input type="hidden" name="role_ids" id="role_ids" value="{{$roleIds}}" />
+    <input type="hidden" name="role_ids" id="role_ids" value="{{isset($roleIds) ? $roleIds : ''}}" />
 @else
     <input type="hidden" name="role_ids" id="role_ids" value="" />
 @endif
