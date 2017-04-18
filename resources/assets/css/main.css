@@ -77,9 +77,10 @@
     position: absolute;
     width: 3.2rem;
     height: 0.84rem;
-    right: 0.6rem;
+    right: 1rem;
     top: 0.8rem;
     font-size:0.6rem;
+    text-align:right;
     color:#000;
 }
 .return {
@@ -459,4 +460,10 @@ img:not([src]) {
 }
 .JoinKY header .paid-border {
     border: 0.04rem solid #f6d107;
+}
+.member_name {
+    word-break:keep-all;           /* 不换行 */
+    white-space:nowrap;          /* 不换行 */
+    overflow:hidden;               /* 内容超出宽度时隐藏超出部分的内容 */
+    text-overflow:ellipsis;         /* 当对象内文本溢出时显示省略标记(...) ；需与overflow:hidden;一起使用。*/
 }

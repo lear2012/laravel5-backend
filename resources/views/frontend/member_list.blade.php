@@ -42,7 +42,7 @@
             @if(Auth::user() && Auth::user()->hasRole('paid_member'))
                 <li class="bor-color">
                     <a href="{{ route('wechat.profile', ['id' => $loginUser->uid]) }}"><img data-original="{{ $loginUser ? $loginUser->profile->avatar : $loginUser->avatar }}" /></a>
-                    <p>{{ $loginUser->username ? $loginUser->username : $wechatUser->nickname }}</p>
+                    <p class="member_name">{{ $loginUser->username ? $loginUser->username : $wechatUser->nickname }}</p>
                     <span>{{ $loginUser->profile->member_no ? $loginUser->profile->member_no : '&nbsp;' }}</span>
                 </li>
             @elseif(Auth::user() && Auth::user()->hasRole('register_member'))
@@ -51,7 +51,7 @@
                         <a href="{{ route('wechat.edit_profile', ['id' => $loginUser->uid]) }}">+</a>
                     </div>
                     <img data-original="{{ isset($loginUser->profile) && !empty($loginUser->profile->avatar) ? $loginUser->profile->avatar : $loginUser->avatar }}" />
-                    <p>{{ $loginUser->username ? $loginUser->username : $wechatUser->nickname }}</p>
+                    <p class="member_name">{{ $loginUser->username ? $loginUser->username : $wechatUser->nickname }}</p>
                     <span><a href="{{ route('wechat.edit_profile', ['id' => $loginUser->uid]) }}">加入可野人</a></span>
                 </li>
             @else
@@ -60,7 +60,7 @@
                         <a href="{{ route('wechat.member_register') }}">+</a>
                     </div>
                     <img data-original="{{ isset($loginUser->profile) ? $loginUser->profile->avatar : $loginUser->avatar }}" />
-                    <p>{{ $loginUser->username ? $loginUser->username : $wechatUser->nickname }}</p>
+                    <p class="member_name">{{ $loginUser->username ? $loginUser->username : $wechatUser->nickname }}</p>
                     <span>&nbsp;</span>
                 </li>
             @endif
@@ -68,7 +68,7 @@
                 @if($user->uid != $loginUser->uid)
                 <li>
                     <a href="{{ route('wechat.profile', ['id' => $user->uid]) }}"><img data-original="{{ ($user && $user->profile) ? $user->profile->avatar : config('custom.default_avatar') }}" /></a>
-                    <p>{{ ($user && $user->profile->wechat_no) ? $user->profile->wechat_no : '&nbsp;' }}</p>
+                    <p class="member_name">{{ ($user && $user->profile->wechat_no) ? $user->profile->wechat_no : '&nbsp;' }}</p>
                     <span>{{ $user->profile->member_no ? $user->profile->member_no : '&nbsp;' }}</span>
                 </li>
                 @endif
