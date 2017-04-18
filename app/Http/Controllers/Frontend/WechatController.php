@@ -214,7 +214,7 @@ class WechatController extends Controller
     public function editProfile(Request $request)
     {
         $id = $request->get('id');
-        Log::write('common', 'Uid compare:' .Auth::user()->uid.'=='.$id );
+        //Log::write('common', 'Uid compare:' .Auth::user()->uid.'=='.$id );
         if(!Auth::user() || Auth::user()->uid != $id) {
             abort(401);
         }
