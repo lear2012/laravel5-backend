@@ -130,9 +130,9 @@ var site = {
                 that.renderActiveExpdriver(swiper);
             },
             onClick: function(swiper, event) {
-                if(event.target.id == undefined)
-                    return;
                 var uid = _.replace(event.target.id, /[a-zA-Z]+/g, '');
+                if(!$.isNumeric(uid))
+                    return;
                 window.location.href = '/wechat/profile/'+uid;
                 event.stopPropagation();
                 return true;
