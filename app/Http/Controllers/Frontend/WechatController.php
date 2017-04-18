@@ -99,8 +99,8 @@ class WechatController extends Controller
                     self::setMsgCode(1003);
                 } else if (isset($data['invite_no']) && !empty($data['invite_no']) && !Invitation::codeValid($data['invite_no'])) {
                         self::setMsgCode(1010);
-                } else if (!$this->checkSmsCode($data['mb_verify_code'])) {
-                    self::setMsgCode(1006);
+//                } else if (!$this->checkSmsCode($data['mb_verify_code'])) {
+//                    self::setMsgCode(1006);
                 } else {
                     // register the user
                     $user = User::register($data);
@@ -354,7 +354,7 @@ class WechatController extends Controller
                             $messageId = $this->notice->send([
                                 'touser' => $order->wechat_openid,
                                 'template_id' => config('custom.MEMBER_INVITATION_CODES_TEMPLATE_ID'),
-                                'url' => env('APP_URL').'/wechat/rule',
+                                'url' => '',
                                 'data' => [
                                     "first"  => "欢迎成为可野Club付费会员!",
                                     "UID"   => $user->username,

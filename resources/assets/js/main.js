@@ -90,6 +90,7 @@ var site = {
                 if(rs.errno == 0) {
                     that.successField($('#invite_no'));
                 } else {
+                    $('#invite_no').val('');
                     that.showError(rs);
                 }
             }
@@ -326,7 +327,7 @@ var site = {
         switch(params.from) {
             case 'register':
                 title = "<p>注册成功，接着看如何成为可野人，享受可野人福利</p>";
-                //loc = '/wechat/edit_profile?id='+params.uid;
+                loc = '/wechat/edit_profile?id='+params.uid;
                 break;
             case 'profile':
                 title = "<p>付费成为可野人，享受可野人福利</p>";
@@ -415,6 +416,10 @@ var site = {
         if(params.id_no == '') {
             that.errorField($('#id_no'));
             $('body').scrollTop(0);
+            return false;
+        }
+        if(params.member_no == '') {
+            that.errorField($('#member_no'));
             return false;
         }
         return true;
