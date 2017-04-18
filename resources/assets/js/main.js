@@ -414,11 +414,6 @@ var site = {
             $('body').scrollTop(0);
             return false;
         }
-        if(params.car_no == '') {
-            that.errorField($('#car_no'));
-            $('body').scrollTop(0);
-            return false;
-        }
         return true;
     },
 
