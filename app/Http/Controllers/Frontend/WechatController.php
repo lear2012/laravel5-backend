@@ -215,9 +215,9 @@ class WechatController extends Controller
     {
         $id = $request->get('id');
         //Log::write('common', 'Uid compare:' .Auth::user()->uid.'=='.$id );
-        if(!Auth::user() || Auth::user()->uid != $id) {
-            abort(401);
-        }
+//        if(!Auth::user() || Auth::user()->uid != $id) {
+//            abort(401);
+//        }
         $config = []; // 支付配置信息
         $paying = $request->get('paying');
         $wechatUser = session('wechat.oauth_user'); // 拿到授权用户资料
