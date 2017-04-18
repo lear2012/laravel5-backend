@@ -168,7 +168,12 @@ a:focus{outline:none;}
 }
 .alphabetList {top:10%;font-size:.6rem;
     text-align: center;}
-.headline {margin-top:4rem;font-size:1.6rem;margin-bottom:1rem;border-bottom: 0.02rem solid rgba(153, 111, 40, 0.6);}
+.headline {
+    margin-top:4rem;
+    font-size:1.6rem;
+    margin-bottom:1rem;
+    border-bottom: 0.02rem solid rgba(153, 111, 40, 0.6);
+}
 .error-content {font-size:.6rem;}
 .JoinKY  .info{
     text-align: center;
