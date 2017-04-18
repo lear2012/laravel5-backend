@@ -214,10 +214,10 @@ class WechatController extends Controller
     public function editProfile(Request $request)
     {
         $id = $request->get('id');
+        Log::write('common', 'Uid compare:' .Auth::user()->uid.'=='.$id );
         if(!Auth::user() || Auth::user()->uid != $id) {
             abort(401);
         }
-        Log::write('common', 'Get params:' . http_build_query($request->all()));
         $config = []; // 支付配置信息
         $paying = $request->get('paying');
         $wechatUser = session('wechat.oauth_user'); // 拿到授权用户资料
