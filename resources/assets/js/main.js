@@ -326,7 +326,7 @@ var site = {
         switch(params.from) {
             case 'register':
                 title = "<p>注册成功，接着看如何成为可野人，享受可野人福利</p>";
-                loc = '/wechat/edit_profile?id='+params.uid;
+                //loc = '/wechat/edit_profile?id='+params.uid;
                 break;
             case 'profile':
                 title = "<p>付费成为可野人，享受可野人福利</p>";
