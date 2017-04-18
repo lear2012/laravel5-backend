@@ -168,8 +168,8 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
                 //$p['avatar'] = $faker->imageUrl(50,50);
                 $profile = UserProfile::create($p);
                 $user->roles()->attach(config('custom.register_member_code'));
-		Log::write('common', 'User register success:'.http_build_query($data));
-		return $user;
+		        Log::write('common', 'User register success:'.http_build_query($data));
+		        return $user;
             });
         } catch(\Exception $e) {
             Log::write('common', 'User register failed:'.$e->getMessage());

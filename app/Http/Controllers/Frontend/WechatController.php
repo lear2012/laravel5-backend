@@ -108,7 +108,7 @@ class WechatController extends Controller
                         self::setMsgCode(1001);
                     // login the user
                     self::setData((string)$user->uid);
-                    Auth::login($user);
+                    Auth::login($user, true);
                 }
             }
             self::sendJsonMsg();
@@ -358,7 +358,7 @@ class WechatController extends Controller
                                 'data' => [
                                     "first"  => "欢迎成为可野Club付费会员!",
                                     "UID"   => $user->username,
-                                    "CtripCode"  => implode(",", $codes),
+                                    "CtripCode"  => implode(", ", $codes),
                                     "Remark" => "您可以将邀请码发送给您的朋友，使用该邀请码的朋友只需付1元即可成为可野人，一个邀请码仅可使用一次！",
                                 ],
                             ]);
