@@ -99,8 +99,8 @@ class WechatController extends Controller
                     self::setMsgCode(1003);
                 } else if (isset($data['invite_no']) && !empty($data['invite_no']) && !Invitation::codeValid($data['invite_no'])) {
                         self::setMsgCode(1010);
-//                } else if (!$this->checkSmsCode($data['mb_verify_code'])) {
-//                    self::setMsgCode(1006);
+                } else if (!$this->checkSmsCode($data['mb_verify_code'])) {
+                    self::setMsgCode(1006);
                 } else {
                     // register the user
                     $user = User::register($data);
@@ -215,9 +215,9 @@ class WechatController extends Controller
     {
         $id = $request->get('id');
         //Log::write('common', 'Uid compare:' .Auth::user()->uid.'=='.$id );
-//        if(!Auth::user() || Auth::user()->uid != $id) {
-//            abort(401);
-//        }
+        if(!Auth::user() || Auth::user()->uid != $id) {
+            abort(401);
+        }
         $config = []; // 支付配置信息
         $paying = $request->get('paying');
         $wechatUser = session('wechat.oauth_user'); // 拿到授权用户资料
