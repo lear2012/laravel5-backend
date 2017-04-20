@@ -275,13 +275,13 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
             if($orderCheck) {
                 Log::write('wechat', '订单已存在:'.$orderCheck->oid);
                 //$orderCheck->forceDelete();
-                if(!isset($data['code'])) {
+                if(!isset($data['code']) && $orderCheck->expire_at > time()) { // 有订单，并且未过期, 无邀请码
                     // 如果有未支付的订单，直接返回订单
                     Log::write('wechat', '订单已存在，直接返回订单oid:'.$orderCheck->oid);
                     $order['out_trade_no'] = $orderCheck->oid;
                     $order['pay_config'] = $orderCheck->pay_config;
                     return $order;
-                } else {
+                } else { // 过期，或者有邀请码，均需要重新生成订单
                     Log::write('wechat', '订单已存在，删除旧订单:'.$orderCheck->oid);
                     //删除旧订单，生成新订单
                     $orderCheck->forceDelete();
@@ -299,6 +299,7 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
         $dbOrder->wechat_no = $wechatUser->nickname;
         $dbOrder->amount = $order['total_fee'];
         $dbOrder->order_type = 1;
+        $dbOrder->expire_at = time() + config('custom.order_valid_seconds');
         $dbOrder->status = 1;
         if($dbOrder->save()) {
             $order['out_trade_no'] = $oid;

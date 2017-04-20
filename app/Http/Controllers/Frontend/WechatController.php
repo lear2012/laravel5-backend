@@ -231,7 +231,7 @@ class WechatController extends Controller
         $brands = $this->getBrands();
         if($userIsRegister) {
             // 如果是注册会员，需要有支付会费的config
-            $order = User::setRegisterOrder(['force' => true]); // 强制重新生成订单
+            $order = User::setRegisterOrder();
             Log::write('wechat', 'Get order params:' . http_build_query($order));
             // 如果订单的pay_config为空，或者如果该注册会员邀请码已经使用则重新生成订单支付配置
             if ((!empty($order) && empty($order['pay_config'])) || (!empty($user->profile->invite_no) && !Invitation::codeValid($user->profile->invite_no))) {

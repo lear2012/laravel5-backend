@@ -239,8 +239,8 @@ class Utils {
                     'device_info'      => 'WEB',
                     'total_fee'        => 1, // for debug
                     'notify_url'       => env('APP_URL').'/wechat/notify', // 支付结果通知网址，如果不设置则会使用配置里的默认地址
-                    'time_start'       => date('YmdHis'),
-                    'time_expire'      => date('YmdHis', time()+3600*24*30*12)
+                    //'time_start'       => date('YmdHis'), // ，默认过期两小时, 太长过期时间貌似不起作用
+                    //'time_expire'      => date('YmdHis', time()+3600*24*30*12)
                 ];
                 if(isset($types[1]) && $types[1] == 'debug')
                     $ret['total_fee'] = 1;

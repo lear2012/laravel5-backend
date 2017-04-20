@@ -69,6 +69,7 @@
                             <th>{{ trans('crud.users.username') }}</th>
                             <th>{{ trans('crud.users.roles') }}</th>
                             <th>{{ trans('crud.users.email') }}</th>
+                            <th>{{ trans('crud.users.wechat_no') }}</th>
                             <th>{{ trans('crud.users.created') }}</th>
                             <th>{{ trans('crud.users.updated') }}</th>
                             <th>状态</th>
@@ -90,6 +91,7 @@
                                     @endif
                                 </td>
                                 <td>{{ $user->email }}</td>
+                                <td>{{ isset($user->profile->wechat_no) ? $user->profile->wechat_no : '' }}</td>
                                 <td>{{ $user->created_at }}</td>
                                 <td>{{ $user->updated_at }}</td>
                                 <td><small class="label {{  $user->getOriginal('status') == 1 ? 'label-success' : 'label-danger'}}">{{ $user->status }}</small></td>

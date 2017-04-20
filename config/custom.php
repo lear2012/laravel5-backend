@@ -43,4 +43,5 @@ return [
     ],
     'avatar_img_width' => 160,
     'avatar_img_height' => 160,
+    'order_valid_seconds' => (2*3600-10), // two hours
 ];
