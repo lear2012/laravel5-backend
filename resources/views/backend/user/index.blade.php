@@ -92,6 +92,7 @@
                                 </td>
                                 <td>{{ $user->email }}</td>
                                 <td>{{ isset($user->profile->wechat_no) ? $user->profile->wechat_no : '' }}</td>
+                                <td>{{ isset($user->profile->address) ? $user->profile->address : '' }}</td>
                                 <td>{{ $user->created_at }}</td>
                                 <td>{{ $user->updated_at }}</td>
                                 <td><small class="label {{  $user->getOriginal('status') == 1 ? 'label-success' : 'label-danger'}}">{{ $user->status }}</small></td>
