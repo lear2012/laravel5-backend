@@ -60,7 +60,15 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
      *
      * @var array
      */
-    protected $fillable = ['uid', 'username', 'mobile', 'email', 'password', 'is_front', 'status'];
+    protected $fillable = [
+        'uid',
+        'username',
+        'mobile',
+        'email',
+        'password',
+        'is_front',
+        'status'
+    ];
 
     protected $appends = ['vehicle'];
     /**
@@ -157,7 +165,8 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
             //$u['password'] = \Hash::make($data['password']);
             $p['invite_no'] = isset($data['invite_no']) ? $data['invite_no'] : '';
             $p['wechat_id'] = $wechatUser->id;
-            $p['wechat_no'] = $wechatUser->nickname;
+            $p['wechat_no'] = $wechatUser->name;
+            $p['wechat_nick'] = $wechatUser->nickname;
             $p['avatar'] = $wechatUser->avatar;
             $wechatInfo = $wechatUser->getOriginal();
             $p['sex'] = $wechatInfo['sex'];

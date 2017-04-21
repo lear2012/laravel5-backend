@@ -17,6 +17,7 @@ use DB;
 use Zizaco\Entrust\Entrust;
 use Auth;
 use Image;
+use ChannelLog as Log;
 
 class UserController extends BaseController
 {
@@ -187,6 +188,8 @@ class UserController extends BaseController
                     'avatar' => isset($data['avatar']) ? $data['avatar'] : '',
                     'nest_info' => isset($data['nest_info']) ? $data['nest_info'] : '',
                     'member_no' => isset($data['member_no']) ? $data['member_no'] : '',
+                    'wechat_nick' => isset($data['wechat_nick']) ? $data['wechat_nick'] : '',
+                    'wechat_no' => isset($data['wechat_no']) ? $data['wechat_no'] : '',
                 ];
                 if(isset($data['avatar']) && $data['avatar'] != '') {
                     // deal with avatar

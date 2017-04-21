@@ -27,6 +27,7 @@ class UserProfile extends Model
         'nest_info',
         'avatar',
         'wechat_id',
+        'wechat_nick',
         'wechat_no',
         'sex',
         'province',

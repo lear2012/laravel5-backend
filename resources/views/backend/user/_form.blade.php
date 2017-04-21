@@ -32,11 +32,23 @@
         {!! Form::text('real_name', (isset($user->profile) ? $user->profile->real_name : ''), ['class' => 'form-control', 'placeholder' => '真实姓名']) !!}
     </div>
 </div>
+<div class="form-group">
+    {!! Form::label('wechat_nick', '微信昵称', ['class' => 'col-lg-2 control-label']) !!}
+    <div class="col-lg-3">
+        {!! Form::text('wechat_nick', (isset($user->profile) ? $user->profile->wechat_nick : ''), ['class' => 'form-control', 'placeholder' => '微信昵称']) !!}
+    </div>
+</div>
+<div class="form-group">
+    {!! Form::label('wechat_no', '微信号', ['class' => 'col-lg-2 control-label']) !!}
+    <div class="col-lg-3">
+        {!! Form::text('wechat_no', (isset($user->profile) ? $user->profile->wechat_no : ''), ['class' => 'form-control', 'placeholder' => '微信号']) !!}
+    </div>
+</div>
 
 <div class="form-group">
     <label class="col-lg-2 control-label">性别</label>
     <div class="col-lg-3">
-        <select class="form-control select2" name="sex" id="sex">
+        <select class="form-control select2" name="sex" id="sex" style="width: 100%">
             <option selected="selected" value="">请选择性别</option>
             @foreach($sexes as $k => $t)
                 @if(isset($user->profile) && $k == $user->profile->sex)
@@ -107,7 +119,7 @@
 <div class="form-group">
     <label class="col-lg-2 control-label">角色</label>
     <div class="col-lg-3">
-        <select id="role_selection" class="form-control role-select" multiple="multiple" name="assignees_roles[]">
+        <select id="role_selection" class="form-control role-select" multiple="multiple" name="assignees_roles[]" style="width: 100%">
         @if (isset($roles) && count($roles) > 0)
             @foreach($roles as $role)
                 <option value="{{$role->id}}" {{in_array($role->id, $userRoles) ? 'selected' : ''}}>{!! $role->display_name !!}</option>

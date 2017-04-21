@@ -11,7 +11,7 @@ var site = {
     normal_init: function() {
         this.ops_alert();
         this.init_select();
-        this.init_normal_select();
+        //this.init_normal_select();
         this.init_checkbox();
     },
 
@@ -62,13 +62,18 @@ var site = {
             return;
         var selected = $('#role_ids').val();
         var sel = $("#role_selection").select2({
-            language: "zh-CN"
+            language: "zh-CN",
+            minimumResultsForSearch: Infinity
         });
         if (selected != ''){
             sel.val(selected.split(',')).trigger("change");
         }
         $('#role_selection').on('change', function(){
             $('#role_ids').val($(this).val());
+        });
+        $("#sex").select2({
+            language: "zh-CN",
+            minimumResultsForSearch: Infinity
         });
     },
 
@@ -167,99 +172,9 @@ var site = {
                     return;
                 });
             }
-            // 分配权限按钮
-            if($('.assign-perms-btn').length > 0) {
-                that.bind_assing_perms_btn();
-                that.init_assign_perms_modal();
-            }
-            // 推送配置修改
-            if($('.deliver-config-btn').length > 0) {
-                that.bind_deliver_config_btn();
-            }
         });
 
     },
-
-    // check_modal_perms: function(data) {
-    //     var len = data.permissions.length;
-    //     // uncheck all perms
-    //     $('.perms').iCheck('uncheck');
-    //     if(len > 0) {
-    //         for(var i=0;i< len;i++) {
-    //             $('#perm'+ data.permissions[i].id).iCheck('check');
-    //         }
-    //     }
-    // },
-    //
-    // init_assign_perms_modal: function() {
-    //     var that = this;
-    //     // 分配权限
-    //     $('.modal-confirm', $('#assign-perms-modal')).on('click', function(){
-    //         var checkedPermIds = ''; // selected perm ids
-    //         var checkedInputs = $('input[class=perms]'); // all perms
-    //         // get all the selected perms
-    //         for(var i=0;i<checkedInputs.length;i++){
-    //             if(checkedInputs[i].checked) {
-    //                 checkedPermIds += checkedInputs[i].id.substr(4) + ",";
-    //                 that._newPerms.push(checkedInputs[i]);
-    //             }
-    //         }
-    //         // prepare the data
-    //         var data = {};
-    //         data.roleId = $('#assign-perms-modal').attr('itemId');
-    //         data.permIds = checkedPermIds !='' ? checkedPermIds.substr(0, checkedPermIds.length-1) : '';
-    //
-    //         // send request to backend
-    //         that.sync_perms(data);
-    //     });
-    //     $('#assign-perms-modal').on('hidden.bs.modal', function (e) {
-    //         // rebind click event, cause if modal content updated, the click event not fired
-    //         $('.assign-perms-btn').unbind('click');
-    //         that.bind_assing_perms_btn();
-    //         that._currentRow = '';
-    //         that._newPerms = [];
-    //     });
-    // },
-
-    // sync_perms: function(data) {
-    //     var that = this;
-    //     // send rq to backend to sync the perms
-    //     $.ajax({
-    //         type: "POST",
-    //         dataType: "json", //dataType (xml html script json jsonp text)
-    //         data: data, //json 数据
-    //         url: laroute.route('role.assign_perms'),
-    //         headers: {
-    //             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-    //         },
-    //         //beforeSend: bstool.submit_loading, //执行ajax前执行loading函数.直到success
-    //         success: function(rs) {//成功获得的也是json对象
-    //             var result = rs.rs == 0 ? 'success' : 'error';
-    //             $('#assign-perms-modal').modal('hide');
-    //             $('#jsmsg').html(result+'|'+rs.msg);
-    //             that.ops_alert();
-    //             that.redraw_datatable_row_data();
-    //         }
-    //     });
-    // },
-
-    // redraw_datatable_row_data: function() {
-    //     var that = this;
-    //     // redraw the row's data
-    //     var data = that._currentRow.data();
-    //     var perms = [];
-    //     for(var i=0;i<that._newPerms.length;i++) {
-    //         var tmp = {};
-    //         tmp.id = that._newPerms[i].id.substr(4);
-    //         tmp.display_name = $('#perm'+tmp.id).parent().parent().text();
-    //         perms.push(tmp);
-    //     }
-    //     data.permissions = []; // clear it first
-    //     data.permissions = perms;
-    //     that._currentRow.data(data);
-    //     that._currentRow.invalidate();
-    //     //that._theTable.draw();
-    // }
 };
 $(document).ready(function(){
     site.init();

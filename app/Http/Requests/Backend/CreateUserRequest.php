@@ -23,8 +23,6 @@ class CreateUserRequest extends Request {
 	{
 		return [
 			'username'  => 'required|max:20|unique:users',
-			'email' => 'required|email|unique:users',
-            'password' => 'required|min:6',
             'role_ids' => 'required',
         ];
 	}
