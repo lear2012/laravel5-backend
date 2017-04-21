@@ -70,6 +70,7 @@
                             <th>{{ trans('crud.users.roles') }}</th>
                             <th>{{ trans('crud.users.email') }}</th>
                             <th>{{ trans('crud.users.wechat_no') }}</th>
+                            <th>{{ trans('crud.users.address') }}</th>
                             <th>{{ trans('crud.users.created') }}</th>
                             <th>{{ trans('crud.users.updated') }}</th>
                             <th>状态</th>
