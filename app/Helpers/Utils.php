@@ -269,8 +269,8 @@ class Utils {
             return false;
         if(strlen($id) < 15)
             return '';
-        if(substr($id, 5, 2) > 18)
-            return substr($id, 5, 4).'-'.substr($id, 9, 2).'-'.substr($id, 11, 2);
+        if(substr($id, 6, 2) > 18)
+            return substr($id, 6, 4).'-'.substr($id, 10, 2).'-'.substr($id, 12, 2);
         return '';
     }
 }
