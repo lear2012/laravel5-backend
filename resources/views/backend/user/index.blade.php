@@ -68,7 +68,10 @@
                             <th>{{ trans('crud.users.id') }}</th>
                             <th>{{ trans('crud.users.username') }}</th>
                             <th>{{ trans('crud.users.roles') }}</th>
+                            <th>{{ trans('crud.users.real_name') }}</th>
                             <th>{{ trans('crud.users.mobile') }}</th>
+                            <th>{{ trans('crud.users.sex') }}</th>
+                            <th>{{ trans('crud.users.birthday') }}</th>
                             <th>{{ trans('crud.users.wechat_no') }}</th>
                             <th>{{ trans('crud.users.address') }}</th>
                             <th>{{ trans('crud.users.created') }}</th>
@@ -91,7 +94,10 @@
                                         --
                                     @endif
                                 </td>
+                                <td>{{ isset($user->profile->real_name) ? $user->profile->real_name : '' }}</td>
                                 <td>{{ $user->mobile }}</td>
+                                <td>{{ isset($user->profile->sex) && $user->profile->sex == 1 ? '男' : '女' }}</td>
+                                <td>{{ isset($user->profile->birth_date) ? $user->profile->birth_date : '' }}</td>
                                 <td>{{ isset($user->profile->wechat_no) ? $user->profile->wechat_no : '' }}</td>
                                 <td>{{ isset($user->profile->address) ? $user->profile->address : '' }}</td>
                                 <td>{{ $user->created_at }}</td>
