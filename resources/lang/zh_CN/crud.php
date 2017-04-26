@@ -39,6 +39,7 @@ return [
         'updated' => '更新时间',
         'delete_permanently' => '永久删除',
         'email' => 'E-mail',
+        'mobile' => '手机号',
         'id' => 'ID',
         'last_updated' => 'Last Updated',
         'username' => '用户名',
