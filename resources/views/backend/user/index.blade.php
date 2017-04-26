@@ -70,6 +70,7 @@
                             <th>{{ trans('crud.users.roles') }}</th>
                             <th>{{ trans('crud.users.real_name') }}</th>
                             <th>{{ trans('crud.users.mobile') }}</th>
+                            <th>{{ trans('crud.users.member_no') }}</th>
                             <th>{{ trans('crud.users.sex') }}</th>
                             <th>{{ trans('crud.users.birthday') }}</th>
                             <th>{{ trans('crud.users.wechat_no') }}</th>
@@ -96,6 +97,7 @@
                                 </td>
                                 <td>{{ isset($user->profile->real_name) ? $user->profile->real_name : '' }}</td>
                                 <td>{{ $user->mobile }}</td>
+                                <td>{{ isset($user->profile->member_no) ? $user->profile->member_no : '' }}</td>
                                 <td>{{ isset($user->profile->sex) && !empty($user->profile->sex) ? ($user->profile->sex == 1 ? '男' : '女') : '-' }}</td>
                                 <td>{{ isset($user->profile->id_no) ? App\Helpers\Utils::getBirthFromID($user->profile->id_no) : '' }}</td>
                                 <td>{{ isset($user->profile->wechat_no) ? $user->profile->wechat_no : '' }}</td>
