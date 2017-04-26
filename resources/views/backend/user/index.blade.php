@@ -97,7 +97,7 @@
                                 <td>{{ isset($user->profile->real_name) ? $user->profile->real_name : '' }}</td>
                                 <td>{{ $user->mobile }}</td>
                                 <td>{{ isset($user->profile->sex) && !empty($user->profile->sex) ? ($user->profile->sex == 1 ? '男' : '女') : '-' }}</td>
-                                <td>{{ Utils::getBirthFromID($user->profile->id_no)}}</td>
+                                <td>{{ App\Helpers\Utils::getBirthFromID($user->profile->id_no)}}</td>
                                 <td>{{ isset($user->profile->wechat_no) ? $user->profile->wechat_no : '' }}</td>
                                 <td>{{ isset($user->profile->address) ? $user->profile->address : '' }}</td>
                                 <td>{{ $user->created_at }}</td>
