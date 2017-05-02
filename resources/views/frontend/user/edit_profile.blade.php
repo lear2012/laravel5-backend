@@ -103,7 +103,7 @@
                             <span class="static-text">{{ $user->profile->member_no }}</span>
                         @else
                             <span class="member_no_prefix">KY.88</span>
-                            <input class="Ainp" type="" name="member_no" id="member_no" value="" placeholder="请选取001-150间三位数字"/>
+                            <input class="Ainp" type="" name="member_no" id="member_no" value="" placeholder="请选取001-999间三位数字"/>
                         @endif
                     </label>
                 </li>
@@ -118,7 +118,7 @@
                     <label>
                         <img src="{{asset('img/notice.png')}}" />
                         <ul>
-                            <li>可野付费会员可拥有可野会员编号，目前可选择001-150之间的编号。</li>
+                            <li>可野付费会员可拥有可野会员编号，目前可选择001-999之间的编号。</li>
                             <li class="not-first">可野付费会员可填写收货地址来获取会员福利，也可自取。</li>
                         </ul>
                     </label>
