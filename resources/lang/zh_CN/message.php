@@ -101,4 +101,29 @@ return [
     'update_feedbacktag_failed' => '更新反馈标签失败',
     'delete_feedbacktag_success' => '删除反馈标签成功',
     'delete_feedbacktag_failed' => '删除反馈标签失败',
+
+    //
+    'id' => '序号',
+    'route_title' => '路段标题',
+    'route_start' => '路段起点',
+    'route_end' => '路段终点',
+    'cover_img' => '封面图片',
+    'route_url' => '链接',
+    'ord' => '顺序',
+    'votes' => '点赞数',
+
+    'create_keyeroute_success' => '创建路段成功',
+    'create_keyeroute_failed' => '创建路段失败',
+    'update_keyeroute_success' => '更新路段成功',
+    'update_keyeroute_failed' => '更新路段失败',
+    'delete_keyeroute_success' => '删除路段成功',
+    'delete_keyeroute_failed' => '删除路段失败',
+
+    'company_name' => '公司名称',
+    'name' => '姓名',
+    'phone' => '联系方式',
+    'content' => '联系内容',
+    'created_at' => '创建时间',
+    'updated_at' => '更新时间',
+    'action' => '操作',
 ];

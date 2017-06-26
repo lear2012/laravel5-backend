@@ -15,6 +15,41 @@
         <!-- sidebar menu: : style can be found in sidebar.less -->
         <ul class="sidebar-menu">
 
+            <li class="header">环中国自驾活动管理</li>
+            <li @if(Request::is('admin/keyeroutes*')) class="treeview active" @else class="treeview" @endif>
+                <a href="#">
+                    <i class="fa fa-road"></i>
+                    <span>路段管理</span>
+                    <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span>
+                </a>
+                <ul class="treeview-menu">
+                    <li @if(Request::is('admin/keyeroutes')) class="active" @endif>
+                        <a href="{{ route('admin.keyeroutes.index') }}"><i class="fa fa-road"></i> 路段列表</a>
+                    </li>
+                    <li @if(Request::is('admin/keyeroutes/create')) class="active" @endif>
+                        <a href="{{ route('admin.keyeroutes.create') }}"><i class="fa fa-plus"></i> 添加路段</a>
+                    </li>
+                </ul>
+            </li>
+
+            <li @if(Request::is('admin/keyecontacts*')) class="treeview active" @else class="treeview" @endif>
+                <a href="#">
+                    <i class="fa fa-meetup"></i>
+                    <span>联系可野</span>
+                    <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span>
+                </a>
+                <ul class="treeview-menu">
+                    <li @if(Request::is('admin/keyecontacts')) class="active" @endif>
+                        <a href="{{ route('admin.keyecontacts.index') }}"><i class="fa fa-link"></i> 商务洽谈</a>
+                    </li>
+                </ul>
+                <ul class="treeview-menu">
+                    <li @if(Request::is('admin/keyecontacts/contactus')) class="active" @endif>
+                        <a href="{{ route('admin.keyecontacts.contactus') }}"><i class="fa fa-phone"></i> 联系我们</a>
+                    </li>
+                </ul>
+            </li>
+
 
             <li class="header">系统设置</li>
             <li @if(Request::is('admin/auth/*')) class="treeview active" @else class="treeview" @endif>

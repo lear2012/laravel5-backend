@@ -21,6 +21,7 @@
     "laravel-elixir-webpack": "^1.0.1",
     "laravel-elixir-webpack-official": "^1.0.10",
     "lodash": "^4.16.2",
+    "moment": "^2.18.1",
     "parse5": "^2.2.3",
     "vue": "^2.0.1",
     "vue-hot-reload-api": "^2.0.11",

@@ -6,7 +6,7 @@
     <title>@yield('title') - 管理后台</title>
     <meta name="keywords" content="@yield('keywords')">
     <meta name="description" content="@yield('description')">
-
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
 
@@ -51,6 +51,7 @@
             @include('backend.layouts.partials.success')
 
             @yield('content')
+            @include ('frontend.footer')
         </section>
         <!-- /.content -->
     </div>
@@ -59,7 +60,6 @@
     <!-- Footer -->
     @include('backend.layouts.partials.footer')
 
-    @include('backend.layouts.partials.control_sidebar')
 </div>
 <!-- ./wrapper -->
 <div id="jsmsg">{{Session::get('jsmsg')}}</div>

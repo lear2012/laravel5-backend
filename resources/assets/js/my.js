@@ -44,11 +44,10 @@ var site = {
             radioClass: 'iradio_square-purple',
             increaseArea: '20%' // optional
         });
-        if((typeof $('.list-unstyled')) != 'object')
-            $('input[type=checkbox]').on('ifChanged', function(event){
-                var val = $(this).val() == 1 ? 0 : 1;
-                $(this).val(val);
-            });
+        $('input[type=checkbox]').on('ifChanged', function(event){
+            var val = $(this).val() == 1 ? 0 : 1;
+            $(this).val(val);
+        });
     },
 
     init_fileinput: function() {
@@ -114,66 +113,24 @@ var site = {
         return true;
     },
 
-    init_datatable: function(theParams, type) {
-        if(typeof $('#dataTable').attr('id') === 'undefined')
-            return false;
-        site._theTable = $('#dataTable').on('processing.dt', function (e, settings, processing ) {
-            $('.loading > img').css('visibility', 'visible');
-            setTimeout(function(){$('.loading > img').css( 'visibility', processing ? 'visible' :'hidden');}, 1000);
-        }).DataTable({
-            processing: false,
-            serverSide: true,
-            width: "90%",
-            height: 'auto',
-            ajax: theParams.ajax,
-            columns: theParams.columns,
-            language: theParams.language,
-            order: [[ 0, "desc" ]]
+    showError: function (msg) {
+        swal({
+            html: true,
+            title: "出问题啦！",
+            text: msg,
+            type: 'error',
+            confirmButtonText: '关闭'
         });
-        // init the action buttons
-        this.init_database_btns(type);
     },
 
-    init_database_btns: function(type) {
-        var that = this;
-        $('#dataTable').on('draw.dt', function () {
-            // 查看按钮
-            if(typeof $('.show-btn').attr('class') !== 'undefined') {
-                $('.show-btn').on('click', function () {
-                    var data = that._theTable.row($(this).parents('tr')).data();
-                    var params = [];
-                    params[type] = data.id;
-                    window.location.href =  laroute.route(type+'.show', params);
-                    return;
-                });
-            }
-            // 编辑按钮
-            if(typeof $('.edit-btn').attr('class') !== 'undefined') {
-                $('.edit-btn').on('click', function () {
-                    var data = that._theTable.row($(this).parents('tr')).data();
-                    var params = [];
-                    params[type] = data.id;
-                    window.location.href =  laroute.route(type+'.edit', params);
-                    return;
-                });
-            }
-            // 删除按钮
-            if(typeof $('.del-btn').attr('class') !== 'undefined') {
-                $('.del-btn').on('click', function () {
-                    if (confirm('您确定要删除此条记录吗？')) {
-                        var data = that._theTable.row($(this).parents('tr')).data();
-                        var theForm = $(this).parent().parent().parent();
-                        var params = [];
-                        params[type] = data.id;
-                        theForm.attr('action', laroute.route(type+'.destroy', params));
-                        $('.adv_method', theForm).val('delete');
-                        theForm.submit();
-                    }
-                    return;
-                });
-            }
+    showSuccess: function (msg) {
+        swal({
+            html: true,
+            title: "操作成功！",
+            text: msg,
+            type: 'success',
+            confirmButtonText: '关闭'
         });
-
     },
 };
 $(document).ready(function(){

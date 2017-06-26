@@ -121,5 +121,16 @@ Route::group(['namespace' => 'Backend'], function () {
 
         //material
         Route::resource('materials/single', 'MaterialsController');
+
+        // KeyeRoute
+        Route::get('keyeroutes/search', ['as' => 'keyeroutes.search', 'uses' => 'KeyeRouteController@search']);
+        Route::post('keyeroutes/active', ['as' => 'keyeroutes.active', 'uses' => 'KeyeRouteController@active']);
+        Route::resource('keyeroutes', 'KeyeRouteController');
+        // KeyeContact
+        Route::get('keyecontacts/search', ['as' => 'keyecontacts.search', 'uses' => 'KeyeContactController@search']);
+        Route::get('keyecontacts/contactus', ['as' => 'keyecontacts.contactus', 'uses' => 'KeyeContactController@contactus']);
+        Route::get('keyecontacts/searchContact', ['as' => 'keyecontacts.searchContact', 'uses' => 'KeyeContactController@searchContact']);
+        Route::resource('keyecontacts', 'KeyeContactController');
+
     });
 });

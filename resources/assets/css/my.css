@@ -71,3 +71,7 @@
 .select2-container--default .select2-selection--single .select2-selection__arrow {height:32px;}
 .select2-container--default .select2-selection--multiple {border-radius:0px;height:36px;}
 .select2-container--default .select2-selection--multiple .select2-selection__arrow {height:32px;}
+.icheckbox_square-purple {margin-top:7px;}
+.edit{display: inline}
+#dataTable {overflow-x:scroll;word-break:keep-all;/* 不换行 */
+    white-space:nowrap;/* 不换行 */}

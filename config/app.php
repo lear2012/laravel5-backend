@@ -163,6 +163,7 @@ return [
         'Laracasts\Utilities\JavaScript\JavaScriptServiceProvider',
         Overtrue\LaravelPinyin\ServiceProvider::class,
         Rap2hpoutre\LaravelLogViewer\LaravelLogViewerServiceProvider::class,
+        Yajra\Datatables\DatatablesServiceProvider::class,
     ],
     /*
     |--------------------------------------------------------------------------
@@ -226,6 +227,7 @@ return [
         'ChannelLog' => App\Contracts\Facades\ChannelLog::class,
         'EasyWeChat' => Overtrue\LaravelWechat\Facade::class,
         'Pinyin' => Overtrue\LaravelPinyin\Facades\Pinyin::class,
+        'Datatables' => 'Yajra\Datatables\Facades\Datatables',
     ],
 
 ];

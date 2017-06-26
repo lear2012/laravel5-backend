@@ -87,6 +87,8 @@ elixir(function(mix) {
         '../bower/font-awesome/css/font-awesome.min.css',
         '../bower/Ionicons/css/ionicons.min.css',
         '../bower/bootstrap-fileinput/css/fileinput.min.css',
+        '../bower/datatables.net-bs/css/dataTables.bootstrap.min.css',
+        '../bower/sweetalert/dist/sweetalert.css',
         'purple.css',
         'amaran.min.css',
         'my.css'
@@ -102,13 +104,20 @@ elixir(function(mix) {
         '../bower/bootstrap-fileinput/js/plugins/canvas-to-blob.min.js',
         '../bower/bootstrap-fileinput/js/fileinput.min.js',
         '../bower/bootstrap-fileinput/js/locales/zh.js',
+        '../bower/datatables.net/js/jquery.dataTables.min.js',
+        '../bower/datatables.net-bs/js/dataTables.bootstrap.min.js',
+        '../../../node_modules/moment/min/moment-with-locales.min.js',
+        '../bower/sweetalert/dist/sweetalert.min.js',
         'jquery.amaran.min.js',
         'url.min.js',
-        'my.js'
+        // custom js
+        'my.js',
+        'keye_route.js',
+        'keye_contact.js',
     ], 'public/js/all_bk.js');
 
     // images
-    mix.min_image();  // for production
+    //mix.min_image();  // for production
 
     // for debug js, comment it out when production
     // mix.copy('public/css/all.css', 'public/css/all_debug.css');
@@ -117,7 +126,7 @@ elixir(function(mix) {
     // mix.copy('public/js/all_bk.js', 'public/js/all_bk_debug.js');
 
     // versioning // for production
-    mix.version(['css/all.css', 'js/all.js', 'css/all_bk.css', 'js/all_bk.js'], 'public');
+    //mix.version(['css/all.css', 'js/all.js', 'css/all_bk.css', 'js/all_bk.js'], 'public');
 
     // watch
     // BrowserSync.init({

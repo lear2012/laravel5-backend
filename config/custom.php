@@ -44,4 +44,40 @@ return [
     'avatar_img_width' => 160,
     'avatar_img_height' => 160,
     'order_valid_seconds' => (2*3600-10), // two hours
+
+    'datatables' => [
+        'search' => [
+            'smart'            => true,
+            'case_insensitive' => true,
+            'use_wildcards'    => false,
+        ],
+
+        'fractal' => [
+            'serializer' => 'League\Fractal\Serializer\DataArraySerializer',
+        ],
+
+        'script_template' => 'datatables::script',
+        'language' => [
+            'processing' => "处理中",
+            'search' => "搜索&nbsp;:",
+            'lengthMenu' => "每页 _MENU_ 条记录",
+            'info' => "显示 _START_ 到 _END_ 共 _TOTAL_ 记录",
+            'infoEmpty' => "没有任何记录",
+            'infoFiltered' => "(从 _MAX_ 条记录中过滤)",
+            'infoPostFix' => "",
+            'loadingRecords' => "正在载入记录...",
+            'zeroRecords' => "没有任何记录",
+            'emptyTable' => "空表格",
+            'paginate' => [
+                'first' => "首页",
+                'previous' => "上一页",
+                'next' => "下一页",
+                'last' => "末页"
+            ],
+            'aria' => [
+                'sortAscending' => "升序",
+                'sortDescending' => "降序"
+            ]
+        ]
+    ],
 ];
