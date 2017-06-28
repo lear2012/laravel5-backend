@@ -12,4 +12,15 @@ class KeyeEnrollment extends Model
 
     protected $dateFormat = 'U';
 
+    protected $fillable = [
+        'name',
+        'mobile',
+        'start',
+        'end',
+        'wechat_no',
+        'brand',
+        'series',
+        'year',
+        'available_seats',
+    ];
 }

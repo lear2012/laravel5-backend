@@ -16,6 +16,18 @@
         <ul class="sidebar-menu">
 
             <li class="header">环中国自驾活动管理</li>
+            <li @if(Request::is('admin/site*')) class="treeview active" @else class="treeview" @endif>
+                <a href="#">
+                    <i class="fa fa-gear"></i>
+                    <span>首页设置</span>
+                    <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span>
+                </a>
+                <ul class="treeview-menu">
+                    <li @if(Request::is('admin/site/config')) class="active" @endif>
+                        <a href="{{ route('admin.site.config') }}"><i class="fa fa-map"></i> 设置首页地图</a>
+                    </li>
+                </ul>
+            </li>
             <li @if(Request::is('admin/keyeroutes*')) class="treeview active" @else class="treeview" @endif>
                 <a href="#">
                     <i class="fa fa-road"></i>
@@ -28,6 +40,19 @@
                     </li>
                     <li @if(Request::is('admin/keyeroutes/create')) class="active" @endif>
                         <a href="{{ route('admin.keyeroutes.create') }}"><i class="fa fa-plus"></i> 添加路段</a>
+                    </li>
+                </ul>
+            </li>
+
+            <li @if(Request::is('admin/keyeenrollments*')) class="treeview active" @else class="treeview" @endif>
+                <a href="#">
+                    <i class="fa fa-registered"></i>
+                    <span>报名管理</span>
+                    <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span>
+                </a>
+                <ul class="treeview-menu">
+                    <li @if(Request::is('admin/keyeenrollments')) class="active" @endif>
+                        <a href="{{ route('admin.keyeenrollments.index') }}"><i class="fa fa-list"></i> 报名列表</a>
                     </li>
                 </ul>
             </li>

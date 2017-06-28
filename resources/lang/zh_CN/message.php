@@ -126,4 +126,13 @@ return [
     'created_at' => '创建时间',
     'updated_at' => '更新时间',
     'action' => '操作',
+    'mobile' => '手机号',
+    'wechat_no' => '微信号',
+    'brand' => '品牌',
+    'series' => '车系',
+    'year' => '购买年份',
+    'available_seats' => '可搭载人数',
+
+    'set_success' => '设置成功',
+
 ];

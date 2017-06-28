@@ -161,6 +161,16 @@ class UploadController extends Controller
         ]);
     }
 
+    public function uploadMap()
+    {
+        $imageInfo = $this->manager->uploadImage(Input::file('file'), 480);
+        return response()->json([
+            'code' => 0,
+            'msg' => 'ok',
+            'data' => $imageInfo
+        ]);
+    }
+
     public function uploadUEImage()
     {
         $imageInfo = $this->manager->uploadImage(Input::file('file'));

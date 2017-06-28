@@ -2,8 +2,10 @@
 
 namespace App\Console;
 
+use App\Models\KeyeRoute;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
+use Illuminate\Support\Facades\Redis;
 
 class Kernel extends ConsoleKernel
 {
@@ -28,6 +30,20 @@ class Kernel extends ConsoleKernel
     {
         // $schedule->command('inspire')
         //          ->hourly();
+        $schedule->call(function () {
+            // delete ip thumbup
+            $keys = Redis::keys('ip:*');
+            foreach($keys as $k) {
+                Redis::del($k);
+            }
+            // update route thumbup in db
+            $routes = KeyeRoute::getRouteList();
+            foreach($routes as $route) {
+                $route->votes = Redis::get('route:'.$route->id.':thumbup');
+                $route->save();
+            }
+        })->daily();
+        //
     }
 
     /**

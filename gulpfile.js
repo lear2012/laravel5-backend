@@ -114,6 +114,7 @@ elixir(function(mix) {
         'my.js',
         'keye_route.js',
         'keye_contact.js',
+        'keye_enrollment.js',
     ], 'public/js/all_bk.js');
 
     // images
