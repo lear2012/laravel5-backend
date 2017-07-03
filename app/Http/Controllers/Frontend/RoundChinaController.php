@@ -4,11 +4,14 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Frontend\EnrollmentRequest;
+use App\Http\Requests\Frontend\LiftCreateRequest;
 use App\Models\KeyeEnrollment;
+use App\Models\KeyeLift;
 use Illuminate\Http\Request;
 use ChannelLog as Log;
 use App\Models\KeyeRoute;
 use Illuminate\Support\Facades\Redis;
+use DB;
 
 class RoundChinaController extends Controller
 {
@@ -37,6 +40,9 @@ class RoundChinaController extends Controller
         self::sendJsonMsg();
     }
 
+    /*
+     * 自驾报名
+     * */
     public function enroll(EnrollmentRequest $request) {
         $enrollment = new KeyeEnrollment();
         $data = $request->all();
@@ -46,4 +52,32 @@ class RoundChinaController extends Controller
         } else
             self::setMsgCode(1017);
     }
+
+    /*
+     * 搭车
+     * */
+    public function liftMe(LiftCreateRequest $request) {
+        $id = $request->get('eid');
+        if(!is_numeric($id)) {
+            self::setMsgCode(9001);
+        }
+        $item = KeyeEnrollment::find($id);
+        if(!$item) {
+            self::setMsgCode(9003);
+        }
+        $lift = new KeyeLift();
+        $lift->fill($request->all());
+        $lift->enrollment_id = $id;
+        if($lift->save()) {
+            self::sendJsonMsg();
+        } else
+            self::setMsgCode(1018);
+    }
+
+    public function getAvailableCars() {
+        $items = KeyeEnrollment::getLiftingCars();
+        self::setData($items);
+        self::sendJsonMsg();
+    }
+
 }

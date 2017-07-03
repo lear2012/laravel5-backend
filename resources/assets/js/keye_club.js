@@ -1,4 +1,4 @@
-var enrollments_page = {
+var clubs_page = {
 
     _theTable: '',  // the datatables object if we have datatable
 
@@ -8,16 +8,10 @@ var enrollments_page = {
 
     _cols: [
         {key: 'id', data: 'id', name: 'id', searchable: false},
+        {key: 'club_name', data: 'club_name', name: 'club_name'},
         {key: 'name', data: 'name', name: 'name'},
         {key: 'mobile', data: 'mobile', name: 'mobile'},
-        {key: 'start', data: 'start', name: 'start'},
-        {key: 'end', data: 'end', name: 'end'},
         {key: 'wechat_no', data: 'wechat_no', name: 'wechat_no'},
-        {key: 'brand', data: 'brand', name: 'brand'},
-        {key: 'series', data: 'series', name: 'series'},
-        {key: 'year', data: 'year', name: 'year'},
-        {key: 'available_seats', data: 'available_seats', name: 'available_seats'},
-        {key: 'seats_taken', data: 'seats_taken', name: 'seats_taken'},
         {key: 'created_at', data: 'created_at', name: 'created_at'}
     ],
 
@@ -28,14 +22,14 @@ var enrollments_page = {
 
     init_datatable: function () {
         var params = {};
-        params.ajax = "/admin/keyeenrollments/search";
+        params.ajax = "/admin/keyeclubs/search";
         params.columns = this._cols;
         params.colDefs = [
             {
                 "render": function (data, type, row) {
                     return moment.unix(data).format('YYYY-MM-DD HH:mm:ss');
                 },
-                "targets": [11]
+                "targets": [5]
             }
         ];
         params.language = {

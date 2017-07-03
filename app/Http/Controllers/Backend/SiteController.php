@@ -23,4 +23,10 @@ class SiteController extends Controller
         }
         return redirect()->back()->with('jsmsg', amaran_msg(trans('message.set_success'), 'success'));
     }
+
+    public function test() {
+        return view('backend.site.test', [
+
+        ]);
+    }
 }

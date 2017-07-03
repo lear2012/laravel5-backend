@@ -44,7 +44,7 @@
                 </ul>
             </li>
 
-            <li @if(Request::is('admin/keyeenrollments*')) class="treeview active" @else class="treeview" @endif>
+            <li @if(Request::is('admin/keyeenrollments*') || Request::is('admin/keyelifts*') || Request::is('admin/keyeclubs*')) class="treeview active" @else class="treeview" @endif>
                 <a href="#">
                     <i class="fa fa-registered"></i>
                     <span>报名管理</span>
@@ -52,7 +52,17 @@
                 </a>
                 <ul class="treeview-menu">
                     <li @if(Request::is('admin/keyeenrollments')) class="active" @endif>
-                        <a href="{{ route('admin.keyeenrollments.index') }}"><i class="fa fa-list"></i> 报名列表</a>
+                        <a href="{{ route('admin.keyeenrollments.index') }}"><i class="fa fa-car"></i> 自驾报名列表</a>
+                    </li>
+                </ul>
+                <ul class="treeview-menu">
+                    <li @if(Request::is('admin/keyelifts')) class="active" @endif>
+                        <a href="{{ route('admin.keyelifts.index') }}"><i class="fa fa-cab"></i> 搭车报名列表</a>
+                    </li>
+                </ul>
+                <ul class="treeview-menu">
+                    <li @if(Request::is('admin/keyeclubs')) class="active" @endif>
+                        <a href="{{ route('admin.keyeclubs.index') }}"><i class="fa fa-bandcamp"></i> 俱乐部报名列表</a>
                     </li>
                 </ul>
             </li>

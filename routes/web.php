@@ -54,6 +54,9 @@ Route::group(['namespace' => 'Frontend', 'middleware' => ['web']], function ()
 {
     Route::get('/thumbup/{id?}', ['as' => 'round.thumbup', 'uses' => '\App\Http\Controllers\Frontend\RoundChinaController@thumbUp'])->where('id', '[0-9]+');
     Route::post('/enroll', ['as' => 'round.enroll', 'uses' => '\App\Http\Controllers\Frontend\RoundChinaController@enroll']);
+    Route::post('/liftme', ['as' => 'round.liftme', 'uses' => '\App\Http\Controllers\Frontend\RoundChinaController@liftMe']);
+    Route::get('/get_available_cars', ['as' => 'round.get_available_cars', 'uses' => '\App\Http\Controllers\Frontend\RoundChinaController@getAvailableCars']);
+
 });
 
 /**
@@ -138,11 +141,18 @@ Route::group(['namespace' => 'Backend'], function () {
         Route::get('keyecontacts/searchContact', ['as' => 'keyecontacts.searchContact', 'uses' => 'KeyeContactController@searchContact']);
         Route::resource('keyecontacts', 'KeyeContactController');
 
-        // KeyeRoute
+        // KeyeEnrollment
         Route::get('keyeenrollments/search', ['as' => 'keyeenrollments.search', 'uses' => 'KeyeEnrollmentController@search']);
         Route::resource('keyeenrollments', 'KeyeEnrollmentController');
+        // KeyeLift
+        Route::get('keyelifts/search', ['as' => 'keyelifts.search', 'uses' => 'KeyeLiftController@search']);
+        Route::resource('keyelifts', 'KeyeLiftController');
+        // KeyeClub
+        Route::get('keyeclubs/search', ['as' => 'keyeclubs.search', 'uses' => 'KeyeClubController@search']);
+        Route::resource('keyeclubs', 'KeyeClubController');
 
         //
+        Route::get('site/test', ['as' => 'site.test', 'uses' => 'SiteController@test']);
         Route::get('site/config', ['as' => 'site.config', 'uses' => 'SiteController@config']);
         Route::post('site/store_config', ['as' => 'site.store_config', 'uses' => 'SiteController@storeConfig']);
     });

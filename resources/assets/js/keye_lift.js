@@ -1,4 +1,4 @@
-var enrollments_page = {
+var lifts_page = {
 
     _theTable: '',  // the datatables object if we have datatable
 
@@ -10,14 +10,8 @@ var enrollments_page = {
         {key: 'id', data: 'id', name: 'id', searchable: false},
         {key: 'name', data: 'name', name: 'name'},
         {key: 'mobile', data: 'mobile', name: 'mobile'},
-        {key: 'start', data: 'start', name: 'start'},
-        {key: 'end', data: 'end', name: 'end'},
         {key: 'wechat_no', data: 'wechat_no', name: 'wechat_no'},
-        {key: 'brand', data: 'brand', name: 'brand'},
-        {key: 'series', data: 'series', name: 'series'},
-        {key: 'year', data: 'year', name: 'year'},
-        {key: 'available_seats', data: 'available_seats', name: 'available_seats'},
-        {key: 'seats_taken', data: 'seats_taken', name: 'seats_taken'},
+        {key: 'lift_info', data: 'lift_info', name: 'lift_info'},
         {key: 'created_at', data: 'created_at', name: 'created_at'}
     ],
 
@@ -28,14 +22,21 @@ var enrollments_page = {
 
     init_datatable: function () {
         var params = {};
-        params.ajax = "/admin/keyeenrollments/search";
+        params.ajax = "/admin/keyelifts/search";
         params.columns = this._cols;
         params.colDefs = [
             {
                 "render": function (data, type, row) {
+                    return row.ke_name+ '-' + row.brand + row.series + '(联系方式：' + row.ke_mobile + ')<br/>'
+                        + row.start + ' 至 ' + row.end;
+                },
+                "targets": 4
+            },
+            {
+                "render": function (data, type, row) {
                     return moment.unix(data).format('YYYY-MM-DD HH:mm:ss');
                 },
-                "targets": [11]
+                "targets": [5]
             }
         ];
         params.language = {

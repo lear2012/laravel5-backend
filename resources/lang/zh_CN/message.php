@@ -132,7 +132,10 @@ return [
     'series' => '车系',
     'year' => '购买年份',
     'available_seats' => '可搭载人数',
+    'seats_taken' => '已搭载人数',
 
     'set_success' => '设置成功',
+    'lift_info' => '搭车车主信息',
+    'club_name' => '俱乐部名称',
 
 ];

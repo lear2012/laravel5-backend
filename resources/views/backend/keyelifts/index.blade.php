@@ -1,23 +1,23 @@
 @extends('backend.layouts.master')
 
-@section('title', '自驾报名列表')
+@section('title', '搭车报名列表')
 
 @section('styles')
     <!-- DataTables -->
 @endsection
 
 @section('page_title')
-    自驾报名列表
+    搭车报名列表
 @endsection
 
 @section('page_description')
-    自驾报名列表
+    搭车报名列表
 @endsection
 
 @section('breadcrumb')
         <li><a href="/admin/dashboard"><i class="fa fa-dashboard"></i> 主页</a></li>
         <li><a href="#">报名管理</a></li>
-        <li class="active">自驾报名列表</li>
+        <li class="active">搭车报名列表</li>
 @endsection
 
 @section('content')
@@ -37,14 +37,8 @@
                             <th>{{ trans('message.id') }}</th>
                             <th>{{ trans('message.name') }}</th>
                             <th>{{ trans('message.mobile') }}</th>
-                            <th>{{ trans('message.route_start') }}</th>
-                            <th>{{ trans('message.route_end') }}</th>
                             <th>{{ trans('message.wechat_no') }}</th>
-                            <th>{{ trans('message.brand') }}</th>
-                            <th>{{ trans('message.series') }}</th>
-                            <th>{{ trans('message.year') }}</th>
-                            <th>{{ trans('message.available_seats') }}</th>
-                            <th>{{ trans('message.seats_taken') }}</th>
+                            <th>{{ trans('message.lift_info') }}</th>
                             <th>{{ trans('message.created_at') }}</th>
                         </tr>
                         </thead>
@@ -67,7 +61,7 @@
 @section('scripts')
     <script type="text/javascript">
         $(document).ready(function(){
-            enrollments_page.init();
+            lifts_page.init();
         });
     </script>
 @endsection

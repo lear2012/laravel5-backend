@@ -22,5 +22,21 @@ class KeyeEnrollment extends Model
         'series',
         'year',
         'available_seats',
+        'seats_taken'
     ];
+
+    public function lifts(){
+        return $this->hasMany('App\Models\KeyeLift');
+    }
+
+    /*
+     * 获取可搭载车辆列表
+     * */
+    public static function getLiftingCars() {
+        return KeyeEnrollment::where('status', '=', 1)
+            ->whereNull('deleted_at')
+            ->whereRaw('available_seats > seats_taken')
+            ->select('*')
+            ->get();
+    }
 }

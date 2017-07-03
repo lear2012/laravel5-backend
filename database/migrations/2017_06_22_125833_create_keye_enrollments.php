@@ -27,6 +27,8 @@ class CreateKeyeEnrollments extends Migration
             $table->string('year')->nullable()->comment('购买年份信息');
             // 可搭载人数
             $table->tinyInteger('available_seats')->default(0)->comment('可搭载人数');
+            $table->tinyInteger('seats_taken')->default(0)->comment('已搭载人数');
+            $table->tinyInteger('status')->default(0)->comment('审核状态');
 
             $table->integer('created_at');
             $table->integer('updated_at');

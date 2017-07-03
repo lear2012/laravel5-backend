@@ -108,6 +108,7 @@ elixir(function(mix) {
         '../bower/datatables.net-bs/js/dataTables.bootstrap.min.js',
         '../../../node_modules/moment/min/moment-with-locales.min.js',
         '../bower/sweetalert/dist/sweetalert.min.js',
+        '../bower/mojs/build/mo.min.js',
         'jquery.amaran.min.js',
         'url.min.js',
         // custom js
@@ -115,6 +116,8 @@ elixir(function(mix) {
         'keye_route.js',
         'keye_contact.js',
         'keye_enrollment.js',
+        'keye_lift.js',
+        'keye_club.js',
     ], 'public/js/all_bk.js');
 
     // images
