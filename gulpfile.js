@@ -144,7 +144,7 @@ elixir(function(mix) {
     ], 'public/js/all_bk.js');
 
     // images
-    //mix.min_image();  // for production
+    mix.min_image();  // for production
 
     // for debug js, comment it out when production
     // mix.copy('public/css/all.css', 'public/css/all_debug.css');
@@ -153,8 +153,8 @@ elixir(function(mix) {
     // mix.copy('public/js/all_bk.js', 'public/js/all_bk_debug.js');
 
     // versioning // for production
-    //mix.version(['css/all.css', 'js/all.js', 'css/all_bk.css', 'js/all_bk.js'], 'public');
-    //mix.version(['css/roundchina.css', 'js/roundchina.js'], 'public');
+    mix.version(['css/all.css', 'js/all.js', 'css/all_bk.css', 'js/all_bk.js'], 'public');
+    mix.version(['css/roundchina.css', 'js/roundchina.js'], 'public');
     // watch
     // BrowserSync.init({
     //     server: {
