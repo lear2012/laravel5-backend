@@ -26,8 +26,16 @@ class KeyeRoute extends Model
         'active'
     ];
 
-    public static function getRouteList() {
+    public static function getActiveRouteList() {
         return KeyeRoute::where('active', '=', 1)
+            ->where('is_front', '=', 1)
+            ->whereNull('deleted_at')
+            ->orderBy('ord', 'asc')
+            ->get();
+    }
+
+    public static function getInactiveRouteList() {
+        return KeyeRoute::where('active', '=', 0)
             ->where('is_front', '=', 1)
             ->whereNull('deleted_at')
             ->orderBy('ord', 'asc')

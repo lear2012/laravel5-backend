@@ -32,11 +32,20 @@ class KeyeEnrollment extends Model
     /*
      * 获取可搭载车辆列表
      * */
-    public static function getLiftingCars() {
+    public static function getLiftingCars($params=[]) {
+        if(isset($params['keyword']) && $params['keyword'] != '')
+            return KeyeEnrollment::where('status', '=', 1)
+                ->where('start', 'like', '%'.$params['keyword'].'%')
+                ->whereNull('deleted_at')
+                ->whereRaw('available_seats > seats_taken')
+                ->select('*')
+                ->orderBy('id', 'desc')
+                ->paginate(2);
         return KeyeEnrollment::where('status', '=', 1)
             ->whereNull('deleted_at')
             ->whereRaw('available_seats > seats_taken')
             ->select('*')
-            ->get();
+            ->orderBy('id', 'desc')
+            ->paginate(2);
     }
 }

@@ -21,6 +21,7 @@ class CreateKeyeClubs extends Migration
             $table->string('name')->comment('联系人姓名');
             $table->string('mobile')->comment('手机号');
             $table->string('wechat_no')->nullabel()->comment('微信号');
+            $table->tinyInteger('status')->default(0)->comment('审核状态');
             $table->integer('created_at');
             $table->integer('updated_at');
             $table->softDeletes()->comment('软删除时间');

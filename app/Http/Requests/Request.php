@@ -34,6 +34,10 @@ abstract class Request extends FormRequest {
             'start' => '10005',
             'end' => '10006',
             'votes' => '10007',
+            'name' => 10008,
+            'mobile' => 10009,
+            'available_seats' => 10010,
+            'agree' => 10011,
 
         ];
     }

@@ -47,6 +47,10 @@ class Controller extends BaseController
         self::$ret['data'] = $data;
     }
 
+    public static function setMsg($msg) {
+        self::$ret['msg'] = $msg;
+    }
+
     public static $msgs = [
 
         1001 => '注册失败，请刷新页面重试！',
@@ -67,6 +71,7 @@ class Controller extends BaseController
         1016 => '操作失败，请刷新页面重试或联系可野！',
         1017 => '报名失败，请刷新页面重试或联系可野！',
         1018 => '搭车失败，请刷新页面重试或联系可野！',
+        1019 => '您必须同意活动规则！',
 
         9001 => '参数错误',
         9002 => '未知错误',

@@ -13,4 +13,11 @@ class KeyeClub extends Model
     protected $table = 'keye_clubs';
 
     protected $dateFormat = 'U';
+
+    protected $fillable = [
+        'club_name',
+        'name',
+        'mobile',
+        'status'
+    ];
 }

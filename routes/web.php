@@ -52,10 +52,19 @@ Route::group(['namespace' => 'Frontend', 'middleware' => ['web', 'wechat.oauth:s
 
 Route::group(['namespace' => 'Frontend', 'middleware' => ['web']], function ()
 {
-    Route::get('/thumbup/{id?}', ['as' => 'round.thumbup', 'uses' => '\App\Http\Controllers\Frontend\RoundChinaController@thumbUp'])->where('id', '[0-9]+');
-    Route::post('/enroll', ['as' => 'round.enroll', 'uses' => '\App\Http\Controllers\Frontend\RoundChinaController@enroll']);
-    Route::post('/liftme', ['as' => 'round.liftme', 'uses' => '\App\Http\Controllers\Frontend\RoundChinaController@liftMe']);
-    Route::get('/get_available_cars', ['as' => 'round.get_available_cars', 'uses' => '\App\Http\Controllers\Frontend\RoundChinaController@getAvailableCars']);
+    Route::get('/roundchina', ['as' => 'round.index', 'uses' => 'RoundChinaController@index']);
+    Route::get('/roundchina/selfreg', ['as' => 'round.selfreg', 'uses' => 'RoundChinaController@selfDrivingReg']);
+    Route::get('/roundchina/liftreg', ['as' => 'round.liftreg', 'uses' => 'RoundChinaController@liftReg']);
+    Route::get('/roundchina/clubreg', ['as' => 'round.clubreg', 'uses' => 'RoundChinaController@clubReg']);
+
+    Route::post('/roundchina/save_selfreg', ['as' => 'round.save_selfreg', 'uses' => 'RoundChinaController@saveSelfReg']);
+    Route::post('/roundchina/save_liftreg', ['as' => 'round.save_liftreg', 'uses' => 'RoundChinaController@saveLiftReg']);
+    Route::post('/roundchina/save_clubreg', ['as' => 'round.save_clubreg', 'uses' => 'RoundChinaController@saveClubReg']);
+
+    Route::post('/roundchina/thumbup/{id?}', ['as' => 'round.thumbup', 'uses' => '\App\Http\Controllers\Frontend\RoundChinaController@thumbUp'])->where('id', '[0-9]+');
+    Route::post('/roundchina/enroll', ['as' => 'round.enroll', 'uses' => '\App\Http\Controllers\Frontend\RoundChinaController@enroll']);
+    Route::post('/roundchina/liftme', ['as' => 'round.liftme', 'uses' => '\App\Http\Controllers\Frontend\RoundChinaController@liftMe']);
+    Route::get('/roundchina/get_available_cars', ['as' => 'round.get_available_cars', 'uses' => '\App\Http\Controllers\Frontend\RoundChinaController@getAvailableCars']);
 
 });
 

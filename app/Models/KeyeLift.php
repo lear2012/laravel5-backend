@@ -21,6 +21,6 @@ class KeyeLift extends Model
         'enrollment_id',
         'name',
         'mobile',
-        'wechat'
+        'wechat_no'
     ];
 }

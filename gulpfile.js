@@ -78,6 +78,29 @@ elixir(function(mix) {
         'main.js'
     ], 'public/js/all.js');
 
+    // for round china css/js
+    mix.styles([
+        '../bower/AdminLTE/plugins/select2/select2.min.css',
+        '../bower/sweetalert/dist/sweetalert.css',
+        'orange.css',
+        'vendor.css',
+        'round.css',
+    ], 'public/css/roundchina.css');
+    mix.scripts([
+        'jquery-2.2.3.min.js',
+        'lodash.min.js',
+        '../bower/validator-js/validator.min.js',
+        '../bower/AdminLTE/plugins/iCheck/icheck.min.js',
+        '../bower/AdminLTE/plugins/select2/select2.full.min.js',
+        '../bower/AdminLTE/plugins/select2/i18n/zh-CN.js',
+        '../bower/sweetalert/dist/sweetalert.min.js',
+        '../bower/mojs/build/mo.min.js',
+        'manifest.js',
+        'vendor.js',
+        'round.js',
+        'round_china.js'
+    ], 'public/js/roundchina.js');
+
     // for backend css/js
     mix.styles([
         '../bower/AdminLTE/bootstrap/css/bootstrap.min.css',
@@ -131,7 +154,7 @@ elixir(function(mix) {
 
     // versioning // for production
     //mix.version(['css/all.css', 'js/all.js', 'css/all_bk.css', 'js/all_bk.js'], 'public');
-
+    //mix.version(['css/roundchina.css', 'js/roundchina.js'], 'public');
     // watch
     // BrowserSync.init({
     //     server: {
