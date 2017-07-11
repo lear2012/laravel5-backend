@@ -14,14 +14,13 @@ $(function () {
     var $addr_start_label = $addr_start.find('span');
     $addr_start.find('select').on('change', function (event) {
       $addr_start_label.html(this.value);
-        $('#addr_start').val(this.value);
+
     });
 
     var $addr_end = $('#addr_end');
     var $addr_end_label = $addr_end.find('span');
     $addr_end.find('select').on('change', function (event) {
-        $addr_end_label.html(this.value);
-        $('#addr_end').val(this.value);
+      $addr_end_label.html(this.value);
     });
 
     var $carry = $('#carry');

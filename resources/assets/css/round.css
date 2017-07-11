@@ -1214,7 +1214,7 @@ header .menu {
   display: none;
 }
 
-#reg_rules {padding-left:.3rem}
+#reg_rules {padding-left:.3rem;font-size:.3rem}
 .chosen-container-multi .chosen-choices {
     /*blah blah*/
 }
@@ -1246,6 +1246,9 @@ header .menu {
 #partner .special {
     width:7rem;
     height:3rem;
+}
+#partner .sub_spec {
+    width:2rem;
 }
 #lift_modal {
     display: none;}
@@ -1302,5 +1305,7 @@ header .menu {
     margin-left:.1rem;
     margin-right:.1rem;
 }
-
+a,img,button,input,textarea,label,span,i,ul,li,div,p,a:visited{-webkit-tap-highlight-color:rgba(255,255,255,0);}
+input,textarea{-webkit-appearance:none;}
+a:focus{outline:none;}
 /*# sourceMappingURL=main.css.map*/

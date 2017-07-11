@@ -41,7 +41,7 @@
 						<p>
 							<span>07月15日</span>
 							<b class="icon-line">—</b>
-							<span>08月18日</span>
+							<span>10月01日</span>
 						</p>
 					</div>
 					<p class="route-subtitle">以下为西线6段线路</p>
@@ -93,13 +93,12 @@
 				<img data-original="images/roundchina/info-2@2x.png" alt="">
 				<img data-original="images/roundchina/info-3@2x.png" alt="">
 			</div>
-			<p class="section-subtitle b">我们会沿国家边境线行进，本次行程共分为两段以及十二条线路</p>
-			<p><b>前半段—西线：</b>7月15日开始，8月18日结束起点为二连浩特、终点为西双版纳共分为以下几段行程：内蒙段-7月15日-7月19日,北疆段-7月20日-7月26日,南疆段-7月27日-7月30日,新藏段-7月31日-8月04日,后藏段-8月05日-8月10日,滇藏段-8月11日-8月18日。</p>
+
 			<div class="imgs">
 				<img data-original="images/roundchina/info-4@2x.png" alt="">
 				<img data-original="images/roundchina/info-5@2x.png" alt="">
 			</div>
-			<p><b>后半段—东线：</b>12月15日开始，1月14日结束 起点为西双版纳、终点为二连浩特共分为以下几段行程：云南段-12月15日-12月22日,中越沿边公路段-12月23日-12月26日,东南沿海段-12月27日-01月02日,东部沿海段-1月03日-1月05日,东北地区段-1月06日-1月8日,呼伦贝尔段-1月09日-1月14日。</p>
+
 			<img data-original="images/roundchina/info-6@2x.png" alt="">
 			<p>参与者每完成一段线路，便可获得一枚与属线路勋章。完成全部线路，还可获得与属环中国边境线纪念铜板。</p>
 			<img data-original="images/roundchina/info-7@2x.png" alt="">
@@ -175,9 +174,9 @@
 			<div class="section-header header-partner"></div>
 			<div class="groups">
 				<img data-original="images/roundchina/partner-4@2x.png" alt="" class="special">
-				<img data-original="images/roundchina/partner-1@2x.png" alt="">
-				<img data-original="images/roundchina/partner-2@2x.png" alt="">
-
+				<img data-original="images/roundchina/partner-1@2x.png" alt="" class="sub_spec">
+				<img data-original="images/roundchina/partner-2@2x.png" alt="" class="sub_spec">
+                <img data-original="images/roundchina/chuanming@2x.png" alt="" class="sub_spec">
 
 			</div>
 		</section>
