@@ -523,7 +523,7 @@ header .menu {
 .home .section .section-header {
   width: 100%;
   height: 1.5rem;
-  margin-bottom: .59rem;
+  margin-bottom: .3rem;
 }
 .home .section .header-info {
   background: url(../images/roundchina/header-info@2x.png) no-repeat;
@@ -548,6 +548,12 @@ header .menu {
   /* background: -webkit-image-set(url(../../images/roundchina/header-about@2x.png) 2x, url(../../images/roundchina/header-about@3x.png) 3x) no-repeat; */
   background-position: center center;
   background-size: 3.2rem auto;
+}
+.home .section .header-comment {
+    background: url(../images/roundchina/header-comment@2x.png) no-repeat;
+    /* background: -webkit-image-set(url(../../images/roundchina/header-comment@2x.png) 2x, url(../../images/roundchina/header-comment@3x.png) 3x) no-repeat; */
+    background-position: center center;
+    background-size: 3.2rem auto;
 }
 .home .section .header-union {
   background: url(../images/roundchina/header-union@2x.png) no-repeat;
@@ -751,6 +757,7 @@ header .menu {
   height: 2rem;
   box-sizing: border-box;
   background-color: #fc9d2b;
+  display:none;
 }
 .navigation span {
   display: inline-block;
@@ -853,6 +860,12 @@ header .menu {
     background-position: left center;
     background-size: .3rem auto;
 }
+.rightBar ul .bar-comment {
+    background: url(../images/roundchina/icon-comment@2x.png) no-repeat;
+    /* background: -webkit-image-set(url(../images/icon-user@2x.png) 2x, url(../images/icon-user@3x.png) 3x) no-repeat; */
+    background-position: left center;
+    background-size: .3rem auto;
+}
 .rightBar ul .bar-about {
     background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAACSklEQVRYhe3XzYvNURzH8deMMYtBTHmsIRSlWMhCijyOpzwsMEsWysLOxoasbfAf2LBiYgq5kyEiIorkKQ+ZjIcMoYZZEBbn/Nw7tx/z+925N5v51K9z7zmn7+d9zu+c8/ueuo6ODhVoFg6iFT/Rhb14kTdQQwXm83ERzSV1W7AEq3A/T7D6nOZz0RnNuzAV03AFE3EBs2sFMCsaTBBmYBN68ArrcRWTYtvMagPMwCVMxrVo3l/S/g0bcRMtwuy0VAugNOAtbIiG5fqCtbhbBjwkgNIpvRcNvvyj/2esxgMDX1lFAOMVF9VDYct9GgQYemPfZ4qLdmxegLEoYF4M1BoDZ9VbLMdLYdt2YkxWgNE4jwXoxgq8yWGeqEc4F3qwEGfQNBhAU+y4qCTAqwrMEz2PMd5jKU6j8W8AjTiFZQa+x6HqSYT4ICzQ9lKIBKARJ7AGH7ESj6tgnui+4g7aiOMYkQCMwDFsVtzLuc7zjLqDdejDNhxFXQP2ow1fhSP1dg3ME90QZuActuNRPfbExh24XkPzRJexO/7e04Dv8U97Wce6Khv/Sqn7UY9deF1lsyzqxs56YW+2CCMebNTNwkz1CSMqffpw0j+O3ajEZzoKeROSQ0L2MyqlbRS2Cos6s/ICbIjldMWRJE+SCbXVEiD5tHantD2N5ZRaAmTRyP8NkEvDAMMAaQCfY5n5cpFBc2L5LgtAIZaHMa4K5uNxpCz2H6VdTvcJmdFm2dLwNKV9+XpxoLwybQZeCDfdgoHXr0rVj7NYLCXB/Q3ZK3oax6MPewAAAABJRU5ErkJggg==) no-repeat;
     /* background: -webkit-image-set(url(../images/icon-home@2x.png) 2x, url(../images/icon-home@3x.png) 3x) no-repeat; */
@@ -883,6 +896,12 @@ header .menu {
 .rightBar ul .active .bar-leader {
     background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAiCAYAAABIiGl0AAACtklEQVRYhb3XT2xUVRTH8U+nLSmxG/lTgrSxFRoFulDjgsSGyKKa1GgwaWFDwsaFEI1uLIm4MwqibiUm2O5cAMF/ie6MNrogkAAFaiQSICUaBRvTjURbyuLcSQczb+ZNZ9pf8nIn7513vu/eOfe832uaH5NXK/BiOp7GQ/gPN3EWX6Xj3zzJmnKCd+IDbMJdXMR1tOJhbEYBv2IEn1dLWKhyvRnvp0RrcACdeDw9zPPoS+cOpJhT6Z7mSomrzfgI3sQ4hnCryoOuxUlsFys0khVYaca7EvQHDOSASjED+D7duzsrMGvGbbiKlXgMf+aAlqoDP+MONqbxPmXNeEhU7XuLgEr3HEo5hssFZIFfwhxGFwEtajTl2FkLuA8XMF0HeBoTeKoW8AZM1QEtagrrawHPiQKrV22i4eQG/46uBoA78Vst4HNiG3XUAV2XcpyuBXwqXdtfB/iVlKNs385qIC34RbTArWovtC5cFp3sUcz+PyBrxrN4Fe34Mo151Y4v0vhaOWglMHwrus8T+BE9OaA9KfZJHMY3WYHVXosHxeuuTyzdh+gtE9eLj1JMX7rnrUqJ8xqBHfikBPqHcB7EllmXfl/C6/iuWsKWHNBn8QYeKTn3oLBCf+EKPhO1MI75HDkrgjfjYzwjfNTXYmv8JGzPXB5AreC9CdqWxkMWlrYhKgd+G++I//E5UaX1aA8eEDWSCd6XoOfxgsbMclhY4gKOFk+WVvU24a9uCN+cx2Pl0Vqxat3CBJ5mYR+34lMLjqFRUClXqaNpLQW/jC14F5MNhBY1KfzblsTSND+mSXwBtIvl+GcJwIRjvYEZ9BbQL5rD6BJCpdzHhN3tL2AwXTixhNCijqdxsCCqeUZsoaXWBP7GtoJo/JMyTFmDdVd8YfQWsAq3lwFa1DRWt+Ca+LBeLp1B9z0Um5c+8rFvnwAAAABJRU5ErkJggg==) no-repeat;
     /* background: -webkit-image-set(url(../images/icon-user@2x.png) 2x, url(../images/icon-user@3x.png) 3x) no-repeat; */
+    background-position: left center;
+    background-size: .3rem auto;
+}
+.rightBar ul .active .bar-comment {
+    background: url(../images/roundchina/icon-comment-active@2x.png) no-repeat;
+
     background-position: left center;
     background-size: .3rem auto;
 }
@@ -917,9 +936,11 @@ header .menu {
   position: absolute;
   width: 1.52rem;
   height: 1.52rem;
+    margin-top: .3rem;
+    margin-left: .4rem;
   /* transform: rotate(-45deg); */
-  -webkit-transform: rotate(-45deg) translateX(0.3rem) translateY(0.7rem);
-          transform: rotate(-45deg) translateX(0.3rem) translateY(0.7rem);
+  /*-webkit-transform: rotate(-45deg) translateX(0.3rem) translateY(0.7rem);*/
+          /*transform: rotate(-45deg) translateX(0.3rem) translateY(0.7rem);*/
 }
 .rightBar .bar-footer .footer-content {
   padding-left: 2.2rem;
@@ -1249,6 +1270,7 @@ header .menu {
 }
 #partner .sub_spec {
     width:2rem;
+    height:1rem;
 }
 #lift_modal {
     display: none;}

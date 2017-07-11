@@ -53,16 +53,17 @@ $(function () {
 
   if ($home.length > 0) {
     var index = 0;
-    var arr = ['banner', 'info', 'activity', 'leader', 'about', 'union', 'partner', 'media'];
+    var arr = ['banner', 'info', 'activity', 'leader', 'comment','about', 'union', 'partner', 'media'];
 
     var headerHeight = $('header').height();
-    var bannerTop, infoTop, activityTop, leaderTop, aboutTop, unionTop, partnerTop, mediaTop;
+    var bannerTop, infoTop, activityTop, leaderTop, commentTop, aboutTop, unionTop, partnerTop, mediaTop;
 
     if ($('#banner').offset()) {
       bannerTop = $('#banner').offset().top;
       infoTop = $('#info').offset().top;
       activityTop = $('#activity').offset().top;
       leaderTop = $('#leader').offset().top;
+      commentTop = $('#comment').offset().top;
       aboutTop = $('#about').offset().top;
       unionTop = $('#union').offset().top;
       partnerTop = $('#partner').offset().top;
@@ -105,16 +106,18 @@ $(function () {
         index = 1;
       } else if (top < leaderTop) {
         index = 2;
-      } else if (top < aboutTop) {
+      } else if (top < commentTop) {
         index = 3;
-      } else if (top < unionTop) {
+      } else if (top < aboutTop) {
         index = 4;
-      } else if (top < partnerTop) {
+      } else if (top < unionTop) {
         index = 5;
-      } else if (top < mediaTop) {
+      } else if (top < partnerTop) {
         index = 6;
-      } else {
+      } else if (top < mediaTop) {
         index = 7;
+      } else {
+        index = 8;
       }
         if(top === 0 || ($(window).scrollTop() + $(window).height() === $(document).height())) {
             nav.hide();
@@ -153,8 +156,10 @@ $(function () {
         next = 3;
       } else if (i === 3) {
         next = 4;
-      } else {
+      } else if (i === 4) {
         next = 5;
+      } else {
+        next = 6;
       }
 
       $li.removeClass('active');

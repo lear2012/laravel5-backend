@@ -41,7 +41,7 @@
 						<p>
 							<span>07月15日</span>
 							<b class="icon-line">—</b>
-							<span>10月01日</span>
+							<span>10月15日</span>
 						</p>
 					</div>
 					<p class="route-subtitle">以下为西线6段线路</p>
@@ -66,9 +66,9 @@
 							<span>二连浩特</span>
 						</p>
 						<p>
-							<span>12月15日</span>
+							<span>11月01日</span>
 							<b class="icon-line">—</b>
-							<span>01月14日</span>
+							<span>01月15日</span>
 						</p>
 					</div>
 					<p class="route-subtitle">以下为东线6段线路</p>
@@ -88,7 +88,7 @@
 		<section class="section info" id="info">
 			<div class="section-header header-info"></div>
 			<img data-original="images/roundchina/info-1@2x.png" alt="">
-			<p>用轮胎的印记来丈量祖国完整边境公路, 历时<b>61天</b>，<b>4万</b>公里，<b>300多处</b>美景，<b>30个</b>车友俱乐部<b>1000名</b>自驾车主。随地随时， 随心所遇， 随队逐行。不必担心时间 ，2个月的旅程， 随时都可以加入。不必担心地点 ，放开所有顾虑 ，2万公里的游历。不管有没有车，哪里都可以启程。根据车辆情况拼车，超百万人关注。</p>
+			<p>用轮胎的印记来丈量祖国完整边境公路, 历时<b>近半年</b>，<b>4万</b>公里，<b>300多处</b>美景，<b>30个</b>车友俱乐部<b>1000名</b>自驾车主。随地随时， 随心所遇， 随队逐行。不必担心时间 ，2个月的旅程， 随时都可以加入。不必担心地点 ，放开所有顾虑 ，2万公里的游历。不管有没有车，哪里都可以启程。根据车辆情况拼车，超百万人关注。</p>
 			<div class="imgs">
 				<img data-original="images/roundchina/info-2@2x.png" alt="">
 				<img data-original="images/roundchina/info-3@2x.png" alt="">
@@ -100,13 +100,13 @@
 			</div>
 
 			<img data-original="images/roundchina/info-6@2x.png" alt="">
-			<p>参与者每完成一段线路，便可获得一枚与属线路勋章。完成全部线路，还可获得与属环中国边境线纪念铜板。</p>
+            <p class="section-subtitle"><b>全形地貌 视觉冲击</b></p>
+            <p>丹霞地貌、喀斯特地貌、雅丹地貌、海岸地貌、风积地貌、风蚀地貌、河流地貌、冰川地貌...</p>
 			<img data-original="images/roundchina/info-7@2x.png" alt="">
-			<p class="section-subtitle"><b>全形地貌 视觉冲击</b></p>
-			<p>丹霞地貌、喀斯特地貌、雅丹地貌、海岸地貌、风积地貌、风蚀地貌、河流地貌、冰川地貌...</p>
+            <p class="section-subtitle"><b>各地人文 思想升华</b></p>
+            <p>天山文化、藏区文化、大漠文化、西域文化、三秦文化、滇黔文化、南岭文化、 闽南文化...</p>
 			<img data-original="images/roundchina/info-8@2x.png" alt="">
-			<p class="section-subtitle"><b>各地人文 思想升华</b></p>
-			<p>天山文化、藏区文化、大漠文化、西域文化、三秦文化、滇黔文化、南岭文化、 闽南文化...</p>
+
 		</section>
 
 		<!-- 公益活动 -->
@@ -132,7 +132,7 @@
             <p>冰川雪地、荒漠戈壁、她都能带你肆意驰骋</p>
 			<img data-original="images/roundchina/leader-1@2x.png" alt="">
 			<p class="left">《越野十年》作家、英国认证陆虎体系教官—<b>玉儿</b></p>
-			<p>环中国自驾第1人—<b>李峰</b></p>
+			<p>单人单车环球中国第一人—<b>李峰</b></p>
 			<p>冠军赛车手—<b>韩魏</b></p>
 			<p>自驾地理创始人—<b>老迈狼</b></p>
 			<p>知名摄影家、旅行家—<b>姜曦</b></p>
@@ -141,16 +141,29 @@
 
 		</section>
 
+        <!-- 特别申明 -->
+        <section class="section comment" id="comment">
+            <div class="section-header header-comment"></div>
+            <p>
+                环中国边境自驾接力是可野发起，由玉儿带队的自驾活动，活动不收取服务费用，路途中的一切费用需由个人承担。
+                <br/>1、 由于环中国边境线的路途很多未知和挑战，行车过程中由于地形和一些拍摄，所以我们所有行程仅为预计到达时间
+                <br/>2、 车友申请后，官方将做审核，报名参加的车辆必须要求硬派越野，车友必须有越野自驾经验，户外生存能力经验
+                <br/>3、 参加车友需要自备药物、户外露营、自驾越野装备等，组织方不承担任何自驾活动物品
+                <br/>4、 由于路线部分路况及其恶劣，此次活动不具备官方救援的条件，所以参加车友必须有越野自驾的装备及自救能力
+                <br/>5、 对于审核通过的车友，我们会签署免责协议，对于免责条款请各位车友在参与前了解清楚，活动发起方将不承担途中任何事故责任
+            </p>
+        </section>
+
 		<!-- 关于可野 -->
 		<section class="section about" id="about">
 			<div class="section-header header-about"></div>
 			<img data-original="images/roundchina/about-1@2x.png" alt="">
-			<p><b>生活可以野一点！可以越野。</b>中国唯一提供专业自驾越野解决方案、越野自驾活动组织管理、自驾越野社群综合维护与管理的线上+线下平台。</p>
+			<p><b>生活可以野一点!</b><br/>可野自驾，中国首个自驾出行共享平台，旗下包含可野自驾APP、可野Club、可野自驾空间、可野营地、可野商城等业务体系，为自驾越野爱好者提供价值服务，旨在快速发展的中国汽车后市场，构建独特的自驾商业体系。</p>
 			<div class="imgs">
 				<img data-original="images/roundchina/about-2@2x.png" alt="">
 				<img data-original="images/roundchina/about-3@2x.png" alt="">
 			</div>
-			<p>该平台以自驾越野领域KOL为核心，通过线上带动线下的社群组织方式，为会员提供独特的自驾越野会员服务，分享精彩原创游记、区域路线及自驾产品、专业路书攻略、全国联合基地服务等。吸引了大量有车一族的加入。</p>
+
 		</section>
 
 		<!-- 可野自驾联盟 -->
@@ -224,24 +237,14 @@
 			<div class="footer-bottom">
 				<img data-original="images/roundchina/code@2x.png" alt="">
 				<p>
-					<span class="name">庆江</span>
+					<span class="name">小可</span>
 					<span class="icon-mobile"></span>
-					<span>电话：13810053040</span>
+					<span>电话：15101185962</span>
 				</p>
 				<p>
 					<span class="name"></span>
 					<span class="icon-wechat"></span>
-					<span>微信：qingjiang</span>
-				</p>
-				<p>
-					<span class="name">马腾</span>
-					<span class="icon-mobile"></span>
-					<span>电话：13920225633</span>
-				</p>
-				<p>
-					<span class="name"></span>
-					<span class="icon-wechat"></span>
-					<span>微信：ikari33</span>
+					<span>微信：KeepUkefu</span>
 				</p>
 			</div>
 		</footer>
@@ -257,6 +260,7 @@
 				<li class="active"><span class="bar-info">活动介绍</span></li>
 				<li><span class="bar-activity">公益活动</span></li>
 				<li><span class="bar-leader">领队介绍</span></li>
+                <li><span class="bar-comment">特别申明</span></li>
 				<li><span class="bar-about">关于可野</span></li>
 				<li><span class="bar-partner">合作伙伴</span></li>
 			</ul>
@@ -289,7 +293,7 @@
 		</div>
 	</div>
 
-	<div class="navigation hide">
+	<div class="navigation hidden">
 		<span class="icon-top"></span>
 		<span class="icon-bottom"></span>
 	</div>
