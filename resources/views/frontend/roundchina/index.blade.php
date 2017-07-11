@@ -263,7 +263,7 @@
 			</ul>
 			<div class="bar-footer">
 				<span class="bar-footer-title">商务洽谈</span>
-				<img data-original="images/roundchina/code@2x.png" alt="">
+				<img src="images/roundchina/code@2x.png" alt="">
 				<div class="footer-content">
 					<p>
 						<span class="name">庆江</span>
