@@ -80,7 +80,6 @@ elixir(function(mix) {
 
     // for round china css/js
     mix.styles([
-        '../bower/AdminLTE/plugins/select2/select2.min.css',
         '../bower/sweetalert/dist/sweetalert.css',
         'orange.css',
         'vendor.css',
@@ -89,10 +88,9 @@ elixir(function(mix) {
     mix.scripts([
         'jquery-2.2.3.min.js',
         'lodash.min.js',
+        '../../../node_modules/vanilla-lazyload/dist/lazyload.transpiled.min.js',
         '../bower/validator-js/validator.min.js',
         '../bower/AdminLTE/plugins/iCheck/icheck.min.js',
-        '../bower/AdminLTE/plugins/select2/select2.full.min.js',
-        '../bower/AdminLTE/plugins/select2/i18n/zh-CN.js',
         '../bower/sweetalert/dist/sweetalert.min.js',
         '../bower/mojs/build/mo.min.js',
         'manifest.js',

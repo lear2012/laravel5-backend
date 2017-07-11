@@ -14,20 +14,22 @@ $(function () {
     var $addr_start_label = $addr_start.find('span');
     $addr_start.find('select').on('change', function (event) {
       $addr_start_label.html(this.value);
+        $('#addr_start').val(this.value);
     });
 
     var $addr_end = $('#addr_end');
     var $addr_end_label = $addr_end.find('span');
     $addr_end.find('select').on('change', function (event) {
-      $addr_end_label.html(this.value);
+        $addr_end_label.html(this.value);
+        $('#addr_end').val(this.value);
     });
 
-    // var $carry = $('#carry');
-    // var $carry_label = $carry.find('span');
-    // $carry.find('select').on('change', function (event) {
-    //   $carry_label.html(this.text);
-    //   $('#carry').val(this.value);
-    // });
+    var $carry = $('#carry');
+    var $carry_label = $carry.find('span');
+    $carry.find('select').on('change', function (event) {
+      $carry_label.html(this.value);
+      $('#carry').val(this.value);
+    });
 
     $('#modal-close').on('click', function (event) {
       $('#modal').hide();

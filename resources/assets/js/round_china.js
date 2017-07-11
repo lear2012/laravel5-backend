@@ -1,20 +1,25 @@
 var round_china = {
 
-    _page: 1,
+    _rid: '', // 用于thumbup的路线id
 
-    _enrollment_id: '',
+    _page: 1, // 页码
+
+    _enrollment_id: '', // 搭车时选择的Enrollment ID
 
     _cars: [],
 
     init: function() {
         if ($('.home').length > 0) {
+            var myLazyLoad = new LazyLoad();
             this.init_thumbup();
+            this.bind_main_thumbup();
+            this.bind_route_thumbup();
         } else {
             this.init_back();
             this.init_regrules();
             // init normal checkbox/select
             this.init_checkbox();
-            this.init_normal_select();
+            //this.init_normal_select();
             // form submit bind
             this.init_selfreg_submit();
             this.init_liftreg_submit();
@@ -164,9 +169,9 @@ var round_china = {
             data.mobile = $.trim($('#mobile').val());
             data.wechat_no = $.trim($('#wechat_no').val());
             data.brand = $.trim($('#brand').val());
-            data.start = $.trim($('#start').val());
-            data.end = $.trim($('#end').val());
-            data.lift = $.trim($('#lift').val());
+            data.start = $.trim($('#addr_start').val());
+            data.end = $.trim($('#addr_end').val());
+            data.lift = $.trim($('#carry').val()) == '是' ? 1 : 0;
             data.available_seats = $.trim($('#available_seats').val());
             data.agree = $.trim($('#agree').val());
             if(!that.checkRegister(data))
@@ -442,6 +447,57 @@ var round_china = {
         });
     },
 
+    thumbup: function(rid) {
+        var that = this;
+        var data = {};
+        var url = '';
+        if($.isNumeric(rid))
+            url = '/roundchina/thumbup/'+rid;
+        else
+            url = '/roundchina/thumbup';
+        $.ajax({
+            type: "POST",
+            dataType: "json", //dataType (xml html script json jsonp text)
+            data: data, //json 数据
+            url: url,
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            //beforeSend: bstool.submit_loading, //执行ajax前执行loading函数.直到success
+            success: function(rs) {//成功获得的也是json对象
+                if(rs.errno == 0) {
+                    var c = parseInt($('.thumbupcount').html());
+                    $('.thumbupcount').html(c+1);
+                    if(rid == '') {
+                        $('.main-icon-hand').removeClass('icon-hand');
+                        $('.main-icon-hand').addClass('icon-hand-active');
+                    } else {
+                        var elm = $('div[route_id='+rid+']', $('.route')).get();
+                        console.log(elm);
+                        $('.icon-like', elm).addClass('icon-like-active');
+                        $('.icon-like', elm).removeClass('icon-like');
+                    }
+                } else {
+                    that.showError(rs);
+                }
+            }
+        });
+    },
+    
+    bind_main_thumbup: function () {
+        var that = this;
+        $('.main-icon-hand').on('click', function (event) {
+            that.thumbup('');
+        });
+    },
+
+    bind_route_thumbup: function () {
+        var that = this;
+        $('.icon-like', $('.route')).on('click', function (event) {
+            var rid = $(this).parent().parent().attr('route_id');
+            that.thumbup(rid);
+        });
+    }
 };
 $(document).ready(function(){
     round_china.init();

@@ -6,6 +6,10 @@ use Carbon\Carbon;
 use Illuminate\Support\Facades\App;
 use ChannelLog as Log;
 use Pinyin;
+use App\Models\KeyeEnrollment;
+use App\Models\KeyeLift;
+use App\Models\KeyeClub;
+use Illuminate\Support\Facades\Redis;
 
 class Utils {
 
@@ -313,5 +317,9 @@ class Utils {
             '临沧',
             '西双版纳',
         ];
+    }
+
+    public static function getThumbupCount() {
+
     }
 }

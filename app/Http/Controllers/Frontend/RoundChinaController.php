@@ -20,11 +20,19 @@ use Laracasts\Utilities\JavaScript\JavaScriptFacade as JavaScript;
 class RoundChinaController extends Controller
 {
     public function index() {
-        $activeRoutes = KeyeRoute::getActiveRouteList();
-        $inactiveRoutes = KeyeRoute::getInactiveRouteList();
+        $c1 = KeyeEnrollment::where('status', 1)->count();
+        $c2 = KeyeLift::all()->count();
+        $c3 = KeyeClub::where('status', 1)->count();
+        $allCount = $c1+$c2+$c3;
+        $thumbupCount = KeyeRoute::getThumbupCount();
+
+        $westLines = KeyeRoute::getActiveRouteList();
+        $eastLines = KeyeRoute::getInactiveRouteList();
         return view('frontend.roundchina.index', [
-            'activeRoutes' => $activeRoutes,
-            'inactiveRoutes' => $inactiveRoutes,
+            'westLines' => $westLines,
+            'eastLines' => $eastLines,
+            'allCount' => $allCount,
+            'thumbupCount' => $thumbupCount
         ]);
     }
 
@@ -110,7 +118,7 @@ class RoundChinaController extends Controller
         $ip = \Request::ip();
         Redis::incr('ip:'.$ip.':thumbup');
         if(Redis::get('ip:'.$ip.':thumbup') > 100) {
-            self::sendJsonMsg();
+            self::setMsgCode(1020);
         }
         if(is_null($id) || empty($id)) {
             Redis::incr('all_thumbup');

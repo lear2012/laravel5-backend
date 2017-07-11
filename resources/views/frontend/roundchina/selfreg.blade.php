@@ -26,28 +26,37 @@
 			</div>
 
 			<div class="select-group">
-                <select class="input-item select2" id="start">
-                    <option value="">选择起点</option>
-                    @foreach($points as $point)
-                        <option value="{{$point}}">{{$point}}</option>
-                    @endforeach
-                </select>
+				<div class="input-item" id="addr_start">
+					<span class="input-label">起点</span>
+					<select>
+						<option value="">选择起点</option>
+                        @foreach($points as $point)
+                            <option value="{{$point}}">{{$point}}</option>
+                        @endforeach
+					</select>
+				</div>
 				到
-                <select class="input-item select2" id="end">
-                    <option value="">选择终点</option>
-                    @foreach($points as $point)
-                        <option value="{{$point}}">{{$point}}</option>
-                    @endforeach
-                </select>
+				<div class="input-item" id="addr_end">
+					<span class="input-label">终点</span>
+					<select>
+						<option value="">选择终点</option>
+                        @foreach($points as $point)
+                            <option value="{{$point}}">{{$point}}</option>
+                        @endforeach
+					</select>
+				</div>
 			</div>
 
 			<div class="select-group-label">
 				<span class="select-label">是否愿意搭人</span>
-                <select class="input-item select2" id="lift">
-                    <option value="">是否愿意搭人</option>
-                    <option value="1">是</option>
-                    <option value="0">否</option>
-                </select>
+				<div class="input-item" id="carry">
+					<span class="input-label"></span>
+					<select>
+						<option value="">是否愿意搭人</option>
+						<option value="是">是</option>
+						<option value="否">否</option>
+					</select>
+				</div>
 			</div>
 
 			<div class="input-item">
