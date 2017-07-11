@@ -8,7 +8,7 @@
 
 		<section class="banner" id="banner">
 			<div class="slide">
-				<img src="images/roundchina/banner-1@2x.png" alt="">
+				<img src="images/roundchina/banner-1@2x.jpg" alt="">
 			</div>
 		</section>
 
