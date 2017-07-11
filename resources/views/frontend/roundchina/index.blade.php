@@ -88,7 +88,7 @@
 		<section class="section info" id="info">
 			<div class="section-header header-info"></div>
 			<img data-original="images/roundchina/info-1@2x.png" alt="">
-			<p>用轮胎的印记来丈量祖国完整边境公路, 历时<b>近半年</b>，<b>4万</b>公里，<b>300多处</b>美景，<b>30个</b>车友俱乐部<b>1000名</b>自驾车主。随地随时， 随心所遇， 随队逐行。不必担心时间 ，近半年的旅程， 随时都可以加入。不必担心地点 ，放开所有顾虑 ，2万公里的游历。不管有没有车，哪里都可以启程。根据车辆情况拼车，超百万人关注。</p>
+			<p>用轮胎的印记来丈量祖国完整边境公路, 历时<b>近半年</b>，<b>4万</b>公里，<b>300多处</b>美景，<b>30个</b>车友俱乐部<b>1000名</b>自驾车主。随地随时， 随心所遇， 随队逐行。不必担心时间 ，近半年的旅程， 随时都可以加入。不必担心地点 ，放开所有顾虑 ，四万公里的游历。不管有没有车，哪里都可以启程。根据车辆情况拼车，超百万人关注。</p>
 			<div class="imgs">
 				<img data-original="images/roundchina/info-2@2x.png" alt="">
 				<img data-original="images/roundchina/info-3@2x.png" alt="">
