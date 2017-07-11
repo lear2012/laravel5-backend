@@ -19,6 +19,7 @@
 				<span class="button" id="search_cars">搜索</span>
 			</div>
             <div id="car_list">
+                @if(count($items) > 0)
                 @foreach($items as $item)
                 <div class="enroll-item" enrollment_id="{{$item->id}}">
                     <p class="item-top">
@@ -30,6 +31,9 @@
                     </p>
                 </div>
                 @endforeach
+                @else
+                    目前没有可供搭载的车辆，敬请期待！
+                @endif
             </div>
 			<p class="more" id="more_cars">点击获取更多<span></span></p>
 
