@@ -97,6 +97,7 @@ $(function () {
 
     $(window).scroll(function () {
       var top = $('body').scrollTop();
+      var nav = $('.navigation');
 
       if (top < infoTop) {
         index = 0;
@@ -115,6 +116,11 @@ $(function () {
       } else {
         index = 7;
       }
+        if(top === 0 || ($(window).scrollTop() + $(window).height() === $(document).height())) {
+            nav.hide();
+        }else {
+            nav.show();
+        }
     });
 
     $('#menu').on('click', function (event) {

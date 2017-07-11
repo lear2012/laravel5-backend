@@ -289,7 +289,7 @@
 		</div>
 	</div>
 
-	<div class="navigation">
+	<div class="navigation hide">
 		<span class="icon-top"></span>
 		<span class="icon-bottom"></span>
 	</div>

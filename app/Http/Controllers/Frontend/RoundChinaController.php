@@ -20,9 +20,9 @@ use Laracasts\Utilities\JavaScript\JavaScriptFacade as JavaScript;
 class RoundChinaController extends Controller
 {
     public function index() {
-        $c1 = KeyeEnrollment::where('status', 1)->count();
+        $c1 = KeyeEnrollment::all()->count();
         $c2 = KeyeLift::all()->count();
-        $c3 = KeyeClub::where('status', 1)->count();
+        $c3 = KeyeClub::all()->count();
         $allCount = $c1+$c2+$c3;
         $thumbupCount = KeyeRoute::getThumbupCount();
 
