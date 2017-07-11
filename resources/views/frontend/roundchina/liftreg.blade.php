@@ -35,8 +35,9 @@
                     目前没有可供搭载的车辆，敬请期待！
                 @endif
             </div>
+            @if(count($items) > 0)
 			<p class="more" id="more_cars">点击获取更多<span></span></p>
-
+            @endif
 			<div class="content-bottom">
 				<a class="button button-block submit" id="lift_next">下一步</a>
 			</div>
