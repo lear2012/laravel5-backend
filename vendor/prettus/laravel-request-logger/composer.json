@@ -1,0 +1,29 @@
+{
+  "name": "prettus/laravel-request-logger",
+  "description": "HTTP request logger middleware for Laravel",
+  "keywords": ["laravel", "logger", "request", "response"],
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Anderson Andrade",
+      "email": "contato@andersonandra.de"
+    }
+  ],
+  "require": {
+    "php": ">=5.4.0"
+  },
+  "require-dev": {
+    "illuminate/support": "5.0.*|~5.1",
+    "illuminate/http": "5.0.*|~5.1",
+    "monolog/monolog": "~1.11"
+  },
+  "autoload": {
+    "psr-4": {
+      "Prettus\\RequestLogger\\": "src/Prettus/RequestLogger/"
+    }
+  },
+  "config": {
+    "preferred-install": "dist"
+  },
+  "minimum-stability": "dev"
+}
