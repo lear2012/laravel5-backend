@@ -1329,8 +1329,15 @@ header .menu {
 a,img,button,input,textarea,label,span,i,ul,li,div,p,a:visited{
     -webkit-tap-highlight-color:rgba(255,255,255,0);
 }
-input,textarea{-webkit-appearance:none;margin:0;padding:0;
-    font-weight:lighter;}
+input,textarea{
+    -webkit-appearance:none;
+    margin:0;padding:0;
+    font-weight:lighter;
+    outline: none;
+    font-size: 0.6rem;
+    color: white;
+    line-height: 2rem;
+}
 a:focus{outline:none;}
 .notice-msg{
   font-size:.3rem;
