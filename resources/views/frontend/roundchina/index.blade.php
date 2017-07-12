@@ -113,7 +113,7 @@
 		<section class="section activity" id="activity">
 			<div class="section-header header-activity"></div>
 			<img data-original="images/roundchina/activity-1@2x.png" alt="">
-			<p>整个活劢期间,车队将造访6家贫困小学、拜访6家老人院 为孩子和老人送去所有关注环中国车友的关怀。</p>
+			<p>整个活动期间,车队将造访6家贫困小学、拜访6家老人院 为孩子和老人送去所有关注环中国车友的关怀。</p>
 			<div class="imgs">
 				<img data-original="images/roundchina/activity-2@2x.png" alt="">
 				<img data-original="images/roundchina/activity-3@2x.png" alt="">
