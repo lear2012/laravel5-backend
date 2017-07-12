@@ -32,7 +32,7 @@
                 </div>
                 @endforeach
                 @else
-                    目前没有可供搭载的车辆，敬请期待！
+                    <span class="notice-msg">目前没有可供搭载的车辆，敬请期待！</span>
                 @endif
             </div>
             @if(count($items) > 0)
