@@ -502,27 +502,13 @@ var round_china = {
 
     init_share_btns:function () {
         console.log('ready to share!');
-        wx.ready(function() {
-            // 分享给朋友
-            wx.onMenuShareAppMessage({
-                title: '可野第一届环中国边境线自驾接力', // 商品名
-                desc: '用车轮丈量你内心认知的边界', // 店铺名
-                link: 'http://keye.liaollisonest.com/roundchina', // 商品购买地址
-                imgUrl: 'http://keye.liaollisonest.com/roundchina/images/roundchina/share_social.png', // 分享的图标
-                fail: function (res) {
-                    alert(JSON.stringify(res));
-                }
-            });
-            // 分享到朋友圈
-            wx.onMenuShareTimeline({
-                title: '可野第一届环中国边境线自驾接力', // 商品名
-                desc: '用车轮丈量你内心认知的边界', // 店铺名
-                link: 'http://keye.liaollisonest.com/roundchina', // 商品购买地址
-                imgUrl: 'http://keye.liaollisonest.com/roundchina/images/roundchina/share_social.png', // 分享的图标
-                fail: function (res) {
-                    alert(JSON.stringify(res));
-                }
-            });
+        wx.checkJsApi({
+            jsApiList: ['onMenuShareTimeline', 'onMenuShareAppMessage','onMenuShareQQ', 'onMenuShareWeibo'], // 需要检测的JS接口列表，所有JS接口列表见附录2,
+            success: function(res) {
+                console.log(res);
+                // 以键值对的形式返回，可用的api值true，不可用为false
+                // 如：{"checkResult":{"chooseImage":true},"errMsg":"checkJsApi:ok"}
+            }
         });
     }
 
