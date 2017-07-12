@@ -34,11 +34,11 @@
 @endif
 @if(isset($js))
     <script type="text/javascript" charset="utf-8">
-        wx.config(<?php echo $js->config(array('onMenuShareTimeline', 'onMenuShareAppMessage','onMenuShareQQ', 'onMenuShareWeibo'), true); ?>);
+        wx.config(<?php echo $js->config(array('onMenuShareTimeline', 'onMenuShareAppMessage','onMenuShareQQ', 'onMenuShareWeibo')); ?>);
         wx.ready(function() {
             // 分享给朋友
             wx.onMenuShareAppMessage({
-                title: '可野第一届环中国边境线自驾接力', // 商品名
+                title: '可野第一届环中国边境线自驾接力-用车轮丈量你内心认知的边界', // 商品名
                 desc: '用车轮丈量你内心认知的边界', // 店铺名
                 link: 'http://keye.liaollisonest.com/roundchina', // 商品购买地址
                 imgUrl: 'http://keye.liaollisonest.com/roundchina/images/roundchina/share_social.png', // 分享的图标
@@ -48,7 +48,7 @@
             });
             // 分享到朋友圈
             wx.onMenuShareTimeline({
-                title: '可野第一届环中国边境线自驾接力', // 商品名
+                title: '可野第一届环中国边境线自驾接力-用车轮丈量你内心认知的边界', // 商品名
                 desc: '用车轮丈量你内心认知的边界', // 店铺名
                 link: 'http://keye.liaollisonest.com/roundchina', // 商品购买地址
                 imgUrl: 'http://keye.liaollisonest.com/roundchina/images/roundchina/share_social.png', // 分享的图标
@@ -57,9 +57,7 @@
                 }
             });
         });
-        wx.error(function (res) {
-            alert(res.errMsg);  //打印错误消息。及把 debug:false,设置为debug:ture就可以直接在网页上看到弹出的错误提示
-        });
+
     </script>
 @endif
 @yield('scripts')
