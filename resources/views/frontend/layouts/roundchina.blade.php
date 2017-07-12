@@ -34,7 +34,7 @@
 @endif
 @if(isset($js))
     <script type="text/javascript" charset="utf-8">
-        wx.config(<?php echo $js->config(array('onMenuShareTimeline', 'onMenuShareAppMessage','onMenuShareQQ', 'onMenuShareWeibo'), ture); ?>);
+        wx.config(<?php echo $js->config(array('onMenuShareTimeline', 'onMenuShareAppMessage','onMenuShareQQ', 'onMenuShareWeibo'), true); ?>);
         wx.ready(function() {
             // 分享给朋友
             wx.onMenuShareAppMessage({
