@@ -510,7 +510,7 @@ var round_china = {
                 // 如：{"checkResult":{"chooseImage":true},"errMsg":"checkJsApi:ok"}
             }
         });
-    }
+    },
 
 };
 $(document).ready(function(){

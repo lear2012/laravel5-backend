@@ -34,7 +34,7 @@
 @endif
 @if(isset($js))
     <script type="text/javascript" charset="utf-8">
-        wx.config(<?php echo $js->config(array('onMenuShareTimeline', 'onMenuShareAppMessage','onMenuShareQQ', 'onMenuShareWeibo')); ?>);
+        wx.config(<?php echo $js->config(array('onMenuShareTimeline', 'onMenuShareAppMessage','onMenuShareQQ', 'onMenuShareWeibo'), ture); ?>);
         wx.ready(function() {
             // 分享给朋友
             wx.onMenuShareAppMessage({
@@ -56,6 +56,9 @@
                     alert(JSON.stringify(res));
                 }
             });
+        });
+        wx.error(function (res) {
+            alert(res.errMsg);  //打印错误消息。及把 debug:false,设置为debug:ture就可以直接在网页上看到弹出的错误提示
         });
     </script>
 @endif
