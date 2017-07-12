@@ -502,6 +502,7 @@ var round_china = {
 
     init_share_btns:function () {
         wx.ready(function () {
+            console.log('ready to share!');
             // 分享给朋友
             wx.onMenuShareAppMessage({
                 title: '可野第一届环中国边境线自驾接力', // 商品名
