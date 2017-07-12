@@ -1081,9 +1081,9 @@ header .menu {
   box-sizing: border-box;
   width: 100%;
   height: .84rem;
-  padding: .3rem .29rem 0rem .29rem;
-  line-height: .3rem;
-  font-size: .3rem;
+  padding: .3rem .29rem .3rem .29rem;
+  line-height: .4rem;
+  font-size: .4rem;
   color: #000;
 }
 .enroll .content .input-item .input-label {
