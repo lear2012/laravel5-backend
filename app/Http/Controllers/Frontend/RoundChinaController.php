@@ -39,7 +39,8 @@ class RoundChinaController extends Controller
             'westLines' => $westLines,
             'eastLines' => $eastLines,
             'allCount' => $allCount,
-            'thumbupCount' => $thumbupCount
+            'thumbupCount' => $thumbupCount,
+            'js' => $this->js
         ]);
     }
 
