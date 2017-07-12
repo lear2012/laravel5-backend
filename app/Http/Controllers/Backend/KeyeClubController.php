@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use DB;
 use Yajra\Datatables\Facades\Datatables;
+use App\Models\KeyeClub;
 
 class KeyeClubController extends Controller
 {
@@ -91,5 +92,24 @@ class KeyeClubController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function active(Request $request)
+    {
+        //
+        $id = (int)$request->get('id');
+        $val = (int)$request->get('val');
+        if(!is_numeric($id) || ($val != 0 && $val != 1)) {
+            self::setMsgCode(9001);
+        }
+        $route = KeyeClub::find($id);
+        if(!$route) {
+            self::setMsgCode(9003);
+        }
+        $route->status = $val;
+        if(!$route->save()) {
+            self::setMsgCode(1016);
+        }
+        self::sendJsonMsg();
     }
 }

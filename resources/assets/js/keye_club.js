@@ -17,7 +17,7 @@ var clubs_page = {
 
     init: function() {
         this.init_datatable();
-        //this.init_dt_btns();
+        this.init_dt_btns();
     },
 
     init_datatable: function () {
@@ -35,23 +35,22 @@ var clubs_page = {
         params.language = {
             "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Chinese.json"
         };
-        // params.columns.push(
-        //     {
-        //         "class": "details-control",
-        //         "orderable": false,
-        //         "searchable": false,
-        //         "data": null,
-        //         "render": function (data, type, row) {
-        //             var html = '';
-        //             html += '<a href="javascript:;" class="edit btn btn-xs"><i class="fa fa-edit" aria-hidden="true"></i>编辑</a>';
-        //             if(data.active == 1)
-        //                 html += '<a href="javascript:;" class="deactive-route btn btn-xs"><i class="fa fa-lock" aria-hidden="true"></i>禁用</a>';
-        //             else
-        //                 html += '<a href="javascript:;" class="active-route btn btn-xs"><i class="fa fa-unlock" aria-hidden="true"></i>启用</a>';
-        //             return html;
-        //         }
-        //     }
-        // );
+        params.columns.push(
+            {
+                "class": "details-control",
+                "orderable": false,
+                "searchable": false,
+                "data": null,
+                "render": function (data, type, row) {
+                    var html = '';
+                    if(data.status == 1)
+                        html += '<a href="javascript:;" class="deactive-route btn btn-xs"><i class="fa fa-lock" aria-hidden="true"></i>禁用</a>';
+                    else
+                        html += '<a href="javascript:;" class="active-route btn btn-xs"><i class="fa fa-unlock" aria-hidden="true"></i>通过</a>';
+                    return html;
+                }
+            }
+        );
         if (typeof $('#dataTable').attr('id') === 'undefined')
             return false;
         if (this._theTable)
@@ -79,12 +78,6 @@ var clubs_page = {
     init_dt_btns: function() {
         var that = this;
         $('#dataTable').on('draw.dt', function () {
-            $('.edit').on('click', null, function (e) {
-                var data = that._theTable.row($(this).parents('tr')).data();
-                that._currentRow = that._theTable.row($(this).parents('tr'));
-                window.location.href = '/admin/keyeroutes/'+data.id+'/edit';
-                return;
-            });
 
             $('.deactive-route').on('click', null, function (e) {
                 var data = that._theTable.row($(this).parents('tr')).data();
@@ -141,7 +134,7 @@ var clubs_page = {
             type: "POST",
             data: params,
             dataType: "json", //dataType (xml html script json jsonp text)
-            url: '/admin/keyeroutes/active',
+            url: '/admin/keyeclubs/active',
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             },

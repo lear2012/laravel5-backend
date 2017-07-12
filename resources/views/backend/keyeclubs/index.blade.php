@@ -40,6 +40,7 @@
                             <th>{{ trans('message.mobile') }}</th>
                             <th>{{ trans('message.wechat_no') }}</th>
                             <th>{{ trans('message.created_at') }}</th>
+                            <th>{{ trans('message.action') }}</th>
                         </tr>
                         </thead>
                         <tbody>

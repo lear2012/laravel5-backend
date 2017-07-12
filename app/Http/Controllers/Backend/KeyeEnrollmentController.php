@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
+use App\Models\KeyeEnrollment;
 use Illuminate\Http\Request;
 use DB;
 use Yajra\Datatables\Facades\Datatables;
@@ -91,5 +92,24 @@ class KeyeEnrollmentController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function active(Request $request)
+    {
+        //
+        $id = (int)$request->get('id');
+        $val = (int)$request->get('val');
+        if(!is_numeric($id) || ($val != 0 && $val != 1)) {
+            self::setMsgCode(9001);
+        }
+        $route = KeyeEnrollment::find($id);
+        if(!$route) {
+            self::setMsgCode(9003);
+        }
+        $route->status = $val;
+        if(!$route->save()) {
+            self::setMsgCode(1016);
+        }
+        self::sendJsonMsg();
     }
 }

@@ -152,12 +152,14 @@ Route::group(['namespace' => 'Backend'], function () {
 
         // KeyeEnrollment
         Route::get('keyeenrollments/search', ['as' => 'keyeenrollments.search', 'uses' => 'KeyeEnrollmentController@search']);
+        Route::post('keyeenrollments/active', ['as' => 'keyeenrollments.active', 'uses' => 'KeyeEnrollmentController@active']);
         Route::resource('keyeenrollments', 'KeyeEnrollmentController');
         // KeyeLift
         Route::get('keyelifts/search', ['as' => 'keyelifts.search', 'uses' => 'KeyeLiftController@search']);
         Route::resource('keyelifts', 'KeyeLiftController');
         // KeyeClub
         Route::get('keyeclubs/search', ['as' => 'keyeclubs.search', 'uses' => 'KeyeClubController@search']);
+        Route::post('keyeclubs/active', ['as' => 'keyeclubs.active', 'uses' => 'KeyeClubController@active']);
         Route::resource('keyeclubs', 'KeyeClubController');
 
         //

@@ -46,6 +46,7 @@
                             <th>{{ trans('message.available_seats') }}</th>
                             <th>{{ trans('message.seats_taken') }}</th>
                             <th>{{ trans('message.created_at') }}</th>
+                            <th>{{ trans('message.action') }}</th>
                         </tr>
                         </thead>
                         <tbody>

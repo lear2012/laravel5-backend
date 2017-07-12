@@ -23,7 +23,7 @@ var enrollments_page = {
 
     init: function() {
         this.init_datatable();
-        //this.init_dt_btns();
+        this.init_dt_btns();
     },
 
     init_datatable: function () {
@@ -41,23 +41,22 @@ var enrollments_page = {
         params.language = {
             "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Chinese.json"
         };
-        // params.columns.push(
-        //     {
-        //         "class": "details-control",
-        //         "orderable": false,
-        //         "searchable": false,
-        //         "data": null,
-        //         "render": function (data, type, row) {
-        //             var html = '';
-        //             html += '<a href="javascript:;" class="edit btn btn-xs"><i class="fa fa-edit" aria-hidden="true"></i>编辑</a>';
-        //             if(data.active == 1)
-        //                 html += '<a href="javascript:;" class="deactive-route btn btn-xs"><i class="fa fa-lock" aria-hidden="true"></i>禁用</a>';
-        //             else
-        //                 html += '<a href="javascript:;" class="active-route btn btn-xs"><i class="fa fa-unlock" aria-hidden="true"></i>启用</a>';
-        //             return html;
-        //         }
-        //     }
-        // );
+        params.columns.push(
+            {
+                "class": "details-control",
+                "orderable": false,
+                "searchable": false,
+                "data": null,
+                "render": function (data, type, row) {
+                    var html = '';
+                    if(data.status == 1)
+                        html += '<a href="javascript:;" class="deactive-route btn btn-xs"><i class="fa fa-lock" aria-hidden="true"></i>禁用</a>';
+                    else
+                        html += '<a href="javascript:;" class="active-route btn btn-xs"><i class="fa fa-unlock" aria-hidden="true"></i>通过</a>';
+                    return html;
+                }
+            }
+        );
         if (typeof $('#dataTable').attr('id') === 'undefined')
             return false;
         if (this._theTable)
@@ -85,12 +84,6 @@ var enrollments_page = {
     init_dt_btns: function() {
         var that = this;
         $('#dataTable').on('draw.dt', function () {
-            $('.edit').on('click', null, function (e) {
-                var data = that._theTable.row($(this).parents('tr')).data();
-                that._currentRow = that._theTable.row($(this).parents('tr'));
-                window.location.href = '/admin/keyeroutes/'+data.id+'/edit';
-                return;
-            });
 
             $('.deactive-route').on('click', null, function (e) {
                 var data = that._theTable.row($(this).parents('tr')).data();
@@ -118,7 +111,7 @@ var enrollments_page = {
                 var data = that._theTable.row($(this).parents('tr')).data();
                 that._currentRow = that._theTable.row($(this).parents('tr'));
                 swal({
-                        title: "您确定要启用该记录吗?",
+                        title: "您确定要通过该记录吗?",
                         type: "warning",
                         showCancelButton: true,
                         confirmButtonColor: "#DD6B55",
@@ -147,7 +140,7 @@ var enrollments_page = {
             type: "POST",
             data: params,
             dataType: "json", //dataType (xml html script json jsonp text)
-            url: '/admin/keyeroutes/active',
+            url: '/admin/keyeenrollments/active',
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             },
@@ -155,7 +148,7 @@ var enrollments_page = {
             success: function (rs) {//成功获得的也是json对象
                 if (rs.errno == 0) {
                     //swal.close();
-                    var text = params.val == 1 ? '启用改条目成功!' : '禁用该条目成功!';
+                    var text = params.val == 1 ? '通过改条目成功!' : '禁用该条目成功!';
                     site.showSuccess(text);
                     that._theTable.draw();
                     // check if to show new btn
