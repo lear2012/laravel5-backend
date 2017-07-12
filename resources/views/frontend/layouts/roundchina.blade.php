@@ -41,7 +41,7 @@
                 title: '可野第一届环中国边境线自驾接力-用车轮丈量你内心认知的边界', // 商品名
                 desc: '用车轮丈量你内心认知的边界', // 店铺名
                 link: 'http://keye.liaollisonest.com/roundchina', // 商品购买地址
-                imgUrl: 'http://keye.liaollisonest.com/roundchina/images/roundchina/share_social.png', // 分享的图标
+                imgUrl: 'http://keye.liaollisonest.com/images/roundchina/share_social.png', // 分享的图标
                 fail: function (res) {
                     alert(JSON.stringify(res));
                 }
@@ -51,7 +51,7 @@
                 title: '可野第一届环中国边境线自驾接力-用车轮丈量你内心认知的边界', // 商品名
                 desc: '用车轮丈量你内心认知的边界', // 店铺名
                 link: 'http://keye.liaollisonest.com/roundchina', // 商品购买地址
-                imgUrl: 'http://keye.liaollisonest.com/roundchina/images/roundchina/share_social.png', // 分享的图标
+                imgUrl: 'http://keye.liaollisonest.com/images/roundchina/share_social.png', // 分享的图标
                 fail: function (res) {
                     alert(JSON.stringify(res));
                 }
