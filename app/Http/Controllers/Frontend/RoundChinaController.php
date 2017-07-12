@@ -16,9 +16,16 @@ use Illuminate\Support\Facades\Redis;
 use DB;
 use App\Helpers\Utils;
 use Laracasts\Utilities\JavaScript\JavaScriptFacade as JavaScript;
+use EasyWeChat;
+use EasyWeChat\Foundation\Application;
 
 class RoundChinaController extends Controller
 {
+    public function __construct(Application $wechat)
+    {
+        parent::__construct($wechat);
+    }
+
     public function index() {
         $c1 = KeyeEnrollment::all()->count();
         $c2 = KeyeLift::all()->count();

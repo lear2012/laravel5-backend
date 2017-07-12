@@ -34,7 +34,7 @@
 @endif
 @if(isset($js))
     <script type="text/javascript" charset="utf-8">
-        wx.config(<?php echo $js->config(array('chooseWXPay'), false); ?>);
+        wx.config(<?php echo $js->config(array('onMenuShareTimeline', 'onMenuShareAppMessage','onMenuShareQQ', 'onMenuShareWeibo')); ?>);
     </script>
 @endif
 @yield('scripts')
