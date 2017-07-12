@@ -18,7 +18,6 @@
 				<span class="icon-hand main-icon-hand"></span>
 				<p>已有<span class="allcount" id="allcount">{{$allCount}}</span>人报名活动</p>
 				<p>已有<span class="thumbupcount" id="thumbupcount">{{$thumbupCount}}</span>人为活动围观点赞</p>
-				<a id="share_btn">分享</a>
 			</div>
 
 			<div class="buttons">
