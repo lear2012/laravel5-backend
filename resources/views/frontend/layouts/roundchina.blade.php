@@ -38,9 +38,9 @@
         wx.ready(function() {
             // 分享给朋友
             wx.onMenuShareAppMessage({
-                title: '可野第一届环中国边境线自驾接力<br/>用车轮丈量你内心认知的边界', // 商品名
-                desc: '用车轮丈量你内心认知的边界', // 店铺名
-                link: 'http://keye.liaollisonest.com/roundchina', // 商品购买地址
+                title: "可野第一届环中国边境线自驾接力\n用车轮丈量你内心认知的边界", //
+                desc: '用车轮丈量你内心认知的边界', //
+                link: 'http://keye.liaollisonest.com/roundchina', //
                 imgUrl: 'http://keye.liaollisonest.com/images/roundchina/share_social.png', // 分享的图标
                 fail: function (res) {
                     alert(JSON.stringify(res));
@@ -48,9 +48,9 @@
             });
             // 分享到朋友圈
             wx.onMenuShareTimeline({
-                title: '可野第一届环中国边境线自驾接力<br/>用车轮丈量你内心认知的边界', // 商品名
-                desc: '用车轮丈量你内心认知的边界', // 店铺名
-                link: 'http://keye.liaollisonest.com/roundchina', // 商品购买地址
+                title: "可野第一届环中国边境线自驾接力\n用车轮丈量你内心认知的边界", //
+                desc: '用车轮丈量你内心认知的边界', //
+                link: 'http://keye.liaollisonest.com/roundchina', //
                 imgUrl: 'http://keye.liaollisonest.com/images/roundchina/share_social.png', // 分享的图标
                 fail: function (res) {
                     alert(JSON.stringify(res));
