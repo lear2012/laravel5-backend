@@ -1332,9 +1332,9 @@ a,img,button,input,textarea,label,span,i,ul,li,div,p,a:visited{
 input,textarea{
     -webkit-appearance:none;
     outline: none;
-    font-size: 0.6rem;
+    font-size: .3rem;
+    line-height: .3rem;
     color: white;
-    padding: .2rem 0rem;
 }
 a:focus{outline:none;}
 .notice-msg{
