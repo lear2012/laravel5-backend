@@ -20,7 +20,7 @@
                     <p class="item-top">
                         <span>车型：{{$item->brand}}</span>
                         @if($item->available_seats > 0)
-                        <span>已搭载<b>{{$item->seats_taken}}人</b>/剩余<b>{{(int)$item->available_seats - (int)$item->seats_taken}}人</b></span>
+                        <span>已搭载<b>{{$item->seats_taken}}人</b>/剩余<b>{{((int)$item->available_seats - (int)$item->seats_taken) > 0 ? (int)$item->available_seats - (int)$item->seats_taken : 0}}人</b></span>
                         @endif
                     </p>
                     <p class="item-bottom">
