@@ -25,7 +25,7 @@
 				<a class="button" href="roundchina/liftreg">搭车报名</a>
 				<a class="button" href="roundchina/clubreg">俱乐部报名</a>
 			</div>
-			<img class="map" src="images/roundchina/map@2x.png" alt="">
+			<img class="map" src="{{$siteConfig['map_img']}}" alt="">
 
 			<div class="route">
 
