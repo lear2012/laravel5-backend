@@ -35,12 +35,14 @@ class RoundChinaController extends Controller
 
         $westLines = KeyeRoute::getActiveRouteList();
         $eastLines = KeyeRoute::getInactiveRouteList();
+        $siteConfig = Redis::hgetall('site_config');
         return view('frontend.roundchina.index', [
             'westLines' => $westLines,
             'eastLines' => $eastLines,
             'allCount' => $allCount,
             'thumbupCount' => $thumbupCount,
-            'js' => $this->js
+            'js' => $this->js,
+            'siteConfig' => $siteConfig
         ]);
     }
 

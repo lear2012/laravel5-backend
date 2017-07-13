@@ -163,7 +163,7 @@ class UploadController extends Controller
 
     public function uploadMap()
     {
-        $imageInfo = $this->manager->uploadImage(Input::file('file'), 480);
+        $imageInfo = $this->manager->uploadImage(Input::file('file'), 690);
         return response()->json([
             'code' => 0,
             'msg' => 'ok',
