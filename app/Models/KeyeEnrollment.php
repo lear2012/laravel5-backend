@@ -40,12 +40,20 @@ class KeyeEnrollment extends Model
                 ->whereRaw('available_seats > seats_taken')
                 ->select('*')
                 ->orderBy('id', 'desc')
-                ->paginate(2);
+                ->paginate(config('custom.lift_page_size'));
         return KeyeEnrollment::where('status', '=', 1)
             ->whereNull('deleted_at')
             ->whereRaw('available_seats > seats_taken')
             ->select('*')
             ->orderBy('id', 'desc')
-            ->paginate(2);
+            ->paginate(config('custom.lift_page_size'));
+    }
+
+    public static function getSelfRegCars() {
+        return KeyeEnrollment::where('status', '=', 1)
+            ->whereNull('deleted_at')
+            ->select('*')
+            ->orderBy('id', 'desc')
+            ->paginate(config('custom.lift_page_size'));
     }
 }

@@ -16,7 +16,7 @@
 
 			<div class="numbers">
 				<span class="icon-hand main-icon-hand"></span>
-				<p>已有<span class="allcount" id="allcount">{{$allCount}}</span>人报名活动</p>
+				<p>已有<span class="allcount" id="allcount">{{$allCount}}</span>人报名活动<a id="view_selfreg_list" href="/roundchina/selfreg_list">查看</a></p>
 				<p>已有<span class="thumbupcount" id="thumbupcount">{{$thumbupCount}}</span>人为活动围观点赞</p>
 			</div>
 
@@ -49,8 +49,15 @@
 					<!-- 线路 -->
 					@foreach($westLines as $line)
 					<div class="item" route_id="{{$line->id}}">
-						<p class="item-title">{{$line->title}}<span class="icon-like"></span></p>
-						<p>{{$line->start}}-{{$line->end}}</p>
+						@if($line->url != '')
+							<a href="{{$line->url}}">
+								<p class="item-title">{{$line->title}}<span class="icon-like"></span></p>
+								<p>{{$line->start}}-{{$line->end}}</p>
+							</a>
+						@else
+							<p class="item-title">{{$line->title}}<span class="icon-like"></span></p>
+							<p>{{$line->start}}-{{$line->end}}</p>
+						@endif
 					</div>
 					@endforeach
 

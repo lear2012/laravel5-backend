@@ -28,6 +28,7 @@ var round_china = {
             this.bind_car_select();
             this.init_search_cars();
             this.init_more_cars();
+            this.init_more_selfreg_cars();
             this.bind_lift_next();
         }
         this.init_share_btns();
@@ -425,6 +426,45 @@ var round_china = {
         }
         return html;
     },
+
+    init_more_selfreg_cars: function() {
+        var that = this;
+        $('#more_selfreg_cars').on('click', function(){
+            that.get_selfreg_cars();
+        });
+    },
+
+    get_selfreg_cars: function() {
+        var that = this;
+        var data = {};
+        $.ajax({
+            type: "GET",
+            dataType: "json", //dataType (xml html script json jsonp text)
+            data: data, //json 数据
+            url: '/roundchina/get_more_cars?page='+(++that._page),
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            //beforeSend: bstool.submit_loading, //执行ajax前执行loading函数.直到success
+            success: function(rs) {//成功获得的也是json对象
+                if(rs.errno == 0) {
+                    var html = that.get_cars_html(rs.data.data);
+                    if(that._cars.length == 0)
+                        that._cars = firstPageCars.data;
+                    that._cars = that._cars.concat(rs.data.data);
+                    if(html) {
+                        $('#car_list').append(html);
+                        that.bind_car_select();
+                    } else {
+                        rs.msg = '没有更多车辆！';
+                        that.showError(rs);
+                    }
+                } else {
+                    that.showError(rs);
+                }
+            }
+        });
+    },
     
     bind_car_select: function() {
         var that = this;
@@ -448,7 +488,7 @@ var round_china = {
         });
     },
 
-    thumbup: function(rid) {
+    thumbup: function(rid, event) {
         var that = this;
         var data = {};
         var url = '';
@@ -482,12 +522,13 @@ var round_china = {
                 }
             }
         });
+        event.preventDefault();
     },
     
     bind_main_thumbup: function () {
         var that = this;
         $('.main-icon-hand').on('click', function (event) {
-            that.thumbup('');
+            that.thumbup('', event);
         });
     },
 
@@ -495,7 +536,11 @@ var round_china = {
         var that = this;
         $('.icon-like', $('.route')).on('click', function (event) {
             var rid = $(this).parent().parent().attr('route_id');
-            that.thumbup(rid);
+            console.log(rid);
+            if(rid == undefined) {
+                rid = $(this).parent().parent().parent().attr('route_id');
+            }
+            that.thumbup(rid, event);
         });
     },
 

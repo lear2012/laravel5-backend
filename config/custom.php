@@ -80,4 +80,5 @@ return [
             ]
         ]
     ],
+    'lift_page_size' => 5
 ];

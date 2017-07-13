@@ -66,6 +66,8 @@ Route::group(['namespace' => 'Frontend', 'middleware' => ['web']], function ()
     Route::post('/roundchina/liftme', ['as' => 'round.liftme', 'uses' => '\App\Http\Controllers\Frontend\RoundChinaController@liftMe']);
     Route::get('/roundchina/get_available_cars', ['as' => 'round.get_available_cars', 'uses' => '\App\Http\Controllers\Frontend\RoundChinaController@getAvailableCars']);
 
+    Route::get('/roundchina/selfreg_list', ['as' => 'round.selfreg_list', 'uses' => 'RoundChinaController@selfRegList']);
+    Route::get('/roundchina/get_more_cars', ['as' => 'round.get_more_cars', 'uses' => '\App\Http\Controllers\Frontend\RoundChinaController@getMoreSelfRegCars']);
 });
 
 /**

@@ -53,6 +53,16 @@ class RoundChinaController extends Controller
         ]);
     }
 
+    public function selfRegList() {
+        $items = KeyeEnrollment::getSelfRegCars();
+        JavaScript::put([
+            'firstPageCars' => $items,
+        ]);
+        return view('frontend.roundchina.selfreg_list', [
+            'items' => $items
+        ]);
+    }
+
     public function liftReg() {
         $items = KeyeEnrollment::getLiftingCars();
         JavaScript::put([
@@ -149,6 +159,12 @@ class RoundChinaController extends Controller
         $params = [];
         $params['keyword'] = $request->get('keyword');
         $items = KeyeEnrollment::getLiftingCars($params);
+        self::setData($items);
+        self::sendJsonMsg();
+    }
+
+    public function getMoreSelfRegCars(Request $request) {
+        $items = KeyeEnrollment::getSelfRegCars();
         self::setData($items);
         self::sendJsonMsg();
     }
