@@ -103,6 +103,9 @@ class RoundChinaController extends Controller
         if(!$enrollment) {
             self::setMsgCode(9003);
         }
+        if((int)$enrollment->seats_taken >= (int)$enrollment->available_seats) {
+            self::setMsgCode(1021);
+        }
         $lift = new KeyeLift();
         $lift->fill($data);
         if(!$lift->save()) {
