@@ -119,6 +119,13 @@ return [
     'delete_keyeroute_success' => '删除路段成功',
     'delete_keyeroute_failed' => '删除路段失败',
 
+    'create_topicimage_success' => '创建轮播图成功',
+    'create_topicimage_failed' => '创建轮播图失败',
+    'update_topicimage_success' => '更新轮播图成功',
+    'update_topicimage_failed' => '更新轮播图失败',
+    'delete_topicimage_success' => '删除轮播图成功',
+    'delete_topicimage_failed' => '删除轮播图失败',
+
     'company_name' => '公司名称',
     'name' => '姓名',
     'phone' => '联系方式',
@@ -137,5 +144,9 @@ return [
     'set_success' => '设置成功',
     'lift_info' => '搭车车主信息',
     'club_name' => '俱乐部名称',
+
+    'title' => '标题',
+    'url' => '链接',
+    'image' => '图片',
 
 ];

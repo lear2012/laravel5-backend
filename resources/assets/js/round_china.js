@@ -11,9 +11,11 @@ var round_china = {
     init: function() {
         if ($('.home').length > 0) {
             var myLazyLoad = new LazyLoad();
+            this.init_swiper();
             this.init_thumbup();
             this.bind_main_thumbup();
             this.bind_route_thumbup();
+
         } else {
             this.init_back();
             this.init_regrules();
@@ -547,6 +549,19 @@ var round_china = {
     init_share_btns:function () {
 
     },
+
+    init_swiper: function () {
+        var swiper = new Swiper('.swiper-container', {
+            pagination: '.swiper-pagination',
+            nextButton: '.swiper-button-next',
+            prevButton: '.swiper-button-prev',
+            slidesPerView: 1,
+            paginationClickable: true,
+            spaceBetween: 10,
+            loop: true,
+            autoplay: 2500
+        });
+    }
 
 };
 $(document).ready(function(){

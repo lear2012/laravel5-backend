@@ -28,6 +28,21 @@
                     </li>
                 </ul>
             </li>
+            <li @if(Request::is('admin/topicimage*')) class="treeview active" @else class="treeview" @endif>
+                <a href="#">
+                    <i class="fa fa-road"></i>
+                    <span>首页轮播图管理</span>
+                    <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span>
+                </a>
+                <ul class="treeview-menu">
+                    <li @if(Request::is('admin/topicimage')) class="active" @endif>
+                        <a href="{{ route('admin.topicimage.index') }}"><i class="fa fa-road"></i> 首页轮播图列表</a>
+                    </li>
+                    <li @if(Request::is('admin/topicimage/create')) class="active" @endif>
+                        <a href="{{ route('admin.topicimage.create') }}"><i class="fa fa-plus"></i> 添加首页轮播图</a>
+                    </li>
+                </ul>
+            </li>
             <li @if(Request::is('admin/keyeroutes*')) class="treeview active" @else class="treeview" @endif>
                 <a href="#">
                     <i class="fa fa-road"></i>

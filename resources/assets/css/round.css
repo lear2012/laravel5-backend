@@ -1362,4 +1362,7 @@ img:not([src]) {
     padding-bottom:.03rem;
     border-bottom:1px solid #fff;
 }
+#banner .swiper-pagination-bullet-active {
+  background-color:#fc9d2b;
+}
 /*# sourceMappingURL=main.css.map*/

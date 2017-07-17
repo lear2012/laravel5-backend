@@ -164,6 +164,11 @@ Route::group(['namespace' => 'Backend'], function () {
         Route::post('keyeclubs/active', ['as' => 'keyeclubs.active', 'uses' => 'KeyeClubController@active']);
         Route::resource('keyeclubs', 'KeyeClubController');
 
+        // Topic Image
+        Route::get('topicimage/search', ['as' => 'topicimage.search', 'uses' => 'TopicImageController@search']);
+        Route::post('topicimage/active', ['as' => 'topicimage.active', 'uses' => 'TopicImageController@active']);
+        Route::resource('topicimage', 'TopicImageController');
+
         //
         Route::get('site/test', ['as' => 'site.test', 'uses' => 'SiteController@test']);
         Route::get('site/config', ['as' => 'site.config', 'uses' => 'SiteController@config']);
