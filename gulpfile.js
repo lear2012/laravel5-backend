@@ -81,6 +81,7 @@ elixir(function(mix) {
     // for round china css/js
     mix.styles([
         '../bower/sweetalert/dist/sweetalert.css',
+        '../bower/swiper/dist/css/swiper.min.css',
         'orange.css',
         'vendor.css',
         'round.css',
@@ -93,6 +94,7 @@ elixir(function(mix) {
         '../bower/validator-js/validator.min.js',
         '../bower/AdminLTE/plugins/iCheck/icheck.min.js',
         '../bower/sweetalert/dist/sweetalert.min.js',
+        '../bower/swiper/dist/js/swiper.jquery.min.js',
         '../bower/mojs/build/mo.min.js',
         'manifest.js',
         'vendor.js',
@@ -140,6 +142,7 @@ elixir(function(mix) {
         'keye_enrollment.js',
         'keye_lift.js',
         'keye_club.js',
+        'topic_image.js',
     ], 'public/js/all_bk.js');
 
     // images

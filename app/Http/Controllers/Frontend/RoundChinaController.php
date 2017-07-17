@@ -9,6 +9,7 @@ use App\Http\Requests\Frontend\ClubRegRequest;
 use App\Models\KeyeClub;
 use App\Models\KeyeEnrollment;
 use App\Models\KeyeLift;
+use App\Models\TopicImage;
 use Illuminate\Http\Request;
 use ChannelLog as Log;
 use App\Models\KeyeRoute;
@@ -32,7 +33,7 @@ class RoundChinaController extends Controller
         $c3 = KeyeClub::all()->count();
         $allCount = $c1+$c2+$c3;
         $thumbupCount = KeyeRoute::getThumbupCount();
-
+        $swiperImages = TopicImage::getActiveImageList();
         $westLines = KeyeRoute::getActiveRouteList();
         $eastLines = KeyeRoute::getInactiveRouteList();
         $siteConfig = Redis::hgetall('site_config');
@@ -42,7 +43,8 @@ class RoundChinaController extends Controller
             'allCount' => $allCount,
             'thumbupCount' => $thumbupCount,
             'js' => $this->js,
-            'siteConfig' => $siteConfig
+            'siteConfig' => $siteConfig,
+            'swiperImages' => $swiperImages
         ]);
     }
 

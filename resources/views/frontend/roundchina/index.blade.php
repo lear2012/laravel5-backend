@@ -7,9 +7,25 @@
 		</header>
 
 		<section class="banner" id="banner">
-			<div class="slide">
-				<img src="images/roundchina/banner-1@2x.jpg" alt="">
+            @if(count($swiperImages) == 0)
+                <div class="slide">
+                    <img src="images/roundchina/banner-1@2x.jpg" alt="">
+                </div>
+            @else
+			<div class="swiper-container slide">
+				<!-- Additional required wrapper -->
+				<div class="swiper-wrapper">
+					<!-- Slides -->
+                    @foreach($swiperImages as $image)
+                        <div class="swiper-slide"><a href="{{$image->url}}"><img src="{{$image->cover_img}}" alt="{{$image->title}}"/></a></div>
+                    @endforeach
+				</div>
+				<!-- If we need pagination -->
+				<div class="swiper-pagination"></div>
+
+				<!-- If we need scrollbar -->
 			</div>
+            @endif
 		</section>
 
 		<section class="routes">

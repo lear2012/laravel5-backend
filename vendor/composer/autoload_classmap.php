@@ -40,6 +40,7 @@ return array(
     'CreateTableMotomodels' => $baseDir . '/database/migrations/2017_03_22_175717_create_table_motomodels.php',
     'CreateTableSeries' => $baseDir . '/database/migrations/2017_03_22_173440_create_table_series.php',
     'CreateTagsTable' => $baseDir . '/database/migrations/2015_08_05_111905_create_tags_table.php',
+    'CreateTopicImage' => $baseDir . '/database/migrations/2017_07_17_121426_create_topic_image.php',
     'CreateUserProfilesTable' => $baseDir . '/database/migrations/2017_02_22_111057_create_user_profiles_table.php',
     'CreateUsersTable' => $baseDir . '/database/migrations/2015_07_20_074010_create_users_table.php',
     'DatabaseSeeder' => $baseDir . '/database/seeds/DatabaseSeeder.php',
