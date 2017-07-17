@@ -143,7 +143,7 @@ class TopicImageController extends Controller
         if(!$item) {
             self::setMsgCode(9003);
         }
-        $item->status = $val;
+        $item->active = $val;
         if(!$item->save()) {
             self::setMsgCode(1016);
         }
