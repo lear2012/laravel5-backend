@@ -41,6 +41,9 @@
 				<a class="button" href="roundchina/liftreg">搭车报名</a>
 				<a class="button" href="roundchina/clubreg">俱乐部报名</a>
 			</div>
+			<div class="chetie-apply-btn">
+				<a href="roundchina/apply_chetie">申请车贴</a>
+            </div>
 			<img class="map" src="{{$siteConfig['map_img']}}" alt="">
 
 			<div class="route">

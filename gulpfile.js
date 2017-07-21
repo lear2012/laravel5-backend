@@ -143,6 +143,7 @@ elixir(function(mix) {
         'keye_lift.js',
         'keye_club.js',
         'topic_image.js',
+        'chetie_apply.js',
     ], 'public/js/all_bk.js');
 
     // images

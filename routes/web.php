@@ -68,6 +68,9 @@ Route::group(['namespace' => 'Frontend', 'middleware' => ['web']], function ()
 
     Route::get('/roundchina/selfreg_list', ['as' => 'round.selfreg_list', 'uses' => 'RoundChinaController@selfRegList']);
     Route::get('/roundchina/get_more_cars', ['as' => 'round.get_more_cars', 'uses' => '\App\Http\Controllers\Frontend\RoundChinaController@getMoreSelfRegCars']);
+
+    Route::get('/roundchina/apply_chetie', ['as' => 'round.apply_chetie', 'uses' => 'RoundChinaController@applyChetie']);
+    Route::post('/roundchina/save_apply_chetie', ['as' => 'round.save_apply_chetie', 'uses' => 'RoundChinaController@saveApplyChetie']);
 });
 
 /**
@@ -168,6 +171,11 @@ Route::group(['namespace' => 'Backend'], function () {
         Route::get('topicimage/search', ['as' => 'topicimage.search', 'uses' => 'TopicImageController@search']);
         Route::post('topicimage/active', ['as' => 'topicimage.active', 'uses' => 'TopicImageController@active']);
         Route::resource('topicimage', 'TopicImageController');
+
+        // Topic Image
+        Route::get('chetie/search', ['as' => 'chetie.search', 'uses' => 'CheTieController@search']);
+        Route::post('chetie/active', ['as' => 'chetie.active', 'uses' => 'CheTieController@active']);
+        Route::resource('chetie', 'CheTieController');
 
         //
         Route::get('site/test', ['as' => 'site.test', 'uses' => 'SiteController@test']);

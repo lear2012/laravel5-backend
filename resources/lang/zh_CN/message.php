@@ -148,5 +148,6 @@ return [
     'title' => '标题',
     'url' => '链接',
     'image' => '图片',
-
+    'address' => '地址',
+    'detail' => '详情',
 ];

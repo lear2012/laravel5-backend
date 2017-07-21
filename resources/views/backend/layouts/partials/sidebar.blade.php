@@ -62,7 +62,7 @@
             <li @if(Request::is('admin/keyeenrollments*') || Request::is('admin/keyelifts*') || Request::is('admin/keyeclubs*')) class="treeview active" @else class="treeview" @endif>
                 <a href="#">
                     <i class="fa fa-registered"></i>
-                    <span>报名管理</span>
+                    <span>报名及车贴管理</span>
                     <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span>
                 </a>
                 <ul class="treeview-menu">
@@ -78,6 +78,11 @@
                 <ul class="treeview-menu">
                     <li @if(Request::is('admin/keyeclubs')) class="active" @endif>
                         <a href="{{ route('admin.keyeclubs.index') }}"><i class="fa fa-bandcamp"></i> 俱乐部报名列表</a>
+                    </li>
+                </ul>
+                <ul class="treeview-menu">
+                    <li @if(Request::is('admin/chetie')) class="active" @endif>
+                        <a href="{{ route('admin.chetie.index') }}"><i class="fa fa-star"></i> 车贴申请列表</a>
                     </li>
                 </ul>
             </li>

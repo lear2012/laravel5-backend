@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Frontend\SelfRegRequest;
 use App\Http\Requests\Frontend\LiftRegRequest;
 use App\Http\Requests\Frontend\ClubRegRequest;
+use App\Http\Requests\Frontend\ApplyChetieRequest;
+use App\Models\ChetieApply;
 use App\Models\KeyeClub;
 use App\Models\KeyeEnrollment;
 use App\Models\KeyeLift;
@@ -171,6 +173,25 @@ class RoundChinaController extends Controller
     public function getMoreSelfRegCars(Request $request) {
         $items = KeyeEnrollment::getSelfRegCars();
         self::setData($items);
+        self::sendJsonMsg();
+    }
+
+    public function applyChetie() {
+        $points = Utils::getFirstHalfPoints();
+        return view('frontend.roundchina.apply_chetie', [
+            'points' => $points
+        ]);
+    }
+
+    public function saveApplyChetie(ApplyChetieRequest $request) {
+        $data = $request->all();
+        $item = new ChetieApply();
+        $item->fill($data);
+        $item->status = 0;
+        if(!$item->save()) {
+            self::setMsgCode(1022);
+        }
+        self::setMsg('我们已经收到您的申请，稍后我们会根据您提供的信息发送车贴！');
         self::sendJsonMsg();
     }
 

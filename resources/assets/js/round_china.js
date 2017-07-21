@@ -26,6 +26,7 @@ var round_china = {
             this.init_selfreg_submit();
             this.init_liftreg_submit();
             this.init_clubreg_submit();
+            this.init_apply_chetie_submit();
             // lift reg
             this.bind_car_select();
             this.init_search_cars();
@@ -538,7 +539,6 @@ var round_china = {
         var that = this;
         $('.icon-like', $('.route')).on('click', function (event) {
             var rid = $(this).parent().parent().attr('route_id');
-            console.log(rid);
             if(rid == undefined) {
                 rid = $(this).parent().parent().parent().attr('route_id');
             }
@@ -561,7 +561,72 @@ var round_china = {
             loop: true,
             autoplay: 2500
         });
-    }
+    },
+
+    init_apply_chetie_submit: function() {
+        var that = this;
+        $('#apply_chetie_submit').on('click', function(){
+            var data = {};
+            data.name = $.trim($('#name').val());
+            data.mobile = $.trim($('#mobile').val());
+            data.brand = $.trim($('#brand').val());
+            data.start = $.trim($('#addr_start').val());
+            data.end = $.trim($('#addr_end').val());
+            data.address = $.trim($('#address').val());
+            data.detail = $.trim($('#detail').val());
+            if(!that.checkApplyChetie(data))
+                return false;
+            //return;
+            $.ajax({
+                type: "POST",
+                dataType: "json", //dataType (xml html script json jsonp text)
+                data: data, //json 数据
+                url: '/roundchina/save_apply_chetie',
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                //beforeSend: bstool.submit_loading, //执行ajax前执行loading函数.直到success
+                success: function(rs) {//成功获得的也是json对象
+                    if(rs.errno == 0) {
+                        that.showSuccess(rs);
+                    } else {
+                        that.showError(rs);
+                    }
+                }
+            });
+        });
+    },
+
+    checkApplyChetie: function(params) {
+        var that = this;
+        var error = {};
+        this.clearAllField();
+        if(params.name == '') {
+            that.errorField($('#name'));
+            return false;
+        }
+        if(!validator.isMobilePhone(params.mobile, 'zh-CN')) {
+            that.errorField($('#mobile'));
+            return false;
+        }
+        if(params.brand == '') {
+            that.errorField($('#brand'));
+            return false;
+        }
+        if(params.start == '') {
+            that.errorField($('#start'));
+            return false;
+        }
+        if(params.end == '') {
+            that.errorField($('#end'));
+            return false;
+        }
+        if(params.address == '') {
+            that.errorField($('#address'));
+            return false;
+        }
+        return true;
+    },
 
 };
 $(document).ready(function(){
