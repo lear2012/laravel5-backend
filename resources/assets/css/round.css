@@ -1039,6 +1039,7 @@ header .menu {
   box-sizing: border-box;
   margin-bottom: .3rem;
   background-color: #fff;
+    border:1px solid white;
 }
 .enroll .content .enroll-item.select {
   border: 1px solid #fc9d2b;
