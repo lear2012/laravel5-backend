@@ -27,7 +27,7 @@ var lifts_page = {
         params.colDefs = [
             {
                 "render": function (data, type, row) {
-                    return row.ke_name+ '-' + row.brand + row.series + '(联系方式：' + row.ke_mobile + ')<br/>'
+                    return row.ke_name+ '-' + row.brand + '(联系方式：' + row.ke_mobile + ')<br/>'
                         + row.start + ' 至 ' + row.end;
                 },
                 "targets": 4
