@@ -421,7 +421,7 @@ var round_china = {
             html += '<div class="enroll-item" enrollment_id="'+data[i].id+'">';
             html += '<p class="item-top">';
             html += '<span>车型：' + data[i].brand + '</span>';
-            html += '<span>已搭载<b>'+data[i].seats_taken+'人</b>/剩余<b>'+ rest > 0 ? rest : 0 +'人</b></span>';
+            html += '<span>已搭载<b>'+data[i].seats_taken+'人</b>/剩余<b>'+ (rest > 0 ? rest : 0) +'人</b></span>';
             html += '</p>';
             html += '<p class="item-bottom">';
             html += data[i].start+'<span></span>'+data[i].end;
