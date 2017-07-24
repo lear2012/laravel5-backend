@@ -113,36 +113,36 @@
 		<!-- 活动介绍 -->
 		<section class="section info" id="info">
 			<div class="section-header header-info"></div>
-			<img data-original="images/roundchina/info-1@2x.png" alt="">
+			<img data-original="images/roundchina/info-1@2x.png" alt="" class="lazy" height="230">
 			<p>用轮胎的印记来丈量祖国完整边境公路, 历时<b>近半年</b>，<b>4万</b>公里，<b>300多处</b>美景，<b>30个</b>车友俱乐部<b>1000名</b>自驾车主。随地随时， 随心所遇， 随队逐行。不必担心时间 ，近半年的旅程， 随时都可以加入。不必担心地点 ，放开所有顾虑 ，四万公里的游历。不管有没有车，哪里都可以启程。根据车辆情况拼车，超百万人关注。</p>
 			<div class="imgs">
-				<img data-original="images/roundchina/info-2@2x.png" alt="">
-				<img data-original="images/roundchina/info-3@2x.png" alt="">
+				<img data-original="images/roundchina/info-2@2x.png" alt="" class="lazy" height="137">
+				<img data-original="images/roundchina/info-3@2x.png" alt="" class="lazy" height="137">
 			</div>
 
 			<div class="imgs">
-				<img data-original="images/roundchina/info-4@2x.png" alt="">
-				<img data-original="images/roundchina/info-5@2x.png" alt="">
+				<img data-original="images/roundchina/info-4@2x.png" alt="" class="lazy" height="137">
+				<img data-original="images/roundchina/info-5@2x.png" alt="" class="lazy" height="137">
 			</div>
 
-			<img data-original="images/roundchina/info-6@2x.png" alt="">
+			<img data-original="images/roundchina/info-6@2x.png" alt="" class="lazy" height="182">
             <p class="section-subtitle"><b>全形地貌 视觉冲击</b></p>
             <p>丹霞地貌、喀斯特地貌、雅丹地貌、海岸地貌、风积地貌、风蚀地貌、河流地貌、冰川地貌...</p>
-			<img data-original="images/roundchina/info-7@2x.png" alt="">
+			<img data-original="images/roundchina/info-7@2x.png" alt="" class="lazy" height="193">
             <p class="section-subtitle"><b>各地人文 思想升华</b></p>
             <p>天山文化、藏区文化、大漠文化、西域文化、三秦文化、滇黔文化、南岭文化、 闽南文化...</p>
-			<img data-original="images/roundchina/info-8@2x.png" alt="">
+			<img data-original="images/roundchina/info-8@2x.png" alt="" class="lazy" height="194">
 
 		</section>
 
 		<!-- 公益活动 -->
 		<section class="section activity" id="activity">
 			<div class="section-header header-activity"></div>
-			<img data-original="images/roundchina/activity-1@2x.png" alt="">
+			<img data-original="images/roundchina/activity-1@2x.png" alt="" class="lazy" height="184">
 			<p>整个活动期间,车队将造访6家贫困小学、拜访6家老人院 为孩子和老人送去所有关注环中国车友的关怀。</p>
 			<div class="imgs">
-				<img data-original="images/roundchina/activity-2@2x.png" alt="">
-				<img data-original="images/roundchina/activity-3@2x.png" alt="">
+				<img data-original="images/roundchina/activity-2@2x.png" alt="" class="lazy" height="137">
+				<img data-original="images/roundchina/activity-3@2x.png" alt="" class="lazy" height="137">
 			</div>
 			<p>活劢期间的接力仪式及公益活劢会根据情况邀请明星“<b>青年演员任宇</b>”“<b>痛仰乐队主唱高虎</b>”等相关公众人物参与。</p>
 		</section>
@@ -150,13 +150,13 @@
 		<!-- 领队介绍 -->
 		<section class="section leader" id="leader">
 			<div class="section-header header-leader"></div>
-            <img data-original="images/roundchina/leader-2@2x.png" alt="">
+            <img data-original="images/roundchina/leader-2@2x.png" alt="" class="lazy" height="254">
             <p>此次活动由可野老司机玉儿亲自带队</p>
             <p><b>她是越野界的老炮</b></p>
             <p><b>2005年她单车上路80万里10余年的越野经历</b></p>
             <p>她俨然已成为一位经验丰富的女司机</p>
             <p>冰川雪地、荒漠戈壁、她都能带你肆意驰骋</p>
-			<img data-original="images/roundchina/leader-1@2x.png" alt="">
+			<img data-original="images/roundchina/leader-1@2x.png" alt="" class="lazy" height="334">
 			<p class="left">《越野十年》作家、英国认证陆虎体系教官—<b>玉儿</b></p>
 			<p>单人单车环球自驾中国第一人—<b>李峰</b></p>
 			<p>冠军赛车手—<b>韩魏</b></p>
@@ -183,11 +183,11 @@
 		<!-- 关于可野 -->
 		<section class="section about" id="about">
 			<div class="section-header header-about"></div>
-			<img data-original="images/roundchina/about-1@2x.png" alt="">
+			<img data-original="images/roundchina/about-1@2x.png" alt="" class="lazy" height="293">
 			<p><b>生活可以野一点!</b><br/>可野自驾，中国首个自驾出行共享平台，旗下包含可野自驾APP、可野Club、可野自驾空间、可野营地、可野商城等业务体系，为自驾越野爱好者提供价值服务，旨在快速发展的中国汽车后市场，构建独特的自驾商业体系。</p>
 			<div class="imgs">
-				<img data-original="images/roundchina/about-2@2x.png" alt="">
-				<img data-original="images/roundchina/about-3@2x.png" alt="">
+				<img data-original="images/roundchina/about-2@2x.png" alt="" class="lazy" height="137">
+				<img data-original="images/roundchina/about-3@2x.png" alt="" class="lazy" height="137">
 			</div>
 
 		</section>
@@ -196,15 +196,15 @@
 		<section class="section union" id="union">
 			<div class="section-header header-union"></div>
 			<div class="groups">
-				<img data-original="images/roundchina/union-1@2x.png" alt="">
-				<img data-original="images/roundchina/union-2@2x.png" alt="">
-				<img data-original="images/roundchina/union-3@2x.png" alt="">
-				<img data-original="images/roundchina/union-4@2x.png" alt="">
-				<img data-original="images/roundchina/union-5@2x.png" alt="">
-				<img data-original="images/roundchina/union-6@2x.png" alt="">
-				<img data-original="images/roundchina/union-7@2x.png" alt="">
-				<img data-original="images/roundchina/partner-3@2x.png" alt="">
-                <img data-original="images/roundchina/kanlu.png" alt="">
+				<img data-original="images/roundchina/union-1@2x.png" alt="" class="lazy">
+				<img data-original="images/roundchina/union-2@2x.png" alt="" class="lazy">
+				<img data-original="images/roundchina/union-3@2x.png" alt="" class="lazy">
+				<img data-original="images/roundchina/union-4@2x.png" alt="" class="lazy">
+				<img data-original="images/roundchina/union-5@2x.png" alt="" class="lazy">
+				<img data-original="images/roundchina/union-6@2x.png" alt="" class="lazy">
+				<img data-original="images/roundchina/union-7@2x.png" alt="" class="lazy">
+				<img data-original="images/roundchina/partner-3@2x.png" alt="" class="lazy">
+                <img data-original="images/roundchina/kanlu.png" alt="" class="lazy">
 			</div>
 		</section>
 
@@ -212,10 +212,10 @@
 		<section class="section partner" id="partner">
 			<div class="section-header header-partner"></div>
 			<div class="groups">
-				<img data-original="images/roundchina/partner-4@2x.png" alt="" class="special">
-				<img data-original="images/roundchina/partner-1@2x.png" alt="" class="sub_spec">
-				<img data-original="images/roundchina/partner-2@2x.png" alt="" class="sub_spec">
-                <img data-original="images/roundchina/chuanming@2x.png" alt="" class="sub_spec">
+				<img data-original="images/roundchina/partner-4@2x.png" alt="" class="special lazy">
+				<img data-original="images/roundchina/partner-1@2x.png" alt="" class="sub_spec lazy">
+				<img data-original="images/roundchina/partner-2@2x.png" alt="" class="sub_spec lazy">
+                <img data-original="images/roundchina/chuanming@2x.png" alt="" class="sub_spec lazy">
 
 			</div>
 		</section>
@@ -224,8 +224,8 @@
 		<section class="section media" id="media">
 			<div class="section-header header-media"></div>
 			<div class="groups">
-				<img data-original="images/roundchina/media-1@2x.png" alt="">
-				<img data-original="images/roundchina/media-2@2x.png" alt="">
+				<img data-original="images/roundchina/media-1@2x.png" alt="" class="lazy">
+				<img data-original="images/roundchina/media-2@2x.png" alt="" class="lazy">
 			</div>
 		</section>
 
@@ -234,34 +234,34 @@
 			<p class="footer-line2">每段路程 . 每次接力 . 每场活动全程直播</p>
 			<div class="media-groups">
 				<div class="media-item">
-					<img data-original="images/roundchina/icon-media-1@2x.png" alt="">
+					<img data-original="images/roundchina/icon-media-1@2x.png" alt="" class="lazy">
 					<p>可野</p>
 					<p>微信公众号</p>
 				</div>
 				<div class="media-item">
-					<img data-original="images/roundchina/icon-media-2@2x.png" alt="">
+					<img data-original="images/roundchina/icon-media-2@2x.png" alt="" class="lazy">
 					<p>可野</p>
 					<p>官方微博</p>
 				</div>
 				<div class="media-item">
-					<img data-original="images/roundchina/icon-media-3@2x.png" alt="">
+					<img data-original="images/roundchina/icon-media-3@2x.png" alt="" class="lazy">
 					<p>可野</p>
 					<p>头条号</p>
 				</div>
 				<div class="media-item">
-					<img src="images/roundchina/icon-media-4@2x.png" alt="">
+					<img src="images/roundchina/icon-media-4@2x.png" alt="" class="lazy">
 					<p>可野</p>
 					<p>直播号</p>
 				</div>
 				<div class="media-item">
-					<img data-original="images/roundchina/icon-media-5@2x.png" alt="">
+					<img data-original="images/roundchina/icon-media-5@2x.png" alt="" class="lazy">
 					<p>可野</p>
 					<p>优酷自媒体</p>
 				</div>
 			</div>
 
 			<div class="footer-bottom">
-				<img data-original="images/roundchina/code@2x.png" alt="">
+				<img data-original="images/roundchina/code@2x.png" alt="" class="lazy">
 				<p>
 					<span class="name">小可</span>
 					<span class="icon-mobile"></span>
@@ -283,7 +283,7 @@
 				<span>环中国活动导航</span>
 			</div>
 			<ul id="bar-nav">
-				<li class="active"><span class="bar-info">活动介绍</span></li>
+				<li><span class="bar-info">活动介绍</span></li>
 				<li><span class="bar-activity">公益活动</span></li>
 				<li><span class="bar-leader">领队介绍</span></li>
                 <li><span class="bar-comment">特别申明</span></li>
@@ -292,7 +292,7 @@
 			</ul>
 			<div class="bar-footer">
 				<span class="bar-footer-title">商务洽谈</span>
-				<img src="images/roundchina/code@2x.png" alt="">
+				<img src="images/roundchina/code@2x.png" alt="" class="lazy">
 				<div class="footer-content">
 					<p>
 						<span class="name">庆江</span>

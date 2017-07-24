@@ -90,7 +90,7 @@ elixir(function(mix) {
         'jquery-2.2.3.min.js',
         'lodash.min.js',
         'jweixin-1.2.0.js',
-        '../../../node_modules/vanilla-lazyload/dist/lazyload.transpiled.min.js',
+        '../bower/jquery_lazyload/jquery.lazyload.js',
         '../bower/validator-js/validator.min.js',
         '../bower/AdminLTE/plugins/iCheck/icheck.min.js',
         '../bower/sweetalert/dist/sweetalert.min.js',

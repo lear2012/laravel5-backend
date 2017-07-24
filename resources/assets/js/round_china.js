@@ -10,7 +10,12 @@ var round_china = {
 
     init: function() {
         if ($('.home').length > 0) {
-            var myLazyLoad = new LazyLoad();
+            // var myLazyLoad = new LazyLoad({
+            //     placeholder : "img/grey.gif"
+            // });
+            $('img.lazy').lazyload({
+                placeholder : "images/roundchina/img-loader.png"
+            });
             this.init_swiper();
             this.init_thumbup();
             this.bind_main_thumbup();
