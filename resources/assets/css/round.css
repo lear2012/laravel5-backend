@@ -586,7 +586,7 @@ header .menu {
   background-size: 3.2rem auto;
 }
 .home .section img {
-  width: 100%;
+  width: 100% !important;
   /* height: 4.15rem; */
 }
 .home .section .imgs {
@@ -596,12 +596,12 @@ header .menu {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  width: 100%;
+  width: 100% !important;
 }
 .home .section .imgs img {
   display: inline-block;
-  width: 3.36rem;
-  height: 2.73rem;
+  width: 3.36rem !important;
+  height: 2.73rem !important;
 }
 .home .section p {
   padding: .26rem 0;
@@ -658,8 +658,8 @@ header .menu {
 .home .partner .groups img,
 .home .media .groups img {
   display: inline-block;
-  width: 3rem;
-  height: 1.55rem;
+  width: 3rem !important;
+  height: 1.55rem !important;
   margin-bottom: .54rem;
   /* border: 1px solid #d6d4d4; */
 }
@@ -1394,6 +1394,8 @@ img:not([src]) {
 }
 
 .lazy {
+    width:.6rem;
+    height:.6rem;
     display: none;
 }
 /*# sourceMappingURL=main.css.map*/
