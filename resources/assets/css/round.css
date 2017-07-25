@@ -1394,8 +1394,6 @@ img:not([src]) {
 }
 
 .lazy {
-    width:.6rem !important;
-    height:.6rem !important;
     display: none;
 }
 /*# sourceMappingURL=main.css.map*/
