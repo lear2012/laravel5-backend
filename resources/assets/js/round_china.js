@@ -14,7 +14,9 @@ var round_china = {
             //     placeholder : "img/grey.gif"
             // });
             $('img.lazy').lazyload({
-                placeholder : "images/roundchina/img-loader.png"
+                placeholder : "images/roundchina/img-loader.png",
+                threshold : 200,
+                effect : "fadeIn"
             });
             this.init_swiper();
             this.init_thumbup();
