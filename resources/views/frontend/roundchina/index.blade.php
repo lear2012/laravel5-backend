@@ -249,7 +249,7 @@
 					<p>头条号</p>
 				</div>
 				<div class="media-item">
-					<img src="images/roundchina/icon-media-4@2x.png" alt="" class="">
+					<img src="images/roundchina/icon-media-4@2x.png" alt="" class="lazy">
 					<p>可野</p>
 					<p>直播号</p>
 				</div>
@@ -292,7 +292,7 @@
 			</ul>
 			<div class="bar-footer">
 				<span class="bar-footer-title">商务洽谈</span>
-				<img src="images/roundchina/code@2x.png" alt="" class="lazy">
+				<img src="images/roundchina/code@2x.png" alt="" class="">
 				<div class="footer-content">
 					<p>
 						<span class="name">庆江</span>
