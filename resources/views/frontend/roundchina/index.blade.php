@@ -261,7 +261,7 @@
 			</div>
 
 			<div class="footer-bottom">
-				<img data-original="images/roundchina/code@2x.png" alt="" class="">
+				<img data-original="images/roundchina/code@2x.png" alt="" class="lazy">
 				<p>
 					<span class="name">小可</span>
 					<span class="icon-mobile"></span>
