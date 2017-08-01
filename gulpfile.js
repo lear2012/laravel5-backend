@@ -102,6 +102,24 @@ elixir(function(mix) {
         'round_china.js'
     ], 'public/js/roundchina.js');
 
+    // for xinjiang css/js
+    mix.styles([
+        '../bower/sweetalert/dist/sweetalert.css',
+        '../bower/fullpage.js/dist/jquery.fullpage.min.css',
+        'vendor.css',
+        'round.css',
+    ], 'public/css/xinjiang.css');
+    mix.scripts([
+        'jquery-2.2.3.min.js',
+        'jweixin-1.2.0.js',
+        '../bower/validator-js/validator.min.js',
+        '../bower/AdminLTE/plugins/iCheck/icheck.min.js',
+        '../bower/sweetalert/dist/sweetalert.min.js',
+        '../bower/fullpage.js/dist/jquery.fullpage.min.js',
+        '../bower/mojs/build/mo.min.js',
+        'xinj.js'
+    ], 'public/js/xinjiang.js');
+
     // for backend css/js
     mix.styles([
         '../bower/AdminLTE/bootstrap/css/bootstrap.min.css',

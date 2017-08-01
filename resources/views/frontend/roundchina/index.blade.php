@@ -249,7 +249,7 @@
 					<p>头条号</p>
 				</div>
 				<div class="media-item">
-					<img src="images/roundchina/icon-media-4@2x.png" alt="" class="lazy">
+					<img src="images/roundchina/icon-media-4@2x.png" alt="" class="">
 					<p>可野</p>
 					<p>直播号</p>
 				</div>
@@ -261,7 +261,7 @@
 			</div>
 
 			<div class="footer-bottom">
-				<img data-original="images/roundchina/code@2x.png" alt="" class="lazy">
+				<img data-original="images/roundchina/code@2x.png" alt="" class="">
 				<p>
 					<span class="name">小可</span>
 					<span class="icon-mobile"></span>

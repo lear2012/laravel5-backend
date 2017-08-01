@@ -52,6 +52,7 @@ Route::group(['namespace' => 'Frontend', 'middleware' => ['web', 'wechat.oauth:s
 
 Route::group(['namespace' => 'Frontend', 'middleware' => ['web']], function ()
 {
+    // round china
     Route::get('/roundchina', ['as' => 'round.index', 'uses' => 'RoundChinaController@index']);
     Route::get('/roundchina/selfreg', ['as' => 'round.selfreg', 'uses' => 'RoundChinaController@selfDrivingReg']);
     Route::get('/roundchina/liftreg', ['as' => 'round.liftreg', 'uses' => 'RoundChinaController@liftReg']);
@@ -71,6 +72,10 @@ Route::group(['namespace' => 'Frontend', 'middleware' => ['web']], function ()
 
     Route::get('/roundchina/apply_chetie', ['as' => 'round.apply_chetie', 'uses' => 'RoundChinaController@applyChetie']);
     Route::post('/roundchina/save_apply_chetie', ['as' => 'round.save_apply_chetie', 'uses' => 'RoundChinaController@saveApplyChetie']);
+
+    // xinjiang
+    Route::get('/xinjiang', ['as' => 'xinjiang.index', 'uses' => 'XinjiangController@index']);
+
 });
 
 /**

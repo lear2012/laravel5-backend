@@ -1,0 +1,7 @@
+#welcome {
+    z-index: 999;
+}
+
+#fullpage {
+    visibility: hidden;
+}
