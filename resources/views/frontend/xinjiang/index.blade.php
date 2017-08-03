@@ -64,7 +64,7 @@
             </div>
             <div class="swiper-slide slide-5">
                 <p class="info">感谢您参与本活动，稍后我们会与您联系！</p>
-                <a class="button"></a>
+                <a class="button" href="http://keye.liaollisonest.com/roundchina"></a>
                 <p class="contact">联系方式：151-0118-5962</p>
             </div>
         </div>
