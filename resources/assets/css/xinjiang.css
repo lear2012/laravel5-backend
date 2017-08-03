@@ -288,3 +288,10 @@ video::-webkit-media-controls-start-playback-button {
     background-image: url('../images/xinjiang/slide-5.jpg');
     background-size: 100% 100%;
 }
+.sweet-alert {
+    border-radius: 0;
+}
+.sweet-alert button {
+    border-radius: 0;
+    background-color: #fc9d2b;
+}

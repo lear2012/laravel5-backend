@@ -61,8 +61,8 @@ Route::group(['namespace' => 'Frontend', 'middleware' => ['web']], function ()
     Route::post('/roundchina/save_selfreg', ['as' => 'round.save_selfreg', 'uses' => 'RoundChinaController@saveSelfReg']);
     Route::post('/roundchina/save_liftreg', ['as' => 'round.save_liftreg', 'uses' => 'RoundChinaController@saveLiftReg']);
     Route::post('/roundchina/save_clubreg', ['as' => 'round.save_clubreg', 'uses' => 'RoundChinaController@saveClubReg']);
-    Route::post('/roundchina/save_sectionselfreg', ['as' => 'round.save_sectionselfreg', 'uses' => 'RoundChinaController@saveSectionSelfReg']);
-    Route::post('/roundchina/save_camera_reg', ['as' => 'round.save_camera_reg', 'uses' => 'RoundChinaController@saveCameraReg']);
+    Route::post('/xinjiang/save_selfreg', ['as' => 'round.save_sectionselfreg', 'uses' => 'XinjiangController@saveSectionSelfReg']);
+    Route::post('/xinjiang/save_camera_reg', ['as' => 'round.save_camera_reg', 'uses' => 'XinjiangController@saveCameraReg']);
 
 
     Route::post('/roundchina/thumbup/{id?}', ['as' => 'round.thumbup', 'uses' => '\App\Http\Controllers\Frontend\RoundChinaController@thumbUp'])->where('id', '[0-9]+');

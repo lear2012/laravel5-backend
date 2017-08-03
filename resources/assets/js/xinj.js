@@ -1,5 +1,16 @@
 window.onload = function() {
-    var startY, endY;
+
+    var startY, endY, player;
+
+    player = videojs('video', {autoplay: false}, function onPlayerReady() {
+        this.load();
+    });
+    player.on('ended', function() {
+        player.exitFullWindow();
+        player.exitFullscreen(); // ios取消全屏
+        player.currentTime(0);
+        $('#video').hide();
+    });
 
     // 内层swiper
     var mySwiper2 = new Swiper ('.swiper-h', {
@@ -39,11 +50,10 @@ window.onload = function() {
         },
         onSlideChangeEnd: function(swiper){
             swiperAnimate(swiper); //每个slide切换结束时也运行当前slide动画
-
             // 荐路者
             if(swiper.activeIndex === 2) {
                 mySwiper2.startAutoplay();
-            }else {
+            } else {
                 mySwiper2.stopAutoplay();
                 mySwiper2.slideTo(0);
             }
@@ -89,10 +99,10 @@ window.onload = function() {
         }, 500);
     });
 
-    $('.sign-up .submit').on('click', function() {
-        $signUp.hide();
-        $('.end').show();
-    });
+    // $('.sign-up .submit').on('click', function() {
+    //     $signUp.hide();
+    //     $('.end').show();
+    // });
 
     // 招募
     var $recruit = $('.recruit');
@@ -108,37 +118,173 @@ window.onload = function() {
         }, 500);
     });
 
-    $('.recruit .submit').on('click', function() {
-        $recruit.hide();
-        $('.end').show();
-    });
-
-    // 视频
-    // var player = new EZUIPlayer('video');
-    //
-    // player.on('play', function(){
-    //   console.log('play');
-    //   // $('.video-wrap').show();
+    // $('.recruit .submit').on('click', function() {
+    //     $recruit.hide();
+    //     $('.end').show();
     // });
-    // player.on('pause', function(){
-    //   console.log('pause');
-    // });
-    // player.on('ended', function(){
-    //   console.log('ended');
-    // });
-    var player = videojs('video', {autoplay: false}, function onPlayerReady() {
-        // player.enterFullscreen();
-        // player.enterFullWindow();
-        //this.play();
-        this.load();
-        console.log('play');
-    });
-
-    player.on('ended', function() {
-        // console.log('ended');
-        player.exitFullWindow();
-        player.exitFullscreen(); // ios取消全屏
-        player.currentTime(0);
-        $('#video').hide();
-    });
 };
+
+var xinjiang_activity = {
+
+    _rid: '', // 用于thumbup的路线id
+
+    _page: 1, // 页码
+
+    _enrollment_id: '', // 搭车时选择的Enrollment ID
+
+    _cars: [],
+
+    init: function() {
+        this.init_selfreg_submit();
+        this.init_camera_reg_submit();
+    },
+
+    showError: function(rs) {
+        swal({
+            html: true,
+            title: "出问题啦！",
+            text: rs.msg,
+            type: 'error',
+            confirmButtonText: '关闭',
+            confirmButtonColor: '#fc9d2b',
+            cancelButtonColor: '#fc9d2b',
+        });
+    },
+
+    showSuccess: function(rs) {
+        swal({
+            html: true,
+            title: '',
+            text: rs.msg,
+            type: 'success',
+            confirmButtonText: '关闭',
+            confirmButtonColor: '#fc9d2b',
+            cancelButtonColor: '#fc9d2b',
+        }, function (isConfirm) {
+            window.location.href = '/roundchina';
+        });
+    },
+
+    errorField: function(elm) {
+        elm.parent().removeClass('success');
+        elm.parent().addClass('error');
+    },
+
+    successField:function(elm) {
+        elm.parent().removeClass('error');
+        elm.parent().addClass('success');
+    },
+
+    clearField:function(elm) {
+        elm.parent().removeClass('error');
+        elm.parent().removeClass('success');
+    },
+
+    clearAllField: function () {
+        $('input').parent().removeClass('error');
+        $('input').parent().removeClass('success');
+        //$('i', $('#cki')).removeClass('checkbox_err');
+    },
+
+    init_selfreg_submit: function() {
+        var that = this;
+        $('#selfreg_submit').on('click', function(){
+            var data = {};
+            data.name = $.trim($('#name', $('.sign-up')).val());
+            data.mobile = $.trim($('#mobile', $('.sign-up')).val());
+            data.wechat_no = $.trim($('#wechat_no', $('.sign-up')).val());
+            data.brand = $.trim($('#brand', $('.sign-up')).val());
+            data.section_id = 1;
+            if(!that.checkRegister(data))
+                return false;
+            //return;
+            $.ajax({
+                type: "POST",
+                dataType: "json", //dataType (xml html script json jsonp text)
+                data: data, //json 数据
+                url: '/xinjiang/save_selfreg',
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                //beforeSend: bstool.submit_loading, //执行ajax前执行loading函数.直到success
+                success: function(rs) {//成功获得的也是json对象
+                    if(rs.errno == 0) {
+                        //that.showSuccess(rs);
+                        $('.sign-up').fadeOut();
+                        $('.end').fadeIn();
+                    } else {
+                        //that.showError(rs);
+                        alert(rs.msg);
+                        return false;
+                    }
+                }
+            });
+        });
+    },
+
+    checkRegister: function(params) {
+        var that = this;
+        this.clearAllField();
+        if(params.name == '') {
+            that.errorField($('#name', $('.sign-up')));
+            return false;
+        }
+        if(!validator.isMobilePhone(params.mobile, 'zh-CN')) {
+            that.errorField($('#mobile', $('.sign-up')));
+            return false;
+        }
+        return true;
+    },
+
+    init_camera_reg_submit: function() {
+        var that = this;
+        $('#camera_reg_submit').on('click', function(){
+            var data = {};
+            data.name = $.trim($('#name', $('.recruit')).val());
+            data.mobile = $.trim($('#mobile', $('.recruit')).val());
+            data.section_id = 1;
+            console.log(data);
+            if(!that.checkCameraRegister(data))
+                return false;
+            //return;
+            $.ajax({
+                type: "POST",
+                dataType: "json", //dataType (xml html script json jsonp text)
+                data: data, //json 数据
+                url: '/xinjiang/save_camera_reg',
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                //beforeSend: bstool.submit_loading, //执行ajax前执行loading函数.直到success
+                success: function(rs) {//成功获得的也是json对象
+                    if(rs.errno == 0) {
+                        //that.showSuccess(rs);
+                        $('.recruit').fadeOut();
+                        $('.end').fadeIn();
+                    } else {
+                        alert(rs.msg);
+                        return false;
+                    }
+                }
+            });
+        });
+    },
+
+    checkCameraRegister: function(params) {
+        var that = this;
+        this.clearAllField();
+        if(params.name == '') {
+            that.errorField($('#name', $('.recruit')));
+            return false;
+        }
+        if(!validator.isMobilePhone(params.mobile, 'zh-CN')) {
+            that.errorField($('#mobile', $('.recruit')));
+            return false;
+        }
+        return true;
+    },
+
+};
+$(document).ready(function(){
+    xinjiang_activity.init();
+});

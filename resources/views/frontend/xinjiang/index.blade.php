@@ -5,7 +5,7 @@
         <div class="swiper-wrapper">
             <div class="swiper-slide slide-1"></div>
             <div class="swiper-slide slide-2">
-                <video id="video" class="video-js vjs-default-skin vjs-big-play-centered" autoplay preload="auto" controls data-setup="{}">
+                <video id="video" class="video-js vjs-default-skin vjs-big-play-centered" preload="auto" controls data-setup="{}">
                     <source src="./video/video.mp4" type="video/mp4">
                 </video>
                 <div class="video-wrap"></div>
@@ -44,11 +44,11 @@
                     <img class="title" src="images/xinjiang/title-1.png" alt="">
                     <span class="icon-close"></span>
                     <div class="form">
-                        <input type="text" placeholder="姓名">
-                        <input type="text" placeholder="联系方式">
-                        <input type="text" placeholder="微信号">
-                        <input type="text" placeholder="车型">
-                        <div class="submit">提交信息</div>
+                        <input type="text" placeholder="姓名" id="name">
+                        <input type="text" placeholder="联系方式" id="mobile">
+                        <input type="text" placeholder="微信号" id="wechat_no">
+                        <input type="text" placeholder="车型" id="brand">
+                        <div class="submit" id="selfreg_submit">提交信息</div>
                     </div>
                 </div>
                 <div class="recruit">
@@ -56,12 +56,14 @@
                     <span class="icon-close"></span>
                     <div class="form">
                         <p class="form-text">若你也喜欢自驾旅游，并且有视频拍摄经验欢迎加入与可野一起记录环中国边境线新疆段食色之旅可野负责你的车辆食宿，你负责沿途拍摄记录</p>
-                        <input type="text" placeholder="姓名">
-                        <input type="text" placeholder="联系方式">
-                        <div class="submit">提交信息</div>
+                        <input type="text" placeholder="姓名" id="name">
+                        <input type="text" placeholder="联系方式" id="mobile">
+                        <div class="submit" id="camera_reg_submit">提交信息</div>
                     </div>
                 </div>
-                <div class="end hide"></div>
+                <div class="end hide">
+                    
+                </div>
             </div>
         </div>
     </div>
