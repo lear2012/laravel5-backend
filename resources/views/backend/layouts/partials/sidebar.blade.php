@@ -30,13 +30,13 @@
             </li>
             <li @if(Request::is('admin/topicimage*')) class="treeview active" @else class="treeview" @endif>
                 <a href="#">
-                    <i class="fa fa-road"></i>
+                    <i class="fa fa-sliders"></i>
                     <span>首页轮播图管理</span>
                     <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span>
                 </a>
                 <ul class="treeview-menu">
                     <li @if(Request::is('admin/topicimage')) class="active" @endif>
-                        <a href="{{ route('admin.topicimage.index') }}"><i class="fa fa-road"></i> 首页轮播图列表</a>
+                        <a href="{{ route('admin.topicimage.index') }}"><i class="fa fa-sliders"></i> 首页轮播图列表</a>
                     </li>
                     <li @if(Request::is('admin/topicimage/create')) class="active" @endif>
                         <a href="{{ route('admin.topicimage.create') }}"><i class="fa fa-plus"></i> 添加首页轮播图</a>
@@ -87,24 +87,24 @@
                 </ul>
             </li>
 
-            <li @if(Request::is('admin/keyecontacts*')) class="treeview active" @else class="treeview" @endif>
+            <li class="header">新疆自驾活动管理</li>
+            <li @if(Request::is('admin/sectionenrollments*')) class="treeview active" @else class="treeview" @endif>
                 <a href="#">
-                    <i class="fa fa-meetup"></i>
-                    <span>联系可野</span>
+                    <i class="fa fa-registered"></i>
+                    <span>报名管理</span>
                     <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span>
                 </a>
                 <ul class="treeview-menu">
-                    <li @if(Request::is('admin/keyecontacts')) class="active" @endif>
-                        <a href="{{ route('admin.keyecontacts.index') }}"><i class="fa fa-link"></i> 商务洽谈</a>
+                    <li @if(Request::is('admin/sectionenrollments/index')) class="active" @endif>
+                        <a href="{{ route('admin.sectionenrollments.index', ['sid' => 1]) }}"><i class="fa fa-car"></i> 新疆报名列表</a>
                     </li>
                 </ul>
                 <ul class="treeview-menu">
-                    <li @if(Request::is('admin/keyecontacts/contactus')) class="active" @endif>
-                        <a href="{{ route('admin.keyecontacts.contactus') }}"><i class="fa fa-phone"></i> 联系我们</a>
+                    <li @if(Request::is('admin/sectionenrollments/cameraIndex')) class="active" @endif>
+                        <a href="{{ route('admin.sectionenrollments.camera_index', ['sid' => 1]) }}"><i class="fa fa-video-camera"></i> 摄像师招募列表</a>
                     </li>
                 </ul>
             </li>
-
 
             <li class="header">系统设置</li>
             <li @if(Request::is('admin/auth/*')) class="treeview active" @else class="treeview" @endif>
@@ -128,6 +128,23 @@
 
 
             <li class="header">其它</li>
+            <li @if(Request::is('admin/keyecontacts*')) class="treeview active" @else class="treeview" @endif>
+                <a href="#">
+                    <i class="fa fa-meetup"></i>
+                    <span>联系可野</span>
+                    <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span>
+                </a>
+                <ul class="treeview-menu">
+                    <li @if(Request::is('admin/keyecontacts')) class="active" @endif>
+                        <a href="{{ route('admin.keyecontacts.index') }}"><i class="fa fa-link"></i> 商务洽谈</a>
+                    </li>
+                </ul>
+                <ul class="treeview-menu">
+                    <li @if(Request::is('admin/keyecontacts/contactus')) class="active" @endif>
+                        <a href="{{ route('admin.keyecontacts.contactus') }}"><i class="fa fa-phone"></i> 联系我们</a>
+                    </li>
+                </ul>
+            </li>
             <li><a href="/admin/logout"><i class="fa fa-circle-o text-red"></i> <span>退出</span></a></li>
         </ul>
     </section>

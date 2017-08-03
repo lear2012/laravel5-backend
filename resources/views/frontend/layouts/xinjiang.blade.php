@@ -10,9 +10,9 @@
     <meta content="black" name="apple-mobile-web-app-status-bar-style">
     <title>@yield('title')</title>
     @if(env('APP_ENV') == 'prod')
-        <link rel="stylesheet" href="{{ elixir('css/xinjiang.css', null) }}" />
+        <link rel="stylesheet" href="{{ elixir('css/xinjiang-final.css', null) }}" />
     @else
-        <link rel="stylesheet" href="{{ asset('css/xinjiang.css', null) }}" />
+        <link rel="stylesheet" href="{{ asset('css/xinjiang-final.css', null) }}" />
     @endif
     @yield('styles')
     <script type="text/javascript">
@@ -24,13 +24,12 @@
     </script>
 </head>
 <body>
-<div id="message"></div>
 @yield('content')
 @include ('frontend.footer')
 @if(env('APP_ENV') == 'prod')
-    <script type="text/javascript" src="{{ elixir('js/xinjiang.js', null) }}"></script>
+    <script type="text/javascript" src="{{ elixir('js/xinjiang-final.js', null) }}"></script>
 @else
-    <script type="text/javascript" src="{{ asset('js/xinjiang.js', null) }}"></script>
+    <script type="text/javascript" src="{{ asset('js/xinjiang-final.js', null) }}"></script>
 @endif
 @if(isset($js))
     <script type="text/javascript" charset="utf-8">

@@ -1,0 +1,290 @@
+html, body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, fieldset, input, textarea, p, blockquote, th, td, img, area, param {
+    position: relative;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+    font-family: Microsoft Yahei, PingFang SC, Heiti SC, Noto Sans Han, Droid San Fallback;
+    -webkit-font-smoothing: antialiased !important;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-overflow-scrolling: touch;
+    touch-action: none;
+}
+
+img {
+    border: none;
+    outline: none;
+}
+
+/* video默认的播放按钮 */
+video::-webkit-media-controls-panel {
+    display: none!important;
+    -webkit-appearance: none;
+}
+video::--webkit-media-controls-play-button {
+    display: none!important;
+    -webkit-appearance: none;
+}
+video::-webkit-media-controls-start-playback-button {
+    display: none!important;
+    -webkit-appearance: none;
+}
+
+/* video.js的播放按钮 */
+/* .vjs-paused .vjs-big-play-button {
+  display: none !important;
+}
+ */
+@font-face {
+    font-family: adobe;
+    src: url('../fonts/AdobeHeitiStd-Regular.otf');
+}
+/* @font-face {
+  font-family: fzzyjw;
+  src: url('../fonts/FZZYJW.TTF');
+} */
+
+#__bs_notify__ {
+    display: none !important;
+}
+
+.video-js {
+    width: 100%;
+    height: 100%;
+}
+
+.hide {
+    display: none;
+}
+
+.swiper-container {
+    width: 100%;
+    height: 100%;
+    background-color: #000;
+}
+.swiper-slide {
+    position: relative;
+    text-align: center;
+    font-size: 18px;
+    background: #fff;
+    background-size: 100% 100%;
+
+    /* Center slide text vertically */
+    /* display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center; */
+}
+
+.swiper-h-wrap {
+    width: 100%;
+    height: 100%;
+}
+
+.swiper-container video {
+    width: 100%;
+    height: 100%;
+    /* margin: 0 auto; */
+}
+
+.swiper-slide .video-wrap {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    display: none;
+    z-index: 10;
+    background: #fff;
+    opacity: 0;
+}
+
+.swiper-slide p {
+    font-family: fzzyjw;
+}
+
+.slide-1 {
+    background-image: url('../images/xinjiang/slide-1.jpg');
+}
+.slide-2 {
+    background-image: url('../images/xinjiang/slide-2.jpg');
+}
+.slide-3-0 {
+    background-image: url('../images/xinjiang/slide-3-0.jpg');
+}
+.slide-3-1 {
+    background-image: url('../images/xinjiang/slide-3-1.jpg');
+}
+.slide-3-2 {
+    background-image: url('../images/xinjiang/slide-3-2.jpg');
+}
+.slide-3-3 {
+    background-image: url('../images/xinjiang/slide-3-3.jpg');
+}
+.slide-3-4 {
+    background-image: url('../images/xinjiang/slide-3-4.jpg');
+}
+.slide-4 {
+    background-image: url('../images/xinjiang/slide-4.jpg');
+}
+
+.ani {
+    /* animation-timing-function: linear; */
+}
+
+.slide-3-0 img {
+    width: 100%;
+    height: 100%;
+}
+
+.slide-3-1 .text1, .slide-3-3 .text1 {
+    float: right;
+    width: .38rem;
+    /* height: 6.12rem; */
+    height: auto;
+    margin-top: .4rem;
+    margin-right: .4rem;
+}
+.slide-3-1 .text2, .slide-3-3 .text2 {
+    float: left;
+    width: 2.2rem;
+    height: auto;
+    margin-left: 1.1rem;
+    margin-top: 1.56rem;
+}
+
+.slide-3-2 .text1, .slide-3-4 .text1 {
+    float: left;
+    width: .38rem;
+    height: auto;
+    margin-top: .4rem;
+    margin-left: .4rem;
+}
+.slide-3-2 .text2, .slide-3-4 .text2 {
+    float: right;
+    width: 2.2rem;
+    height: auto;
+    margin-right: 1.1rem;
+    margin-top: 1.56rem;
+}
+
+.slide-4 {
+
+}
+.slide-4 .button1 {
+    position: absolute;
+    top: .5rem;
+    right: .2rem;
+    display: inline-block;
+    width: 3.05rem;
+    height: 1.03rem;
+    background: url('../images/xinjiang/button-1.png');
+    background-size: 3.05rem auto;
+}
+.slide-4 .button2 {
+    position: absolute;
+    top: 1.7rem;
+    right: .2rem;
+    display: inline-block;
+    clear: both;
+    width: 3.05rem;
+    height: 1.03rem;
+    background: url('../images/xinjiang/button-2.png');
+    background-size: 3.05rem auto;
+}
+
+.sign-up, .recruit {
+    position: relative;
+    left: 7.5rem;
+    width: 100%;
+    text-align: center;
+    background: url('../images/xinjiang/back.jpg');
+    background-size: 100% 100%;
+    transition: transform 0.5s;
+}
+
+.slide-4 .title {
+    position: absolute;
+    left: 50%;
+    top: 1.24rem;
+    transform: translateX(-50%);
+    width: 2.72rem;
+    height: auto;
+}
+
+.slide-left {
+    transform: translateX(-7.5rem);
+}
+
+.icon-close {
+    position: absolute;
+    top: .3rem;
+    right: .3rem;
+    display: inline-block;
+    width: .5rem;
+    height: .5rem;
+    background: url('../images/xinjiang/icon-close.png');
+    background-size: .5rem auto;
+}
+
+.form  {
+    width: 5.17rem;
+    margin: 0 auto;
+    padding-top: 4rem;
+}
+
+.form input {
+    width: 100%;
+    height: .74rem;
+    padding: .1rem .3rem;
+    margin-bottom: .6rem;
+    box-sizing: border-box;
+    border: .02rem solid #e8aa2a;
+    border-radius: 0;
+    background-color: rgba(232,170,42,0.24);
+    font-size: .28rem;
+    color: #b6a385;
+    line-height: .5rem;
+}
+
+.form-text {
+    width: 100%;
+    height: auto;
+    box-sizing: border-box;
+    padding: .1rem .3rem;
+    margin-bottom: 1rem;
+    font-size: .27rem;
+    color: #fff;
+    text-align: justify;
+    line-height: .51rem;
+    border: .02rem solid #e8aa2a;
+    background-color: rgba(255,255,255,0.24);
+}
+
+.form .submit {
+    width: 100%;
+    height: .74rem;
+    margin-top: .8rem;
+    text-align: center;
+    font-size: .34rem;
+    line-height: .74rem;
+    color: #fff;
+    background-color: #e8aa2a;
+}
+
+.slide-4 .end {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('../images/xinjiang/slide-5.jpg');
+    background-size: 100% 100%;
+}

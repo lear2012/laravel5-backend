@@ -61,6 +61,9 @@ Route::group(['namespace' => 'Frontend', 'middleware' => ['web']], function ()
     Route::post('/roundchina/save_selfreg', ['as' => 'round.save_selfreg', 'uses' => 'RoundChinaController@saveSelfReg']);
     Route::post('/roundchina/save_liftreg', ['as' => 'round.save_liftreg', 'uses' => 'RoundChinaController@saveLiftReg']);
     Route::post('/roundchina/save_clubreg', ['as' => 'round.save_clubreg', 'uses' => 'RoundChinaController@saveClubReg']);
+    Route::post('/roundchina/save_sectionselfreg', ['as' => 'round.save_sectionselfreg', 'uses' => 'RoundChinaController@saveSectionSelfReg']);
+    Route::post('/roundchina/save_camera_reg', ['as' => 'round.save_camera_reg', 'uses' => 'RoundChinaController@saveCameraReg']);
+
 
     Route::post('/roundchina/thumbup/{id?}', ['as' => 'round.thumbup', 'uses' => '\App\Http\Controllers\Frontend\RoundChinaController@thumbUp'])->where('id', '[0-9]+');
     Route::post('/roundchina/enroll', ['as' => 'round.enroll', 'uses' => '\App\Http\Controllers\Frontend\RoundChinaController@enroll']);
@@ -186,5 +189,13 @@ Route::group(['namespace' => 'Backend'], function () {
         Route::get('site/test', ['as' => 'site.test', 'uses' => 'SiteController@test']);
         Route::get('site/config', ['as' => 'site.config', 'uses' => 'SiteController@config']);
         Route::post('site/store_config', ['as' => 'site.store_config', 'uses' => 'SiteController@storeConfig']);
+
+        // Section Enrollment
+        Route::get('sectionenrollments/search', ['as' => 'sectionenrollments.search', 'uses' => 'SectionEnrollmentController@search']);
+        // Camera Enrollment
+        Route::get('sectionenrollments/searchCamera', ['as' => 'sectionenrollments.searchCamera', 'uses' => 'SectionEnrollmentController@searchCamera']);
+        Route::post('sectionenrollments/active', ['as' => 'sectionenrollments.active', 'uses' => 'SectionEnrollmentController@active']);
+        Route::get('sectionenrollments/cameraIndex', ['as' => 'sectionenrollments.camera_index', 'uses' => 'SectionEnrollmentController@cameraIndex']);
+        Route::resource('sectionenrollments', 'SectionEnrollmentController');
     });
 });

@@ -1,18 +1,68 @@
 @extends('frontend.layouts.xinjiang')
 
 @section('content')
-    <div id="welcome">
-        <img src="images/roundchina/logo@2x.png">
-    </div>
-    <div id="fullpage">
-        <div class="section">Some section</div>
-        <div class="section">Some section</div>
-        <div class="section">
-            <div class="slide"> Slide 1 </div>
-            <div class="slide"> Slide 2 </div>
-            <div class="slide"> Slide 3 </div>
-            <div class="slide"> Slide 4 </div>
+    <div class="swiper-container swiper-v">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide slide-1"></div>
+            <div class="swiper-slide slide-2">
+                <video id="video" class="video-js vjs-default-skin vjs-big-play-centered" autoplay preload="auto" controls data-setup="{}">
+                    <source src="./video/video.mp4" type="video/mp4">
+                </video>
+                <div class="video-wrap"></div>
+            </div>
+            <div class="swiper-slide">
+                <div class="swiper-h-wrap">
+                    <div class="swiper-container swiper-h">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide slide-3-0" data-swiper-autoplay="2000">
+                                <img src="images/xinjiang/slide-3-0-1.png" class="ani" swiper-animate-effect="fadeIn" swiper-animate-duration="0.5s" swiper-animate-delay="0.3s"/>
+                            </div>
+                            <div class="swiper-slide slide-3-1">
+                                <img src="images/xinjiang/slide-3-1-1.png" class="text1 ani" swiper-animate-effect="fadeInRight" swiper-animate-duration="0.5s" swiper-animate-delay="0.5s"/>
+                                <img src="images/xinjiang/slide-3-1-2.png" class="text2 ani" swiper-animate-effect="fadeInLeft" swiper-animate-duration="0.5s" swiper-animate-delay="0.5s"/>
+                            </div>
+                            <div class="swiper-slide slide-3-2">
+                                <img src="images/xinjiang/slide-3-2-1.png" class="text1 ani" swiper-animate-effect="fadeInLeft" swiper-animate-duration="0.5s" swiper-animate-delay="0.5s"/>
+                                <img src="images/xinjiang/slide-3-2-2.png" class="text2 ani" swiper-animate-effect="fadeInRight" swiper-animate-duration="0.5s" swiper-animate-delay="0.5s"/>
+                            </div>
+                            <div class="swiper-slide slide-3-3">
+                                <img src="images/xinjiang/slide-3-3-1.png" class="text1 ani" swiper-animate-effect="fadeInRight" swiper-animate-duration="0.5s" swiper-animate-delay="0.5s"/>
+                                <img src="images/xinjiang/slide-3-3-2.png" class="text2 ani" swiper-animate-effect="fadeInLeft" swiper-animate-duration="0.5s" swiper-animate-delay="0.5s"/>
+                            </div>
+                            <div class="swiper-slide slide-3-4">
+                                <img src="images/xinjiang/slide-3-4-1.png" class="text1 ani" swiper-animate-effect="fadeInLeft" swiper-animate-duration="0.5s" swiper-animate-delay="0.5s"/>
+                                <img src="images/xinjiang/slide-3-4-2.png" class="text2 ani" swiper-animate-effect="fadeInRight" swiper-animate-duration="0.5s" swiper-animate-delay="0.5s"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="swiper-slide slide-4">
+                <span class="button1 ani" swiper-animate-effect="fadeInRight" swiper-animate-duration="0.5s" swiper-animate-delay="0.5s"></span>
+                <span class="button2 ani" swiper-animate-effect="fadeInRight" swiper-animate-duration="0.5s" swiper-animate-delay="0.5s"></span>
+                <div class="sign-up">
+                    <img class="title" src="images/xinjiang/title-1.png" alt="">
+                    <span class="icon-close"></span>
+                    <div class="form">
+                        <input type="text" placeholder="姓名">
+                        <input type="text" placeholder="联系方式">
+                        <input type="text" placeholder="微信号">
+                        <input type="text" placeholder="车型">
+                        <div class="submit">提交信息</div>
+                    </div>
+                </div>
+                <div class="recruit">
+                    <img class="title" src="images/xinjiang/title-2.png" alt="">
+                    <span class="icon-close"></span>
+                    <div class="form">
+                        <p class="form-text">若你也喜欢自驾旅游，并且有视频拍摄经验欢迎加入与可野一起记录环中国边境线新疆段食色之旅可野负责你的车辆食宿，你负责沿途拍摄记录</p>
+                        <input type="text" placeholder="姓名">
+                        <input type="text" placeholder="联系方式">
+                        <div class="submit">提交信息</div>
+                    </div>
+                </div>
+                <div class="end hide"></div>
+            </div>
         </div>
-        <div class="section">Some section</div>
     </div>
 @endsection

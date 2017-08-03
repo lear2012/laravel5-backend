@@ -2,20 +2,11 @@
 
 namespace App\Http\Controllers\Frontend;
 
-use App\Http\Controllers\Controller;
-use App\Http\Requests\Frontend\SelfRegRequest;
-use App\Http\Requests\Frontend\LiftRegRequest;
-use App\Http\Requests\Frontend\ClubRegRequest;
-use App\Http\Requests\Frontend\ApplyChetieRequest;
-use App\Models\ChetieApply;
-use App\Models\KeyeClub;
-use App\Models\KeyeEnrollment;
-use App\Models\KeyeLift;
-use App\Models\TopicImage;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use App\Http\Requests\Frontend\SectionSelfRegRequest;
 use ChannelLog as Log;
-use App\Models\KeyeRoute;
-use Illuminate\Support\Facades\Redis;
+use App\Models\SectionEnrollment;
 use DB;
 use App\Helpers\Utils;
 use Laracasts\Utilities\JavaScript\JavaScriptFacade as JavaScript;

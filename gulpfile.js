@@ -105,20 +105,22 @@ elixir(function(mix) {
     // for xinjiang css/js
     mix.styles([
         '../bower/sweetalert/dist/sweetalert.css',
-        '../bower/fullpage.js/dist/jquery.fullpage.min.css',
-        'vendor.css',
-        'round.css',
-    ], 'public/css/xinjiang.css');
+        '../bower/swiper/dist/css/swiper.min.css',
+        //'../bower/fullpage.js/dist/jquery.fullpage.min.css',
+        'animate.min.css',
+        'video-js.min.css',
+        'xinjiang.css',
+    ], 'public/css/xinjiang-final.css');
     mix.scripts([
         'jquery-2.2.3.min.js',
         'jweixin-1.2.0.js',
         '../bower/validator-js/validator.min.js',
-        '../bower/AdminLTE/plugins/iCheck/icheck.min.js',
         '../bower/sweetalert/dist/sweetalert.min.js',
-        '../bower/fullpage.js/dist/jquery.fullpage.min.js',
-        '../bower/mojs/build/mo.min.js',
+        '../bower/swiper/dist/js/swiper.jquery.min.js',
+        'swiper.animate.min.js',
+        'video.min.js',
         'xinj.js'
-    ], 'public/js/xinjiang.js');
+    ], 'public/js/xinjiang-final.js');
 
     // for backend css/js
     mix.styles([
@@ -162,6 +164,8 @@ elixir(function(mix) {
         'keye_club.js',
         'topic_image.js',
         'chetie_apply.js',
+        'section_enrollment.js',
+        'camera_enrollment.js'
     ], 'public/js/all_bk.js');
 
     // images
@@ -174,7 +178,16 @@ elixir(function(mix) {
     // mix.copy('public/js/all_bk.js', 'public/js/all_bk_debug.js');
 
     // versioning // for production
-    mix.version(['css/all.css', 'js/all.js', 'css/all_bk.css', 'js/all_bk.js','css/roundchina.css', 'js/roundchina.js'], 'public');
+    mix.version([
+        'css/all.css',
+        'js/all.js',
+        'css/all_bk.css',
+        'js/all_bk.js',
+        'css/roundchina.css',
+        'js/roundchina.js',
+        'css/xinjiang-final.css',
+        'js/xinjiang-final.js',
+    ], 'public');
     // watch
     // BrowserSync.init({
     //     server: {
