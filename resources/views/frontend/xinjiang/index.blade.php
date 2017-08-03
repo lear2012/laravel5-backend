@@ -5,7 +5,7 @@
         <div class="swiper-wrapper">
             <div class="swiper-slide slide-1"></div>
             <div class="swiper-slide slide-2">
-                <video id="video" class="video-js vjs-default-skin vjs-big-play-centered" preload="auto" controls data-setup="{}">
+                <video id="video" class="video-js vjs-default-skin vjs-big-play-centered" preload="auto" data-setup="{}">
                     <source src="./video/video.mp4" type="video/mp4">
                 </video>
                 <div class="video-wrap"></div>
@@ -62,7 +62,7 @@
                     </div>
                 </div>
                 <div class="end hide">
-                    
+
                 </div>
             </div>
         </div>
