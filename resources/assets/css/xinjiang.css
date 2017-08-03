@@ -134,6 +134,9 @@ video::-webkit-media-controls-start-playback-button {
 .slide-4 {
     background-image: url('../images/xinjiang/slide-4.jpg');
 }
+.slide-5 {
+    background-image: url('../images/xinjiang/slide-5.jpg');
+}
 
 .ani {
     /* animation-timing-function: linear; */
@@ -294,4 +297,47 @@ video::-webkit-media-controls-start-playback-button {
 .sweet-alert button {
     border-radius: 0;
     background-color: #fc9d2b;
+}
+
+.slide-5 .info {
+    position: absolute;
+    top: 8rem;
+    left: 0;
+    right: 0;
+    width: 3.3rem;
+    height: auto;
+    margin: 0 auto;
+    font-size: .28rem;
+    color: #b6a385;
+    line-height: .4rem;
+    text-align: center;
+    font-weight: bold;
+}
+
+.slide-5 .button {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 1.4rem;
+    width: 1.6rem;
+    height: .4rem;
+    margin: 0 auto;
+    background: url('../images/xinjiang/button.png') no-repeat center center;
+    background-size: 1.6rem auto;
+}
+
+.slide-5 .contact {
+    position: absolute;
+    width: 100%;
+    height: auto;
+    bottom: .6rem;
+    font-size: .4rem;
+    color: #fff;
+    text-align: center;
+}
+.error {
+    border-bottom:0.01rem solid red;
+}
+.success {
+    border-bottom:0.01rem solid green;
 }

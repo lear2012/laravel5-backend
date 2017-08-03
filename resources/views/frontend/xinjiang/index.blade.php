@@ -61,9 +61,11 @@
                         <div class="submit" id="camera_reg_submit">提交信息</div>
                     </div>
                 </div>
-                <div class="end hide">
-
-                </div>
+            </div>
+            <div class="swiper-slide slide-5">
+                <p class="info">感谢您参与本活动，稍后我们会与您联系！</p>
+                <a class="button"></a>
+                <p class="contact">联系方式：151-0118-5962</p>
             </div>
         </div>
     </div>

@@ -1,3 +1,4 @@
+var mySwiper;
 window.onload = function() {
 
     var startY, endY, player;
@@ -39,7 +40,7 @@ window.onload = function() {
     });
 
     // 外层swiper
-    var mySwiper = new Swiper ('.swiper-v', {
+    mySwiper = new Swiper ('.swiper-v', {
         direction: 'vertical',
         watchSlidesProgress: true,
         watchSlidesVisibility: true,
@@ -87,9 +88,11 @@ window.onload = function() {
 
     // 报名
     var $signUp = $('.sign-up');
+    var $recruit = $('.recruit');
 
     $('.button1').on('click', function() {
         $signUp.show().addClass('slide-left');
+        $recruit.hide().removeClass('slide-left');
     });
 
     $('.sign-up .icon-close').on('click', function(event) {
@@ -105,9 +108,8 @@ window.onload = function() {
     // });
 
     // 招募
-    var $recruit = $('.recruit');
-
     $('.button2').on('click', function() {
+        $signUp.hide().removeClass('slide-left');
         $recruit.show().addClass('slide-left');
     });
 
@@ -166,23 +168,23 @@ var xinjiang_activity = {
     },
 
     errorField: function(elm) {
-        elm.parent().removeClass('success');
-        elm.parent().addClass('error');
+        elm.removeClass('success');
+        elm.addClass('error');
     },
 
     successField:function(elm) {
-        elm.parent().removeClass('error');
-        elm.parent().addClass('success');
+        elm.removeClass('error');
+        elm.addClass('success');
     },
 
     clearField:function(elm) {
-        elm.parent().removeClass('error');
-        elm.parent().removeClass('success');
+        elm.removeClass('error');
+        elm.removeClass('success');
     },
 
     clearAllField: function () {
-        $('input').parent().removeClass('error');
-        $('input').parent().removeClass('success');
+        $('input').removeClass('error');
+        $('input').removeClass('success');
         //$('i', $('#cki')).removeClass('checkbox_err');
     },
 
@@ -208,15 +210,7 @@ var xinjiang_activity = {
                 },
                 //beforeSend: bstool.submit_loading, //执行ajax前执行loading函数.直到success
                 success: function(rs) {//成功获得的也是json对象
-                    if(rs.errno == 0) {
-                        //that.showSuccess(rs);
-                        $('.sign-up').fadeOut();
-                        $('.end').fadeIn();
-                    } else {
-                        //that.showError(rs);
-                        alert(rs.msg);
-                        return false;
-                    }
+                    mySwiper.slideNext();
                 }
             });
         });
@@ -226,11 +220,13 @@ var xinjiang_activity = {
         var that = this;
         this.clearAllField();
         if(params.name == '') {
-            that.errorField($('#name', $('.sign-up')));
+            //that.errorField();
+            $('#name', $('.sign-up')).css('border-bottom', '1px solid red');
             return false;
         }
         if(!validator.isMobilePhone(params.mobile, 'zh-CN')) {
-            that.errorField($('#mobile', $('.sign-up')));
+            //that.errorField($('#mobile', $('.sign-up')));
+            $('#mobile', $('.sign-up')).css('border-bottom', '1px solid red');
             return false;
         }
         return true;
@@ -243,7 +239,6 @@ var xinjiang_activity = {
             data.name = $.trim($('#name', $('.recruit')).val());
             data.mobile = $.trim($('#mobile', $('.recruit')).val());
             data.section_id = 1;
-            console.log(data);
             if(!that.checkCameraRegister(data))
                 return false;
             //return;
@@ -257,14 +252,7 @@ var xinjiang_activity = {
                 },
                 //beforeSend: bstool.submit_loading, //执行ajax前执行loading函数.直到success
                 success: function(rs) {//成功获得的也是json对象
-                    if(rs.errno == 0) {
-                        //that.showSuccess(rs);
-                        $('.recruit').fadeOut();
-                        $('.end').fadeIn();
-                    } else {
-                        alert(rs.msg);
-                        return false;
-                    }
+                    mySwiper.slideNext();
                 }
             });
         });
@@ -274,11 +262,13 @@ var xinjiang_activity = {
         var that = this;
         this.clearAllField();
         if(params.name == '') {
-            that.errorField($('#name', $('.recruit')));
+            //that.errorField($('#name', $('.recruit')));
+            $('#mobile', $('.recruit')).css('border-bottom', '1px solid red');
             return false;
         }
         if(!validator.isMobilePhone(params.mobile, 'zh-CN')) {
-            that.errorField($('#mobile', $('.recruit')));
+            //that.errorField($('#mobile', $('.recruit')));
+            $('#mobile', $('.recruit')).css('border-bottom', '1px solid red');
             return false;
         }
         return true;
