@@ -41,9 +41,11 @@ window.onload = function() {
             swiperAnimateCache(swiper); //隐藏动画元素
             swiperAnimate(swiper); //初始化完成开始动画
         },
-        onSliderMove: function (swiper) {
+        onSlideChangeStart: function(swiper){
             if(swiper.previousIndex == 2)
                 player.pause();
+        },
+        onSliderMove: function (swiper) {
             if(swiper.activeIndex == 7 && !signed){
                 swiper.lockSwipeToNext();
             } else {
