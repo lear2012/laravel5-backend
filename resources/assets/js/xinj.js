@@ -4,15 +4,6 @@ window.onload = function() {
 
     var startY, endY, player, mySwiper2;
 
-    // player = videojs('video', {autoplay: false}, function onPlayerReady() {
-    //     this.load();
-    // });
-    // player.on('ended', function() {
-    //     player.exitFullWindow();
-    //     player.exitFullscreen(); // ios取消全屏
-    //     player.currentTime(0);
-    //     $('#video').hide();
-    // });
     var player = videojs('video', {}, function onPlayerReady() {
         // this.play();
         $('#video-next').hide();
@@ -59,7 +50,7 @@ window.onload = function() {
             //console.log(swiper.activeIndex);
             if(swiper.activeIndex == 1) {
                 $('#video').show();
-                player.play();
+                //player.play();
             }
         },
         onTransitionEnd: function(swiper) {

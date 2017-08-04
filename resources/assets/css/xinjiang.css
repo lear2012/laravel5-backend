@@ -301,7 +301,7 @@ video::-webkit-media-controls-start-playback-button {
 
 .slide-5 .info {
     position: absolute;
-    top: 7.8rem;
+    top: 7.6rem;
     left: 0;
     right: 0;
     width: 3.3rem;
@@ -353,3 +353,14 @@ video::-webkit-media-controls-start-playback-button {
     background: url('../images/xinjiang/icon-next.png') no-repeat center center;
     background-size: .53rem auto;
 }
+.video-js .vjs-big-play-button {
+    border:none;
+    font-size:4rem;
+    background: transparent;
+}
+
+.video-js .vjs-play-control:before {
+    content: '\f101';
+    font-size: 4rem;
+}
+
