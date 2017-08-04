@@ -1,6 +1,6 @@
 html, body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, fieldset, input, textarea, p, blockquote, th, td, img, area, param {
-    position: relative;
-    height: 100%;
+    /*position: relative;*/
+    /*height: 100%;*/
     padding: 0;
     margin: 0;
     font-family: Microsoft Yahei, PingFang SC, Heiti SC, Noto Sans Han, Droid San Fallback;
@@ -9,7 +9,10 @@ html, body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, fiel
     -webkit-overflow-scrolling: touch;
     touch-action: none;
 }
-
+html, body {
+    position: relative;
+    height: 100%;
+}
 img {
     border: none;
     outline: none;
@@ -364,3 +367,11 @@ video::-webkit-media-controls-start-playback-button {
     font-size: 1.6rem;
 }
 
+.weui-toast {
+    height: 100%;
+    top: 0;
+}
+
+.weui-icon_toast.weui-loading {
+    margin-top: 70%;
+}

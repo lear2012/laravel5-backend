@@ -9,6 +9,7 @@
     <meta content="yes" name="apple-touch-fullscreen">
     <meta content="black" name="apple-mobile-web-app-status-bar-style">
     <title>@yield('title')</title>
+    <link href="http://o24s0hia8.qnssl.com/lib/weui/dist/style/weui.min.css" rel="stylesheet">
     @if(env('APP_ENV') == 'prod')
         <link rel="stylesheet" href="{{ elixir('css/xinjiang-final.css', null) }}" />
     @else

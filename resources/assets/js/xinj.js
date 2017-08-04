@@ -1,5 +1,54 @@
 var mySwiper;
 var signed = false;
+!function(name, context, definition) {
+    if (typeof module !== "undefined")
+        module.exports = definition(name, context);
+    else if (typeof define === "function" && typeof define.amd === "object")
+        define(definition);
+    else
+        context[name] = definition(name, context)
+}("toast", this, function(name, context) {
+    var Toast = function(o) {
+        o || (o = {});
+        this.timeout = "timeout"in o ? o.timeout : 2500;
+    };
+    Toast.prototype = {
+        constructor: Toast,
+        show: function(msg) {
+
+            var html = '';
+            var msg = msg ? msg : '';
+            var body = document.body;
+            var toast = document.getElementById('customToast');
+            html += '<div id="customToast" style={display:"block"}>';
+            // html += '<div class="weui-mask_transparent"></div>';
+            html += '<div class="weui-toast">';
+            html += '<i class="weui-loading weui-icon_toast"></i>';
+            html += '<p id="customToast_Content"  class="weui-toast__content">'+msg+'</p>';
+            html += '</div>';
+            html += '</div>';
+
+
+            if(!toast) {
+                var div = document.createElement("div");
+                div.innerHTML = html;
+                body.appendChild(div);
+            }else {
+                var content = document.getElementById('customToast_Content');
+                toast.style.display = 'block';
+                content.innerHTML = msg;
+            }
+        },
+        hide: function() {
+            var toast = document.getElementById('customToast');
+            if(toast) {
+                toast.style.display = 'none';
+            }
+        }
+    };
+    return new Toast
+});
+
 window.onload = function() {
 
     var startY, endY, player, mySwiper2;
@@ -65,6 +114,9 @@ window.onload = function() {
                     mySwiper.slideNext();
                 }
             }
+        },
+        onImagesReady: function(swiper) {
+            toast.hide();
         },
     });
 

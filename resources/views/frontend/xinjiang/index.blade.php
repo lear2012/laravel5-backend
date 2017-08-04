@@ -1,5 +1,7 @@
 @extends('frontend.layouts.xinjiang')
+@section('styles')
 
+@endsection
 @section('content')
     <div class="swiper-container swiper-v">
         <div class="swiper-wrapper">
