@@ -322,7 +322,7 @@ video::-webkit-media-controls-start-playback-button {
     width: 1.6rem;
     height: .4rem;
     margin: 0 auto;
-    background: url('../images/xinjiang/button.png') no-repeat center center;
+    background: url('../images/xinjiang/yue.png') no-repeat center center;
     background-size: 1.6rem auto;
 }
 
@@ -345,13 +345,13 @@ video::-webkit-media-controls-start-playback-button {
     position: absolute;
     left: 0;
     right: 0;
-    bottom: .8rem;
+    bottom: 4.2rem;
     display: inline-block;
-    width: .6rem;
-    height: .5rem;
+    width: 4.6rem;
+    height: 4rem;
     margin: 0 auto;
     background: url('../images/xinjiang/icon-next.png') no-repeat center center;
-    background-size: .53rem auto;
+    background-size: 4.2rem auto;
 }
 .video-js .vjs-big-play-button {
     border:none;
