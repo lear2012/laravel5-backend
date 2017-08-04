@@ -1,75 +1,95 @@
 var mySwiper;
 window.onload = function() {
 
-    var startY, endY, player;
+    var startY, endY, player, mySwiper2;
 
-    player = videojs('video', {autoplay: false}, function onPlayerReady() {
-        this.load();
+    // player = videojs('video', {autoplay: false}, function onPlayerReady() {
+    //     this.load();
+    // });
+    // player.on('ended', function() {
+    //     player.exitFullWindow();
+    //     player.exitFullscreen(); // ios取消全屏
+    //     player.currentTime(0);
+    //     $('#video').hide();
+    // });
+    var player = videojs('video', {}, function onPlayerReady() {
+        // this.play();
+        $('#video-next').hide();
     });
+
+    player.on('play', function() {
+        $('#video-next').hide();
+    });
+
     player.on('ended', function() {
+        // console.log('ended');
         player.exitFullWindow();
         player.exitFullscreen(); // ios取消全屏
         player.currentTime(0);
         $('#video').hide();
+        $('#video-next').show();
     });
 
-    // 内层swiper
-    var mySwiper2 = new Swiper ('.swiper-h', {
-        direction: 'horizontal',
-        // loop: false,
-        spaceBetween: 50,
-        autoplay: 3000,
-        autoplayStopOnLast: true,
-        autoplayDisableOnInteraction: false,
-        watchSlidesProgress: true,
-        watchSlidesVisibility: true,
-        observer: true,  // 解决子swiper自动播放后, 父swiper动画不能正常显示的问题
-        observeParents: true, // 解决子swiper自动播放后, 父swiper动画不能正常显示的问题
-        onInit: function(swiper) {
-            // swiperAnimateCache(swiper); //隐藏动画元素
-            // swiperAnimate(swiper); //初始化完成开始动画
-        },
-        onSlideChangeEnd: function(swiper){
-            swiperAnimate(swiper); //每个slide切换结束时也运行当前slide动画
-        },
-        onClick: function(swiper) {
-            if(swiper.activeIndex === 4) {
-                mySwiper.slideNext();
-            }
-        },
-    });
-
-    // 外层swiper
     mySwiper = new Swiper ('.swiper-v', {
         direction: 'vertical',
         watchSlidesProgress: true,
         watchSlidesVisibility: true,
         observer: true,
         onInit: function(swiper) {
-            // swiperAnimateCache(swiper); //隐藏动画元素
+            swiperAnimateCache(swiper); //隐藏动画元素
             swiperAnimate(swiper); //初始化完成开始动画
         },
         onSlideChangeEnd: function(swiper){
             swiperAnimate(swiper); //每个slide切换结束时也运行当前slide动画
+
             // 荐路者
             if(swiper.activeIndex === 2) {
+                // 内层swiper
+                mySwiper2 = new Swiper ('.swiper-h', {
+                    direction: 'horizontal',
+                    // loop: false,
+                    spaceBetween: 50,
+                    autoplay: 3000,
+                    autoplayStopOnLast: true,
+                    autoplayDisableOnInteraction: false,
+                    watchSlidesProgress: true,
+                    watchSlidesVisibility: true,
+                    observer: true,  // 解决子swiper自动播放后, 父swiper动画不能正常显示的问题
+                    observeParents: true, // 解决子swiper自动播放后, 父swiper动画不能正常显示的问题
+                    onInit: function(swiper) {
+                        swiperAnimateCache(swiper); //隐藏动画元素
+                        swiperAnimate(swiper); //初始化完成开始动画
+                    },
+                    onSlideChangeEnd: function(swiper){
+                        swiperAnimate(swiper); //每个slide切换结束时也运行当前slide动画
+                    },
+                    onClick: function(swiper) {
+                        if(swiper.activeIndex === 4) {
+                            // mySwiper.slideNext();
+                            mySwiper.slideTo(3);
+                        }
+                    },
+                });
                 mySwiper2.startAutoplay();
-            } else {
-                mySwiper2.stopAutoplay();
-                mySwiper2.slideTo(0);
+            }else {
+                if(mySwiper2) {
+                    // mySwiper2.stopAutoplay();
+                    // mySwiper2.slideTo(0);
+                    mySwiper2.destroy(true, true);
+                }
             }
-
+        },
+        onTransitionStart: function(swiper) {
             if(swiper.activeIndex == 1) {
                 $('#video').show();
                 player.play();
-                player.pause();
-                player.play();
-            }else {
-                // $('#video').show();
-                player.pause();
             }
         },
-        onSlideChangeStart: function(swiper){
+        onTransitionEnd: function(swiper) {
+            if(swiper.activeIndex !== 1) {
+                $('#video').hide();
+                player.pause();
+            }
         },
         onClick: function(swiper) {
             if(swiper.activeIndex === 0) {
@@ -81,10 +101,6 @@ window.onload = function() {
             }
         },
     });
-
-
-
-    mySwiper2.stopAutoplay();
 
     // 报名
     var $signUp = $('.sign-up');
@@ -102,11 +118,6 @@ window.onload = function() {
         }, 500);
     });
 
-    // $('.sign-up .submit').on('click', function() {
-    //     $signUp.hide();
-    //     $('.end').show();
-    // });
-
     // 招募
     $('.button2').on('click', function() {
         $signUp.hide().removeClass('slide-left');
@@ -120,10 +131,6 @@ window.onload = function() {
         }, 500);
     });
 
-    // $('.recruit .submit').on('click', function() {
-    //     $recruit.hide();
-    //     $('.end').show();
-    // });
 };
 
 var xinjiang_activity = {
