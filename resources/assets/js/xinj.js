@@ -197,6 +197,7 @@ var xinjiang_activity = {
                 //beforeSend: bstool.submit_loading, //执行ajax前执行loading函数.直到success
                 success: function(rs) {//成功获得的也是json对象
                     signed = true;
+                    mySwiper.unlockSwipeToNext();
                     mySwiper.slideNext();
                 }
             });
@@ -240,6 +241,7 @@ var xinjiang_activity = {
                 //beforeSend: bstool.submit_loading, //执行ajax前执行loading函数.直到success
                 success: function(rs) {//成功获得的也是json对象
                     signed = true;
+                    mySwiper.unlockSwipeToNext();
                     mySwiper.slideNext();
                 }
             });
