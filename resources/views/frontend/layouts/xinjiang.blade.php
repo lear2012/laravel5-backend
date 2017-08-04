@@ -37,7 +37,7 @@
         wx.ready(function() {
             // 分享给朋友
             wx.onMenuShareAppMessage({
-                title: "食色性野 你敢来么？\n这时间，唯美食与风景不可辜负", //
+                title: "食色性野 你敢来么？\n这世间，唯美食与风景不可辜负", //
                 desc: '食色性野 你敢来么？', //
                 link: 'http://keye.liaollisonest.com/xinjiang', //
                 imgUrl: 'http://keye.liaollisonest.com/images/xinjiang/xinjiang_share.jpg', // 分享的图标
@@ -47,7 +47,7 @@
             });
             // 分享到朋友圈
             wx.onMenuShareTimeline({
-                title: "食色性野 你敢来么？\n这时间，唯美食与风景不可辜负", //
+                title: "食色性野 你敢来么？\n这世间，唯美食与风景不可辜负", //
                 desc: '食色性野 你敢来么？', //
                 link: 'http://keye.liaollisonest.com/xinjiang', //
                 imgUrl: 'http://keye.liaollisonest.com/images/xinjiang/xinjiang_share.jpg', // 分享的图标
