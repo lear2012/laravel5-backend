@@ -27,8 +27,8 @@
                 <img src="images/xinjiang/slide-3-3-2.png" class="text2 ani" swiper-animate-effect="fadeInLeft" swiper-animate-duration="0.5s" swiper-animate-delay="0.5s"/>
             </div>
             <div class="swiper-slide slide-3-4">
-                <img src="images/xinjiang/slide-3-4-1.png" class="text1 ani" swiper-animate-effect="fadeInRight" swiper-animate-duration="0.5s" swiper-animate-delay="0.5s"/>
-                <img src="images/xinjiang/slide-3-4-2.png" class="text2 ani" swiper-animate-effect="fadeInLeft" swiper-animate-duration="0.5s" swiper-animate-delay="0.5s"/>
+                <img src="images/xinjiang/slide-3-4-1.png" class="text1 ani" swiper-animate-effect="fadeInLeft" swiper-animate-duration="0.5s" swiper-animate-delay="0.5s"/>
+                <img src="images/xinjiang/slide-3-4-2.png" class="text2 ani" swiper-animate-effect="fadeInRight" swiper-animate-duration="0.5s" swiper-animate-delay="0.5s"/>
                 <span class="next"></span>
             </div>
 
