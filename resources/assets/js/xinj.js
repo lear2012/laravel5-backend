@@ -35,51 +35,21 @@ window.onload = function() {
         watchSlidesProgress: true,
         watchSlidesVisibility: true,
         observer: true,
+        lazyLoading: true,
         onInit: function(swiper) {
             swiperAnimateCache(swiper); //隐藏动画元素
             swiperAnimate(swiper); //初始化完成开始动画
         },
+        onSlideChangeStart: function (swiper) {
+            console.log(swiper.previousIndex);
+            if(swiper.previousIndex == 2)
+                player.pause();
+        },
         onSlideChangeEnd: function(swiper){
             swiperAnimate(swiper); //每个slide切换结束时也运行当前slide动画
-
-            // 荐路者
-            if(swiper.activeIndex === 2) {
-                // // 内层swiper
-                // mySwiper2 = new Swiper ('.swiper-h', {
-                //     direction: 'horizontal',
-                //     // loop: false,
-                //     spaceBetween: 50,
-                //     autoplay: 3000,
-                //     autoplayStopOnLast: true,
-                //     autoplayDisableOnInteraction: false,
-                //     watchSlidesProgress: true,
-                //     watchSlidesVisibility: true,
-                //     observer: true,  // 解决子swiper自动播放后, 父swiper动画不能正常显示的问题
-                //     observeParents: true, // 解决子swiper自动播放后, 父swiper动画不能正常显示的问题
-                //     onInit: function(swiper) {
-                //         swiperAnimateCache(swiper); //隐藏动画元素
-                //         swiperAnimate(swiper); //初始化完成开始动画
-                //     },
-                //     onSlideChangeEnd: function(swiper){
-                //         swiperAnimate(swiper); //每个slide切换结束时也运行当前slide动画
-                //     },
-                //     onClick: function(swiper) {
-                //         if(swiper.activeIndex === 4) {
-                //             // mySwiper.slideNext();
-                //             mySwiper.slideTo(3);
-                //         }
-                //     },
-                // });
-                // mySwiper2.startAutoplay();
-            }else {
-                // if(mySwiper2) {
-                //     // mySwiper2.stopAutoplay();
-                //     // mySwiper2.slideTo(0);
-                //     mySwiper2.destroy(true, true);
-                // }
-            }
         },
         onTransitionStart: function(swiper) {
+            //console.log(swiper.activeIndex);
             if(swiper.activeIndex == 1) {
                 $('#video').show();
                 player.play();
@@ -100,6 +70,10 @@ window.onload = function() {
                 }
             }
         },
+    });
+
+    $('.next').on('click', function(){
+        mySwiper.slideNext();
     });
 
     // 报名
