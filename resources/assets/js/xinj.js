@@ -50,7 +50,7 @@ window.onload = function() {
             //console.log(swiper.activeIndex);
             if(swiper.activeIndex == 0) {
                 $('#video').show();
-                //player.play();
+                player.play();
             }
         },
         onTransitionEnd: function(swiper) {
