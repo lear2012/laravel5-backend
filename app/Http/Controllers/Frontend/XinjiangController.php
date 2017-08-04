@@ -24,7 +24,7 @@ class XinjiangController extends Controller
 
     public function index() {
         return view('frontend.xinjiang.index', [
-
+            'js' => $this->js,
         ]);
     }
 

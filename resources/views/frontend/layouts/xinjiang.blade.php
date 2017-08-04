@@ -37,20 +37,20 @@
         wx.ready(function() {
             // 分享给朋友
             wx.onMenuShareAppMessage({
-                title: "可野第一届环中国边境线自驾接力\n用车轮丈量你内心认知的边界", //
-                desc: '用车轮丈量你内心认知的边界', //
-                link: 'http://keye.liaollisonest.com/roundchina', //
-                imgUrl: 'http://keye.liaollisonest.com/images/roundchina/share_social.png', // 分享的图标
+                title: "食色性野 你敢来么？\n这时间，唯美食与风景不可辜负", //
+                desc: '食色性野 你敢来么？', //
+                link: 'http://keye.liaollisonest.com/xinjiang', //
+                imgUrl: 'http://keye.liaollisonest.com/images/xinjiang/xinjiang_share.jpg', // 分享的图标
                 fail: function (res) {
                     alert(JSON.stringify(res));
                 }
             });
             // 分享到朋友圈
             wx.onMenuShareTimeline({
-                title: "可野第一届环中国边境线自驾接力\n用车轮丈量你内心认知的边界", //
-                desc: '用车轮丈量你内心认知的边界', //
-                link: 'http://keye.liaollisonest.com/roundchina', //
-                imgUrl: 'http://keye.liaollisonest.com/images/roundchina/share_social.png', // 分享的图标
+                title: "食色性野 你敢来么？\n这时间，唯美食与风景不可辜负", //
+                desc: '食色性野 你敢来么？', //
+                link: 'http://keye.liaollisonest.com/xinjiang', //
+                imgUrl: 'http://keye.liaollisonest.com/images/xinjiang/xinjiang_share.jpg', // 分享的图标
                 fail: function (res) {
                     alert(JSON.stringify(res));
                 }
