@@ -1290,7 +1290,7 @@ textarea {
 #reg_rules {
     vertical-align:middle;
 }
-#partner .special {
+.home .partner .groups #special_tag {
     width:100%;
     height:2.5rem;
 }

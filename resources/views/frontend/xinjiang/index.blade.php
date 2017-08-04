@@ -11,34 +11,27 @@
                 <div class="video-wrap"></div>
                 <span class="next hide" id="video-next"></span>
             </div>
-            <div class="swiper-slide">
-                <div class="swiper-h-wrap">
-                    <div class="swiper-container swiper-h">
-                        <div class="swiper-wrapper">
-                            <div class="swiper-slide slide-3-0" data-swiper-autoplay="2000">
-                                <img src="images/xinjiang/slide-3-0-1.png" class="ani" swiper-animate-effect="fadeIn" swiper-animate-duration="0.5s" swiper-animate-delay="0.3s"/>
-                            </div>
-                            <div class="swiper-slide slide-3-1">
-                                <img src="images/xinjiang/slide-3-1-1.png" class="text1 ani" swiper-animate-effect="fadeInRight" swiper-animate-duration="0.5s" swiper-animate-delay="0.5s"/>
-                                <img src="images/xinjiang/slide-3-1-2.png" class="text2 ani" swiper-animate-effect="fadeInLeft" swiper-animate-duration="0.5s" swiper-animate-delay="0.5s"/>
-                            </div>
-                            <div class="swiper-slide slide-3-2">
-                                <img src="images/xinjiang/slide-3-2-1.png" class="text1 ani" swiper-animate-effect="fadeInLeft" swiper-animate-duration="0.5s" swiper-animate-delay="0.5s"/>
-                                <img src="images/xinjiang/slide-3-2-2.png" class="text2 ani" swiper-animate-effect="fadeInRight" swiper-animate-duration="0.5s" swiper-animate-delay="0.5s"/>
-                            </div>
-                            <div class="swiper-slide slide-3-3">
-                                <img src="images/xinjiang/slide-3-3-1.png" class="text1 ani" swiper-animate-effect="fadeInRight" swiper-animate-duration="0.5s" swiper-animate-delay="0.5s"/>
-                                <img src="images/xinjiang/slide-3-3-2.png" class="text2 ani" swiper-animate-effect="fadeInLeft" swiper-animate-duration="0.5s" swiper-animate-delay="0.5s"/>
-                            </div>
-                            <div class="swiper-slide slide-3-4">
-                                <img src="images/xinjiang/slide-3-4-1.png" class="text1 ani" swiper-animate-effect="fadeInLeft" swiper-animate-duration="0.5s" swiper-animate-delay="0.5s"/>
-                                <img src="images/xinjiang/slide-3-4-2.png" class="text2 ani" swiper-animate-effect="fadeInRight" swiper-animate-duration="0.5s" swiper-animate-delay="0.5s"/>
-                                <span class="next"></span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <div class="swiper-slide slide-3-0">
+                <img src="images/xinjiang/slide-3-0-1.png" class="ani" swiper-animate-effect="fadeIn" swiper-animate-duration="0.5s" swiper-animate-delay="0.3s"/>
             </div>
+            <div class="swiper-slide slide-3-1">
+                <img src="images/xinjiang/slide-3-1-1.png" class="text1 ani" swiper-animate-effect="fadeInRight" swiper-animate-duration="0.5s" swiper-animate-delay="0.5s"/>
+                <img src="images/xinjiang/slide-3-1-2.png" class="text2 ani" swiper-animate-effect="fadeInLeft" swiper-animate-duration="0.5s" swiper-animate-delay="0.5s"/>
+            </div>
+            <div class="swiper-slide slide-3-2">
+                <img src="images/xinjiang/slide-3-2-1.png" class="text1 ani" swiper-animate-effect="fadeInLeft" swiper-animate-duration="0.5s" swiper-animate-delay="0.5s"/>
+                <img src="images/xinjiang/slide-3-2-2.png" class="text2 ani" swiper-animate-effect="fadeInRight" swiper-animate-duration="0.5s" swiper-animate-delay="0.5s"/>
+            </div>
+            <div class="swiper-slide slide-3-3">
+                <img src="images/xinjiang/slide-3-3-1.png" class="text1 ani" swiper-animate-effect="fadeInRight" swiper-animate-duration="0.5s" swiper-animate-delay="0.5s"/>
+                <img src="images/xinjiang/slide-3-3-2.png" class="text2 ani" swiper-animate-effect="fadeInLeft" swiper-animate-duration="0.5s" swiper-animate-delay="0.5s"/>
+            </div>
+            <div class="swiper-slide slide-3-4">
+                <img src="images/xinjiang/slide-3-4-1.png" class="text1 ani" swiper-animate-effect="fadeInRight" swiper-animate-duration="0.5s" swiper-animate-delay="0.5s"/>
+                <img src="images/xinjiang/slide-3-4-2.png" class="text2 ani" swiper-animate-effect="fadeInLeft" swiper-animate-duration="0.5s" swiper-animate-delay="0.5s"/>
+                <span class="next"></span>
+            </div>
+
             <div class="swiper-slide slide-4">
                 <span class="button1 ani" swiper-animate-effect="fadeInRight" swiper-animate-duration="0.5s" swiper-animate-delay="0.5s"></span>
                 <span class="button2 ani" swiper-animate-effect="fadeInRight" swiper-animate-duration="0.5s" swiper-animate-delay="0.5s"></span>
