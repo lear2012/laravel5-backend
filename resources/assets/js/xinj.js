@@ -33,11 +33,11 @@ window.onload = function() {
             swiperAnimate(swiper); //初始化完成开始动画
         },
         onSlideChangeStart: function(swiper){
-            if(swiper.previousIndex == 2)
+            if(swiper.previousIndex == 1)
                 player.pause();
         },
         onSliderMove: function (swiper) {
-            if(swiper.activeIndex == 7 && !signed){
+            if(swiper.activeIndex == 6 && !signed){
                 swiper.lockSwipeToNext();
             } else {
                 swiper.unlockSwipeToNext();
@@ -48,21 +48,19 @@ window.onload = function() {
         },
         onTransitionStart: function(swiper) {
             //console.log(swiper.activeIndex);
-            if(swiper.activeIndex == 1) {
+            if(swiper.activeIndex == 0) {
                 $('#video').show();
                 //player.play();
             }
         },
         onTransitionEnd: function(swiper) {
-            if(swiper.activeIndex !== 1) {
+            if(swiper.activeIndex !== 0) {
                 $('#video').hide();
                 player.pause();
             }
         },
         onClick: function(swiper) {
             if(swiper.activeIndex === 0) {
-                mySwiper.slideNext();
-            }else if(swiper.activeIndex === 1) {
                 if($('#video').css('display') === 'none') {
                     mySwiper.slideNext();
                 }

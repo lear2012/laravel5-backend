@@ -3,9 +3,8 @@
 @section('content')
     <div class="swiper-container swiper-v">
         <div class="swiper-wrapper">
-            <div class="swiper-slide slide-1"></div>
             <div class="swiper-slide slide-2">
-                <video id="video" controls class="video-js vjs-default-skin vjs-big-play-centered" preload="auto" data-setup='{}'>
+                <video id="video" controls class="video-js vjs-default-skin vjs-big-play-centered" preload="auto" data-setup='{"poster":"http://keye.liaollisonest.com/images/xinjiang/slide-1.jpg"}'>
                     <source src="./video/video.mp4" type="video/mp4">
                 </video>
                 <div class="video-wrap"></div>
