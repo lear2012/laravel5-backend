@@ -1,4 +1,5 @@
 var mySwiper;
+var signed = false;
 window.onload = function() {
 
     var startY, endY, player, mySwiper2;
@@ -40,10 +41,14 @@ window.onload = function() {
             swiperAnimateCache(swiper); //隐藏动画元素
             swiperAnimate(swiper); //初始化完成开始动画
         },
-        onSlideChangeStart: function (swiper) {
-            console.log(swiper.previousIndex);
+        onSliderMove: function (swiper) {
             if(swiper.previousIndex == 2)
                 player.pause();
+            if(swiper.previousIndex == 7 && !signed){
+                swiper.lockSwipeToNext();
+            } else {
+                swiper.unlockSwipeToNext();
+            }
         },
         onSlideChangeEnd: function(swiper){
             swiperAnimate(swiper); //每个slide切换结束时也运行当前slide动画
@@ -191,6 +196,7 @@ var xinjiang_activity = {
                 },
                 //beforeSend: bstool.submit_loading, //执行ajax前执行loading函数.直到success
                 success: function(rs) {//成功获得的也是json对象
+                    signed = true;
                     mySwiper.slideNext();
                 }
             });
@@ -233,6 +239,7 @@ var xinjiang_activity = {
                 },
                 //beforeSend: bstool.submit_loading, //执行ajax前执行loading函数.直到success
                 success: function(rs) {//成功获得的也是json对象
+                    signed = true;
                     mySwiper.slideNext();
                 }
             });
