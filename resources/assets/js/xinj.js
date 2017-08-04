@@ -44,7 +44,7 @@ window.onload = function() {
         onSliderMove: function (swiper) {
             if(swiper.previousIndex == 2)
                 player.pause();
-            if(swiper.previousIndex == 7 && !signed){
+            if(swiper.activeIndex == 6 && !signed){
                 swiper.lockSwipeToNext();
             } else {
                 swiper.unlockSwipeToNext();
