@@ -212,7 +212,7 @@
 		<section class="section partner" id="partner">
 			<div class="section-header header-partner"></div>
 			<div class="groups">
-				<img data-original="images/roundchina/partner-4@2x.png" alt="" class="special lazy" id="special_tag">
+				<img data-original="images/roundchina/partner-4@2x.png" alt="" class="special lazy" id="special_tag" width="100%">
 				<img data-original="images/roundchina/partner-1@2x.png" alt="" class="sub_spec lazy">
 				<img data-original="images/roundchina/partner-2@2x.png" alt="" class="sub_spec lazy">
                 <img data-original="images/roundchina/chuanming@2x.png" alt="" class="sub_spec lazy">
