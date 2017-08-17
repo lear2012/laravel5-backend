@@ -1,0 +1,46 @@
+body,p,dl,dd,h1,h2,h3,h4,h5,h6,ul,ol{margin:0;}
+h1,h2,h3,h4,h5,h6,strong,b,table th{font-weight:normal;}
+h1,h2,h3,h4,h5,h6{font-size:0.12rem;}
+em,i{font-style:normal;}
+ul,ol{list-style:none;padding:0;}
+a{text-decoration:none;}
+img{vertical-align:bottom;border:none;width: 100%;height:100%;display: block;border:none;}
+table{border-collapse:collapse;}
+table td{padding:0;}
+input{padding:0;margin:0;}
+textarea{resize:none; overflow:auto;}
+.clearfix{zoom:1;}
+.clearfix:after{content:""; display:block; clear:both;}
+/*重置样式结束*/
+
+body{background: #2a2a2a;}
+header{height:1.1rem;padding:0 0.32rem}
+header .logo{float: left;width:1.91rem;height:0.55rem; padding-top:0.27rem;}
+header .wenzi{float:right;width:2.03rem;height:0.33rem; padding-top:0.4rem;}
+.content video{width: 7.5rem;height:4.22rem;}
+.content p{background:#383838;font:0.34rem/0.96rem "微软雅黑";color:#fff;padding-left:0.33rem;}
+footer{height:1.96rem;font:0.3rem/2rem "微软雅黑";color:#737373;text-align: center;}
+/*.video {*/
+    /*width: 100%;*/
+    /*border: 1px solid black;*/
+/*}*/
+.wrapper{
+    display:table;
+    width:auto;
+    position:relative;
+    width:50%;
+}
+.playpause {
+    background-image:url(../img/button.png);
+    background-repeat:no-repeat;
+    width:1rem;
+    height:1rem;
+    position:absolute;
+    left:0%;
+    right:0%;
+    top:0%;
+    bottom:0%;
+    margin:auto;
+    background-size:contain;
+    background-position: center;
+}
