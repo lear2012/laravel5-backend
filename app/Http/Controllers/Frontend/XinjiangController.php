@@ -51,4 +51,10 @@ class XinjiangController extends Controller
         self::setMsg('感谢您的支持，稍后我们会与您联系！');
         self::sendJsonMsg();
     }
+
+    public function xinjVideo() {
+        return view('frontend.xinjiang.xinjvideo', [
+            'js' => $this->js,
+        ]);
+    }
 }

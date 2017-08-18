@@ -122,6 +122,13 @@ elixir(function(mix) {
         'xinj.js'
     ], 'public/js/xinjiang-final.js');
 
+    mix.scripts([
+        'jquery-2.2.3.min.js',
+        'jweixin-1.2.0.js',
+        'video.min.js',
+        'xinj.video.js'
+    ], 'public/js/xinjvideo.js');
+
     // for backend css/js
     mix.styles([
         '../bower/AdminLTE/bootstrap/css/bootstrap.min.css',
@@ -187,6 +194,7 @@ elixir(function(mix) {
         'js/roundchina.js',
         'css/xinjiang-final.css',
         'js/xinjiang-final.js',
+        'js/xinjvideo.js',
     ], 'public');
     // watch
     // BrowserSync.init({
