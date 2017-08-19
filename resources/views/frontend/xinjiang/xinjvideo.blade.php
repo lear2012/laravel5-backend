@@ -89,6 +89,12 @@
             <div class="playpause"></div>
             <p>这世界上唯一的路</p>
         </div>
+	<div class="wrapper">
+            <video class="video" preload="none">
+                <source src="video/13.mp4" type="video/mp4">
+            </video>
+            <div class="playpause"></div>
+            <p>塔城 晚风中的一棵树</p>
         <footer>
             已加载全部视频
         </footer>
