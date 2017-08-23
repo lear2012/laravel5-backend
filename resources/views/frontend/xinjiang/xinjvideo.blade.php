@@ -89,12 +89,20 @@
             <div class="playpause"></div>
             <p>这世界上唯一的路</p>
         </div>
-	<div class="wrapper">
+	    <div class="wrapper">
             <video class="video" preload="none">
                 <source src="video/13.mp4" type="video/mp4">
             </video>
             <div class="playpause"></div>
             <p>塔城 晚风中的一棵树</p>
+        </div>
+        <div class="wrapper">
+            <video class="video" preload="none">
+                <source src="video/14.mp4" type="video/mp4">
+            </video>
+            <div class="playpause"></div>
+            <p>喀什 我们不曾醒来 也不曾遗忘</p>
+        </div>
         <footer>
             已加载全部视频
         </footer>
