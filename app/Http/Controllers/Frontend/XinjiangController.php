@@ -57,4 +57,10 @@ class XinjiangController extends Controller
             'js' => $this->js,
         ]);
     }
+
+    public function xinzVideo() {
+        return view('frontend.xinjiang.xinzvideo', [
+            'js' => $this->js,
+        ]);
+    }
 }

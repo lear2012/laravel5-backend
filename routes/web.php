@@ -80,6 +80,8 @@ Route::group(['namespace' => 'Frontend', 'middleware' => ['web']], function ()
     Route::get('/xinjiang', ['as' => 'xinjiang.index', 'uses' => 'XinjiangController@index']);
     Route::get('/xinjvideo', ['as' => 'xinjiang.video', 'uses' => 'XinjiangController@xinjVideo']);
 
+    Route::get('/xinzvideo', ['as' => 'xinjiang.zvideo', 'uses' => 'XinjiangController@xinzVideo']);
+
 });
 
 /**

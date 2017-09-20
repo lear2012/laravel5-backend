@@ -126,7 +126,7 @@ elixir(function(mix) {
         'jquery-2.2.3.min.js',
         'jweixin-1.2.0.js',
         'video.min.js',
-        'xinj.video.js'
+        'xinj.video.js',
     ], 'public/js/xinjvideo.js');
 
     // for backend css/js
