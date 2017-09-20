@@ -8,7 +8,7 @@
             <img src="img/keye.png" alt="可野">
         </div>
         <div class="wenzi">
-            <img src="img/wenzi.png" alt="新疆食色之旅">
+            <img src="img/wenzi_xz.png" alt="新藏之旅">
         </div>
     </header>
     <div class="content">
