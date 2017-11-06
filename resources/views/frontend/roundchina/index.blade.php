@@ -37,9 +37,9 @@
 			</div>
 
 			<div class="buttons">
-				<a class="button" href="roundchina/selfreg">自驾报名</a>
-				<a class="button" href="roundchina/liftreg">搭车报名</a>
-				<a class="button" href="roundchina/clubreg">俱乐部报名</a>
+				<a class="button" href="/roundchina/selfreg">自驾报名</a>
+				<a class="button" href="/roundchina/liftreg">搭车报名</a>
+				<a class="button" href="/roundchina/clubreg">俱乐部报名</a>
 			</div>
 			<div class="chetie-apply-btn">
 				<a href="roundchina/apply_chetie">申请车贴</a>
