@@ -46,7 +46,7 @@ class RoundChinaController extends Controller
             'thumbupCount' => $thumbupCount,
             'js' => $this->js,
             'siteConfig' => $siteConfig,
-            'swiperImages' => $swiperImages
+            'swiperImages' => $swiperImages,
         ]);
     }
 
@@ -68,12 +68,14 @@ class RoundChinaController extends Controller
     }
 
     public function liftReg() {
+        $expiredTimestamp = 1509965247;
         $items = KeyeEnrollment::getLiftingCars();
         JavaScript::put([
             'firstPageCars' => $items,
         ]);
         return view('frontend.roundchina.liftreg', [
-            'items' => $items
+            'items' => $items,
+            'expiredTimestamp' => $expiredTimestamp
         ]);
     }
 

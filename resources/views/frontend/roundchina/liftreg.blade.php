@@ -21,7 +21,7 @@
             <div id="car_list">
                 @if(count($items) > 0)
                 @foreach($items as $item)
-                <div class="enroll-item" enrollment_id="{{$item->id}}">
+                <div class="enroll-item {{ $item->created_at->timestamp > $expiredTimestamp ? '' : 'expired' }}" enrollment_id="{{$item->id}}">
                     <p class="item-top">
                         <span>车型：{{$item->brand}}</span>
                         <span>已搭载<b>{{$item->seats_taken}}人</b>/剩余<b>{{(int)$item->available_seats - (int)$item->seats_taken}}人</b></span>

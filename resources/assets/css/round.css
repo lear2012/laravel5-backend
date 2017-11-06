@@ -1397,3 +1397,5 @@ img:not([src]) {
     display: none;
 }
 /*# sourceMappingURL=main.css.map*/
+
+.enroll .content .expired {background-color: #EAEBEB;}

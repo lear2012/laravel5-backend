@@ -480,6 +480,12 @@ var round_china = {
     bind_car_select: function() {
         var that = this;
         $('.enroll-item').on('click', function (event) {
+            if($(this).hasClass('expired')) {
+                var rs = {};
+                rs.msg = '该车辆为参加西线车辆，已过期，请选择东线车辆';
+                that.showError(rs);
+                return;
+            }
             $('.enroll-item').removeClass('select');
             $(this).addClass('select');
             that._enrollment_id = $(this).attr('enrollment_id');
