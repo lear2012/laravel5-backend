@@ -49,9 +49,9 @@
 			<div class="route">
 
 				<!-- 西线 -->
-				<div class="route-item active">
+				<div class="route-item">
 					<div class="route-header">
-						<p class="route-title">西线正在进行中：</p>
+						<p class="route-title">西线已完成（9月22日）：</p>
 						<p class="route-city">
 							<span>二连浩特</span>
 							<b class="icon-car"></b>
@@ -67,45 +67,64 @@
 
 					<!-- 线路 -->
 					@foreach($westLines as $line)
-					<div class="item" route_id="{{$line->id}}">
-						@if($line->url != '')
-							<a href="{{$line->url}}">
+						<div class="item" route_id="{{$line->id}}">
+							@if($line->url != '')
+								<a href="{{$line->url}}">
+									<p class="item-title">{{$line->title}}<span class="icon-like"></span></p>
+									<p>{{$line->start}}-{{$line->end}}</p>
+								</a>
+							@else
 								<p class="item-title">{{$line->title}}<span class="icon-like"></span></p>
 								<p>{{$line->start}}-{{$line->end}}</p>
-							</a>
-						@else
-							<p class="item-title">{{$line->title}}<span class="icon-like"></span></p>
-							<p>{{$line->start}}-{{$line->end}}</p>
-						@endif
-					</div>
+							@endif
+						</div>
 					@endforeach
 
 				</div>
 
 				<!-- 东线 -->
-				<div class="route-item">
+				<div class="route-item active">
 					<div class="route-header">
-						<p class="route-title">东线尚未开始：</p>
+						<p class="route-title">东线即将开始：</p>
 						<p class="route-city">
-							<span>西双版纳</span>
+							<span>天津</span>
 							<b class="icon-car"></b>
 							<span>二连浩特</span>
 						</p>
 						<p>
-							<span>11月01日</span>
+							<span>11月15日</span>
 							<b class="icon-line">—</b>
-							<span>01月15日</span>
+							<span>12月04日</span>
 						</p>
 					</div>
 					<p class="route-subtitle">以下为东线6段线路</p>
 
 					<!-- 线路 -->
-					@foreach($eastLines as $line)
-						<div class="item">
-							<p class="item-title">{{$line->title}}</p>
-							<p>{{$line->start}}-{{$line->end}}</p>
-						</div>
-					@endforeach
+
+					<div class="item" route_id="7">
+						<p class="item-title">入关<span class="icon-like"></span></p>
+						<p>天津-大连</p>
+					</div>
+					<div class="item" route_id="8">
+						<p class="item-title">江口<span class="icon-like"></span></p>
+						<p>大连-白山</p>
+					</div>
+					<div class="item" route_id="9">
+						<p class="item-title">冰雪<span class="icon-like"></span></p>
+						<p>白山-北极村</p>
+					</div>
+					<div class="item" route_id="10">
+						<p class="item-title">林海<span class="icon-like"></span></p>
+						<p>北极村-满洲里</p>
+					</div>
+					<div class="item" route_id="11">
+						<p class="item-title">遗址<span class="icon-like"></span></p>
+						<p>满洲里-阿尔山</p>
+					</div>
+					<div class="item" route_id="12">
+						<p class="item-title">草原<span class="icon-like"></span></p>
+						<p>阿尔山-二连浩特</p>
+					</div>
 				</div>
 			</div>
 		</section>
