@@ -51,7 +51,7 @@
 				<!-- 西线 -->
 				<div class="route-item">
 					<div class="route-header">
-						<p class="route-title">西线已完成（9月22日）：</p>
+						<p class="route-title">西线已完成：</p>
 						<p class="route-city">
 							<span>二连浩特</span>
 							<b class="icon-car"></b>
@@ -60,7 +60,7 @@
 						<p>
 							<span>07月15日</span>
 							<b class="icon-line">—</b>
-							<span>10月15日</span>
+							<span>09月22日</span>
 						</p>
 					</div>
 					<p class="route-subtitle">以下为西线6段线路</p>
