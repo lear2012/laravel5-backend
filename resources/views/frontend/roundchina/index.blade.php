@@ -32,7 +32,7 @@
 
 			<div class="numbers">
 				<span class="icon-hand main-icon-hand"></span>
-				<p>已有<span class="allcount" id="allcount">{{$allCount}}</span>人报名活动<a id="view_selfreg_list" href="/roundchina/selfreg_list">查看</a></p>
+				<p>已有<span class="allcount" id="allcount">{{(int)$allCount+100}}</span>人报名活动<a id="view_selfreg_list" href="/roundchina/selfreg_list">查看</a></p>
 				<p>已有<span class="thumbupcount" id="thumbupcount">{{$thumbupCount}}</span>人为活动围观点赞</p>
 			</div>
 
