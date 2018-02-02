@@ -128,9 +128,6 @@
             <div class="playpause"></div>
             <p>惊！可野环中国车队竟然和新疆美女做这个！</p>
         </div>
-        <div class="wrapper">
-            <embed src="https://imgcache.qq.com/tencentvideo_v1/playerv3/TPout.swf?max_age=86400&v=20161117&vid=y0541174hb7&auto=0" allowFullScreen="true" quality="high" width="480" height="400" align="middle" allowScriptAccess="always" type="application/x-shockwave-flash"></embed>
-        </div>
 
         <footer>
             已加载全部视频
