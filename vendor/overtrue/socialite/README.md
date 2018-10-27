@@ -1,15 +1,18 @@
-# Socialite
+<h1 align="center"> Socialite</h1>
+<p align="center">
+<a href="https://travis-ci.org/overtrue/socialite"><img src="https://travis-ci.org/overtrue/socialite.svg?branch=master" alt="Build Status"></a>
+<a href="https://packagist.org/packages/overtrue/socialite"><img src="https://poser.pugx.org/overtrue/socialite/v/stable.svg" alt="Latest Stable Version"></a>
+<a href="https://packagist.org/packages/overtrue/socialite"><img src="https://poser.pugx.org/overtrue/socialite/v/unstable.svg" alt="Latest Unstable Version"></a>
+<a href="https://scrutinizer-ci.com/g/overtrue/socialite/build-status/master"><img src="https://scrutinizer-ci.com/g/overtrue/socialite/badges/build.png?b=master" alt="Build Status"></a>
+<a href="https://scrutinizer-ci.com/g/overtrue/socialite/?branch=master"><img src="https://scrutinizer-ci.com/g/overtrue/socialite/badges/quality-score.png?b=master" alt="Scrutinizer Code Quality"></a>
+<a href="https://scrutinizer-ci.com/g/overtrue/socialite/?branch=master"><img src="https://scrutinizer-ci.com/g/overtrue/socialite/badges/coverage.png?b=master" alt="Code Coverage"></a>
+<a href="https://packagist.org/packages/overtrue/socialite"><img src="https://poser.pugx.org/overtrue/socialite/downloads" alt="Total Downloads"></a>
+<a href="https://packagist.org/packages/overtrue/socialite"><img src="https://poser.pugx.org/overtrue/socialite/license" alt="License"></a>
+</p>
 
-[![Build Status](https://travis-ci.org/overtrue/socialite.svg?branch=master)](https://travis-ci.org/overtrue/socialite)
-[![Latest Stable Version](https://poser.pugx.org/overtrue/socialite/v/stable.svg)](https://packagist.org/packages/overtrue/socialite)
-[![Latest Unstable Version](https://poser.pugx.org/overtrue/socialite/v/unstable.svg)](https://packagist.org/packages/overtrue/socialite)
-[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/overtrue/socialite/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/overtrue/socialite/?branch=master)
-[![Total Downloads](https://poser.pugx.org/overtrue/socialite/downloads)](https://packagist.org/packages/overtrue/socialite)
-[![License](https://poser.pugx.org/overtrue/socialite/license)](https://packagist.org/packages/overtrue/socialite)
 
-Socialite is an OAuth2 Authentication tool. It is inspired by [laravel/socialite](https://github.com/laravel/socialite), You can easily use it in any PHP project.
+<p align="center">Socialite is an OAuth2 Authentication tool. It is inspired by <a href="https://github.com/laravel/socialite">laravel/socialite</a>, You can easily use it in any PHP project.</p>
 
-For Laravel 5: [overtrue/laravel-socialite](https://github.com/overtrue/laravel-socialite)
 
 <p align="center">
   <br>
@@ -23,15 +26,17 @@ For Laravel 5: [overtrue/laravel-socialite](https://github.com/overtrue/laravel-
 # Requirement
 
 ```
-PHP >= 5.4
+PHP >= 7.0
 ```
 # Installation
 
 ```shell
-$ composer require "overtrue/socialite:~1.0"
+$ composer require "overtrue/socialite" -vvv
 ```
 
 # Usage
+
+For Laravel 5: [overtrue/laravel-socialite](https://github.com/overtrue/laravel-socialite)
 
 `authorize.php`:
 
@@ -66,6 +71,7 @@ $user->getId();        // 1472352
 $user->getNickname();  // "overtrue"
 $user->getName();      // "安正超"
 $user->getEmail();     // "anzhengchao@gmail.com"
+$user->getProviderName(); // GitHub
 ...
 ```
 
@@ -73,7 +79,7 @@ $user->getEmail();     // "anzhengchao@gmail.com"
 
 Now we support the following sites:
 
-`facebook`, `github`, `google`, `linkedin`, `weibo`, `qq`, `wechat`, `wechat_open`, and `douban`.
+`facebook`, `github`, `google`, `linkedin`, `outlook`, `weibo`, `qq`, `wechat`, `wechat_open`, and `douban`.
 
 Each drive uses the same configuration keys: `client_id`, `client_secret`, `redirect`.
 
@@ -86,15 +92,6 @@ Example:
     'redirect'      => 'http://localhost/socialite/callback.php',
   ],
 ...
-```
-
-Special configuration options for [WeChat Open Platform](https://open.weixin.qq.com/cgi-bin/showdocument?action=dir_list&t=resource/res_list&verify=1&id=open1419318590&token=&lang=zh_CN)
-```
-'wechat_open' => [
-    'client_id'     => 'your-app-id',
-    'client_secret' => ['your-component-appid', 'your-component-access-token'],
-    'redirect'      => 'http://localhost/socialite/callback.php',
-]
 ```
 
 ### Scope
@@ -185,6 +182,7 @@ $user->getEmail();
 $user->getAvatar();
 $user->getOriginal();
 $user->getToken();// or $user->getAccessToken()
+$user->getProviderName(); // GitHub/Google/Facebook...
 ```
 
 #### Get original response from OAuth API
@@ -206,7 +204,7 @@ $user = $socialite->user($accessToken);
 
 ### Custom Session or Request instance.
 
-You can set the request with your custom `Request` instance which instanceof `Symfony\Component\HttpFoundation\Request`.
+You can set the request with your custom `Request` instance which instanceof `Symfony\Component\HttpFoundation\Request` before you call `driver` method.
 
 
 ```php

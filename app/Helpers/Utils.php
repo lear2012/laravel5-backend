@@ -10,6 +10,7 @@ use App\Models\KeyeEnrollment;
 use App\Models\KeyeLift;
 use App\Models\KeyeClub;
 use Illuminate\Support\Facades\Redis;
+use Mrgoon\AliSms\AliSms;
 
 class Utils {
 
@@ -195,30 +196,45 @@ class Utils {
         return false;
     }
 
+//    public static function sendSms($mobile, $params, $templateCode) {
+//        if(!self::isMobile($mobile) || !is_array($params))
+//            return false;
+//        $client = new \GuzzleHttp\Client();
+//        $res = $client->request('GET', self::$api_send_sms, [
+//            'query' => [
+//                'ParamString' => json_encode($params),
+//                'RecNum' => $mobile,
+//                'SignName' => '可野Club',
+//                'TemplateCode' => $templateCode
+//            ],
+//            'headers' => [
+//                'Accept'        => 'application/json',
+//                'Authorization' => 'APPCODE '.env('ALIYUN_LEAR_APPCODE')
+//            ]
+//        ]);
+//        Log::write('sms', '发送短信至：mobile:'.$mobile.', templateCode:'.$templateCode.', params:'.json_encode($params));
+//        if($res->getStatusCode() == 200) {
+//            $ret = \GuzzleHttp\json_decode($res->getBody());
+//            if($ret->success)
+//                Log::write('sms', '发送短信成功：mobile:'.$mobile.', templateCode:'.$templateCode.', params:'.http_build_query($params));
+//            else
+//                Log::writeLog('sms', 'error', '发送短信失败：mobile:'.$mobile.", error:".$ret->message);
+//            return $ret->success;
+//        } else {
+//            Log::writeLog('sms', 'error', '发送短信服务调用失败：mobile:'.$mobile);
+//        }
+//        return false;
+//    }
     public static function sendSms($mobile, $params, $templateCode) {
         if(!self::isMobile($mobile) || !is_array($params))
             return false;
-        $client = new \GuzzleHttp\Client();
-        $res = $client->request('GET', self::$api_send_sms, [
-            'query' => [
-                'ParamString' => json_encode($params),
-                'RecNum' => $mobile,
-                'SignName' => '可野Club',
-                'TemplateCode' => $templateCode
-            ],
-            'headers' => [
-                'Accept'        => 'application/json',
-                'Authorization' => 'APPCODE '.env('ALIYUN_LEAR_APPCODE')
-            ]
-        ]);
+        $aliSms = new AliSms();
+        $res = $aliSms->sendSms($mobile, $templateCode, $params);
+
         Log::write('sms', '发送短信至：mobile:'.$mobile.', templateCode:'.$templateCode.', params:'.json_encode($params));
-        if($res->getStatusCode() == 200) {
-            $ret = \GuzzleHttp\json_decode($res->getBody());
-            if($ret->success)
-                Log::write('sms', '发送短信成功：mobile:'.$mobile.', templateCode:'.$templateCode.', params:'.http_build_query($params));
-            else
-                Log::writeLog('sms', 'error', '发送短信失败：mobile:'.$mobile.", error:".$ret->message);
-            return $ret->success;
+        if($res->Code == 'OK') {
+            Log::write('sms', '发送短信成功：mobile:'.$mobile.', templateCode:'.$templateCode.', params:'.http_build_query($params));
+            return true;
         } else {
             Log::writeLog('sms', 'error', '发送短信服务调用失败：mobile:'.$mobile);
         }

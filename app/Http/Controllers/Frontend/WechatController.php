@@ -404,7 +404,7 @@ class WechatController extends Controller
                 Session::put('_reg_sms_expires', $lifetime);
                 Session::save();
             }
-            Utils::sendSms($request->get('mobile'), ['code' => $code], env('ALIYUN_LEAR_SMS_TEMPLATE_CODE'));
+            Utils::sendSms($request->get('mobile'), ['scode' => $code], env('ALIYUN_LEAR_SMS_TEMPLATE_CODE'));
             // record action
             User::recordLimitAction($wechatUser->id, config('custom.limited_ops.sms_register'));
             self::sendJsonMsg();

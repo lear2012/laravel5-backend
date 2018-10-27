@@ -164,6 +164,7 @@ return [
         Overtrue\LaravelPinyin\ServiceProvider::class,
         Rap2hpoutre\LaravelLogViewer\LaravelLogViewerServiceProvider::class,
         Yajra\Datatables\DatatablesServiceProvider::class,
+        Mrgoon\AliSms\ServiceProvider::class
     ],
     /*
     |--------------------------------------------------------------------------

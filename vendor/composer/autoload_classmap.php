@@ -45,7 +45,6 @@ return array(
     'CreateTopicImage' => $baseDir . '/database/migrations/2017_07_17_121426_create_topic_image.php',
     'CreateUserProfilesTable' => $baseDir . '/database/migrations/2017_02_22_111057_create_user_profiles_table.php',
     'CreateUsersTable' => $baseDir . '/database/migrations/2015_07_20_074010_create_users_table.php',
-    'CreateXinjiangEnrollments' => $baseDir . '/database/migrations/2017_08_03_165053_create_xinjiang_enrollments.php',
     'DatabaseSeeder' => $baseDir . '/database/seeds/DatabaseSeeder.php',
     'EntrustSetupTables' => $baseDir . '/database/migrations/2016_09_05_145303_entrust_setup_tables.php',
     'EventsTableSeeder' => $baseDir . '/database/seeds/EventsTableSeeder.php',

@@ -8,22 +8,24 @@ class ComposerStaticInit381b2004d8f158285d5bdd49b7ef6f25
 {
     public static $files = array (
         '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
-        '667aeda72477189d0494fecd327c3641' => __DIR__ . '/..' . '/symfony/var-dumper/Resources/functions/dump.php',
         '1d1b89d124cc9cb8219922c9d5569199' => __DIR__ . '/..' . '/hamcrest/hamcrest-php/hamcrest/Hamcrest.php',
+        '320cde22f66dd4f5d3fd621d3e88b98f' => __DIR__ . '/..' . '/symfony/polyfill-ctype/bootstrap.php',
+        '667aeda72477189d0494fecd327c3641' => __DIR__ . '/..' . '/symfony/var-dumper/Resources/functions/dump.php',
         'a0edc8309cc5e1d60e3047b5df6b7052' => __DIR__ . '/..' . '/guzzlehttp/psr7/src/functions_include.php',
-        'c964ee0ededf28c96ebd9db5099ef910' => __DIR__ . '/..' . '/guzzlehttp/promises/src/functions_include.php',
         '2c102faa651ef8ea5874edb585946bce' => __DIR__ . '/..' . '/swiftmailer/swiftmailer/lib/swift_required.php',
+        'c964ee0ededf28c96ebd9db5099ef910' => __DIR__ . '/..' . '/guzzlehttp/promises/src/functions_include.php',
         '37a3dc5111fe8f707ab4c132ef1dbc62' => __DIR__ . '/..' . '/guzzlehttp/guzzle/src/functions_include.php',
         '5255c38a0faeba867671b61dfda6d864' => __DIR__ . '/..' . '/paragonie/random_compat/lib/random.php',
         'bd9634f2d41831496de0d3dfe4c94881' => __DIR__ . '/..' . '/symfony/polyfill-php56/bootstrap.php',
         'e7223560d890eab89cda23685e711e2c' => __DIR__ . '/..' . '/psy/psysh/src/Psy/functions.php',
+        'f0906e6318348a765ffb6eb24e0d0938' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Foundation/helpers.php',
+        '58571171fd5812e6e447dce228f52f4d' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Support/helpers.php',
         'f18cc91337d49233e5754e93f3ed9ec3' => __DIR__ . '/..' . '/laravelcollective/html/src/helpers.php',
+        '6124b4c8570aa390c21fafd04a26c69f' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/deep_copy.php',
         '9e090711773bfc38738f5dbaee5a7f14' => __DIR__ . '/..' . '/overtrue/wechat/src/Payment/helpers.php',
         'e23faeee409e941dc9b4c80386209c39' => __DIR__ . '/..' . '/laracasts/flash/src/Laracasts/Flash/functions.php',
         '5e8fe2a5ffaded85af682684fe3bbf5a' => __DIR__ . '/..' . '/mews/captcha/src/helpers.php',
         'cda2d2f579338909929d3104d0afc501' => __DIR__ . '/..' . '/overtrue/laravel-pinyin/src/helpers.php',
-        'f0906e6318348a765ffb6eb24e0d0938' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Foundation/helpers.php',
-        '58571171fd5812e6e447dce228f52f4d' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Support/helpers.php',
         'b4e3f29b106af37a2bb239f73cdf68c7' => __DIR__ . '/../..' . '/app/helpers.php',
     );
 
@@ -58,6 +60,7 @@ class ComposerStaticInit381b2004d8f158285d5bdd49b7ef6f25
             'Symfony\\Polyfill\\Util\\' => 22,
             'Symfony\\Polyfill\\Php56\\' => 23,
             'Symfony\\Polyfill\\Mbstring\\' => 26,
+            'Symfony\\Polyfill\\Ctype\\' => 23,
             'Symfony\\Component\\Yaml\\' => 23,
             'Symfony\\Component\\VarDumper\\' => 28,
             'Symfony\\Component\\Translation\\' => 30,
@@ -86,6 +89,7 @@ class ComposerStaticInit381b2004d8f158285d5bdd49b7ef6f25
             'Psy\\' => 4,
             'Psr\\Log\\' => 8,
             'Psr\\Http\\Message\\' => 17,
+            'Psr\\Container\\' => 14,
             'Prettus\\Validator\\' => 18,
             'Prettus\\RequestLogger\\' => 22,
             'Prettus\\Repository\\' => 19,
@@ -101,6 +105,9 @@ class ComposerStaticInit381b2004d8f158285d5bdd49b7ef6f25
         ),
         'M' => 
         array (
+            'Mrgoon\\Dysmsapi\\Request\\V20170525\\' => 34,
+            'Mrgoon\\AliyunSmsSdk\\' => 20,
+            'Mrgoon\\AliSms\\' => 14,
             'Monolog\\' => 8,
             'Mews\\Captcha\\' => 13,
         ),
@@ -109,6 +116,10 @@ class ComposerStaticInit381b2004d8f158285d5bdd49b7ef6f25
             'League\\Fractal\\' => 15,
             'League\\Flysystem\\' => 17,
             'Laracasts\\Utilities\\JavaScript\\' => 31,
+        ),
+        'J' => 
+        array (
+            'JakubOnderka\\PhpConsoleColor\\' => 29,
         ),
         'I' => 
         array (
@@ -140,8 +151,8 @@ class ComposerStaticInit381b2004d8f158285d5bdd49b7ef6f25
         array (
             'Dotenv\\' => 7,
             'Doctrine\\Instantiator\\' => 22,
+            'Doctrine\\Common\\Inflector\\' => 26,
             'Doctrine\\Common\\Cache\\' => 22,
-            'Doctrine\\Common\\Annotations\\' => 28,
             'Doctrine\\Common\\' => 16,
             'DeepCopy\\' => 9,
         ),
@@ -150,7 +161,6 @@ class ComposerStaticInit381b2004d8f158285d5bdd49b7ef6f25
             'Cron\\' => 5,
             'Collective\\Html\\' => 16,
             'ClassPreloader\\' => 15,
-            'Carbon\\' => 7,
         ),
         'A' => 
         array (
@@ -162,8 +172,8 @@ class ComposerStaticInit381b2004d8f158285d5bdd49b7ef6f25
         'phpDocumentor\\Reflection\\' => 
         array (
             0 => __DIR__ . '/..' . '/phpdocumentor/reflection-common/src',
-            1 => __DIR__ . '/..' . '/phpdocumentor/type-resolver/src',
-            2 => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src',
+            1 => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src',
+            2 => __DIR__ . '/..' . '/phpdocumentor/type-resolver/src',
         ),
         'Zizaco\\Entrust\\' => 
         array (
@@ -200,6 +210,10 @@ class ComposerStaticInit381b2004d8f158285d5bdd49b7ef6f25
         'Symfony\\Polyfill\\Mbstring\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/polyfill-mbstring',
+        ),
+        'Symfony\\Polyfill\\Ctype\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/symfony/polyfill-ctype',
         ),
         'Symfony\\Component\\Yaml\\' => 
         array (
@@ -289,6 +303,10 @@ class ComposerStaticInit381b2004d8f158285d5bdd49b7ef6f25
         array (
             0 => __DIR__ . '/..' . '/psr/http-message/src',
         ),
+        'Psr\\Container\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/psr/container/src',
+        ),
         'Prettus\\Validator\\' => 
         array (
             0 => __DIR__ . '/..' . '/prettus/laravel-validation/src/Prettus/Validator',
@@ -325,6 +343,18 @@ class ComposerStaticInit381b2004d8f158285d5bdd49b7ef6f25
         array (
             0 => __DIR__ . '/..' . '/overtrue/laravel-pinyin/src',
         ),
+        'Mrgoon\\Dysmsapi\\Request\\V20170525\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/mrgoon/aliyun-sms-sdk/Dysmsapi/Request/V20170525',
+        ),
+        'Mrgoon\\AliyunSmsSdk\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/mrgoon/aliyun-sms-sdk/aliyun-php-sdk-core',
+        ),
+        'Mrgoon\\AliSms\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/mrgoon/aliyun-sms/src',
+        ),
         'Monolog\\' => 
         array (
             0 => __DIR__ . '/..' . '/monolog/monolog/src/Monolog',
@@ -344,6 +374,10 @@ class ComposerStaticInit381b2004d8f158285d5bdd49b7ef6f25
         'Laracasts\\Utilities\\JavaScript\\' => 
         array (
             0 => __DIR__ . '/..' . '/laracasts/utilities/src',
+        ),
+        'JakubOnderka\\PhpConsoleColor\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/jakub-onderka/php-console-color/src',
         ),
         'Intervention\\Image\\' => 
         array (
@@ -397,17 +431,17 @@ class ComposerStaticInit381b2004d8f158285d5bdd49b7ef6f25
         array (
             0 => __DIR__ . '/..' . '/doctrine/instantiator/src/Doctrine/Instantiator',
         ),
+        'Doctrine\\Common\\Inflector\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/doctrine/inflector/lib/Doctrine/Common/Inflector',
+        ),
         'Doctrine\\Common\\Cache\\' => 
         array (
             0 => __DIR__ . '/..' . '/doctrine/cache/lib/Doctrine/Common/Cache',
         ),
-        'Doctrine\\Common\\Annotations\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/doctrine/annotations/lib/Doctrine/Common/Annotations',
-        ),
         'Doctrine\\Common\\' => 
         array (
-            0 => __DIR__ . '/..' . '/doctrine/common/lib/Doctrine/Common',
+            0 => __DIR__ . '/..' . '/doctrine/event-manager/lib/Doctrine/Common',
         ),
         'DeepCopy\\' => 
         array (
@@ -425,14 +459,14 @@ class ComposerStaticInit381b2004d8f158285d5bdd49b7ef6f25
         array (
             0 => __DIR__ . '/..' . '/classpreloader/classpreloader/src',
         ),
-        'Carbon\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon',
-        ),
         'App\\' => 
         array (
             0 => __DIR__ . '/../..' . '/app',
         ),
+    );
+
+    public static $fallbackDirsPsr4 = array (
+        0 => __DIR__ . '/..' . '/nesbot/carbon/src',
     );
 
     public static $prefixesPsr0 = array (
@@ -518,28 +552,12 @@ class ComposerStaticInit381b2004d8f158285d5bdd49b7ef6f25
             array (
                 0 => __DIR__ . '/..' . '/jakub-onderka/php-console-highlighter/src',
             ),
-            'JakubOnderka\\PhpConsoleColor' => 
-            array (
-                0 => __DIR__ . '/..' . '/jakub-onderka/php-console-color/src',
-            ),
         ),
         'D' => 
         array (
             'Doctrine\\DBAL\\' => 
             array (
                 0 => __DIR__ . '/..' . '/doctrine/dbal/lib',
-            ),
-            'Doctrine\\Common\\Lexer\\' => 
-            array (
-                0 => __DIR__ . '/..' . '/doctrine/lexer/lib',
-            ),
-            'Doctrine\\Common\\Inflector\\' => 
-            array (
-                0 => __DIR__ . '/..' . '/doctrine/inflector/lib',
-            ),
-            'Doctrine\\Common\\Collections\\' => 
-            array (
-                0 => __DIR__ . '/..' . '/doctrine/collections/lib',
             ),
             'Diff' => 
             array (
@@ -592,7 +610,6 @@ class ComposerStaticInit381b2004d8f158285d5bdd49b7ef6f25
         'CreateTopicImage' => __DIR__ . '/../..' . '/database/migrations/2017_07_17_121426_create_topic_image.php',
         'CreateUserProfilesTable' => __DIR__ . '/../..' . '/database/migrations/2017_02_22_111057_create_user_profiles_table.php',
         'CreateUsersTable' => __DIR__ . '/../..' . '/database/migrations/2015_07_20_074010_create_users_table.php',
-        'CreateXinjiangEnrollments' => __DIR__ . '/../..' . '/database/migrations/2017_08_03_165053_create_xinjiang_enrollments.php',
         'DatabaseSeeder' => __DIR__ . '/../..' . '/database/seeds/DatabaseSeeder.php',
         'EntrustSetupTables' => __DIR__ . '/../..' . '/database/migrations/2016_09_05_145303_entrust_setup_tables.php',
         'EventsTableSeeder' => __DIR__ . '/../..' . '/database/seeds/EventsTableSeeder.php',
@@ -1429,6 +1446,7 @@ class ComposerStaticInit381b2004d8f158285d5bdd49b7ef6f25
         return \Closure::bind(function () use ($loader) {
             $loader->prefixLengthsPsr4 = ComposerStaticInit381b2004d8f158285d5bdd49b7ef6f25::$prefixLengthsPsr4;
             $loader->prefixDirsPsr4 = ComposerStaticInit381b2004d8f158285d5bdd49b7ef6f25::$prefixDirsPsr4;
+            $loader->fallbackDirsPsr4 = ComposerStaticInit381b2004d8f158285d5bdd49b7ef6f25::$fallbackDirsPsr4;
             $loader->prefixesPsr0 = ComposerStaticInit381b2004d8f158285d5bdd49b7ef6f25::$prefixesPsr0;
             $loader->classMap = ComposerStaticInit381b2004d8f158285d5bdd49b7ef6f25::$classMap;
 
