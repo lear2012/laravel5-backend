@@ -2,7 +2,7 @@
     font-family: 'HelveticaNeue-CondensedBold';
     font-style: normal;
     font-weight: normal;
-    src: local('HelveticaNeue-CondensedBold'), url('http://keye.local.com/fonts/HelveticaNeue-CondensedBold.ttf') format('truetype');
+    src: local('HelveticaNeue-CondensedBold'), url('https://keyeclub.keepu.cn/fonts/HelveticaNeue-CondensedBold.ttf') format('truetype');
 }
 body,h1,h2,h3,h4,h5,h6,p,dl,dd,ol,ul,form, pre,th,td,input,textarea,select{
     margin:0;padding:0;
