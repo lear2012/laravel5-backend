@@ -1140,10 +1140,10 @@ var site = {
             $('body').scrollTop(0);
             return false;
         }
-        if(params.member_no == '') {
-            that.errorField($('#member_no'));
-            return false;
-        }
+        // if(params.member_no == '') {
+        //     that.errorField($('#member_no'));
+        //     return false;
+        // }
         return true;
     },
 
