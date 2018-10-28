@@ -18,10 +18,9 @@ class UpdateAvatar
     {
         $wechatUser = session('wechat.oauth_user'); // 拿到授权用户资料
         if(isset($wechatUser)) {
-            $wechatInfo = $wechatUser->getOriginal();
             DB::table('user_profiles')
                 ->where('wechat_id', $wechatUser->id)
-                ->update(['avatar' => $wechatInfo['original']['headimgurl']]);
+                ->update(['avatar' => $wechatUser->avatar]);
         }
         return $next($request);
     }
