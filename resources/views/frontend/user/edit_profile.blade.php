@@ -5,7 +5,13 @@
     <div class="JoinKY">
         <header>
             <div>
-                <img class="portrait {{ $user->hasRole('paid_member') ? 'paid-border' : '' }}" src="{{ $user->profile->avatar }}" />
+                <form id="uploadavatar" action="" method="post" enctype="multipart/form-data">
+                    <input class="Ainp inputfile" type="file" name="avatar" id="avatar" />
+                    <label for="avatar">
+                    <img class="portrait {{ $user->hasRole('paid_member') ? 'paid-border' : '' }}" src="{{ $user->profile->avatar }}" />
+                    </label>
+                    <div class="avatar_tip">点击修改头像</div>
+                </form>
                 <img src="/img/left-arrow.png" class="return" />
             </div>
             <div class="info">
@@ -140,6 +146,7 @@
             </div>
             <input type="hidden" name="self_get" id="self_get" value="1" />
             <input type="hidden" name="car_imgs" id="car_imgs" value="{{$user->profile->car_imgs}}" />
+            <input type="hidden" name="profile_avatar" id="profile_avatar" value="{{$user->profile->avatar}}" />
             @if(!empty($user->profile->member_no))
                 <input type="hidden" name="member_no" id="member_no" value="{{substr($user->profile->member_no, 5)}}" />
             @endif

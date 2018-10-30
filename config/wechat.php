@@ -84,6 +84,7 @@ return [
          "nickname" => "overtrue",
          "sex" =>"1",
          "email" => '',
+         "avatar" => 'https://wx.qlogo.cn/mmopen/WdWMEkhvMhLldkCDDRZJYphWsaWiahPTTZjYNP5hVianKmKaRUJxv1BEoUE9xXuTzKH8X19ttn191tzvvtbdRIp0WUua7N3o9M/0',
          "original" => [
              'openid' => 'odh7zsgI75iT8FRh0fGlSojc9PWM',
              'nickname' => 'overtrue',
@@ -92,7 +93,7 @@ return [
              'city' => '朝阳',
              'province' => '北京',
              'country' => '中国',
-             "headimgurl" => "http://wx.qlogo.cn/mmopen/C2rEUskXQiblFYMUl9O0G05Q6pKibg7V1WpHX6CIQaic824apriabJw4r6EWxziaSt5BATrlbx1GVzwW2qjUCqtYpDvIJLjKgP1ug/0",
+             "headimgurl" => "https://wx.qlogo.cn/mmopen/WdWMEkhvMhLldkCDDRZJYphWsaWiahPTTZjYNP5hVianKmKaRUJxv1BEoUE9xXuTzKH8X19ttn191tzvvtbdRIp0WUua7N3o9M/0",
          ]
      ]
 ];

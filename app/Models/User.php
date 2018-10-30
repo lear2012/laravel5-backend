@@ -168,6 +168,12 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
             $p['wechat_no'] = $wechatUser->name;
             $p['wechat_nick'] = $wechatUser->nickname;
             $p['avatar'] = $wechatUser->avatar;
+            // save the user's avatar
+            //$wechatUser->avatar = 'https://wx.qlogo.cn/mmopen/WdWMEkhvMhLldkCDDRZJYphWsaWiahPTTZjYNP5hVianKmKaRUJxv1BEoUE9xXuTzKH8X19ttn191tzvvtbdRIp0WUua7N3o9M/0';
+            $imgData = file_get_contents($wechatUser->avatar);
+            $avatarFile = config('custom.uploads.default_avatar_dir').'/'.$wechatUser->id.'_avatar.jpg';
+            file_put_contents(public_path().$avatarFile , $imgData);
+            $p['avatar'] = $avatarFile;
             $wechatInfo = $wechatUser->getOriginal();
             $p['sex'] = $wechatInfo['sex'];
             DB::transaction(function () use ($u, $p, $data) {

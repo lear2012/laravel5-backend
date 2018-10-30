@@ -631,6 +631,7 @@ var site = {
         var that = this;
         this.initDateBox(); // init the date box
         this.initSingleCheckbox($('#self_get')); // init the checkbox
+        this.initAvatarUpload();
         this.initCarimgUpload(); // init car image upload
         $('input[readonly]').on('focus', function(ev) {
             $(this).trigger('blur');
@@ -763,6 +764,7 @@ var site = {
             data.quotation = $.trim($('#quotation').val());
             data.invite_no = $.trim($('#invite_no').val());
             data.car_imgs = $.trim($('#car_imgs').val());
+            data.avatar = $.trim($('#profile_avatar').val());
             if(!that.checkProfile(data))
                 return false;
             // send ajax to save profile info
@@ -851,6 +853,31 @@ var site = {
                 elm.val(1);
             }
             onoff = !onoff;
+        });
+    },
+
+    initAvatarUpload: function(){
+        var that = this;
+        $('#avatar').ajaxfileupload({
+            action: '/wechat/uploadAvatar',
+            params: {
+                extra: 'info'
+            },
+            onComplete: function(rs) {
+                // $('.loading').hide();
+                if(rs.errno == 0) {
+                    $('#uploadavatar .portrait').attr('src', rs.data);
+                    $('#profile_avatar').val(rs.data);
+                } else {
+                    that.showError(rs);
+                }
+            },
+            onStart: function() {
+                //$('.loading').show();
+            },
+            onCancel: function() {
+                //console.log('no file selected');
+            }
         });
     },
 

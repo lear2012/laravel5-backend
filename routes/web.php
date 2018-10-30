@@ -21,7 +21,7 @@ Route::get('/get_brands', ['as' => 'get_brands', 'uses' => '\App\Http\Controller
 Route::get('/cap_brands', ['as' => 'cap_brands', 'uses' => '\App\Http\Controllers\Frontend\WechatController@capBrands']);
 Route::get('/get_series/{code}', ['as' => 'get_series', 'uses' => '\App\Http\Controllers\Frontend\WechatController@getSeries']);
 Route::get('/get_models/{code}', ['as' => 'get_models', 'uses' => '\App\Http\Controllers\Frontend\WechatController@getModels']);
-Route::group(['namespace' => 'Frontend', 'middleware' => ['web', 'wechat.oauth:snsapi_userinfo', 'update.avatar']], function ()
+Route::group(['namespace' => 'Frontend', 'middleware' => ['web', 'wechat.oauth:snsapi_userinfo']], function ()
 {
     Route::group(['prefix' => 'wechat'], function ()
     {
@@ -41,6 +41,7 @@ Route::group(['namespace' => 'Frontend', 'middleware' => ['web', 'wechat.oauth:s
         Route::get('edit_profile', ['as' => 'wechat.edit_profile', 'uses' => 'WechatController@editProfile']);
         Route::post('save_profile', ['as' => 'wechat.save_profile', 'uses' => 'WechatController@saveProfile']);
         Route::post('upload', ['as' => 'wechat.upload', 'uses' => 'WechatController@upload']);
+        Route::post('uploadAvatar', ['as' => 'wechat.upload_avatar', 'uses' => 'WechatController@uploadAvatar']);
         Route::get('join_club', ['as' => 'wechat.join_club', 'uses' => 'WechatController@joinClub']);
         Route::post('get_invitation_payconfig', ['as' => 'wechat.get_invitation_payconfig', 'uses' => 'WechatController@getInvitationPayconfig']);
         Route::get('logout', 'Auth\LoginController@logout');

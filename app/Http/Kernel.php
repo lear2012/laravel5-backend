@@ -62,6 +62,6 @@ class Kernel extends HttpKernel
         'ability' => \Zizaco\Entrust\Middleware\EntrustAbility::class,
 
         'wechat.oauth' => \Overtrue\LaravelWechat\Middleware\OAuthAuthenticate::class,
-        'update.avatar' => \App\Http\Middleware\UpdateAvatar::class,
+        //'update.avatar' => \App\Http\Middleware\UpdateAvatar::class,
     ];
 }

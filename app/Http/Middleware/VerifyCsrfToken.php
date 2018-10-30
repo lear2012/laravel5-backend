@@ -16,5 +16,6 @@ class VerifyCsrfToken extends BaseVerifier
         '/wechat',
         '/wechat/notify',
         '/wechat/upload',
+        '/wechat/uploadAvatar',
     ];
 }

@@ -259,7 +259,7 @@ class WechatController extends Controller
     }
 
     public function saveProfile(SaveProfileRequest $request) {
-        $data = $request->only('real_name', 'id_no', 'vehicle', 'brand', 'sery', 'buy_year', 'car_no', 'self_get', 'member_no', 'address', 'quotation', 'invite_no', 'car_imgs');
+        $data = $request->only('real_name', 'id_no', 'vehicle', 'brand', 'sery', 'buy_year', 'car_no', 'self_get', 'member_no', 'address', 'quotation', 'invite_no', 'car_imgs', 'avatar');
         $data['series'] = $data['sery'];
         unset($data['sery']);
         Log::write('common', 'Get params:'.http_build_query($data));
@@ -683,6 +683,35 @@ class WechatController extends Controller
         if(count($data) > config('custom.car_img_max')) {
             self::setMsgCode(1015);
         }
+        self::setData($data);
+        self::sendJsonMsg();
+    }
+
+    public function uploadAvatar(Request $request) {
+        //
+        $avatarDir = public_path().config('custom.uploads.default_avatar_dir');
+        if(!file_exists($avatarDir)) {
+            Log::write('common', 'Create avatar image directory:'.$avatarDir);
+            mkdir($avatarDir, 0755);
+        }
+        $file = $request->file('avatar');
+        $data = '';
+        if($file->isValid()) {
+            if(!in_array($file->extension(), config('custom.car_img_valid_ext')))
+                self::setMsgCode(1023);
+            $path = $file->store('uploads/avatar');
+            $fileName = basename($path);
+            $fileArr = explode('.', $fileName);
+            $fileName = $fileArr[0];
+            $fileArr[0] = $fileName.'_thumb';
+            $thumbFileName = implode(".", $fileArr); // thumbnail
+            // deal with thumbnail
+            $img = Image::make(public_path('uploads').'/'.$path)->resize(config('custom.car_img_width'), config('custom.car_img_height'));
+            $img->save($avatarDir.'/'.$thumbFileName);
+
+            $data = config('custom.uploads.default_avatar_dir').'/'.$thumbFileName;
+        }
+
         self::setData($data);
         self::sendJsonMsg();
     }
