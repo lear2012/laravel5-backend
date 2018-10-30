@@ -8,9 +8,19 @@
                 <form id="uploadavatar" action="" method="post" enctype="multipart/form-data">
                     <input class="Ainp inputfile" type="file" name="avatar" id="avatar" />
                     <label for="avatar">
-                    <img class="portrait {{ $user->hasRole('paid_member') ? 'paid-border' : '' }}" src="{{ $user->profile->avatar }}" />
+                        <img class="portrait {{ $user->hasRole('paid_member') ? 'paid-border' : '' }}" src="{{ $user->profile->avatar }}" />
                     </label>
-                    <div class="avatar_tip">点击修改头像</div>
+                    <div>
+                        <div class="avatar_tip">
+                            点击修改头像
+                            <div class="avatar_loading ball-clip-rotate-multiple">
+                                <div></div>
+                                <div></div>
+                            </div>
+                        </div>
+
+                    </div>
+
                 </form>
                 <img src="/img/left-arrow.png" class="return" />
             </div>

@@ -864,7 +864,8 @@ var site = {
                 extra: 'info'
             },
             onComplete: function(rs) {
-                // $('.loading').hide();
+                //$('.avatar_tip').show();
+                $('.avatar_loading').hide();
                 if(rs.errno == 0) {
                     $('#uploadavatar .portrait').attr('src', rs.data);
                     $('#profile_avatar').val(rs.data);
@@ -873,7 +874,8 @@ var site = {
                 }
             },
             onStart: function() {
-                //$('.loading').show();
+                //$('.avatar_tip').hide();
+                $('.avatar_loading').show();
             },
             onCancel: function() {
                 //console.log('no file selected');

@@ -405,6 +405,7 @@ img:not([src]) {
     padding:.2rem;
 }
 .loading {display: none;float:right;margin-left:1rem;margin-top:1rem;}
+.avatar_loading {display: none;margin-left:1rem;float:right}
 .JoinKY form {display:inline-block}
 .car_img_basetext {color:white;font-size:.5rem;margin-top: 0rem;margin-bottom: .6rem;vertical-align: middle;display: inline-block}
 .list {
@@ -471,5 +472,6 @@ img:not([src]) {
 .avatar_tip {
     font-size: .4rem;
     color: #f6d107;
-    margin-top:.1rem;
+    margin-top:.4rem;
+    height:.6rem;
 }
